@@ -124,3 +124,30 @@ footer li{
     transform: rotate(180deg);
 }
 
+/*FAC*/
+.fac{
+    display:block;
+    width: 60%;
+    margin: 0 auto;
+}
+.fac .risposta{
+    padding:20px;
+    display:none;
+    transition:1s;
+    border: 1px solid #94C6E9;
+}
+.fac .domanda{
+    display: inline-block;
+    border: 1px solid #94C6E9;
+    padding: 20px;
+}
+.fac .domanda:hover{
+    cursor:pointer;
+    background-color: rgb(200, 199, 199);
+}
+.arrow{
+    transform: scale(-1,1);
+    transform: rotate(180deg);
+    transition:1s;
+}
+

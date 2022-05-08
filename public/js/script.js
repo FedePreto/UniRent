@@ -4,5 +4,4 @@ function show_answer(element){
     }else{
         document.getElementById("ris"+element.id[3]).style.display="block";
     }
-
 }

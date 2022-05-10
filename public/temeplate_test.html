@@ -64,15 +64,14 @@
       <!-- Header -->
       <header id="portfolio">
         <!-- Profilo-->
-        <div class="w3-button w3-right  my-profile dropdown" onclick="dropdown()" >
-          <p >Nicolò Raccichini</p>
-          <a href="#"><img src="/public/img/profile_pic.jpg" style="width:65px;" class="w3-circle w3-right my-margin"></a>
-          <div class="dropdown-content" id="profile_dropdown">
-            <a href="/public/profile.html">Profilo</a>
-            <a href="/public/messaggi.html">Messaggi</a>
-            <a href="/public/logout.php">Logout</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><p class="profile-name">Nicolò Raccichini</p> <img src="/public/img/profile_pic.jpg" style="width:65px;" class="w3-circle w3-right my-margin"></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
+            </div>
           </div>
-        </div>
         <!-- Searchbar -->
         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
         <div class="w3-container">

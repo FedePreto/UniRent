@@ -1652,9 +1652,7 @@ a {
     float: right;
     font-size:110%;
 }
-.discounted{
-    color:rgb(39, 200, 39);
-}
+
 .dropdown{
     position:relative;
     
@@ -1694,7 +1692,7 @@ a {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 240px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -1709,4 +1707,13 @@ a {
   
   .dropdown a:hover {background-color: #CCCCCC;}
   
-  .show {display: block;}
+  .show{
+      display:block;
+  }
+  .dropdown .arrow{
+    transform:rotate(90deg);
+    transition:200ms;
+  }
+.rotate{
+    transform: rotate(270deg) !important;
+}

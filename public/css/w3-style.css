@@ -352,6 +352,7 @@ a {
     padding: 8px 16px;
     border-bottom: 1px solid #ddd;
 }
+
 .w3-ul li:last-child {
     border-bottom: none;
 }
@@ -1618,4 +1619,101 @@ a {
 .w3-border-pale-blue,
 .w3-hover-border-pale-blue:hover {
     border-color: #e7ffff !important;
+}
+/*Aggiunte mie*/
+.filter label{
+    display: inline-block;
+    padding:2px;
+}
+.my-filter li{
+    list-style: none;
+}
+#my-searchabar{
+    margin:5px;
+    height: 50px;
+    width:50%;
+}
+.my-profile{
+    display:flex;
+    
+    align-items:center;
+    
+}
+.my-profile p{
+    display:inline-block;
+    margin:auto;
+    font-size:120%;
+}
+.my-profile .my-margin{
+    margin:10px;
+}
+.price{
+    
+    float: right;
+    font-size:110%;
+}
+
+.dropdown{
+    position:relative;
+    
+}
+.dropdown:hover{
+    cursor:pointer;
+}
+.price .oldprice{
+    color:red;
+    font-size: 60%;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+.dropbtn {
+
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+  }
+  .profile-name{
+      margin:5px;
+  }
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #CCCCCC;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    float:right;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 240px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #CCCCCC;}
+  
+  .show{
+      display:block;
+  }
+  .dropdown .arrow{
+    transform:rotate(90deg);
+    transition:200ms;
+  }
+.rotate{
+    transform: rotate(270deg) !important;
 }

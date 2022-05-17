@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlloggisTable extends Migration
+class CreateAlloggiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateAlloggisTable extends Migration
      */
     public function up()
     {
-        Schema::create('alloggis', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('citta');
-            $table->string('CAP');
+        Schema::create('alloggi', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string('citta')->index();
+            $table->string('cap');
             $table->string('indirizzo');
             $table->integer('numero');
-            $table->float('prezzo');
+            $table->float('prezzo')->index();
             $table->longText('descrizione');
-            $table->float('superficie');
-            $table->integer('letti');
-            $table->boolean('opzionato');
-            $table->boolean('isPostoletto');
-            
-            
+            $table->float('superficie')->index();
+            $table->integer('letti')->index();
+            $table->boolean('opzionato')->index();
+            $table->boolean('tipologia')->index();
+            $table->integer('locatore')->references('UserId')->on('user');
             $table->timestamps();
         });
     }

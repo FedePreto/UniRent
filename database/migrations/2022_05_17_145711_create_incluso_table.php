@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFotoTable extends Migration
+class CreateInclusoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateFotoTable extends Migration
      */
     public function up()
     {
-        Schema::create('foto', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('incluso', function (Blueprint $table) {
+            $table->integer('alloggio')->references('id')->on('alloggi');
+            $table->integer('servizio')->references('id')->on('servizi');
+            $table->primary(['alloggio','servizio']);
             $table->timestamps();
-            $table->text('immagine');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateFotoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foto');
+        Schema::dropIfExists('incluso');
     }
 }

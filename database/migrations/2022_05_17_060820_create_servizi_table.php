@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContrattoTable extends Migration
+class CreateServiziTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateContrattoTable extends Migration
      */
     public function up()
     {
-        Schema::create('contratto', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('servizi', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string('nome')->index();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateContrattoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contratto');
+        Schema::dropIfExists('servizi');
     }
 }

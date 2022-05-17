@@ -14,7 +14,17 @@ class CreateAlloggiTable extends Migration
     public function up()
     {
         Schema::create('alloggi', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->index();
+            $table->string('città');
+            $table->string('CAP');
+            $table->string('indirizzo');
+            $table->int('numero');
+            $table->float('prezzo');
+            $table->string('descrizione');
+            $table->float('superficie');
+            $table->int('letti');
+            $table->boolean('opzionato');
+            $table->boolean('isPostoletto');
             $table->timestamps();
         });
     }

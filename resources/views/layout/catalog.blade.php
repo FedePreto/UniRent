@@ -2,28 +2,16 @@
 
 <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
+        @isset($alloggi)
+        @foreach ( $alloggi as $alloggio)
         <img src="{{asset('img/20190116172824-8.jpeg')}}" alt="Norway" style="width:100%" class="w3-hover-opacity">
         <div class="w3-container w3-white">
-            <p class="price"><b>€200</b></p>
-            <p><b>Appartamento fantavoloso</b></p>
-            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            <p class="price"><b>{{ $alloggio->prezzo }}</b></p>
+            <p><b>{{$alloggio->titolo}}</b></p>
+            <p>{{ $alloggio->descrizione }}</p>
         </div>
     </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-        <img src="{{ asset('img/20210505102417-4.jpg')}}" alt="Norway" style="width:100%" class="w3-hover-opacity">
-        <div class="w3-container w3-white">
-            <p class="price "><b class="oldprice">€350</b><b class="discounted">€310</b></p>
-            <p><b>Lorem Ipsum</b></p>
-            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-        </div>
-    </div>
-    <div class="w3-third w3-container">
-        <img src="{{asset('img/20190116172824-8.jpeg')}}" alt="Norway" style="width:100%" class="w3-hover-opacity">
-        <div class="w3-container w3-white">
-            <p><b>Lorem Ipsum</b></p>
-            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <!-- 

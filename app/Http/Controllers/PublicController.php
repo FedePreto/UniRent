@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalogo;
+use App\Models\Resources\Catalogo;
 
 class PublicController extends Controller{
     protected $_catalogModel;

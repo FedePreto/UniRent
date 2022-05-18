@@ -15,6 +15,7 @@ class CreateAlloggiTable extends Migration
     {
         Schema::create('alloggi', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
+            $table->string('titolo');
             $table->string('citta')->index();
             $table->string('cap');
             $table->string('indirizzo');
@@ -26,6 +27,7 @@ class CreateAlloggiTable extends Migration
             $table->boolean('opzionato')->index();
             $table->boolean('tipologia')->index();
             $table->integer('locatore')->references('UserId')->on('user');
+            $table->integer('foto')->references('id')->on('foto');
             $table->timestamps();
         });
     }

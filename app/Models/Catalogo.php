@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Models\Resources;
+namespace App\Models\Resources;
 
-use App\Models\Resources\Alloggi;
-use App\Models\Resources\Incluso;
+use App\Models\Alloggi;
+
 
 class Catalogo {
 

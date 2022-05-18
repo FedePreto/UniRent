@@ -11,8 +11,8 @@
         <label>Tipo di camera:</label>
         <ul class="w3-bar-block w3-text my-filter ">
             <li ><input type="radio" name="tipo_camera"><label>Tutte</label></li>
-            <li ><input type="radio" name="tipo_camera"><label>Stanza singola</label></li>
-            <li ><input type="radio" name="tipo_camera"><label>Doppia</label></li>
+            <li ><input type="radio" name="tipo_camera"><label>Appartamento</label></li>
+            <li ><input type="radio" name="tipo_camera"><label>Posto letto</label></li>
         </ul>   
         <hr>
 

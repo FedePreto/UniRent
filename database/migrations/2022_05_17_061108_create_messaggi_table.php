@@ -14,7 +14,7 @@ class CreateMessaggiTable extends Migration
     public function up()
     {
         Schema::create('messaggi', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->longText('contenuto');
             $table->dateTime('data')->index();
             $table->integer('mittente')->references('UserId')->on('user');

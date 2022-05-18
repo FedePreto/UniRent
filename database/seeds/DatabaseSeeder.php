@@ -70,10 +70,10 @@ class DatabaseSeeder extends Seeder {
         ]);
            
 
-        DB::table('users')->insert([
-            ['nome' => 'Admin', 'cognome' => 'Admin', 'email' => 'admin.admin@unirent.it', 'password' => Hash::make('admin'), 'celluare' => 3661147223, 'livello' => 0],
-            ['nome' => 'Locatore', 'cognome' => 'Locatore', 'email' => 'locatore.locatore@unirent.it', 'password' => Hash::make('locatore'), 'celluare' => 3214467523, 'livello' => 1],
-            ['nome' => 'Locatario', 'cognome' => 'Locatario', 'email' => 'locatario.locatario@unirent.it', 'password' => Hash::make('locatario'), 'celluare' => 3009978543, 'livello' => 2]
+        DB::table('user')->insert([
+            ['nome' => 'Admin', 'cognome' => 'Admin', 'email' => 'admin.admin@unirent.it', 'password' => Hash::make('admin'), 'cellulare' => 3661147223, 'livello' => 0],
+            ['nome' => 'Locatore', 'cognome' => 'Locatore', 'email' => 'locatore.locatore@unirent.it', 'password' => Hash::make('locatore'), 'cellulare' => 3214467523, 'livello' => 1],
+            ['nome' => 'Locatario', 'cognome' => 'Locatario', 'email' => 'locatario.locatario@unirent.it', 'password' => Hash::make('locatario'), 'cellulare' => 3009978543, 'livello' => 2]
         ]);
     }
 

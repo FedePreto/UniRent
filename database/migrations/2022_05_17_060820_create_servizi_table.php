@@ -14,7 +14,7 @@ class CreateServiziTable extends Migration
     public function up()
     {
         Schema::create('servizi', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->string('nome')->index();
             $table->timestamps();
         });

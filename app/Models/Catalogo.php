@@ -1,6 +1,5 @@
 <?php
 
-namespace app\Models;
 
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Incluso;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,5 +11,7 @@ class Alloggi extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    
+    public function getFoto(){
+        return $this->hasOne(Foto::class,'foto','id');
+    }
 }

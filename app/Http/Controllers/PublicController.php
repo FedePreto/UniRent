@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Resources\Catalogo;
+use App\Models\Catalogo;
 
 class PublicController extends Controller{
     protected $_catalogModel;
@@ -14,7 +14,8 @@ class PublicController extends Controller{
     public function showCatalogo(){
         $alloggi = $this->_catalogModel->getCatalog('Ancona');
 
-        return view('catalog')
+        return view('dashboard')
                             ->with('alloggi',$alloggi);
+                         
     }
 }

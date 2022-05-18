@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/','PublicController@showCatalogo');

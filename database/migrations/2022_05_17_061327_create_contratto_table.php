@@ -14,7 +14,7 @@ class CreateContrattoTable extends Migration
     public function up()
     {
         Schema::create('contratto', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->index();
             $table->date('dataInizio');
             $table->date('dataFine');
             $table->integer('locatario')->references('UserId')->on('user');

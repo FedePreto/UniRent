@@ -18,4 +18,8 @@ class PublicController extends Controller{
                             ->with('alloggi',$alloggi);
                          
     }
+    
+    public function showHomepage(){
+        return view('homepage');
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder {
 
@@ -54,11 +56,11 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Come posso mettere in affitto un appartamento', 'risposta' => 'Per mettere in affitto un appartamneto devi prima registrarti al sito come locatore e compilare una semplice form'],
         ]);
         
-        DB:table('contratto')->insert([
+        DB::table('contratto')->insert([
             ['dataInizio' => '2022-05-11' ,'dataFine' => '2023-05-11' , 'locatario' => 2, 'alloggio' => 0]            
         ]);
                 
-        DB:table('incluso')->insert([
+        DB::table('incluso')->insert([
             ['alloggio' => 1, 'servizio' =>1],
             ['alloggio' => 1, 'servizio' =>2],
             ['alloggio' => 1, 'servizio' =>3],

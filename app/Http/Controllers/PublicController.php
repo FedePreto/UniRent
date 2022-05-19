@@ -19,8 +19,10 @@ class PublicController extends Controller{
                          
     }
     
-    public function showSearch($city=''){
-
+    public function showSearch($citta=''){
+        $alloggi = $this->_catalogModel->getCatalogSearch($citta);
+        return view('dashboard')
+                            ->with('alloggi',$alloggi);
     }
 
 

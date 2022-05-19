@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder {
         ]);
         
         DB::table('foto')->insert([
-        ['immagine' => '20190116172824-8.jpeg'],
+        ['immagine' => '77561779.jpg'],
         ['immagine' => '20210505102417-4.jpg'],
         ['immagine' =>'AM1506.jpg']
         ]);

@@ -1717,3 +1717,6 @@ a {
 .rotate{
     transform: rotate(270deg) !important;
 }
+.annuncio:hover{
+    cursor:pointer;
+}

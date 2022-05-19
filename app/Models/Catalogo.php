@@ -7,11 +7,14 @@ use App\Models\Resources\Alloggi;
 
 class Catalogo {
 
-    public function getCatalog($citta,$paged=1,$tipologia=NULL){
-        $alloggi = Alloggi::all();
-        return $alloggi;/*->paginate($paged);*/
+    public function getCatalog(){
+        $alloggi = Alloggi::where('id','>',0);
+        return $alloggi->paginate(6);
     }
 
-
+    public function getCatalogSearch($citta=''){
+        $alloggi = Alloggi::where('citta','LIKE',"%{{$citta}}%")->get();
+        return $alloggi->paginate(6);
+    }
 
 }

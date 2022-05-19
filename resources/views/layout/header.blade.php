@@ -1,9 +1,9 @@
 <!-- Header -->
 <header id="portfolio">
         <!-- Profilo-->
-        <div class="dropdown" onclick="dropdown()">
-            <button  class="dropbtn">
-                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" >
+        <div class="dropdown" >
+            <button  class="dropbtn" onclick="dropdown()">
+                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" onclick="dropdown()" >
                 <p class="profile-name" >Nicolò Raccichini</p> 
                 <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
             </button>

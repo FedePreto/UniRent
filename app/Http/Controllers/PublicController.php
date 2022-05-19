@@ -12,13 +12,18 @@ class PublicController extends Controller{
     }
 
     public function showCatalogo(){
-        $alloggi = $this->_catalogModel->getCatalog('Ancona');
+        $alloggi = $this->_catalogModel->getCatalog();
 
         return view('dashboard')
                             ->with('alloggi',$alloggi);
                          
     }
     
+    public function showSearch($city=''){
+
+    }
+
+
     public function showHomepage(){
         return view('homepage');
     }

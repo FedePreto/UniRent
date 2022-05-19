@@ -9,8 +9,9 @@
        
         <div class="w3-container w3-white">
             <p class="price"><b>€{{ $alloggio->prezzo }}</b></p>
-            <p><b>{{$alloggio->titolo}}</b></p>
+            <p class="title"><b>{{$alloggio->titolo}}</b></p>
             <p>{{ $alloggio->descrizione }}</p>
+            <p><b>{{$alloggio->citta}}, {{$alloggio->indirizzo}} {{ $alloggio->numero }}</b></p>
         </div>
     </div>
     @endforeach

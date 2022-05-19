@@ -16,12 +16,13 @@ class UserController extends Controller
     //
     public function searchCatalogo(Request $ricerca){
         if(strlen($ricerca->citta)!=0){
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta);
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera);
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
             
         }
         return view('dashboard')
                     ->with('alloggi',$alloggi);
+                
     }
 }

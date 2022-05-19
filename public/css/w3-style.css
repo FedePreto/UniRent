@@ -1628,10 +1628,11 @@ a {
 .my-filter li{
     list-style: none;
 }
-#my-searchabar{
+#my-searchbar{
     margin:5px;
     height: 50px;
     width:50%;
+    font-size:110%;
 }
 .my-profile{
     display:flex;
@@ -1648,9 +1649,9 @@ a {
     margin:10px;
 }
 .price{
-    
     float: right;
     font-size:110%;
+    margin-left:10px;
 }
 
 .dropdown{
@@ -1719,4 +1720,7 @@ a {
 }
 .annuncio:hover{
     cursor:pointer;
+}
+.title{
+    font-size:110%;
 }

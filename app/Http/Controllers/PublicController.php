@@ -18,12 +18,6 @@ class PublicController extends Controller{
                             ->with('alloggi',$alloggi);
                          
     }
-    
-    public function showSearch($citta=''){
-        $alloggi = $this->_catalogModel->getCatalogSearch($citta);
-        return view('dashboard')
-                            ->with('alloggi',$alloggi);
-    }
 
 
     public function showHomepage(){

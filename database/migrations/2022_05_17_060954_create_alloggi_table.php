@@ -15,7 +15,7 @@ class CreateAlloggiTable extends Migration
     {
         Schema::create('alloggi', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
-            $table->string('titolo');
+            $table->string('titolo',90);
             $table->string('citta')->index();
             $table->string('cap');
             $table->string('indirizzo');

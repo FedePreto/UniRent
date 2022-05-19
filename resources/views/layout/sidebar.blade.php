@@ -10,9 +10,12 @@
       <div class="w3-container">
         <label>Tipo di camera:</label>
         <ul class="w3-bar-block w3-text my-filter ">
-            <li ><input type="radio" name="tipo_camera"><label>Tutte</label></li>
-            <li ><input type="radio" name="tipo_camera"><label>Appartamento</label></li>
-            <li ><input type="radio" name="tipo_camera"><label>Posto letto</label></li>
+          <li>{{ Form::radio('tipo_camera','tutte',true,array('form'=>'ricerca'))}}Tutte</li>
+          <li>{{ Form::radio('tipo_camera','appartamento',false,array('form'=>'ricerca'))}}Appartamento</li>
+          <li>{{ Form::radio('tipo_camera','posto_letto',false,array('form'=>'ricerca'))}}Posto Letto</li>
+          <!--  <li ><input form="ricerca" type="radio" name="tipo_camera" value="tutte" checked="checked"><label>Tutte</label></li>
+            <li ><input form="ricerca" type="radio" name="tipo_camera" value="appartamento"><label>Appartamento</label></li>
+            <li ><input form="ricerca" type="radio" name="tipo_camera" value="posto_letto"><label>Posto letto</label></li>-->
         </ul>   
         <hr>
 

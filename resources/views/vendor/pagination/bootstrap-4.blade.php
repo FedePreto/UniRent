@@ -1,5 +1,8 @@
-@if ($paginator->hasPages())
-    <nav>
+<div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+
+        @if ($paginator->hasPages())
+        <nav>
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
@@ -44,3 +47,5 @@
         </ul>
     </nav>
 @endif
+    </div>
+</div>

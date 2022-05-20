@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PublicController@showHomepage');
-Route::get('/Catalogo','PublicController@showCatalogo')->name('catalogo');
-Route::get('/search','UserController@searchCatalogo')->name('search');
+
+Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
+Route::get('/Search','UserController@searchCatalogo')->name('search');
 

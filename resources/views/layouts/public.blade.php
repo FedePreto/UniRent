@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <title>Unirent | @yield('title', 'Catalogo')</title>
+        <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
+        <title>Unirent | @yield('title', 'HomePage')</title>
     </head>
     <body>
         <!-- Header -->
@@ -40,9 +40,9 @@
         
         <footer class="w3-center w3-black w3-padding-16">
             UniRent | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
-            <a  href="#">info@unirent.it</a> | <span itemprop="telephone"><a href="#">+39 347 58 30 387</a></span>
+            <a  href="mailto:info@unirent.it">info@unirent.it</a> | <span itemprop="telephone">+39 347 58 30 387</span>
             <br><a target="_blank" href="#"> privacy</a> | <a target="_blank" href="#"> cookie policy</a>
-            <ul class="">
+            <ul class="social-media-list">
                     <li><a target="_blank" href="https://www.facebook.com/"><img src="img/social/facebook.png"  title="facebook" alt="Facebook icon"></a></li>
                     <li><a target="_blank" href="https://www.instagram.com/accounts/login/"><img src="img/social/instagram.png" title="Instagram" alt="Instagram icon"></a></li>
                     <li><a target="_blank" href="https://www.pinterest.it/login/"><img src="img/social/pinterest.png" title="Pinterest" alt="Pinterest icon"></a></li>

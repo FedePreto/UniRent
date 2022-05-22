@@ -18,9 +18,20 @@ class PublicController extends Controller{
                             ->with('alloggi',$alloggi);
                          
     }
+    
+    public function showCatalogoRegionale($regione){
+        $alloggi = $this->_catalogModel->getCatalogoRegionale($regione);
+        
+        return view('welcome')
+                ->with('alloggi',$alloggi);       
+    }
+    
+    # Mostra tutte le FAQ
 
 
     public function showHomepage(){
-        return view('homepage');
+        $faqs = $this->_catalogModel->getFaq();                
+        return view('homepage')
+                ->with('faqs',$faqs);
     }
 }

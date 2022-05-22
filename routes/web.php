@@ -14,5 +14,6 @@
 Route::get('/', 'PublicController@showHomepage');
 
 Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
+Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');
 Route::get('/Search','UserController@searchCatalogo')->name('search');
 

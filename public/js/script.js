@@ -1,15 +1,4 @@
-function show_answer(element){
-    if(document.getElementById("ris"+element.id[3]).style.display=="block"){
-        document.getElementById("ris"+element.id[3]).style.display="none";
-    }else{
-        document.getElementById("ris"+element.id[3]).style.display="block";
-    }
-}
-
-
-
-
-  function dropdown() {
+function dropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
     document.getElementById("profile-arrow").classList.toggle("rotate");
   }

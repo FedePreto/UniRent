@@ -36,8 +36,8 @@ class Catalogo {
     }
     
     public function getCatalogoRegionale($regione){
-        $alloggi = Alloggi::where('regione',$regione)->get();
-        return $alloggi;
+        $alloggi = Alloggi::where('regione',$regione);
+        return $alloggi->paginate(6);
     }
 
 }

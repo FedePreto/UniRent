@@ -22,7 +22,7 @@ class PublicController extends Controller{
     public function showCatalogoRegionale($regione){
         $alloggi = $this->_catalogModel->getCatalogoRegionale($regione);
         
-        return view('welcome')
+        return view('dashboard')
                 ->with('alloggi',$alloggi);       
     }
     

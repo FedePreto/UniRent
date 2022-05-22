@@ -13,11 +13,11 @@
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
     </head>
     <body>
-        @include('layout/sidebar')
+        @include('layouts/sidebar')
         <div class="w3-main" style="margin-left:300px">
-            @include('layout/header')
-            @include('layout/catalog')
-            @include('layout/footer')
+            @include('layouts/header')
+            @include('layouts/catalog')
+            @include('layouts/footer')
         </div>
     </body>
 </html>

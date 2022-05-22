@@ -15,7 +15,7 @@
 <div class="w3-container w3-padding-32" id="catalog">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Catalogo </b></h3>
     <div class="w3-display-topleft w3-black w3-padding">Prova</div>
-    <div style = "zoom:.2;-o-transform: scale(.2);-moz-transform: scale(.2);text-align: center;">
+    <div style = "zoom:.3;-o-transform: scale(.3);-moz-transform: scale(.3);text-align: center;">
     <img src="{{asset('img/italia.png')}}" usemap="#image-map">
     <map name="image-map">
         <area target="" alt="Valle d'Aosta" title="Valle d'Aosta" href="{{route('catalogo_regionale',['Valle d\'Aosta'])}}" coords="38,271,62,271,100,260,132,252,159,250,178,268,186,297,176,318,146,307,100,326,70,329,62,297,46,286" shape="poly">

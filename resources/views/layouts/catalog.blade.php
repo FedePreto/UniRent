@@ -18,6 +18,6 @@
     
 </div>
    
-{{ $alloggi->links('pagination::bootstrap-4') }}
+{{$alloggi->links('pagination::bootstrap-4')}}
         
 @endisset

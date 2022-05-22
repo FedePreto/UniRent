@@ -8,20 +8,7 @@
     </head>
     <body>
         <!-- Header -->
-        <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-            <img class="w3-image" src="img/studenti.jpg" alt="Immagine di studenti" width="1500" height="800">
-            <div class="w3-display-middle w3-margin-top w3-center">
-                <h1 class="w3-xxlarge w3-text-white">
-                    <span class="w3-padding w3-black w3-opacity-min">
-                        <b>UniRent</b><br>
-                    </span>
-                    <span class='w3-padding w3-black w3-opacity-min w3-large'>
-                        Trova l'alloggio su misura per i tuoi studi
-                    </span>
-                </h1>
-            </div>
-        </header>
-
+        
         <!-- Navbar -->
         <div class="w3-top">
             <div class="w3-bar w3-white w3-wide w3-padding w3-card">
@@ -32,7 +19,7 @@
                 </div>
             </div>
         </div>
-        
+        <div class = "parallax"></div>
         <!--#content-->
         <div class="w3-content w3-padding" style="max-width:1564px">
             @yield('content')

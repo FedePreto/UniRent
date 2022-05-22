@@ -1,3 +1,3 @@
-@extends('layout.dashboard')
+@extends('layouts.dashboard')
 
 @section('title','Catalogo')

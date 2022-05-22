@@ -61,8 +61,9 @@ class DatabaseSeeder extends Seeder {
         ]);
         
         DB::table('faq')->insert([
-            ['domanda' => 'Come posso effettuare la registrazione al sito', 'risposta' => 'In alto a destra nella home page troverai diversi pulsanti, clicca su quello che riporta la parola \'SignUp\''],
-            ['domanda' => 'Come posso mettere in affitto un appartamento', 'risposta' => 'Per mettere in affitto un appartamneto devi prima registrarti al sito come locatore e compilare una semplice form'],
+            ['domanda' => 'Come posso effettuare la registrazione al sito?', 'risposta' => 'In alto a destra nella home page troverai diversi pulsanti, clicca su quello che riporta la parola \'SignUp\'.'],
+            ['domanda' => 'Come posso mettere in affitto un appartamento?', 'risposta' => 'Per mettere in affitto un appartamneto devi prima registrarti al sito come locatore e compilare una semplice form.'],
+            ['domanda' => 'Posso accordarmi direttamente con il locatore tramite il sito?', 'risposta' => 'Sì, effettuando l\'accesso e selezionando l\'appartamento interessato, sarà possibile avviare una chat con il locatore in questione attraverso il sito stesso.'],
         ]);
         
         DB::table('contratto')->insert([
@@ -80,9 +81,9 @@ class DatabaseSeeder extends Seeder {
            
 
         DB::table('user')->insert([
-            ['nome' => 'Admin', 'cognome' => 'Admin', 'email' => 'admin.admin@unirent.it', 'password' => Hash::make('admin'), 'cellulare' => 3661147223, 'livello' => 0],
-            ['nome' => 'Locatore', 'cognome' => 'Locatore', 'email' => 'locatore.locatore@unirent.it', 'password' => Hash::make('locatore'), 'cellulare' => 3214467523, 'livello' => 1],
-            ['nome' => 'Locatario', 'cognome' => 'Locatario', 'email' => 'locatario.locatario@unirent.it', 'password' => Hash::make('locatario'), 'cellulare' => 3009978543, 'livello' => 2]
+            ['nome' => 'Admin', 'cognome' => 'Admin', 'email' => 'admin.admin@unirent.it', 'password' => Hash::make('admin'), 'cellulare' => "3661147223", 'livello' => 0],
+            ['nome' => 'Locatore', 'cognome' => 'Locatore', 'email' => 'locatore.locatore@unirent.it', 'password' => Hash::make('locatore'), 'cellulare' => "3214467523", 'livello' => 1],
+            ['nome' => 'Locatario', 'cognome' => 'Locatario', 'email' => 'locatario.locatario@unirent.it', 'password' => Hash::make('locatario'), 'cellulare' => "3009978543", 'livello' => 2]
         ]);
     }
 

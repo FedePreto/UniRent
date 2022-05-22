@@ -1751,18 +1751,14 @@ ul.social-media-list img:hover {
   background-color: #ccc;
 }
 
-.google-maps {
-  position: relative;
-  padding-bottom: 75%; /* Definisco l'aspect ratio */
-  height: 0;
-  overflow: hidden;
-}
-.google-maps > iframe {
+
+.google-maps iframe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90% !important;
-  height: 90% !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 .faq-heading{

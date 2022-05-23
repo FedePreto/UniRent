@@ -1832,3 +1832,25 @@ flex-direction: column;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* Per i link del paginator */
+.link-inactive:hover{
+    cursor:auto !important;
+}
+
+.link-static{
+    background-color:#d0d0d0 ;
+}
+.my-button{
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}

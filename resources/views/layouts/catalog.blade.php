@@ -17,7 +17,9 @@
     @endforeach
     
 </div>
+
+@include('pagination.paginator',['paginator'=>$alloggi])
    
-{{$alloggi->links('pagination::bootstrap-4')}}
+
         
 @endisset

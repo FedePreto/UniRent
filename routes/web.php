@@ -17,3 +17,6 @@ Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
 Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');
 Route::get('/Search','UserController@searchCatalogo')->name('search');
 
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,12 +19,13 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
+     * Lo usiamo per ridefinire la lunghezza delle stringhe della form che di default
+     * non è sufficiente ad esempio a contenere i caratteri codificati associati ad uno username 
      * @return void
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
         
     }
 }

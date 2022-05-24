@@ -1,16 +1,14 @@
 <!-- Header -->
 <header id="portfolio">
         <!-- Profilo-->
-        <div class="dropdown" >
-            <button  class="dropbtn" onclick="dropdown()">
+        <div class="dropdown" onclick="dropdown()">
+            <button  class="dropbtn">
                 <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" onclick="dropdown()" >
                 <p class="profile-name" >Nicolò Raccichini</p> 
                 <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
             </button>
             <div id="myDropdown" class="dropdown-content animate">
-              <a href="#home">Profilo</a>
-              <a href="#about">Messaggi</a>
-              <a href="#contact">Logout</a>
+              @include('layouts/_navlocatore')
             </div>
           </div>
         <!-- Searchbar -->

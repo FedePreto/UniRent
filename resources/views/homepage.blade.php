@@ -14,7 +14,6 @@
 
 <div class="w3-container w3-padding-32" id="catalog">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Catalogo </b></h3>
-    <div class="w3-display-topleft w3-black w3-padding">Prova</div>
     <div style = "zoom:.3;-o-transform: scale(.3);-moz-transform: scale(.3);text-align: center;">
     <img src="{{asset('img/italia.png')}}" usemap="#image-map">
     <map name="image-map">
@@ -107,6 +106,6 @@
             @endforeach
           @endisset
       </section>
-    <script src="{{asset('js/faq.js')}}"></script>
+     <script type="text/javascript" src="{{ asset('js/home_page.js') }}"></script>
 </div>
 @endsection

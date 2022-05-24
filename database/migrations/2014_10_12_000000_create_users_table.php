@@ -15,16 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
-            $table->string('nome');
+            $table->string('name'); //Non modifico il nome della colonna perchè potrei avere problemi di funzionamento di processi che ne fanno uso
             $table->string('cognome');
             $table->date('data_nascita');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('username')->unique();
+            $table->string('username',20)->unique();
             $table->string('password');
             $table->string('cellulare')->unique();
             $table->integer('livello');
-            $table->rememberToken();//Definisce nella tabella una colonna per gestire il remember
+            $table->rememberToken();//Definisce nella tabella una colonna per gestire la condizione di remember
             $table->timestamps();// Definisce due colonne che indicano la data di creazione della tupla e di ultima modifica
         });
     }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+Use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder {
 
@@ -80,10 +81,10 @@ class DatabaseSeeder extends Seeder {
         ]);
            
 
-        DB::table('user')->insert([
-            ['nome' => 'Admin', 'cognome' => 'Admin', 'email' => 'admin.admin@unirent.it', 'password' => Hash::make('admin'), 'cellulare' => "3661147223", 'livello' => 0],
-            ['nome' => 'Locatore', 'cognome' => 'Locatore', 'email' => 'locatore.locatore@unirent.it', 'password' => Hash::make('locatore'), 'cellulare' => "3214467523", 'livello' => 1],
-            ['nome' => 'Locatario', 'cognome' => 'Locatario', 'email' => 'locatario.locatario@unirent.it', 'password' => Hash::make('locatario'), 'cellulare' => "3009978543", 'livello' => 2]
+        DB::table('users')->insert([
+            ['name' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => Carbon::create('2000','01','01'), 'email' => 'admin.admin@unirent.it', 'username' => 'adminadmin', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3661147223", 'livello' => 0, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
+            ['name' => 'Locatore', 'cognome' => 'Locatore', 'data_nascita' => Carbon::create('2000','02','01'), 'email' => 'loca.loca@unirent.it', 'username' => 'localoca', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3678823475", 'livello' => 1, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
+            ['name' => 'Locatario', 'cognome' => 'Locatario', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'lario.lario@unirent.it', 'username' => 'lariolario', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3776640989", 'livello' => 2, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
         ]);
     }
 

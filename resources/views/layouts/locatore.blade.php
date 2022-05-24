@@ -4,24 +4,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
-        <title>Unirent | @yield('title', 'HomePage')</title>
+        <title>Unirent | @yield('title', 'Locatore')</title>
     </head>
-
     <body>
         <!-- Header -->
-        <!-- Navbar (sit on top) -->
-        <div class="w3-top"></div>
-            @include('layouts/_navpublic')
-        </div>
-        <!-- First Parallax Image with Logo Text -->
-        <div class="bgimg-1 w3-display-container w3-opacity-min" id="home"></div>
-            <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span>
-              <span class="w3-hide-small w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><br>Cerca l'alloggio su misura per i tuoi studi</span>
+        <header id="portfolio">
+            <!-- Profilo-->
+        <div class="dropdown" onclick="dropdown()">
+            <button  class="dropbtn" >
+                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" onclick="dropdown()" >
+                <p class="profile-name" >Nicolò Raccichini</p> 
+                <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
+            </button>
+            <div id="myDropdown" class="dropdown-content animate">
+              @include(_navlocatore)
             </div>
+          </div>
+        <!-- Searchbar -->
+        <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+        <div class="w3-container">
+          <h1>Cerca la tua città:</h1>
+          {!! Form::open(array('route'=>'search','method'=>'GET')) !!}
+            {{ Form::text('citta',false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
+            {{ Form::submit('Invia',array('class'=>'w3-button'))}}
+          {!! Form::close() !!}
+        <!--  <form action="search" method="GET" id="ricerca">
+            <input type="text" name="citta" id="my-searchabar" placeholder="Milano, Torino, Ancona...">
+            <input type="submit" class="w3-button">
+          </form>-->
+          <hr>
         </div>
+      </header>
 
-
+      <!--Fine Header -->
+        <!--#content-->
         <div class="w3-content w3-padding" style="max-width:1564px">
             @yield('content')
         </div>

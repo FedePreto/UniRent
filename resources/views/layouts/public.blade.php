@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
+        <script type="text/javascript" src="/js/home_page.js"></script>
         <title>Unirent | @yield('title', 'HomePage')</title>
     </head>
 
@@ -16,8 +17,8 @@
         <!-- First Parallax Image with Logo Text -->
         <div class="bgimg-1 w3-display-container w3-opacity-min" id="home"></div>
             <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span>
-              <span class="w3-hide-small w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><br>Cerca l'alloggio su misura per i tuoi studi</span>
+              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span><br>
+              <span class="w3-hide-small">Cerca l'alloggio su misura per i tuoi studi</span>
             </div>
         </div>
 

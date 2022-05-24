@@ -1,5 +1,5 @@
 <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="#home" class="w3-bar-item w3-button" title="Torna all'inizio">HOME</a>
     <a href="#what" class="w3-bar-item w3-button w3-hide-small" title="Cosa offriamo">Servizio</a>
     <a href="#catalog" class="w3-bar-item w3-button w3-hide-small" title="Mostra offerte">Catalogo</a>

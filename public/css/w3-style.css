@@ -1852,7 +1852,7 @@ flex-direction: column;
   
   /* First image (Logo. Full height) */
   .bgimg-1 {
-    background-image: url('img/studenti.jpg');
+    background-image: url('../img/studenti.jpg');
     min-height: 100%;
   }
   

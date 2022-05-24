@@ -21,5 +21,4 @@
 @include('pagination.paginator',['paginator'=>$alloggi])
    
 
-        
-@endisset
+@endisset    

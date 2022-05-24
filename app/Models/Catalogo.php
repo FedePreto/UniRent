@@ -4,8 +4,11 @@ namespace App\Models;
 
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Faq;
+use App\Models\Resources\Servizi;
 use App\Models\Resources\Foto;
+use App\Modela\Resources\Incluso;
 use PhpParser\Node\Stmt\ElseIf_;
+use Illuminate\Support\Facades\Log;
 
 class Catalogo {
 
@@ -14,8 +17,33 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getCatalogSearch($citta,$tipo='tutte'){
+    public function getCatalogSearch($citta,$tipo='tutte',$filtri=null){
+        
+        //creo la tabella alloggi
         $alloggi = Alloggi::leftjoin('foto','foto.id','=','alloggi.foto')->where('citta','LIKE','%'.$citta.'%');
+
+        if($filtri != null){
+            //creao la tabella join tra alloggi e incluso
+            $alloggi_filtri = Alloggi::leftJoin('incluso','incluso.alloggio','=','alloggi.id');
+            if(count($filtri)>1){
+                foreach(array_keys($filtri) as $key){
+                    //Log::info("ciao".$filtri[$key]);
+                    $alloggi_filtri = $alloggi_filtri->where('servizio',$filtri[$key]);
+                }
+            }else{
+                $alloggi_filtri = $alloggi_filtri->where('servizio',$filtri[array_key_first($filtri)]);
+            }
+            //distinguo gli id degli alloggi in modo da poter confrontare questa tabella con quella degli alloggi
+            $alloggi_filtri = $alloggi_filtri->select('alloggio')->distinct('alloggio')->get();
+            $alloggi = $alloggi->whereIn('alloggi.id',$alloggi_filtri->toArray());
+
+        }
+        //Log::info(implode(',',(array)$alloggi_filtri));
+
+        
+        //se gli alloggi si trovano nell'array $alloggi_filtri
+       
+
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);
         }elseif($tipo=='posto_letto'){
@@ -38,6 +66,10 @@ class Catalogo {
     public function getCatalogoRegionale($regione){
         $alloggi = Alloggi::where('regione',$regione);
         return $alloggi->paginate(6);
+    }
+
+    public function getServizi(){
+        return Servizi::all();
     }
 
 }

@@ -17,7 +17,7 @@
         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
         <div class="w3-container">
           <h1>Cerca la tua città:</h1>
-          {!! Form::open(array('route'=>'search','method'=>'GET')) !!}
+          {!! Form::open(array('route'=>'search','method'=>'GET','id'=>'ricerca')) !!}
             {{ Form::text('citta',false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
             {{ Form::submit('Invia',array('class'=>'w3-button'))}}
           {!! Form::close() !!}

@@ -14,4 +14,8 @@ class Alloggi extends Model
     public function getFoto(){
         return $this->hasOne(Foto::class,'foto','id');
     }
+
+    public function servizi(){
+        return $this->belongsToMany(Incluso::class,'id','alloggi');
+    }
 }

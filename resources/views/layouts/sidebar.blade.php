@@ -7,8 +7,8 @@
         <h4><b>Filtri ricerca:</b></h4>
       </div>  
       
-      <div class="w3-container">
-        <label>Tipo di camera:</label>
+      <div class="w3-container ">
+        {{Form::label("Tipo di camera:")}}<br>
         <ul class="w3-bar-block w3-text my-filter ">
           <li>{{ Form::radio('tipo_camera','tutte',true,array('form'=>'ricerca'))}}Tutte</li>
           <li>{{ Form::radio('tipo_camera','appartamento',false,array('form'=>'ricerca'))}}Appartamento</li>
@@ -18,12 +18,25 @@
             <li ><input form="ricerca" type="radio" name="tipo_camera" value="posto_letto"><label>Posto letto</label></li>-->
         </ul>   
         <hr>
-
-        <label>Data inizio contratto:</label><br>
-        <input type="date" name="data_inizio"><br><br>
-        <label>Data fine contratto:</label><br>
-        <input type="date" anme="data_fine">
+        
+        {{Form::label('Data inizio contratto:')}}<br>
+        {{Form::date('data_inizio',false,array('form'=>'ricerca'))}}<br><br>
+        {{Form::label('Data fine contratto:')}}<br>
+        {{Form::date('data_fine',false,array('form'=>'ricerca'))}}<br>
+        
+        <hr>
       </div>
+
+      @isset($servizi)
+      
+      <div class="w3-container">
+        <ul class="w3-bar-block w3-text my-filter">
+          @foreach($servizi as $servizio)
+            <li>{{Form::checkbox($servizio->nome,$servizio->id,false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endisset
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->

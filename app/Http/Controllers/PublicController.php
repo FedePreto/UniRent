@@ -13,9 +13,10 @@ class PublicController extends Controller{
 
     public function showCatalogo(){
         $alloggi = $this->_catalogModel->getCatalog();
-
+        $servizi = $this->_catalogModel->getServizi();
         return view('dashboard')
-                            ->with('alloggi',$alloggi);
+                            ->with('alloggi',$alloggi)
+                            ->with('servizi',$servizi);
                          
     }
     

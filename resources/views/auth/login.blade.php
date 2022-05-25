@@ -37,7 +37,7 @@
             </div>
             
             <div class="container-form-btn">                
-                {{ Form::submit('Login', ['class' => 'form-btn1']) }}
+                {{ Form::submit('Login', ['class' => 'my-button']) }}
             </div>
             <div  class="wrap-input">
                  <p> Se non hai già un account <a  href="{{ route('register') }}">registrati</a></p>

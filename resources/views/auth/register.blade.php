@@ -77,7 +77,7 @@
             </div>
             
             <div class="container-form-btn">                
-                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
+                {{ Form::submit('Registra', ['class' => 'my-button']) }}
             </div>
             
             {{ Form::close() }}

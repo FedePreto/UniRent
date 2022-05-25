@@ -16,7 +16,7 @@
         <div class="w3-container">
           <h1>Cerca la tua città:</h1>
           {!! Form::open(array('route'=>'search','method'=>'GET','id'=>'ricerca')) !!}
-            {{ Form::text('citta',false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
+            {{ Form::text('citta',$request->citta,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
             {{ Form::submit('Invia',array('class'=>'w3-button'))}}
           {!! Form::close() !!}
         <!--  <form action="search" method="GET" id="ricerca">

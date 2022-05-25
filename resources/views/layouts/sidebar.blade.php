@@ -10,12 +10,9 @@
       <div class="w3-container ">
         {{Form::label("Tipo di camera:")}}<br>
         <ul class="w3-bar-block w3-text my-filter ">
-          <li>{{ Form::radio('tipo_camera','tutte',true,array('form'=>'ricerca'))}}Tutte</li>
-          <li>{{ Form::radio('tipo_camera','appartamento',false,array('form'=>'ricerca'))}}Appartamento</li>
-          <li>{{ Form::radio('tipo_camera','posto_letto',false,array('form'=>'ricerca'))}}Posto Letto</li>
-          <!--  <li ><input form="ricerca" type="radio" name="tipo_camera" value="tutte" checked="checked"><label>Tutte</label></li>
-            <li ><input form="ricerca" type="radio" name="tipo_camera" value="appartamento"><label>Appartamento</label></li>
-            <li ><input form="ricerca" type="radio" name="tipo_camera" value="posto_letto"><label>Posto letto</label></li>-->
+          <li>{{ Form::radio('tipo_camera','tutte',$request->tipo_camera == 'tutte',array('form'=>'ricerca'))}}Tutte</li>
+          <li>{{ Form::radio('tipo_camera','appartamento',$request->tipo_camera == 'appartamento',array('form'=>'ricerca'))}}Appartamento</li>
+          <li>{{ Form::radio('tipo_camera','posto_letto',$request->tipo_camera == 'post_letto',array('form'=>'ricerca'))}}Posto Letto</li>
         </ul>   
         <hr>
         
@@ -32,7 +29,7 @@
       <div class="w3-container">
         <ul class="w3-bar-block w3-text my-filter">
           @foreach($servizi as $servizio)
-            <li>{{Form::checkbox($servizio->nome,$servizio->id,false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
+            <li>{{Form::checkbox($servizio->nome,$servizio->id,$request->only($servizio->nome)!=null,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
           @endforeach
         </ul>
       </div>

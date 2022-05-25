@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
-
+use Illuminate\Http\Request;
 class PublicController extends Controller{
     protected $_catalogModel;
 
@@ -14,9 +14,13 @@ class PublicController extends Controller{
     public function showCatalogo(){
         $alloggi = $this->_catalogModel->getCatalog();
         $servizi = $this->_catalogModel->getServizi();
+        $request = new  Request;
+        $request['citta'] = '';
+        $request['tipo_camera'] = 'tutte';
         return view('dashboard')
                             ->with('alloggi',$alloggi)
-                            ->with('servizi',$servizi);
+                            ->with('servizi',$servizi)
+                            ->with('request',$request);
                          
     }
     

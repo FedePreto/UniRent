@@ -21,6 +21,7 @@ class UserController extends Controller
         $servizi = $this->_catalogModel->getServizi();
         return view('dashboard')
                     ->with('alloggi',$alloggi)
-                    ->with('servizi',$servizi);          
+                    ->with('servizi',$servizi)
+                    ->with('request',$ricerca);          
     }
 }

@@ -32,11 +32,14 @@ class PublicController extends Controller{
     }
     
     # Mostra tutte le FAQ
-
-
-    public function showHomepage(){
-        $faqs = $this->_catalogModel->getFaq();                
-        return view('homepage')
+    public function getFaq(){        
+        $faqs = $this->_catalogModel->getFaq();
+        return view('faq')
                 ->with('faqs',$faqs);
+    }
+
+
+    public function showHomepage(){                        
+        return view('homepage');                
     }
 }

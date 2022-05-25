@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <title>Unirent | @yield('title', 'HomePage')</title>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
-        <script type="text/javascript" src="/js/home_page.js"></script>
-        <title>Unirent | @yield('title', 'HomePage')</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Da qui prendiamo le icone-->
+ <!--       <script type="text/javascript" src="{{asset('js/home_page.js')}}"></script> -->
+  
+
+        
     </head>
 
     <body>
         <!-- Header -->
         <!-- Navbar (sit on top) -->
-        <div class="w3-top"></div>
-            @include('layouts/_navpublic')
+        <div class="w3-top">
+            <div class="w3-bar" id="myNavbar">
+                @include('layouts/_navpublic')
+            </div>
         </div>
+
         <!-- First Parallax Image with Logo Text -->
         <div class="bgimg-1 w3-display-container w3-opacity-min" id="home"></div>
             <div class="w3-display-middle" style="white-space:nowrap;">
-              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span><br>
-              <span class="w3-hide-small">Cerca l'alloggio su misura per i tuoi studi</span>
+              <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span>
             </div>
         </div>
 
 
-        <div class="w3-content w3-padding" style="max-width:1564px">
+        <div class="w3-content w3-padding" style="max-width:1654px">
             @yield('content')
         </div>
         
@@ -42,5 +48,16 @@
                 <a target="_blank" href="#"><img width="100" src="img/logo.png" title="#" alt="#"></a>
             </div>
         </footer>
+        <script>
+            window.onscroll = function() {myFunction()};
+            function myFunction() {
+                var navbar = document.getElementById("myNavbar");
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+                } else {
+                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+                }
+            }
+        </script>
     </body>
 </html>

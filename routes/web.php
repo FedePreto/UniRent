@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', 'PublicController@showHomepage');
+Route::get('/', 'PublicController@showHomepage')->name('home');
 
 Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
 Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');
 Route::get('/Search','UserController@searchCatalogo')->name('search');
+Route::get('/Faq','PublicController@getFaq')->name('faq');
+
+Route::view('/Who','who')->name('who');
+Route::view('/Where','where')->name('where');
+Route::view('/What','what')->name('what');
 
 //Route Admin
 Route::get('/Admin','AdminController@index')->name('admin');

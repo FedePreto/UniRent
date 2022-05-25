@@ -3,15 +3,6 @@
 @section('title', 'HomePage')
 
 @section('content')
-<div class="w3-container w3-padding-32" id="what">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Servizio offerto</b></h3>
-    <p>Il nostro scopo è quello di offrire appartamenti confortevoli ed economicamente accessibli a tutti gli studenti.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-</div>
-
 <div class="w3-container w3-padding-32" id="catalog">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Catalogo </b></h3>
     <div style = "zoom:.3;-o-transform: scale(.3);-moz-transform: scale(.3);text-align: center;">
@@ -39,73 +30,5 @@
         <area target="" alt="Sardegna" title="Sardegna" href="{{route('catalogo_regionale',['Sardegna'])}}" coords="230,1296,292,1290,381,1217,408,1231,421,1263,451,1290,459,1371,438,1409,451,1452,429,1628,375,1622,351,1625,327,1676,292,1674,257,1631,267,1520,281,1479,259,1469,281,1404,259,1374,230,1328" shape="poly">
     </map>
 </div>    
-</div>
-
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32" id="who">
-      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Chi siamo</b></h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-  </div>
-
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="{{asset('img/profile_pic.jpg')}}" alt="Rongo" style="width:100%">
-      <h3>Alessandro Rongoni</h3>
-      <p class="w3-opacity">CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Fede" style="width:100%">
-      <h3>Federico Pretini</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Greg" style="width:100%">
-      <h3>Gregorio Vecchiola</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Raccio" style="width:100%">
-      <h3>Nicolò Raccichini</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-  </div> 
-  
-<!-- Image of location/map -->
-<div  class="w3-container w3-padding-32" id="where">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Dove trovarci</b></h3>
-    <p align="center"> 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.9626846079573!2d13.51172641514125!3d43.58649357912361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d8024b0b1a877%3A0x5fac49ae852fdea0!2sVia%20Brecce%20Bianche%2C%2012%2C%2060131%20Ancona%20AN!5e0!3m2!1sit!2sit!4v1653229189286!5m2!1sit!2sit" width="1200" height="700" align="center"></iframe>
-    </p>
-</div>
-
-
-
-<div class="w3-container w3-padding-32" id="faq">
-      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>FAQ</b></h3>
-      <section class="faq-container">
-          @isset($faqs)
-            @foreach($faqs as $faq)
-            <div>
-                <h4 class="faq-page">{{$faq -> domanda}}</h4>
-                <div class="faq-body">
-                    <p>{{$faq ->risposta}}</p>
-                </div>
-            </div>
-            <hr class="hr-line">
-            @endforeach
-          @endisset
-      </section>
-     <script type="text/javascript" src="{{ asset('js/home_page.js') }}"></script>
 </div>
 @endsection

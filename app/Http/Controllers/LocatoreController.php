@@ -11,11 +11,10 @@ class LocatoreController extends Controller{
     protected $_locatoreModel;
 
     public function __construct(){
-        $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
     }
     public function index(){
-        return view('locatore');
+        return view('dashboard');
     }
     public function addHome(){     
     }

@@ -13,7 +13,10 @@ body, html {
   height: 100%;
   color: #777;
   line-height: 1.8;
-}
+  margin: 0;
+  padding: 0;
+}  
+
 area,
 article,
 aside,
@@ -1857,3 +1860,10 @@ flex-direction: column;
   .w3-wide {letter-spacing: 10px;}
 
   .w3-hover-opacity {cursor: pointer;}
+
+  .logo {
+      text-align: center;
+      position: relative;
+      bottom: -70px;
+      
+  }

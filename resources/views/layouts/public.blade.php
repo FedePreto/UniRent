@@ -26,7 +26,6 @@
             <div class="w3-display-middle" style="white-space:nowrap;">
               <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">UniRent</span>
             </div>
-            <br>
             <div class="w3-display-middle" style="white-space:nowrap;">
               <span class="logo w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Cerca l'appartamento su misura per i tuoi studi</span>
             </div>

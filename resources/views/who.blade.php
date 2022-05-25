@@ -35,7 +35,7 @@
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Raccio" style="width:100%">
+      <img src={{asset('img/evil_abed.jpg')}} alt="Raccio" style="width:100%">
       <h3>Nicolò Raccichini</h3>
       <p class="w3-opacity">Architect</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>

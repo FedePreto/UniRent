@@ -296,9 +296,10 @@ a {
 }
 .w3-btn,
 .w3-button {
+    position: relative;
     border: none;
     display: inline-block;
-    padding: 8px 16px;
+    padding: 11px 16px;
     vertical-align: middle;
     overflow: hidden;
     text-decoration: none;
@@ -307,6 +308,7 @@ a {
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
+    height: 100%;
 }
 .w3-btn:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -475,13 +477,17 @@ a {
 .w3-bar {
     width: 100%;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 2;
+    height: 45px;
+
 }
 .w3-center .w3-bar {
     display: inline-block;
     width: auto;
 }
 .w3-bar .w3-bar-item {
-    padding: 8px 16px;
+    padding: 11px 16px;
     float: left;
     width: auto;
     border: none;
@@ -499,7 +505,7 @@ a {
 .w3-bar-block .w3-bar-item {
     width: 100%;
     display: block;
-    padding: 8px 16px;
+    padding: 11px 16px;
     text-align: left;
     border: none;
     white-space: normal;
@@ -1852,7 +1858,7 @@ flex-direction: column;
   
   /* First image (Logo. Full height) */
   .bgimg-1 {
-    background-image: url('../img/studenti.jpg');
+    background-image: url('../img/sfondo_tagliato.png');
     min-height: 60%;
     min-width: 100%;
   }
@@ -1865,5 +1871,5 @@ flex-direction: column;
       text-align: center;
       position: relative;
       bottom: -70px;
-      
-  }
+    }
+

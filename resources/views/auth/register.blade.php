@@ -1,77 +1,88 @@
-@extends('layouts.app')
+@extends('layouts.public')
+
+@section('title', 'Registrazione')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<div class="static">
+    <h3>Registrazione</h3>
+    <p>Utilizza questa form per registrarti al sito</p>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <div class="container-contact">
+        <div class="wrap-contact1">
+            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div  class="wrap-input">
+                {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
+                {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
+                @if ($errors->first('name'))
+                <ul class="errors">
+                    @foreach ($errors->get('name') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
             </div>
+
+            <div  class="wrap-input">
+                {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }}
+                {{ Form::text('surname', '', ['class' => 'input', 'id' => 'surname']) }}
+                @if ($errors->first('surname'))
+                <ul class="errors">
+                    @foreach ($errors->get('surname') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+            
+             <div  class="wrap-input">
+                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
+                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
+                @if ($errors->first('email'))
+                <ul class="errors">
+                    @foreach ($errors->get('email') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+            
+             <div  class="wrap-input">
+                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
+                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
+                @if ($errors->first('username'))
+                <ul class="errors">
+                    @foreach ($errors->get('username') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+            
+             <div  class="wrap-input">
+                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
+                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
+                @if ($errors->first('password'))
+                <ul class="errors">
+                    @foreach ($errors->get('password') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+
+            <div  class="wrap-input">
+                {{ Form::label('password-confirm', 'Conferma password', ['class' => 'label-input']) }}
+                {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'password-confirm']) }}
+            </div>
+            
+            <div class="container-form-btn">                
+                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
+            </div>
+            
+            {{ Form::close() }}
         </div>
     </div>
+
 </div>
 @endsection

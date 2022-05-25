@@ -1,7 +1,4 @@
-<a href="{{route('messaggi')}}" class="w3-bar-item w3-button" title="Gestione Messaggistica">Messaggi</a>
-<a href="ricerca" class="w3-bar-item w3-button" title="Home pubblica">Catalogo</a>
-<a href="#who" class="w3-bar-item w3-button" title="Il nostro profilo aziendale">Chi siamo</a>
-<a href="#where" class="w3-bar-item w3-button" title="Dove trovarci">Dove Siamo</a>
-<a href ="#faq" class="w3-bar-item w3-button" title="Frequently Asked Question">FAQ</a>
-<a href="{{route('profilo_locatore')}}" class="w3-bar-item w3-button" title="Gestione Profilo">Profilo</a>
-<a href="_blank" class="w3-bar-item w3-button" title="Effettua l'accesso al sito">Logout</a>
+<a href="{{route('messaggi')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Messsaggi">Messaggi</a>
+<a href="{{route('profilo_locatore')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Profilo"><i class="fa fa-info-circle"></i>Profilo</a>
+<a href="{{route('richieste')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Richieste"><i class="fa fa-users"></i>Richieste</a>
+<a href="{{route('addHome')}}" class="w3-bar-item w3-button w3-hide-small" title="Inserisci una nuova offerta nel sito">Aggiungi Offerta</a>

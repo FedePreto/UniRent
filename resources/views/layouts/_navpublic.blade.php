@@ -13,7 +13,7 @@
         <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
         @auth
         <a href="{{route('home')}}" class="w3-bar-item w3-button w3-hide-small w3-right" title="Profilo"><i class="fa fa-user"></i> {{Auth::user()->username}}</a>
-        <a href="" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+        <a href="" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 
@@ -23,7 +23,7 @@
         @endauth
         @guest
         <a href="{{route('register')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua la registrazione al sito"><i class="fa fa-vcard"></i> Registrati</a>
-        <a href="{{route('login')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua l'accesso al sito"><i class="fa fa-user"></i> Accedi</a>
+        <a href="{{route('login')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua l'accesso al sito"><i class="fa fa-sign-in"></i> Accedi</a>
         @endguest
     </div>
 </div>

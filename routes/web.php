@@ -23,7 +23,7 @@ Route::view('/Where','where')->name('where');
 Route::view('/What','what')->name('what');
 
 //Route Admin
-Route::get('/Admin','AdminController@index')->name('admin');
+Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
 
 //Route Locatore
 Route::get('/Locatore','LocatoreController@index')->name('locatore')->middleware('can:isLocatore');
@@ -31,7 +31,6 @@ Route::get('/Locatore','LocatoreController@index')->name('locatore')->middleware
 Route::get('/Messaggi', 'LocatoreController@showMessaggi')->name('messaggi');
 Route::get('/Locatore/Profilo', 'LocatoreController@showProfilo')->name('profilo_locatore');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
-
 Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');
 

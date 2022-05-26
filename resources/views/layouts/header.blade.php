@@ -17,7 +17,7 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
         <!-- <div class="dropdown" onclick="dropdown()">
             <button  class="dropbtn">
                 <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" onclick="dropdown()" >
-                <p class="profile-name" >Nicolò Raccichini</p> 
+                <p class="profile-name" >{{Auth::user()->name}} {{Auth::user()->cognome}}</p> 
                 <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
             </button>
             <div id="myDropdown" class="dropdown-content animate">

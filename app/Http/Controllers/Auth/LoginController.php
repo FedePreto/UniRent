@@ -34,13 +34,13 @@ class LoginController extends Controller
     protected function redirectTo() {
         $livello= auth()->user()->livello; // estraiamo dall'utente attualmente autenticato 
         switch($livello){
-            case 0: return '/admin';
+            case 0: return '/Admin';
                     break;         
             
-            case 1: return '/locatore';
+            case 1: return '/Locatore';
                     break;
 
-            case 2: return '/locatario';
+            case 2: return '/Locatario';
                     break;
             
             default: return '/';        

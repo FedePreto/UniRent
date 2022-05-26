@@ -3,7 +3,7 @@
 @section('title', 'Registrazione')
 
 @section('content')
-<div class="static">
+<div class="static w3-center">
     <h3>Registrazione</h3>
     <p>Utilizza questa form per registrarti al sito</p>
 
@@ -77,7 +77,7 @@
             </div>
             
             <div class="container-form-btn">                
-                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
+                {{ Form::submit('Registra', ['class' => 'my-button']) }}
             </div>
             
             {{ Form::close() }}

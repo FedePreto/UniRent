@@ -30,6 +30,7 @@ class PublicController extends Controller{
         $request['citta'] = '';
         $request['tipo_camere'] = 'tutte';
         return view('dashboard')
+                ->with('citta',$regione)
                 ->with('alloggi',$alloggi)
                 ->with('request',$request);       
     }

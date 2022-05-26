@@ -13,23 +13,17 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
 
 <!-- Header -->
 <header id="portfolio">
-        <!-- Profilo-->
-        <!-- <div class="dropdown" onclick="dropdown()">
-            <button  class="dropbtn">
-                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" onclick="dropdown()" >
-                <p class="profile-name" >{{Auth::user()->name}} {{Auth::user()->cognome}}</p> 
-                <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
-            </button>
-            <div id="myDropdown" class="dropdown-content animate">
-              @include('layouts/_navlocatore')
-            </div>
-          </div>-->
         <!-- Searchbar -->
         <!--<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>-->
         <div class="w3-container" style="padding-top:50px" >
           <h1>Cerca la tua città:</h1>
           {!! Form::open(array('route'=>'search','method'=>'GET','id'=>'ricerca')) !!}
+            @isset($citta)
+            {{ Form::text('citta', $citta,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
+            @endisset($citta)
+            @empty($citta)
             {{ Form::text('citta',isset($request) ? $request->citta : false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
+            @endempty
             {{ Form::submit('Invia',array('class'=>'w3-button'))}}
           {!! Form::close() !!}
           <hr>
@@ -38,8 +32,13 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
             <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" > Mostra filtri</button>
           <div class="w3-container wrapper" id="filtri">
               <div id="reveal-content" class='hide'>
+                @guest                
+                <h3 style = "color:red">Effettua prima l'accesso per poter utilizzare i filtri</h3>
+              </div>
+          </div>
+                @endguest
 
-
+                @auth
                 <div class="my-align">
                   {{Form::label("Tipo di camera:")}}<br>
                   <ul class="w3-bar-block w3-text my-filter ">
@@ -78,6 +77,7 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
             </div>
             @endisset
           </div>
+          @endauth
         </div>
 
       

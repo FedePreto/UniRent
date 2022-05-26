@@ -1851,6 +1851,10 @@ flex-direction: column;
     white-space: nowrap;
 }
 
+.my-button:hover {
+    color: inherit !important;
+    background-color: #ccc !important;
+}
 
 /* Style sheet per home page in parallax */
 .bgimg-1{

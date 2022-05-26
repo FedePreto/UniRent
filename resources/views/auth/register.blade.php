@@ -24,11 +24,12 @@
             </div>
 
             <div  class="wrap-input">
-                {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }}
-                {{ Form::text('surname', '', ['class' => 'input', 'id' => 'surname']) }}
-                @if ($errors->first('surname'))
+                {{ Form::label('', '', ['class' => 'fa fa-user']) }}
+                {{ Form::label('cognome', 'Cognome', ['class' => 'label-input']) }}
+                {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'surname']) }}
+                @if ($errors->first('cognome'))
                 <ul class="errors">
-                    @foreach ($errors->get('surname') as $message)
+                    @foreach ($errors->get('cognome') as $message)
                     <li>{{ $message }}</li>
                     @endforeach
                 </ul>
@@ -52,7 +53,7 @@
                 {{ Form::text('cellulare', '', ['class' => 'input','id' => 'cellulare']) }}
                 @if ($errors->first('cellulare'))
                 <ul class="errors">
-                    @foreach ($errors->get('email') as $message)
+                    @foreach ($errors->get('cellulare') as $message)
                     <li>{{ $message }}</li>
                     @endforeach
                 </ul>
@@ -106,11 +107,16 @@
             <div  class="wrap-input">
                 {{ Form::label('livello', 'Qual è il suo ruolo?', ['class' => 'label-input']) }}<br>
                 <ul class='my-filter ruolo'>
-                    <li>{{ Form::radio('livello','locatore', false ,['class' => 'input', 'id' => 'locatore']) }} {{ Form::label('livello', 'Locatore ', ['class' => 'label-input']) }}</li>
-                    <li>{{ Form::radio('livello','locatario', false ,['class' => 'input', 'id' => 'locatario']) }} {{ Form::label('livello', 'Locatario', ['class' => 'label-input']) }}</li>
+                    <li>{{ Form::radio('livello',1, false ,['class' => 'input', 'id' => 'locatore']) }} {{ Form::label('livello', 'Locatore ', ['class' => 'label-input']) }}</li>
+                    <li>{{ Form::radio('livello',2, false ,['class' => 'input', 'id' => 'locatario']) }} {{ Form::label('livello', 'Locatario', ['class' => 'label-input']) }}</li>
+                </ul> 
+                @if ($errors->first('livello'))
+                <ul class="errors">
+                    @foreach ($errors->get('livello') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
                 </ul>
-                
-                
+                @endif                
             </div>
             
             

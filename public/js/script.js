@@ -50,7 +50,7 @@ window.onscroll = function() {scrollFunction()};
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
                 } else {
-                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white ", "");
                 }
             }
 

@@ -1,0 +1,1 @@
+<a href="{{route('messaggi')}}" class="w3-bar-item w3-button w3-hide-small" title="Gestione Messsaggi"><i class="fa fa-paper-plane"></i> Messaggi</a>

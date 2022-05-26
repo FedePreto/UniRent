@@ -19,7 +19,15 @@
                 
             </button>
             <div id="myDropdown" class="dropdown-content w3-dropdown-content w3-bar-block w3-card-4">
+              @can('isLocatore')
               @include('layouts/_navlocatore')
+              @endcan
+              @can('isLocatario')
+              @include('layouts/_navlocatario')
+              @endcan
+              @can('isAdmin')
+              @include('layouts/_navadmin')
+              @endcan
             </div>
           </div>
         

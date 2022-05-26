@@ -26,7 +26,7 @@ Route::view('/What','what')->name('what');
 Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
 
 //Route Locatore
-Route::get('/Locatore','LocatoreController@index')->name('locatore')->middleware('can:isLocatore');
+Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore');
 
 Route::get('/Messaggi', 'LocatoreController@showMessaggi')->name('messaggi');
 Route::get('/Locatore/Profilo', 'LocatoreController@showProfilo')->name('profilo_locatore');
@@ -35,7 +35,7 @@ Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');
 
 //Route Locatario
-Route::get('/Locatario','LocatarioController@index')->name('locatario')->middleware('can:isLocatario');
+Route::get('/Locatario','LocatoreController@index_lario')->name('locatario')->middleware('can:isLocatario');
 //Sottoinsime di Auth::routes()
 Route::get('login','Auth\LoginController@showLoginForm')->name('login'); //Rotta che genera la form GET
 Route::post('login','Auth\LoginController@login');//Usata al submit della form che attiva il processo di autenticazione

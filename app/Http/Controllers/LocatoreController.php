@@ -16,12 +16,18 @@ class LocatoreController extends Controller{
         $this->_locatoreModel = new Locatore;
         $this->_catalogModel = new Catalogo;
     }
-    public function index(){
+    public function index_loca(){
         $alloggi = $this->_catalogModel->getCatalog();
         return view('dashboard')
                 ->with('alloggi',$alloggi);
     }
-    public function addHome(){     
+    public function index_lario(){
+        $alloggi = $this->_catalogModel->getCatalog();
+        return view('dashboard')
+                ->with('alloggi',$alloggi);
+    }
+    public function addHome(){  
+        return view('inserisci_offerta');   
     }
     public function storeHome(NewHomeRequest $request){     
     }

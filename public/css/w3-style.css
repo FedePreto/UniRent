@@ -1970,7 +1970,7 @@ position: relative;
 
 .errors {
         color: #f93d00;
-        font-size: 12px;
+        font-size: 14px;
         }
             
             
@@ -2042,3 +2042,47 @@ img {vertical-align: middle;}
     align-items: center;
     justify-content: center
 }
+
+.static {
+    padding: 60px 20px 20px 20px;
+    }
+
+.rs1-wrap-input {
+        width: calc((100% - 30px) / 2);
+    }
+
+.form-btn1 {
+        justify-content: center;
+        padding: 0 20px;
+        height: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #555555;
+    }
+
+.label-input {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #555555;
+        line-height: 1,5;
+        }
+
+.input {
+        display: block;
+        width: 90%;
+        background: #f2f2f2;
+        border-radius: 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #686868;
+        line-height: 1.2;
+        padding: 5px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+            
+            
+            
+        margin-top: 5px;
+        }

@@ -29,7 +29,7 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
         <div class="w3-container" style="padding-top:50px" >
           <h1>Cerca la tua città:</h1>
           {!! Form::open(array('route'=>'search','method'=>'GET','id'=>'ricerca')) !!}
-            {{ Form::text('citta',$request->citta,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
+            {{ Form::text('citta',isset($request) ? $request->citta : false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
             {{ Form::submit('Invia',array('class'=>'w3-button'))}}
           {!! Form::close() !!}
           <hr>
@@ -43,9 +43,9 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
                 <div class="my-align">
                   {{Form::label("Tipo di camera:")}}<br>
                   <ul class="w3-bar-block w3-text my-filter ">
-                    <li>{{ Form::radio('tipo_camera','tutte',$request->tipo_camera == 'tutte',array('form'=>'ricerca'))}}Tutte</li>
-                    <li>{{ Form::radio('tipo_camera','appartamento',$request->tipo_camera == 'appartamento',array('form'=>'ricerca'))}}Appartamento</li>
-                    <li>{{ Form::radio('tipo_camera','posto_letto',$request->tipo_camera == 'post_letto',array('form'=>'ricerca'))}}Posto Letto</li>
+                    <li>{{ Form::radio('tipo_camera','tutte',isset($request) ? $request->tipo_camera == 'tutte' : true,array('form'=>'ricerca'))}}Tutte</li>
+                    <li>{{ Form::radio('tipo_camera','appartamento',isset($request) ? $request->tipo_camera == 'appartamento': false,array('form'=>'ricerca'))}}Appartamento</li>
+                    <li>{{ Form::radio('tipo_camera','posto_letto', isset($request) ? $request->tipo_camera == 'post_letto' : false,array('form'=>'ricerca'))}}Posto Letto</li>
                   </ul>   
     
                 </div>
@@ -65,7 +65,7 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
                     @endphp
                   @foreach($servizi as $servizio)
                   
-                  <li>{{Form::checkbox($servizio->nome,$servizio->id,$request->only($servizio->nome)!=null,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
+                  <li>{{Form::checkbox($servizio->nome,$servizio->id,isset($request) ? $request->only($servizio->nome)!=null : false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
                     @if($i%4==0 )
                       </ul></div><div class="my-align"><ul class="w3-bar-block w3-text my-filter">
                     @endif

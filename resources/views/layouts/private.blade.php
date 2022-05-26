@@ -9,8 +9,9 @@
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
     </head>
     <body>
-        @include('layouts/sidebar')
-        <div class="w3-main" style="margin-left:300px">
+          
+        <div class="w3-main" style="">
+            @include('layouts/_navpublic')
             @include('layouts/header')
             @include('layouts/catalog')
             @include('layouts/footer')

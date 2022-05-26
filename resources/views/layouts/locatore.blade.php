@@ -17,25 +17,23 @@
                 <img src="{{ asset('img/profile_pic.jpg') }}" style="width:65px;" class="w3-circle w3-right my-margin">
             </button>
             <div id="myDropdown" class="dropdown-content animate">
-              @include(_navlocatore)
+              @include('layouts._navlocatore')
             </div>
           </div>
+
+        
         <!-- Searchbar -->
         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-        <div class="w3-container">
+        <div class="w3-container" style="'margin-top:100px">
           <h1>Cerca la tua città:</h1>
           {!! Form::open(array('route'=>'search','method'=>'GET')) !!}
             {{ Form::text('citta',false,array('id'=>'my-searchbar','placeholder'=>'Milano, Torino, Ancona...')) }}
             {{ Form::submit('Invia',array('class'=>'w3-button'))}}
           {!! Form::close() !!}
-        <!--  <form action="search" method="GET" id="ricerca">
-            <input type="text" name="citta" id="my-searchabar" placeholder="Milano, Torino, Ancona...">
-            <input type="submit" class="w3-button">
-          </form>-->
           <hr>
         </div>
       </header>
-
+      
       <!--Fine Header -->
         <!--#content-->
         <div class="w3-content w3-padding" style="max-width:1564px">

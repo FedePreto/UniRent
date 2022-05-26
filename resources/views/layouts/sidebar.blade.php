@@ -3,7 +3,7 @@
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
           <i class="fa fa-remove"></i>
         </a>
-        <img src="{{ asset('img/logo_senza_sfondo.png') }}" style="width:80%;" class="w3-round" href="/"><br><br>
+        <img src="{{ asset('img/logo_senza_sfondo.png') }}" style="width:80%;" class="w3-round" href=" {{ route('home') }} "><br><br>
         <h4><b>Filtri ricerca:</b></h4>
       </div>  
       

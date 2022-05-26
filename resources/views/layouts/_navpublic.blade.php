@@ -13,11 +13,11 @@
         <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
         @auth
         <div class="w3-dropdown-click w3-right" >
-            <button onclick="dropdown()" class="w3-dropbtn" >
-                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" >
+            <button onclick="dropdown()" class="dropbtn w3-button w3-hide-small" >
+                <!--<img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" >-->
                 {{Auth::user()->name}} {{Auth::user()->cognome}}
             </button>
-            <div id="myDropdown" class="w3-dropdown-content">
+            <div id="myDropdown" class="w3-dropdown-content w3-bar-block w3-card-4">
               @include('layouts/_navlocatore')
             </div>
           </div>

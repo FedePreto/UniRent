@@ -19,6 +19,6 @@
 </div>
 
 @include('pagination.paginator',['paginator'=>$alloggi])
-   
+
 
 @endisset    

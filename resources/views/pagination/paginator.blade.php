@@ -6,7 +6,7 @@
         @if (!$paginator->onFirstPage())
             <a href="{{ $paginator->url(1) }}" class="w3-bar-item w3-button w3-hover-black">&lt;&lt;</a> 
         @else
-            <p class="w3-bar-item my-button inactive ">&lt;&lt;</p>  
+            <p class="w3-bar-item my-button  inactive ">&lt;&lt;</p>  
         @endif
         
         <!-- Link alla pagina precedente -->

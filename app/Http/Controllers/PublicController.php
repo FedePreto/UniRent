@@ -26,9 +26,12 @@ class PublicController extends Controller{
     
     public function showCatalogoRegionale($regione){
         $alloggi = $this->_catalogModel->getCatalogoRegionale($regione);
-        
+        $request = new Request;
+        $request['citta'] = '';
+        $request['tipo_camere'] = 'tutte';
         return view('dashboard')
-                ->with('alloggi',$alloggi);       
+                ->with('alloggi',$alloggi)
+                ->with('request',$request);       
     }
     
     # Mostra tutte le FAQ

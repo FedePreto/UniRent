@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Da qui prendiamo le icone-->
- <!--       <script type="text/javascript" src="{{asset('js/home_page.js')}}"></script> -->
+        <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
   
 
         
@@ -15,11 +15,8 @@
     <body>
         <!-- Header -->
         <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-            <div class="w3-bar" id="myNavbar">
-                @include('layouts/_navpublic')
-            </div>
-        </div>
+        @include('layouts/_navpublic')
+
 
         <!-- First Parallax Image with Logo Text -->
         <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
@@ -52,8 +49,8 @@
             </div>
         </footer>
         <script>
-            window.onscroll = function() {myFunction()};
-            function myFunction() {
+            window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
                 var navbar = document.getElementById("myNavbar");
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";

@@ -15,6 +15,21 @@ function dropdown() {
         }
       }
     }
+    if(event.target.matches('#btn-reveal')){
+      let el = document.getElementById('reveal-content');
+      var arrow = document.getElementById('profile-arrow');
+      if (el.classList.contains('hide')) {
+        el.classList.remove('hide');
+        
+      } else {
+        el.classList.add('hide');
+      }
+      if(arrow.classList.contains('rotate')){
+        arrow.classList.remove('rotate');
+      }else{
+        arrow.classList.add('rotate');
+      }
+      }
   }
 
 /*Responsive */
@@ -27,3 +42,24 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
 }
+
+/* Navbar scroll */
+window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+                var navbar = document.getElementById("myNavbar");
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+                } else {
+                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+                }
+            }
+
+
+document.getElementById('btn-reveal').addEventListener('click', function() {
+  let el = document.getElementById('reveal-content');
+  if (el.classList.contains('hide')) {
+    el.classList.remove('hide');
+  } else {
+    el.classList.add('hide');
+  }
+});

@@ -6,29 +6,29 @@
         @if (!$paginator->onFirstPage())
             <a href="{{ $paginator->url(1) }}" class="w3-bar-item w3-button w3-hover-black">&lt;&lt;</a> 
         @else
-            <p class="w3-bar-item my-button  inactive ">&lt;&lt;</p>  
+            <label class="w3-bar-item   inactive ">&lt;&lt;</label>
         @endif
         
         <!-- Link alla pagina precedente -->
         @if ($paginator->currentPage() != 1)
             <a href="{{ $paginator->previousPageUrl() }}" class="w3-bar-item w3-button w3-hover-black">&lt;</a> 
         @else
-            <p class="w3-bar-item my-button inactive">&lt;</p> 
+            <label class="w3-bar-item  inactive">&lt;</label> 
         @endif
         
-        <p class="w3-bar-item my-button link-static">{{ $paginator->firstItem() }} / {{ $paginator->lastItem() }} </p>     
+        <label class="w3-bar-item link-static">{{ $paginator->currentPage() }} / {{ $paginator->lastPage() }} </label>     
         <!-- Link alla pagina successiva -->
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" class="w3-bar-item w3-button w3-hover-black">&gt;</a> 
         @else
-        <p class="w3-bar-item my-button inactive ">&gt;</p> 
+        <label class="w3-bar-item  inactive ">&gt;</label>
         @endif
 
         <!-- Link all'ultima pagina -->
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->url($paginator->lastPage()) }}" class="w3-bar-item w3-button w3-hover-black">&gt;</a>
+            <a href="{{ $paginator->url($paginator->lastPage()) }}" class="w3-bar-item w3-button w3-hover-black">&gt;&gt;</a>
         @else
-        <p class="w3-bar-item my-button inactive">&gt;&gt;</p> 
+        <label class="w3-bar-item  inactive">&gt;&gt;</label>
         @endif
     </div>
 </div>

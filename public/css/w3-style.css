@@ -1966,3 +1966,8 @@ flex-direction: column;
     .errors ul {
             line-height: 100%;
             }
+
+    .ruolo{
+        position: relative;
+        left: -24px;
+    }

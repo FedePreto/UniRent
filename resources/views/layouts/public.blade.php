@@ -52,16 +52,5 @@
                 <a target="_blank" href="#"><img width="100" src="img/logo.png" title="#" alt="#"></a>
             </div>
         </footer>
-        <script>
-            window.onscroll = function() {scrollFunction()};
-            function scrollFunction() {
-                var navbar = document.getElementById("myNavbar");
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
-                } else {
-                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-                }
-            }
-        </script>
     </body>
 </html>

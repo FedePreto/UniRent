@@ -17,7 +17,7 @@ class LocatoreController extends Controller{
         $this->_catalogModel = new Catalogo;
     }
     public function index_loca(){
-        $alloggi = $this->_catalogModel->getCatalog();
+        $alloggi = $this->_locatoreModel->getCatalogo();
         return view('dashboard')
                 ->with('alloggi',$alloggi);
     }

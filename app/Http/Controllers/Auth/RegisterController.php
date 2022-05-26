@@ -43,7 +43,8 @@ class RegisterController extends Controller
 
     /**
      * Get a validator for an incoming registration request.
-     * Sovrascriviamo uno dei metodi predefinifiti del trait RegisterUsers
+     * Sovrascriviamo uno dei metodi predefinifiti del trait RegisterUsers, questo metodo permette di
+     * definire delle regole di validazione direttamente nel controller invece che definirle nella cartella Request
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */

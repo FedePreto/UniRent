@@ -44,7 +44,7 @@ Route::post('logout','Auth\LoginController@logout')->name('logout');
 
 
 Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');//Rotta che genera la form di registrazione
-Route::post('register','Auth\RegisterCotroller@register'); //Rotta che effettivamente registra l'utente
+Route::post('register','Auth\RegisterController@register'); //Rotta che effettivamente registra l'utente
 
 //Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

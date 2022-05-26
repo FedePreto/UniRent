@@ -12,7 +12,16 @@
         <a href ="{{route('faq')}}" class="w3-bar-item w3-button w3-hide-small" title="Frequently Asked Question"><i class="fa fa-question-circle"></i> FAQ</a>
         <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
         @auth
-        <a href="{{route('home')}}" class="w3-bar-item w3-button w3-hide-small w3-right" title="Profilo"><i class="fa fa-user"></i> {{Auth::user()->username}}</a>
+        <div class="w3-dropdown-click w3-right" >
+            <button onclick="dropdown()" class="w3-dropbtn" >
+                <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" >
+                {{Auth::user()->name}} {{Auth::user()->cognome}}
+            </button>
+            <div id="myDropdown" class="w3-dropdown-content">
+              @include('layouts/_navlocatore')
+            </div>
+          </div>
+          
         <a href="" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -11,6 +11,7 @@
         <a href="{{route('where')}}" class="w3-bar-item w3-button w3-hide-small" title="Dove trovarci"><i class="fa fa-map-marker"></i> Dove Trovarci</a>
         <a href ="{{route('faq')}}" class="w3-bar-item w3-button w3-hide-small" title="Frequently Asked Question"><i class="fa fa-question-circle"></i> FAQ</a>
         <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
+        <a href="{{route('register')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua la registrazione al sito"><i class="fa fa-vcard"></i> Registrati</a>
         <a href="{{route('login')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua l'accesso al sito"><i class="fa fa-user"></i> Accedi</a>
     </div>
 </div>

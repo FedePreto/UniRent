@@ -12,6 +12,7 @@
             {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
 
             <div  class="wrap-input">
+            
                 {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
                 {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
                 @if ($errors->first('name'))
@@ -24,7 +25,7 @@
             </div>
 
             <div  class="wrap-input">
-                {{ Form::label('', '', ['class' => 'fa fa-user']) }}
+                
                 {{ Form::label('cognome', 'Cognome', ['class' => 'label-input']) }}
                 {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'surname']) }}
                 @if ($errors->first('cognome'))
@@ -37,6 +38,7 @@
             </div>
             
              <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-envelope']) }}
                 {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
                 {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
                 @if ($errors->first('email'))
@@ -49,6 +51,7 @@
             </div>
 
             <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-phone']) }}
                 {{ Form::label('cellulare', 'Cellulare', ['class' => 'label-input']) }}
                 {{ Form::text('cellulare', '', ['class' => 'input','id' => 'cellulare']) }}
                 @if ($errors->first('cellulare'))
@@ -61,6 +64,7 @@
             </div>
             
             <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-birthday-cake']) }}
                 {{ Form::label('data_nascita', 'Data di Nascita', ['class' => 'label-input']) }}
                 {{Form::date('data_nascita', \Carbon\Carbon::now(),['class'=>'input'])}}
                 
@@ -76,6 +80,7 @@
 
 
              <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-user']) }}
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
@@ -88,6 +93,7 @@
             </div>
             
              <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-lock']) }}
                 {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
                 {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
                 @if ($errors->first('password'))
@@ -100,11 +106,13 @@
             </div>
 
             <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-lock']) }}
                 {{ Form::label('password-confirm', 'Conferma password', ['class' => 'label-input']) }}
                 {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'password-confirm']) }}
             </div>
 
             <div  class="wrap-input">
+                {{ Form::label('', '', ['class' => 'fa fa-cog']) }}
                 {{ Form::label('livello', 'Qual è il suo ruolo?', ['class' => 'label-input']) }}<br>
                 <ul class='my-filter ruolo'>
                     <li>{{ Form::radio('livello',1, false ,['class' => 'input', 'id' => 'locatore']) }} {{ Form::label('livello', 'Locatore ', ['class' => 'label-input']) }}</li>

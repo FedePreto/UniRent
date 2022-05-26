@@ -13,6 +13,7 @@
             
                         
              <div  class="wrap-input">
+             {{ Form::label('', '', ['class' => 'fa fa-user']) }}
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
@@ -25,6 +26,7 @@
             </div>
             
              <div  class="wrap-input">
+             {{ Form::label('', '', ['class' => 'fa fa-lock']) }}
                 {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
                 {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
                 @if ($errors->first('password'))

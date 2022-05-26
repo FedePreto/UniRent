@@ -11,8 +11,8 @@
         <div class="wrap-contact">
             {{ Form::open(array('route' => 'addHome.store', 'id' => 'addproduct', 'files' => true, 'class' => 'contact-form')) }}
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('titolo', 'Titolo Appartamento', ['class' => 'label-input']) }}
-                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
+                {{ Form::label('titolo', 'Titolo Appartamento', ['class' => 'label-input-app']) }}
+                {{ Form::text('titolo', '', ['class' => 'input-app', 'id' => 'titolo']) }}
                 @if ($errors->first('titolo'))
                 <ul class="errors">
                     @foreach ($errors->get('titolo') as $message)
@@ -23,13 +23,13 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('regione', 'Regione', ['class' => 'label-input']) }}
+                {{ Form::label('regione', 'Regione', ['class' => 'label-input-app']) }}
                 {{ Form::select('regione',['Abruzzo', 'Basilicata', 'Calabria', 'Campania', 'Emilia Romagna', 'Friuli-Venezia Giulia', 'Lazio', 'Liguria', 'Lombardia', 'Marche', 'Molise', 'Piemonte', 'Puglia', 'Sardegna', 'Sicilia', 'Toscana', 'Trentino-Alto Adige', 'Umbria', 'Valle d\'Aosta', 'Veneto'], null, ['class' => 'input','id' => 'regione', 'placeholder' => 'Seleziona una regione']) }}
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('citta', 'Città', ['class' => 'label-input']) }}
-                {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta']) }}
+                {{ Form::label('citta', 'Città', ['class' => 'label-input-app']) }}
+                {{ Form::text('citta', '', ['class' => 'input-app', 'id' => 'citta']) }}
                 @if ($errors->first('citta'))
                 <ul class="errors">
                     @foreach ($errors->get('citta') as $message)
@@ -40,8 +40,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-            {{ Form::label('cap', 'CAP', ['class' => 'label-input']) }}
-                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap']) }}
+            {{ Form::label('cap', 'CAP', ['class' => 'label-input-app']) }}
+                {{ Form::text('cap', '', ['class' => 'input-app', 'id' => 'cap']) }}
                 @if ($errors->first('cap'))
                 <ul class="errors">
                     @foreach ($errors->get('cap') as $message)
@@ -52,8 +52,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}
-                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo']) }}
+                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input-app']) }}
+                {{ Form::text('indirizzo', '', ['class' => 'input-app', 'id' => 'indirizzo']) }}
                 @if ($errors->first('indirizzo'))
                 <ul class="errors">
                     @foreach ($errors->get('indirizzo') as $message)
@@ -64,8 +64,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input"></div>
-                {{ Form::label('numero', 'N°', ['class' => 'label-input']) }}
-                {{ Form::text('numero','', ['class' => 'input','id' => 'numero']) }}
+                {{ Form::label('numero', 'N°', ['class' => 'label-input-app']) }}
+                {{ Form::text('numero','', ['class' => 'input-app','id' => 'numero']) }}
                 @if ($errors->first('numero'))
                 <ul class="errors">
                     @foreach ($errors->get('numero') as $message)
@@ -76,8 +76,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-            {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
-                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}
+            {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input-app']) }}
+                {{ Form::text('prezzo', '', ['class' => 'input-app', 'id' => 'prezzo']) }}
                 @if ($errors->first('prezzo'))
                 <ul class="errors">
                     @foreach ($errors->get('prezzo') as $message)
@@ -88,8 +88,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('descrizione', 'Descrizione Appartamento', ['class' => 'label-input']) }}
-                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
+                {{ Form::label('descrizione', 'Descrizione Appartamento', ['class' => 'label-input-app']) }}
+                {{ Form::textarea('descrizione', '', ['class' => 'input-app', 'id' => 'descrizione']) }}
                 @if ($errors->first('descrizione'))
                 <ul class="errors">
                     @foreach ($errors->get('descrizione') as $message)
@@ -100,8 +100,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('superficie', 'Superficie in metri quadri', ['class' => 'label-input']) }}
-                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
+                {{ Form::label('superficie', 'Superficie in metri quadri', ['class' => 'label-input-app']) }}
+                {{ Form::text('superficie', '', ['class' => 'input-app', 'id' => 'superficie']) }}
                 @if ($errors->first('superficie'))
                 <ul class="errors">
                     @foreach ($errors->get('superficie') as $message)
@@ -112,8 +112,8 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti', 'N° Letti', ['class' => 'label-input']) }}
-                {{ Form::text('letti', '', ['class' => 'input', 'id' => 'letti']) }}
+                {{ Form::label('letti', 'N° Letti', ['class' => 'label-input-app']) }}
+                {{ Form::text('letti', '', ['class' => 'input-app', 'id' => 'letti']) }}
                 @if ($errors->first('letti'))
                 <ul class="errors">
                     @foreach ($errors->get('letti') as $message)
@@ -124,16 +124,16 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input']) }}
+                {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                <li>{{ Form::radio('tipologia',0,false, ['class' => 'input', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
-                <li>{{ Form::radio('tipologia',1,false, ['class' => 'input', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li></li>
+                <li>{{ Form::radio('tipologia',0,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
+                <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li></li>
                 </ul>
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('foto', 'Immagine', ['class' => 'label-input']) }}
-                {{ Form::file('foto', ['class' => 'input', 'id' => 'foto']) }}
+                {{ Form::label('foto', 'Immagine', ['class' => 'label-input-app']) }}
+                {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
                 @if ($errors->first('foto'))
                 <ul class="errors">
                     @foreach ($errors->get('foto') as $message)

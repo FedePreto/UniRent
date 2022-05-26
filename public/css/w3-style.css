@@ -2060,14 +2060,14 @@ img {vertical-align: middle;}
         color: #555555;
     }
 
-.label-input {
+.label-input-app {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 12px;
         color: #555555;
         line-height: 1,5;
         }
 
-.input {
+.input-app {
         display: block;
         width: 90%;
         background: #f2f2f2;

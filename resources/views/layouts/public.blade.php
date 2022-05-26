@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Da qui prendiamo le icone-->
         <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+        
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
         <!-- Add maphilight plugin -->
@@ -14,7 +15,8 @@
         <!-- Activate maphilight plugin -->
         <script type="text/javascript">$(function() {
         $('.map').maphilight();});
-        </script>        
+        </script>
+               
     </head>
 
     <body>

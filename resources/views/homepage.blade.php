@@ -5,8 +5,8 @@
 @section('content')
 <div class="w3-container w3-padding-32" id="catalog">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Catalogo </b></h3>
-    <div style = "zoom:.3;-o-transform: scale(.3);-moz-transform: scale(.3);text-align: center;">
-    <img src="{{asset('img/italia.png')}}" usemap="#image-map">
+    <div style = "zoom:.3;-o-transform: scale(.3);-moz-transform: scale(.3);">
+    <img src="{{asset('img/italia.png')}}" class="map" usemap="#image-map">
     <map name="image-map">
         <area target="" alt="Valle d'Aosta" title="Valle d'Aosta" href="{{route('catalogo_regionale',['Valle d\'Aosta'])}}" coords="38,271,62,271,100,260,132,252,159,250,178,268,186,297,176,318,146,307,100,326,70,329,62,297,46,286" shape="poly">
         <area target="" alt="Piemonte" title="Piemonte" href="{{route('catalogo_regionale',['Piemonte'])}}" coords="189,251,205,245,221,224,238,199,243,170,262,153,259,180,265,194,278,205,297,232,275,253,275,291,297,329,300,351,275,359,270,394,275,421,297,442,332,445,367,496,362,513,332,499,321,515,297,510,275,523,254,526,224,534,213,561,194,583,200,599,173,610,146,602,103,610,59,585,59,556,46,531,70,507,62,459,27,448,16,418,49,413,81,396,92,348,135,324,178,329,203,305,197,272" shape="poly">
@@ -29,6 +29,25 @@
         <area target="" alt="Sicilia" title="Sicilia" href="{{route('catalogo_regionale',['Sicilia'])}}" coords="913,1917,926,1855,964,1849,988,1849,1048,1822,1102,1857,1169,1852,1299,1817,1364,1811,1404,1779,1350,1879,1334,1941,1342,1992,1369,2025,1342,2076,1350,2106,1261,2082,1207,2022,1134,2019,1069,1976,1010,1949" shape="poly">
         <area target="" alt="Sardegna" title="Sardegna" href="{{route('catalogo_regionale',['Sardegna'])}}" coords="230,1296,292,1290,381,1217,408,1231,421,1263,451,1290,459,1371,438,1409,451,1452,429,1628,375,1622,351,1625,327,1676,292,1674,257,1631,267,1520,281,1479,259,1469,281,1404,259,1374,230,1328" shape="poly">
     </map>
-</div>    
+    </div>
+   <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="{{asset('img/ancona-4601.jpg')}}" style="width:100%">
+            <div class="text">Caption Text</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="{{asset('img/sfondo_tagliato.png')}}" style="width:100%">
+            <div class="text">Caption Two</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="{{asset('img/evil_abed.jpg')}}" style="width:100%">
+            <div class="text">Caption Three</div>
+        </div>
+        <br>
+        <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        </div>    
 </div>
 @endsection

@@ -28,7 +28,7 @@ class Catalogo {
             if(count($filtri)>1){
                 foreach(array_keys($filtri) as $key){
                     //Log::info("ciao".$filtri[$key]);
-                    $alloggi_filtri = $alloggi_filtri->where('servizio',$filtri[$key]);
+                    $alloggi_filtri = $alloggi_filtri->orWhere('servizio',$filtri[$key]);
                 }
             }else{
                 $alloggi_filtri = $alloggi_filtri->where('servizio',$filtri[array_key_first($filtri)]);

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PublicController@showHomepage')->name('home');
+Route::get('/', 'PublicController@showHomepage')->name('home')->middleware('guest');
 
 Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
 Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');

@@ -35,18 +35,18 @@ class DatabaseSeeder extends Seeder {
         DB::table('servizi')->insert([
             ['nome' => 'Parcheggio'],
             ['nome' => 'Piscina'],
-            ['nome' => 'Cucina completa'],
+            ['nome' => 'Cucina_completa'],
             ['nome' => 'Lavatrice'],
             ['nome' => 'Asciugatrice'],
-            ['nome' => 'Animali domestici'],
+            ['nome' => 'Animali_domestici'],
             ['nome' => 'Riscladamento'],
             ['nome' => 'Cortile'],
             ['nome' => 'WI-FI'],
             ['nome' => 'TV'],
-            ['nome' => 'Ferro da stiro'],
-            ['nome' => 'Allarme antincendio'],
-            ['nome' => 'Rilevatore monossido di carbonio'],
-            ['nome' => 'Aria condizionata'],
+            ['nome' => 'Ferro_da_stiro'],
+            ['nome' => 'Allarme_antincendio'],
+            ['nome' => 'Rilevatore_monossido_di_carbonio'],
+            ['nome' => 'Aria_condizionata'],
         ]);
         
         DB::table('foto')->insert([
@@ -77,7 +77,9 @@ class DatabaseSeeder extends Seeder {
             ['alloggio' => 1, 'servizio' =>3],
             ['alloggio' => 1, 'servizio' =>4],
             ['alloggio' => 1, 'servizio' =>5],
-            ['alloggio' => 1, 'servizio' =>6]            
+            ['alloggio' => 2, 'servizio' =>7],
+            ['alloggio' => 2, 'servizio' =>2],
+            ['alloggio' => 3, 'servizio' =>8]              
         ]);
            
 
@@ -85,7 +87,7 @@ class DatabaseSeeder extends Seeder {
             ['name' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => Carbon::create('2000','01','01'), 'email' => 'admin.admin@unirent.it', 'username' => 'adminadmin', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3661147223", 'livello' => 0, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['name' => 'Locatore', 'cognome' => 'Locatore', 'data_nascita' => Carbon::create('2000','02','01'), 'email' => 'loca.loca@unirent.it', 'username' => 'localoca', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3678823475", 'livello' => 1, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['name' => 'Locatario', 'cognome' => 'Locatario', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'lario.lario@unirent.it', 'username' => 'lariolario', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3776640989", 'livello' => 2, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
-            ['name' => 'Locatario', 'cognome' => 'Locatario', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'dario.dario@unirent.it', 'username' => 'pippo', 'password' => Hash::make('pippo'), 'cellulare' => "377645589", 'livello' => 1, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
+            ['name' => 'Pippo', 'cognome' => 'Baudo', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'dario.dario@unirent.it', 'username' => 'pippo', 'password' => Hash::make('pippo'), 'cellulare' => "377645589", 'livello' => 2, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
 
         ]);
     }

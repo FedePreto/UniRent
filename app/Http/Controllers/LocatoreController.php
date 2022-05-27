@@ -23,9 +23,7 @@ class LocatoreController extends Controller{
                 ->with('alloggi',$alloggi);
     }
     public function showProfilo(){
-        $profili = $this->_locatoreModel->getProfilo();
-        return view('profilolocatore')
-                ->with('profilo',$profili);
+        return view('profilo');
     }
     public function index_lario(){
         $alloggi = $this->_catalogModel->getCatalog();
@@ -48,8 +46,6 @@ class LocatoreController extends Controller{
         $alloggio->foto = 1;
         $alloggio->locatore = Auth::id();
         $alloggio->save();
-        echo "<script type='text/javascript'>alert('Alloggio inserito correttamente');</script>";
-
         return redirect()->action('LocatoreController@index_loca');
     }
 }

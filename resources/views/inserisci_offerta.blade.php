@@ -40,7 +40,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-            {{ Form::label('cap', 'CAP', ['class' => 'label-input-app']) }}
+                {{ Form::label('cap', 'CAP', ['class' => 'label-input-app']) }}
                 {{ Form::text('cap', '', ['class' => 'input-app', 'id' => 'cap']) }}
                 @if ($errors->first('cap'))
                 <ul class="errors">
@@ -63,7 +63,7 @@
                 @endif
             </div>
 
-            <div  class="wrap-input  rs1-wrap-input"></div>
+            <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('numero', 'N°', ['class' => 'label-input-app']) }}
                 {{ Form::text('numero','', ['class' => 'input-app','id' => 'numero']) }}
                 @if ($errors->first('numero'))
@@ -76,7 +76,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-            {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input-app']) }}
+                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input-app']) }}
                 {{ Form::text('prezzo', '', ['class' => 'input-app', 'id' => 'prezzo']) }}
                 @if ($errors->first('prezzo'))
                 <ul class="errors">
@@ -145,12 +145,12 @@
 
             
             <div class="container-form-btn">                
-                {{ Form::submit('Aggiungi Prodotto', ['class' => 'form-btn1']) }}
-            </div>
-            
+                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
+            </div>            
             {{ Form::close() }}
         </div>
     </div>
+</div>
 @endsection
 
 

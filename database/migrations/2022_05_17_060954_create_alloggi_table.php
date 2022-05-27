@@ -25,7 +25,7 @@ class CreateAlloggiTable extends Migration
             $table->longText('descrizione');
             $table->float('superficie')->index();
             $table->integer('letti')->index();
-            $table->boolean('opzionato')->index();
+            $table->boolean('opzionato')->index()->default(0);
             $table->boolean('tipologia')->index();
             $table->integer('locatore')->references('UserId')->on('user');
             $table->integer('foto')->references('id')->on('foto');

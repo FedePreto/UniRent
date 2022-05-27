@@ -14,12 +14,7 @@
             <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" > Mostra filtri</button>
           <div class="w3-container wrapper" id="filtri">
               <div id="reveal-content" class='hide'>
-                  <h3 style = "color:red">Effettua prima l'accesso per poter utilizzare i filtri</h3>
-              </div>
-          </div>
-                
 
-        
                 <div class="my-align">
                   {{Form::label("Tipo di camera:")}}<br>
                   <ul class="w3-bar-block w3-text my-filter ">
@@ -35,7 +30,7 @@
                   {{Form::label('Data fine contratto:')}}<br>
                   {{Form::date('data_fine',false,array('form'=>'ricerca'))}}<br>
                 </div>
-                
+
                 @isset($servizi)
                 <div class="my-align">
                   {{Form::label('Servizi opzionali: ')}}
@@ -60,6 +55,8 @@
                 </div>
             
             @endisset
+              </div>
+          </div>  
         </div>      
       <hr>
 </header>

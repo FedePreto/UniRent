@@ -1184,10 +1184,12 @@ a {
 .w3-padding-16 {
     padding-top: 16px !important;
     padding-bottom: 16px !important;
+    
 }
 .w3-padding-24 {
     padding-top: 24px !important;
     padding-bottom: 24px !important;
+   
 }
 .w3-padding-32 {
     padding-top: 32px !important;
@@ -1987,14 +1989,15 @@ position: relative;
  /* Carosello */
  
 .mySlides {display: none;}
-img {vertical-align: middle;}
+img {vertical-align: left;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
-  position: absolute;
+  max-width: 400px;
+  position: relative;
   left: 400px;
-  margin: auto;
+  top: -400px;
+  margin: 25px;
   display: inline;
 }
 

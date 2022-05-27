@@ -50,7 +50,7 @@ window.onscroll = function() {scrollFunction()};
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
                 } else {
-                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white ", "");
+                    navbar.className = navbar.className.replace("w3-card w3-animate-top w3-white", "");
                 }
             }
 
@@ -64,11 +64,12 @@ document.getElementById('btn-reveal').addEventListener('click', function() {
   }
 });
 
-/*carosello*/
-let slideIndex = 0;
-showSlides();
 
-function showSlides() {
+/*carosello*/
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function showSlides(slideIndex) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
@@ -82,5 +83,5 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
 }

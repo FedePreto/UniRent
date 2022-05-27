@@ -24,7 +24,7 @@
 
             <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('regione', 'Regione', ['class' => 'label-input-app']) }}
-                {{ Form::select('regione',['Abruzzo', 'Basilicata', 'Calabria', 'Campania', 'Emilia Romagna', 'Friuli-Venezia Giulia', 'Lazio', 'Liguria', 'Lombardia', 'Marche', 'Molise', 'Piemonte', 'Puglia', 'Sardegna', 'Sicilia', 'Toscana', 'Trentino-Alto Adige', 'Umbria', 'Valle d\'Aosta', 'Veneto'], null, ['class' => 'input','id' => 'regione', 'placeholder' => 'Seleziona una regione']) }}
+                {{ Form::select('regione',['Abruzzo', 'Basilicata', 'Calabria', 'Campania', 'Emilia Romagna', 'Friuli-Venezia Giulia', 'Lazio', 'Liguria', 'Lombardia', 'Marche', 'Molise', 'Piemonte', 'Puglia'=>'Puglia', 'Sardegna', 'Sicilia', 'Toscana', 'Trentino-Alto Adige', 'Umbria', 'Valle d\'Aosta', 'Veneto'], null, ['class' => 'input','id' => 'regione', 'placeholder' => 'Seleziona una regione']) }}
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">

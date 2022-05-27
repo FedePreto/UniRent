@@ -27,7 +27,9 @@ class LocatoreController extends Controller{
                 ->with('alloggi',$alloggi);
     }
     public function addHome(){  
-        return view('inserisci_offerta');   
+        $servizi = $this->_locatoreModel->getAlloggiServizi();
+        return view('inserisci_offerta')
+               ->with('servizi',$servizi);   
     }
     public function storeHome(NewHomeRequest $request){     
     }

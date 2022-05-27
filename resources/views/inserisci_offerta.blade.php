@@ -152,7 +152,7 @@
             </div>
             
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('foto', 'Immagine', ['class' => 'label-input-app']) }}
+                {{ Form::label('foto', 'Immagine:', ['class' => 'label-input-app']) }}
                 {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
                 @if ($errors->first('foto'))
                 <ul class="errors">

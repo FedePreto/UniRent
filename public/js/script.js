@@ -47,10 +47,10 @@ function w3_close() {
 window.onscroll = function() {scrollFunction()};
             function scrollFunction() {
                 var navbar = document.getElementById("myNavbar");
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
                 } else {
-                    navbar.className = navbar.className.replace("w3-card w3-animate-top w3-white", "");
+                    navbar.className = navbar.className.replace("w3-card w3-animate-top w3-white", "w3-bar");
                 }
             }
 
@@ -65,7 +65,7 @@ document.getElementById('btn-reveal').addEventListener('click', function() {
 });
 
 
-/*carosello*/
+/*carosello
 let slideIndex = 0;
 carosello.showSlides(slideIndex);
 
@@ -84,4 +84,5 @@ function showSlides(slideIndex) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 5000); // Change image every 2 seconds
-}
+}*/
+

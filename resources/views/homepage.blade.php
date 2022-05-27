@@ -30,7 +30,8 @@
         <area target="" alt="Sardegna" title="Sardegna" href="{{route('catalogo_regionale',['Sardegna'])}}" coords="230,1296,292,1290,381,1217,408,1231,421,1263,451,1290,459,1371,438,1409,451,1452,429,1628,375,1622,351,1625,327,1676,292,1674,257,1631,267,1520,281,1479,259,1469,281,1404,259,1374,230,1328" shape="poly">
     </map>
     </div>
-    <div class="slideshow-container" id="carosello">
+    
+    <!--<div class="slideshow-container" id="carosello">
         <div class="mySlides fade">
             <img src="{{asset('img/ancona-4601.jpg')}}" style="width:100%">
             <div class="text">Caption Text</div>
@@ -49,6 +50,6 @@
         <span class="dot"></span>
         <span class="dot"></span>
         </div> 
-    </div>  
+    </div>  -->
 </div>
 @endsection

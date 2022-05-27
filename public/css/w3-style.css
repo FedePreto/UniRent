@@ -1986,59 +1986,6 @@ position: relative;
     left: -24px;
 }
 
- /* Carosello */
- 
-.mySlides {display: none;}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000spx;
-  position: relative;
-  left: 400px;
-  top: -400px;
-  margin: 25px;
-  display: inline;
-}
-
-/* Caption text */
-.text {
-  color: #000000;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: relative;
-  text-align: center;
-}
-
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  position:relative;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-
 .profileButton{
     width:250px;
     display: flex;
@@ -2084,8 +2031,5 @@ img {vertical-align: middle;}
         -o-transition: all 0.4s;
         -moz-transition: all 0.4s;
         transition: all 0.4s;
-            
-            
-            
         margin-top: 5px;
         }

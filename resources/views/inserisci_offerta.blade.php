@@ -4,14 +4,14 @@
 
 @section('content')
 <div class="static">
-    <h3>Aggiungi Prodotti</h3>
-    <p>Utilizza questa form per inserire un nuovo alloggio nel Catalogo</p>
+    <h2>Aggiungi Offerte</h2>
+    <p>Utilizza questa form per inserire un nuovo alloggio nel Catalogo.</p>
 
     <div class="container-contact">
         <div class="wrap-contact">
             {{ Form::open(array('route' => 'addHome.store', 'id' => 'addproduct', 'files' => true, 'class' => 'contact-form')) }}
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('titolo', 'Titolo Appartamento', ['class' => 'label-input-app']) }}
+                {{ Form::label('titolo', 'Titolo Appartamento:', ['class' => 'label-input-app']) }}
                 {{ Form::text('titolo', '', ['class' => 'input-app', 'id' => 'titolo']) }}
                 @if ($errors->first('titolo'))
                 <ul class="errors">
@@ -23,12 +23,12 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('regione', 'Regione', ['class' => 'label-input-app']) }}
+                {{ Form::label('regione', 'Regione:', ['class' => 'label-input-app']) }}
                 {{ Form::select('regione',['Abruzzo', 'Basilicata', 'Calabria', 'Campania', 'Emilia Romagna', 'Friuli-Venezia Giulia', 'Lazio', 'Liguria', 'Lombardia', 'Marche', 'Molise', 'Piemonte', 'Puglia'=>'Puglia', 'Sardegna', 'Sicilia', 'Toscana', 'Trentino-Alto Adige', 'Umbria', 'Valle d\'Aosta', 'Veneto'], null, ['class' => 'input','id' => 'regione', 'placeholder' => 'Seleziona una regione']) }}
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('citta', 'Città', ['class' => 'label-input-app']) }}
+                {{ Form::label('citta', 'Città:', ['class' => 'label-input-app']) }}
                 {{ Form::text('citta', '', ['class' => 'input-app', 'id' => 'citta']) }}
                 @if ($errors->first('citta'))
                 <ul class="errors">
@@ -40,7 +40,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('cap', 'CAP', ['class' => 'label-input-app']) }}
+                {{ Form::label('cap', 'CAP:', ['class' => 'label-input-app']) }}
                 {{ Form::text('cap', '', ['class' => 'input-app', 'id' => 'cap']) }}
                 @if ($errors->first('cap'))
                 <ul class="errors">
@@ -52,7 +52,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input-app']) }}
+                {{ Form::label('indirizzo', 'Indirizzo:', ['class' => 'label-input-app']) }}
                 {{ Form::text('indirizzo', '', ['class' => 'input-app', 'id' => 'indirizzo']) }}
                 @if ($errors->first('indirizzo'))
                 <ul class="errors">
@@ -64,7 +64,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('numero', 'N°', ['class' => 'label-input-app']) }}
+                {{ Form::label('numero', 'N°:', ['class' => 'label-input-app']) }}
                 {{ Form::text('numero','', ['class' => 'input-app','id' => 'numero']) }}
                 @if ($errors->first('numero'))
                 <ul class="errors">
@@ -76,7 +76,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input-app']) }}
+                {{ Form::label('prezzo', 'Prezzo:', ['class' => 'label-input-app']) }}
                 {{ Form::text('prezzo', '', ['class' => 'input-app', 'id' => 'prezzo']) }}
                 @if ($errors->first('prezzo'))
                 <ul class="errors">
@@ -88,7 +88,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('descrizione', 'Descrizione Appartamento', ['class' => 'label-input-app']) }}
+                {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-app']) }}
                 {{ Form::textarea('descrizione', '', ['class' => 'input-app', 'id' => 'descrizione']) }}
                 @if ($errors->first('descrizione'))
                 <ul class="errors">
@@ -100,7 +100,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('superficie', 'Superficie in metri quadri', ['class' => 'label-input-app']) }}
+                {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-app']) }}
                 {{ Form::text('superficie', '', ['class' => 'input-app', 'id' => 'superficie']) }}
                 @if ($errors->first('superficie'))
                 <ul class="errors">
@@ -112,7 +112,7 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti', 'N° Letti', ['class' => 'label-input-app']) }}
+                {{ Form::label('letti', 'N° Letti:', ['class' => 'label-input-app']) }}
                 {{ Form::text('letti', '', ['class' => 'input-app', 'id' => 'letti']) }}
                 @if ($errors->first('letti'))
                 <ul class="errors">
@@ -124,32 +124,35 @@
             </div>
 
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input-app']) }}
+                {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                <li>{{ Form::radio('tipologia',0,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
-                <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li></li>
+                <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
+                <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
                 </ul>
             </div>
 
 
             <div class="w3-row-padding">
-                @foreach ( $servizio as $alloggio)
-                <div class="w3-third w3-container w3-margin-bottom annuncio">
-                    @include('helpers/alloggioImage',['attrs'=>"w3-hover-opacity cursor",'imgFile'=>$alloggio->immagine])
-                    <!--<img src="{{asset('/img/appartamenti/20210505102417-4.jpg')}}"  style="width:100%" class="w3-hover-opacity">-->
-                
-                    <div class="w3-container w3-white">
-                        <p class="price"><b>€{{ $alloggio->prezzo }}</b></p>
-                        <p class="title"><b>{{$alloggio->titolo}}</b></p>
-                    <!--   <p>{{ $alloggio->descrizione }}</p> -->
-                        <p>{{$alloggio->citta}}, {{$alloggio->indirizzo}} {{ $alloggio->numero }}</p>
-                    </div>
-                </div>
+                {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-app']) }}
+                <ul class="w3-bar-block w3-text">
+                    @php
+                        $i=1;
+                    @endphp
+                @foreach ( $servizi as $servizio)
+                <li>{{Form::checkBox($servizio->nome,$servizio->id)}} {{Form::Label($servizio->nome)}}</li>
+                @if($i%7==0)
+                    </ul>
+                    <ul class="w3-bar-block w3-text">
+                @endif
+                    @php 
+                        $i++;
+                    @endphp
                 @endforeach
+                </ul>
             </div>
             
             <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('foto', 'Immagine', ['class' => 'label-input-app']) }}
+                {{ Form::label('foto', 'Immagine:', ['class' => 'label-input-app']) }}
                 {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
                 @if ($errors->first('foto'))
                 <ul class="errors">

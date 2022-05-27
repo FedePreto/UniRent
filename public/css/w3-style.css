@@ -1930,10 +1930,10 @@ transition: all 0.5s ease-in;
     }
 
 .wrap-contact {
-max-width: 960px;
+max-width: 1500px;
 background: #dbecf6;
 border-radius: 2px;
-padding: 30px 120px;
+padding: 30px 400px;
 position: relative;
 }
 
@@ -1998,7 +1998,7 @@ position: relative;
     }
 
 .rs1-wrap-input {
-        width: calc((100% - 30px) / 2);
+        width: 400px;
     }
 
 .form-btn1 {
@@ -2033,8 +2033,22 @@ position: relative;
         transition: all 0.4s;
         margin-top: 5px;
         }
-
-.coloroSfondo{
-    background-color:#000000;
+        
+.affianco{
+    display: inline;
 
 }
+
+/*css profilo*/
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+          }
+          
+          .title-profile{
+            color: grey;
+            font-size: 18px;
+          }

@@ -9,7 +9,7 @@
     <div style = "zoom:.5;-o-transform: scale(.3);-moz-transform: scale(.3);">
     <img src="{{asset('img/italia.png')}}" class="map " usemap="#image-map">
     <map name="image-map">
-        <area target="" alt="Valle d'Aosta" title="Valle d'Aosta" href="{{route('catalogo_regionale',['Valle d\'Aosta'])}}" coords="38,271,62,271,100,260,132,252,159,250,178,268,186,297,176,318,146,307,100,326,70,329,62,297,46,286" shape="poly" onmouseover='object.style.backgroundColor="#00FF00"' onmouseout="">
+        <area target="" alt="Valle d'Aosta" title="Valle d'Aosta" href="{{route('catalogo_regionale',['Valle d\'Aosta'])}}" coords="38,271,62,271,100,260,132,252,159,250,178,268,186,297,176,318,146,307,100,326,70,329,62,297,46,286" shape="poly" onmouseover="" onmouseout="">
         <area target="" alt="Piemonte" title="Piemonte" href="{{route('catalogo_regionale',['Piemonte'])}}" coords="189,251,205,245,221,224,238,199,243,170,262,153,259,180,265,194,278,205,297,232,275,253,275,291,297,329,300,351,275,359,270,394,275,421,297,442,332,445,367,496,362,513,332,499,321,515,297,510,275,523,254,526,224,534,213,561,194,583,200,599,173,610,146,602,103,610,59,585,59,556,46,531,70,507,62,459,27,448,16,418,49,413,81,396,92,348,135,324,178,329,203,305,197,272" shape="poly">
         <area target="" alt="Lombardia" title="Lombardia" href="{{route('catalogo_regionale',['Lombardia'])}}" coords="294,391,300,423,335,415,359,453,384,488,384,437,413,405,446,402,481,402,505,415,551,432,578,437,602,421,629,437,670,434,575,364,575,297,594,272,556,288,543,232,559,178,551,140,567,140,516,116,502,132,519,153,516,194,483,197,475,164,446,178,421,180,394,140,389,183,373,213,362,240,367,259,343,280,324,259,313,215,297,253,297,283,335,361" shape="poly">
         <area target="" alt="Trentino-Alto Adige" title="Trentino-Alto Adige" href="{{route('catalogo_regionale',['Trentino-Alto Adige'])}}" coords="562,77,578,59,592,69,616,77,649,75,659,40,746,32,775,13,819,77,797,88,778,77,759,107,738,126,740,158,759,185,721,204,727,229,691,221,673,240,651,278,624,288,602,253,570,256,581,153,559,110" shape="poly">
@@ -53,11 +53,6 @@
         </div> 
     </div>  -->
 
-
-    <script>
-        object.style.backgroundColor="#00FF00";
-        this.style.backgroundColor='transparent';
-    </script>
 
 
 </div>

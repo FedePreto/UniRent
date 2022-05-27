@@ -1,16 +1,3 @@
-<script>
-  
-document.getElementById("btn-reveal").addEventListener('click', function() {
-  let el = document.getElementById('reveal-content');
-  if (el.classList.contains('hide')) {
-    el.classList.remove('hide');
-  } else {
-    el.classList.add('hide');
-  }
-});
-
-</script>
-
 <!-- Header -->
 <header id="portfolio">
         <!-- Searchbar -->
@@ -23,7 +10,7 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
           {!! Form::close() !!}
           <hr>
           
-          <button type="button" id="btn-reveal" class="my-button w3-center">
+          <button type="button" id="#btn-reveal" class="my-button w3-center">
             <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow" > Mostra filtri</button>
           <div class="w3-container wrapper" id="filtri">
               <div id="reveal-content" class='hide'>

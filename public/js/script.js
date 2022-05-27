@@ -66,8 +66,8 @@ document.getElementById('btn-reveal').addEventListener('click', function() {
 
 
 /*carosello*/
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+carosello.showSlides(slideIndex);
 
 function showSlides(slideIndex) {
   let i;

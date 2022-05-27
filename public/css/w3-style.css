@@ -1989,11 +1989,11 @@ position: relative;
  /* Carosello */
  
 .mySlides {display: none;}
-img {vertical-align: left;}
+img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 400px;
+  max-width: 1000spx;
   position: relative;
   left: 400px;
   top: -400px;

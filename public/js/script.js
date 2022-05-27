@@ -64,16 +64,6 @@ document.getElementById('btn-reveal').addEventListener('click', function() {
   }
 });
 
-$(document).ready(function(){
-  $("#card-modifica").hide();
-  $("#Annulla Modifica").hide();
-  $("button").click(function(){
-    $("#card-modifica").toggle();
-    $("#Modifica").toggle();
-    $("#Annulla Modifica").toggle();
-  });
-});
-
 
 /*carosello
 let slideIndex = 0;

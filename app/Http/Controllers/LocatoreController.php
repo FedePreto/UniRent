@@ -21,6 +21,11 @@ class LocatoreController extends Controller{
         return view('dashboard')
                 ->with('alloggi',$alloggi);
     }
+    public function showProfilo(){
+        $profili = $this->_locatoreModel->getProfilo();
+        return view('profilolocatore')
+                ->with('profilo',$profili);
+    }
     public function index_lario(){
         $alloggi = $this->_catalogModel->getCatalog();
         return view('dashboard')

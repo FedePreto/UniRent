@@ -2033,3 +2033,8 @@ position: relative;
         transition: all 0.4s;
         margin-top: 5px;
         }
+
+.coloroSfondo{
+    background-color:#000000;
+
+}

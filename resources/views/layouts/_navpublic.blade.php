@@ -1,16 +1,13 @@
-
- <!-- La sintassi void(0) invece non fa nulla e non produce alcun effetto.
- Spesso è un modo per individuare un link che non punta a una pagina particolare, 
- ma che per qualche motivo dobbiamo utilizzare come <a>.-->
 <div class="w3-top">
     <div class="w3-bar" id="myNavbar">
         <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+
+        @guest
         <a href="{{route('home')}}" class="w3-bar-item w3-button w3-hide-small" title="Torna all'inizio"><i class="fa fa-home"></i> HOME</a>
-        <a href="{{route('what')}}" class="w3-bar-item w3-button w3-hide-small" title="Cosa offriamo"><i class="fa fa-info-circle"></i> Servizio</a>
-        <a href="{{route('who')}}" class="w3-bar-item w3-button w3-hide-small" title="Il nostro profilo aziendale"><i class="fa fa-users"></i> Chi Siamo</a>
-        <a href="{{route('where')}}" class="w3-bar-item w3-button w3-hide-small" title="Dove trovarci"><i class="fa fa-map-marker"></i> Dove Trovarci</a>
-        <a href ="{{route('faq')}}" class="w3-bar-item w3-button w3-hide-small" title="Frequently Asked Question"><i class="fa fa-question-circle"></i> FAQ</a>
-        <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
+        <a href="{{route('register')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua la registrazione al sito"><i class="fa fa-vcard"></i> Registrati</a>
+        <a href="{{route('login')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua l'accesso al sito"><i class="fa fa-sign-in"></i> Accedi</a>
+        @endguest
+
         @auth
         <div class="w3-dropdown-click w3-right" >
             <button onclick="dropdown()" class="dropbtn w3-button w3-hide-small profileButton" >
@@ -20,12 +17,15 @@
             </button>
             <div id="myDropdown" class="dropdown-content w3-dropdown-content w3-bar-block w3-card-4">
               @can('isLocatore')
+              <a href="{{route('locatore')}}" class="w3-bar-item w3-button w3-hide-small" title="Torna all' home page"><i class="fa fa-home"></i> Home Locatore</a>
               @include('layouts/_navlocatore')
               @endcan
               @can('isLocatario')
+              <a href="{{route('locatario')}}" class="w3-bar-item w3-button w3-hide-small" title="Torna all' home page"><i class="fa fa-home"></i> Home Locatario</a>
               @include('layouts/_navlocatario')
               @endcan
               @can('isAdmin')
+              <a href="{{route('admin')}}" class="w3-bar-item w3-button w3-hide-small" title="Torna all' home page"><i class="fa fa-home"></i> Home Admin</a>
               @include('layouts/_navadmin')
               @endcan
             </div>
@@ -42,10 +42,14 @@
 
         </form>
         @endauth
-        @guest
-        <a href="{{route('register')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua la registrazione al sito"><i class="fa fa-vcard"></i> Registrati</a>
-        <a href="{{route('login')}}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red" title="Effettua l'accesso al sito"><i class="fa fa-sign-in"></i> Accedi</a>
-        @endguest
+
+
+        <a href="{{route('what')}}" class="w3-bar-item w3-button w3-hide-small" title="Cosa offriamo"><i class="fa fa-info-circle"></i> Servizio</a>
+        <a href="{{route('who')}}" class="w3-bar-item w3-button w3-hide-small" title="Il nostro profilo aziendale"><i class="fa fa-users"></i> Chi Siamo</a>
+        <a href="{{route('where')}}" class="w3-bar-item w3-button w3-hide-small" title="Dove trovarci"><i class="fa fa-map-marker"></i> Dove Trovarci</a>
+        <a href ="{{route('faq')}}" class="w3-bar-item w3-button w3-hide-small" title="Frequently Asked Question"><i class="fa fa-question-circle"></i> FAQ</a>
+        <a href="mailto:info@unirent.it" class="w3-bar-item w3-button w3-hide-small" title="Mandaci un messaggio"><i class="fa fa-envelope"></i> Contattaci</a>
+   
     </div>
 </div>
 

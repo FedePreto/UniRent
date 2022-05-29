@@ -1696,7 +1696,7 @@ a {
   .dropdown {
     position: relative;
     display: inline-block;
-    float:right;
+    float: right;
   }
   
   .dropdown-content {
@@ -1895,6 +1895,7 @@ flex-direction: column;
     display:inline-block;
     margin:10px;
 }
+
 #filtri{
    
 }

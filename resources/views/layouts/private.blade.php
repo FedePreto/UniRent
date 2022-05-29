@@ -18,7 +18,7 @@
 
     <!-- Header -->
     @can('isLocatario')
-    @include('layouts/header')
+    @include('layouts/header_filtri')
     @endcan
 
 

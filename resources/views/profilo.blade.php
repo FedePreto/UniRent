@@ -8,10 +8,7 @@
   $(function() {
     $("#card-modifica").hide();
     $("#annulla_modifica").hide();
-    $("button").click(function() {
-      $("#card-modifica").animate({
-        left: '250px'
-      });
+    $(".btn").click(function() {
       $("#card-modifica").toggle();
       $("#modifica").toggle();
       $("#annulla_modifica").toggle();
@@ -25,11 +22,10 @@
 <div class="row-card">
   <div class="column-card">
     <h3 style="text-align:center">Il tuo profilo</h3>
-    <div class="card label-input-app">
-      <img src= {{auth()->user()->foto_profilo}} alt="Immagine Profilo" style="width:100%">
+    <div style = "font-size: 20px" class="card">
+      @include('helpers/profileImage', ['imgFile'=>auth()->user()->foto_profilo])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>
       <p><b>Cognome: </b>{{auth()->user()->cognome}}</p>
-      <p class="title profile">{{auth()->user()->name}} {{auth()->user()->cognome}}</p>
 
       @switch(auth()->user()->livello)
       @case(0)
@@ -48,8 +44,8 @@
       <p><b>Data di nascita: </b>{{auth()->user()->data_nascita}}</p>
       <p><b>Email: </b>{{auth()->user()->email}}</p>
       <p><b>Cellulare: </b>{{auth()->user()->cellulare}}</p>
-      <p><button id="modifica" class="btn-green">Modifica</button></p>
-      <p><button id="annulla_modifica" class="btn-red">Annulla Modifica</button></p>
+      <p><button id="modifica" class="btn btn-green">Modifica</button></p>
+      <p><button id="annulla_modifica" class="btn btn-red">Annulla Modifica</button></p>
     </div>
   </div>
   <div class="column-card">
@@ -85,7 +81,7 @@
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-user-circle ']) }}
         {{ Form::label('foto', 'Immagine profilo', ['class' => 'label-input-app']) }}
-        {{ Form::file('foto', auth()->user()->foto, ['class' => 'input-app', 'id' => 'foto']) }}
+        {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::submit('Salva', ['class' => 'btn-green']) }}

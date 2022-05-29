@@ -43,7 +43,7 @@
                 {{ Form::select('regione',['Abruzzo'=>'Abruzzo',
                                            'Basilicata'=>'Basilicata',
                                            'Calabria'=>'Calabria',
-                                           'Campania'=>'Campania',
+                                           'Campania'=>'Campania', 
                                            'Emilia Romagna'=>'Emilia Romagna',
                                            'Friuli-Venezia Giulia'=>'Friuli-Venezia Giulia',
                                            'Lazio'=>'Lazio', 
@@ -128,7 +128,7 @@
             <div class="container-form-btn">
                 {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
             </div>
-            {{ Form::close() }}
+            {{Form::close()}}
         </div>
     </div>
 </div>

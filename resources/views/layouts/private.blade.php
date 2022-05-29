@@ -4,22 +4,13 @@
         <title>UniRent | @yield('title', 'HomePage')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @section('link')
         <link rel="stylesheet" href="{{ asset('css/w3-style.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @show
+        @section('scripts')
         <script language="JavaScript" type="text/javascript" src="{{ asset('js/script.js') }}"></script>
-        <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-        <script language="JavaScript" type="text/javascript">
-            $(document).ready(function(){
-                $("#card-modifica").hide();
-                $("#annulla_modifica").hide();
-                $("button").click(function(){
-                    $("#card-modifica").animate({left: '250px'});
-                    $("#card-modifica").toggle();
-                    $("#modifica").toggle();
-                    $("#annulla_modifica").toggle();
-                });
-            });
-        </script>
+        @show
     </head>
     <body>
 

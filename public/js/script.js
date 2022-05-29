@@ -45,14 +45,14 @@ function w3_close() {
 
 /* Navbar scroll */
 window.onscroll = function() {scrollFunction()};
-            function scrollFunction() {
-                var navbar = document.getElementById("myNavbar");
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
-                } else {
-                    navbar.className = navbar.className.replace("w3-card w3-animate-top w3-white", "w3-bar");
-                }
-            }
+  function scrollFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      navbar.className = " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+      navbar.className = navbar.className.replace("w3-card w3-animate-top w3-white", "w3-bar");
+    }
+  }
 
 
 document.getElementById('btn-reveal').addEventListener('click', function() {

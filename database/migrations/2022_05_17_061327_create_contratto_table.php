@@ -17,7 +17,7 @@ class CreateContrattoTable extends Migration
             $table->bigIncrements('id')->index();
             $table->date('dataInizio');
             $table->date('dataFine');
-            $table->integer('locatario')->references('UserId')->on('user');
+            $table->integer('locatario')->references('id')->on('users');
             $table->integer('alloggio')->references('id')->on('alloggi');
             $table->timestamps();
         });

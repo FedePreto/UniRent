@@ -1,11 +1,24 @@
 @extends('layouts.private')
 @section('title', 'Profilo')
+@section('scripts')
+
+@parent
+<script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script language="JavaScript" type="text/javascript">
+$(function(){
+  $("#card-modifica").hide();
+  $("#annulla_modifica").hide();
+  $("button").click(function(){
+    $("#card-modifica").animate({left: '250px'});
+    $("#card-modifica").toggle();
+    $("#modifica").toggle();
+    $("#annulla_modifica").toggle();
+    });
+});
+</script>
+@endsection
+
 @section('content')
-
-<br>
-<br>
-<br>
-
 
 <div class="row-card">
 <div class="column-card">

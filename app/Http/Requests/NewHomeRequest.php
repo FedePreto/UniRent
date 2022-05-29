@@ -49,7 +49,7 @@ class NewHomeRequest extends FormRequest {
      * Override: response in formato JSON
     */
     protected function failedValidation(Validator $validator)
-    {
+    {                                          //tutti i messaggi di errori    // sarebbe il codice 442
         throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 

@@ -17,8 +17,8 @@ class CreateMessaggiTable extends Migration
             $table->bigIncrements('id')->index();
             $table->longText('contenuto');
             $table->dateTime('data')->index();
-            $table->integer('mittente')->references('UserId')->on('user');
-            $table->integer('destinatario')->references('UserId')->on('user');
+            $table->integer('mittente')->references('id')->on('users');
+            $table->integer('destinatario')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -46,6 +46,7 @@ class LocatoreController extends Controller{
         $alloggio->foto = 1;
         $alloggio->locatore = Auth::id();
         $alloggio->save();
-        return redirect()->action('LocatoreController@index_loca');
+
+        return response()->json(['redirect' => route('locatore')]);
     }
 }

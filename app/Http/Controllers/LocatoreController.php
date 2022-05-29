@@ -39,7 +39,15 @@ class LocatoreController extends Controller{
     }
 
     //Funzione che viene attivata una volta che i dati sono stati validati
-    public function storeHome(NewHomeRequest $request){
+    public function updateProfilo(Request $request){
+        $request->validate([
+            'foto_profilo' => 'required',
+            'name' => 'required',
+            'cognome' => 'required',
+            'data_nascita' => 'required',
+            'email' => 'required',
+            'cellulare' => 'required',
+        ]);
         $alloggio = new Alloggi;
         //Associa alle proprietà all'oggetto alloggio i dati validati
         $alloggio->fill($request->validated());
@@ -49,4 +57,6 @@ class LocatoreController extends Controller{
 
         return response()->json(['redirect' => route('locatore')]);
     }
+
+    public function update
 }

@@ -1,5 +1,7 @@
 @extends('layouts.private')
+
 @section('title', 'Profilo')
+
 @section('scripts')
 
 @parent
@@ -14,6 +16,21 @@
       $("#annulla_modifica").toggle();
     });
   });
+
+  $(function() {
+    var actionUrl = "{{ route('updateProfile.store') }}";
+    var formId = 'updateProfile';
+    $(":input").on('blur', function(event) {
+      var formElementId = $(this).attr('id'); //recupera l'id dell'oggetto che ha perso il focus 
+      doElemValidation(formElementId, actionUrl, formId); //funzione js che prende il valore dell'elemento lo invia
+      // al server usando ajax e processerà la ripsota proveniente dal server
+    });
+    $("#updateProfile").on('submit', function(event) {
+      event.preventDefault(); //funzione che attiva il metodo associato all'evento di click sul bottone che blocca il meccanismo standard
+      // di gestione dell'evento da parte del browser
+      doFormValidation(actionUrl, formId); //attiva una funzione js definita da noi che invece implementa la submit
+    });
+  });
 </script>
 @endsection
 
@@ -22,7 +39,7 @@
 <div class="row-card">
   <div class="column-card">
     <h3 style="text-align:center">Il tuo profilo</h3>
-    <div style = "font-size: 20px" class="card">
+    <div style="font-size: 20px" class="card">
       @include('helpers/profileImage', ['imgFile'=>auth()->user()->foto_profilo])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>
       <p><b>Cognome: </b>{{auth()->user()->cognome}}</p>
@@ -49,10 +66,11 @@
     </div>
   </div>
   <div class="column-card">
-  <h3 style="text-align:center">Ciao <b>{{auth()->user()->name}}</b></h3>
+    <h3 style="text-align:center">Ciao <b>{{auth()->user()->name}}</b></h3>
+
     <div id="card-modifica" class="card">
-    <h5>ricompila i campi dei dati che desideri modificare</h5>
-      {{ Form::open(array('route' => 'addHome.store', 'id' => 'addHome', 'files' => true)) }}
+      <h5>ricompila i campi dei dati che desideri modificare</h5>
+      {{ Form::open(array('route' => 'updateProfile.store', 'id' => 'updateProfile', 'files' => true)) }}
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
         {{ Form::label('name', ' Nome', ['class' => 'label-input-app']) }}

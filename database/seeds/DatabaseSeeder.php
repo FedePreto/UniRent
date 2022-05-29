@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder {
     public function run() {
 
         DB::table('alloggi')->insert([
-            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2],
-            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2],
-            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2],
-            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2],
-            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2],
-            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5],
-            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5],
-            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5],
-            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5],
-            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Fermo', 'cap' => 63900, 'indirizzo' => 'Via Ludovio Einaudi', 'numero' => 10, 'prezzo' => 320.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 1,'locatore' => 5],
-            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Amandola', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5]
+            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2,'foto'=>'77561779.jpg'],
+            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2,'foto'=>'20210505102417-4.jpg'],
+            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2,'foto'=>'AM1506.jpg'],
+            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2,'foto'=>'77561779.jpg'],
+            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 2,'foto'=>'20210505102417-4.jpg'],
+            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'AM1506.jpg'],
+            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 21, 'prezzo' => 270.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'77561779.jpg'],
+            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'20210505102417-4.jpg'],
+            ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'AM1506.jpg'],
+            ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Fermo', 'cap' => 63900, 'indirizzo' => 'Via Ludovio Einaudi', 'numero' => 10, 'prezzo' => 320.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 1,'locatore' => 5,'foto'=>'77561779.jpg'],
+            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Amandola', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'20210505102417-4.jpg']
 
         ]);
         
@@ -48,14 +48,14 @@ class DatabaseSeeder extends Seeder {
             ['nome' => 'Rilevatore_monossido_di_carbonio'],
             ['nome' => 'Aria_condizionata'],
         ]);
-        
+        /*
         DB::table('foto')->insert([
         ['immagine'=> 'default.jpg', 'alloggio' => 3],
         ['immagine' => '77561779.jpg', 'alloggio'=>1],
         ['immagine' => '20210505102417-4.jpg', 'alloggio'=>1],
         ['immagine' =>'AM1506.jpg','alloggio'=>2]
         ]);
-        
+        */
         DB::table('messaggi')->insert([
             ['contenuto' => 'Ciao ti scrivo per poter avere ulteriori informazioni sull\'appartamento' , 'data' => '2022-05-10 13:22:11' , 'mittente' => 1 , 'destinatario' => 2],
             ['contenuto' => 'Ciao cosa vorresti sapere di preciso?' , 'data' => '2022-05-10 13:25:32' , 'mittente' => 2 , 'destinatario' => 1],

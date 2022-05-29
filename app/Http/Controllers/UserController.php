@@ -15,7 +15,7 @@ class UserController extends Controller
         $this->_catalogModel = new Catalogo;
     }
     //
-    public function searchCatalogo(Request $ricerca = null){
+    public function searchCatalogo(Request $ricerca ){
         Log::info($ricerca);
         if($ricerca!=null){
             $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine']));
@@ -29,9 +29,10 @@ class UserController extends Controller
                     ->with('request',$ricerca);          
     }
 
-    public function getAnnuncio($alloggio){
-        $alloggio = $this->_catalogModel->getAlloggio($alloggio);
-        return view('alloggio')
-                ->with('alloggio',$alloggio);
+    public function getAnnuncio(int $id){
+        $alloggio = $this->_catalogModel->getAlloggio($id);
+        Log::info($alloggio);
+        return view('annuncio')
+                ->with('alloggio',$alloggio[0]);
     }
 }

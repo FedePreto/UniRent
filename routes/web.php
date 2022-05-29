@@ -18,7 +18,7 @@ Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name
 Route::get('/Search','UserController@searchCatalogo')->name('search');
 Route::get('/Faq','PublicController@getFaq')->name('faq');
 
-Route::get('/annuncio{alloggio}','UserController@getAnnuncio')->name('annuncio');
+Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio');
 
 Route::view('/Who','who')->name('who');
 Route::view('/Where','where')->name('where');

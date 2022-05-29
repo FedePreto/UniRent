@@ -2067,3 +2067,20 @@ position: relative;
   display: table;
   clear: both;
 }
+
+.annuncio-image{
+    display:inline-block;
+    width:auto;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float:right;
+}
+.annuncio-text{
+    width:50%;
+    display:inline-block;
+}

@@ -28,6 +28,7 @@ class CreateAlloggiTable extends Migration
             $table->boolean('opzionato')->index()->default(0);
             $table->boolean('tipologia')->index();
             $table->integer('locatore')->references('id')->on('users');
+            $table->string('foto');
             $table->timestamps();
         });
     }

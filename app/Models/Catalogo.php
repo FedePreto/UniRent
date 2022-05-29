@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Log;
 class Catalogo {
 
     public function getCatalog(){
-        $alloggi = Alloggi::leftjoin('foto','foto.id','=','alloggi.foto');      
+        $alloggi = Alloggi::select('*');      
         return $alloggi->paginate(6);
     }
 
     public function getCatalogSearch($citta,$tipo='tutte',$filtri=null){
         
         //creo la tabella alloggi
-        $alloggi = Alloggi::leftjoin('foto','foto.id','=','alloggi.foto')->where('citta','LIKE','%'.$citta.'%');
+        $alloggi = Alloggi::select('*')->where('citta','LIKE','%'.$citta.'%');
 
         if($filtri != null){
             //creao la tabella join tra alloggi e incluso
@@ -71,7 +71,7 @@ class Catalogo {
     public function getServizi(){
         return Servizi::all();
     }
-    public function getAlloggio(int $id){
-        return Alloggi::leftJoin('foto','foto.id','alloggi.foto')->where('id',$id)->get();
+    public function getAlloggio($id){
+        return Alloggi::where('id',$id)->get();
     }
 }

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
+            $table->string('foto_profilo');
             $table->string('name'); //Non modifico il nome della colonna perchè potrei avere problemi di funzionamento di processi che ne fanno uso
             $table->string('cognome');
             $table->date('data_nascita');

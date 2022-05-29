@@ -30,7 +30,7 @@
     <div class="w3-col l3 m6 w3-margin-bottom">
       <img src={{asset('img/garrett.png')}} alt="Greg" style="width:100%">
       <h3>Gregorio Vecchiola</h3>
-      <p class="w3-opacity">Parasite</p>
+      <p class="w3-opacity">Developer</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>

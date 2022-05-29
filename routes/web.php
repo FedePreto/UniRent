@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', 'PublicController@showHomepage')->name('home')->middleware('guest');
+Route::get('/', 'PublicController@showHomepage')->name('home');
 
 Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
 Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');
 Route::get('/Search','UserController@searchCatalogo')->name('search');
 Route::get('/Faq','PublicController@getFaq')->name('faq');
+
+Route::get('/annuncio{alloggio}','UserController@getAnnuncio')->name('annuncio');
 
 Route::view('/Who','who')->name('who');
 Route::view('/Where','where')->name('where');

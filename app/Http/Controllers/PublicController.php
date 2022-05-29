@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class PublicController extends Controller{
     protected $_catalogModel;
 
@@ -43,7 +44,15 @@ class PublicController extends Controller{
     }
 
 
-    public function showHomepage(){                        
-        return view('homepage');                
+    public function showHomepage(){  
+        if(Auth::check()){
+            switch(Auth()->user()->livello){
+                case 0 : return redirect()->route('admin');
+                case 1 : return redirect()->route('locatore');
+                case 2 : return redirect()->route('locatario');
+            }
+        }else{
+            return view('homepage');                
+        }                   
     }
 }

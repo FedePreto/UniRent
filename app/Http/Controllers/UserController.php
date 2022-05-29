@@ -28,4 +28,10 @@ class UserController extends Controller
                     ->with('servizi',$servizi)
                     ->with('request',$ricerca);          
     }
+
+    public function getAnnuncio($alloggio){
+        $alloggio = $this->_catalogModel->getAlloggio($alloggio);
+        return view('alloggio')
+                ->with('alloggio',$alloggio);
+    }
 }

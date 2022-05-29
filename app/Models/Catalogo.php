@@ -71,5 +71,7 @@ class Catalogo {
     public function getServizi(){
         return Servizi::all();
     }
-
+    public function getAlloggio(int $id){
+        return Alloggi::leftJoin('foto','foto.id','alloggi.foto')->where('id',$id)->get();
+    }
 }

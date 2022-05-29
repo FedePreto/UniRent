@@ -32,7 +32,7 @@ class NewHomeRequest extends FormRequest {
         return [
             'titolo' => 'required|max:30',
             'regione' => 'required',
-            'citta' => 'required|max:30',
+            'citta' => 'required',
             'cap' => 'required|integer',
             'indirizzo' => 'required',
             'numero' => 'required|integer',

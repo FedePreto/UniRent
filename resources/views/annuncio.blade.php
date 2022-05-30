@@ -3,13 +3,9 @@
 @section('title', $alloggio->titolo)
 
 @section('content')
-@auth
-<a href='{{route('search',$request)}}'><- Torna indietro</a>
-@endauth
 
-@guest
-<a href='{{route('home')}}'><- Torna indietro</a>
-@endguest
+<a href='{{url()->previous()}}'><- Torna indietro</a>
+
 <div class="w3-content w3-padding" style="max-width:1654px">
     <div class="w3-row-padding">   
         <div class="w3-third w3-container w3-margin-bottom ">

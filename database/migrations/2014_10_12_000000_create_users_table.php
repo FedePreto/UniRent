@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('cellulare')->unique();
             $table->integer('livello');
-            $table->string('descrizione');
+            $table->string('descrizione')->nullable(true);
             $table->rememberToken();//Definisce nella tabella una colonna per gestire la condizione di remember
             $table->timestamps();// Definisce due colonne che indicano la data di creazione della tupla e di ultima modifica
         });

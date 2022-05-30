@@ -25,12 +25,12 @@ class CreateAlloggiTable extends Migration
             $table->longText('descrizione');
             $table->float('superficie')->index();
             $table->integer('letti')->index();
+            $table->integer('n_camere')->index()->default(1);
             $table->boolean('opzionato')->index()->default(0);
             $table->boolean('tipologia')->index();
             $table->integer('locatore')->references('id')->on('users');
             $table->string('foto')->nullable();
             $table->date('periodo_locazione')->index();
-            $table->date('data_assegnazione')->index();
             $table->timestamps();
         });
     }

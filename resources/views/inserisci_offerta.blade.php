@@ -102,6 +102,18 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
+                {{ Form::label('n_camere', 'N° Camere:', ['class' => 'label-input-app']) }}
+                {{ Form::text('n_camere', '', ['class' => 'input-app', 'id' => 'n_camere']) }}
+            </div>
+
+            <div class="wrap-input  rs1-wrap-input">
+                {{ Form::label('periodo_locazione', 'Periodo di locazione:', ['class' => 'label-input-app']) }}
+                {{ Form::date('periodo_locazione', '', ['class' => 'input-card', 'id' => 'periodo_locazione']) }}
+            </div>
+
+           
+
+            <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
                     <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>

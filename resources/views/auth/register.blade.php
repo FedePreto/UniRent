@@ -126,6 +126,19 @@
                 </ul>
                 @endif                
             </div>
+
+            <div  class="wrap-input">
+            
+                {{ Form::label('descrizione', 'Descrizione', ['class' => 'label-input']) }}
+                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
+                @if ($errors->first('descrizione'))
+                <ul class="errors">
+                    @foreach ($errors->get('descrizione') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
             
             
             <div class="container-form-btn">                

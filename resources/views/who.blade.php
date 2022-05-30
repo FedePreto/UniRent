@@ -14,31 +14,32 @@
 
   <div class="w3-row-padding w3-grayscale">
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="{{asset('img/profile_pic.jpg')}}" alt="Rongo" style="width:100%">
+      <img src="{{asset('img/foto_profilo/gustavo.png')}}" alt="Rongo" style="width:100%">
       <h3>Alessandro Rongoni</h3>
-      <p class="w3-opacity">CEO & Founder</p>
+      <p class="w3-opacity">CEO</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Fede" style="width:100%">
+      <img src={{asset('img/foto_profilo/howard.png')}} alt="Fede" style="width:100%">
       <h3>Federico Pretini</h3>
-      <p class="w3-opacity">Architect</p>
+      <p class="w3-opacity">Engineer</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/profile_pic.jpg')}} alt="Greg" style="width:100%">
+      <img src={{asset('img/foto_profilo/garrett.png')}} alt="Greg" style="width:100%">
       <h3>Gregorio Vecchiola</h3>
-      <p class="w3-opacity">Architect</p>
+      <p class="w3-opacity">Developer</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src={{asset('img/evil_abed.jpg')}} alt="Raccio" style="width:100%">
+      <img src={{asset('img/foto_profilo/evil_abed.jpg')}} alt="Raccio" style="width:100%">
       <h3>Nicolò Raccichini</h3>
-      <p class="w3-opacity">Architect</p>
+      <p class="w3-opacity">Developer</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+    </div>
 </div>
 @endsection

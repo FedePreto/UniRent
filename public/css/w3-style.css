@@ -1696,7 +1696,7 @@ a {
   .dropdown {
     position: relative;
     display: inline-block;
-    float:right;
+    float: right;
   }
   
   .dropdown-content {
@@ -1895,6 +1895,7 @@ flex-direction: column;
     display:inline-block;
     margin:10px;
 }
+
 #filtri{
    
 }
@@ -1917,6 +1918,7 @@ transition: all 0.2s ease-out;
 max-height: 1000px;
 transition: all 0.5s ease-in;
 }
+
 .container-form-btn {
     width: 100%;
     display: -webkit-box;
@@ -1998,7 +2000,7 @@ position: relative;
     }
 
 .rs1-wrap-input {
-        width: 400px;
+        width: 350px;
     }
 
 .form-btn1 {
@@ -2010,39 +2012,36 @@ position: relative;
         color: #555555;
     }
 
-.label-input-app {
+.label-input-app{
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
+        font-size: 17px;
         color: #555555;
         line-height: 1,5;
         }
 
 .input-app {
-        display: block;
         width: 90%;
         background: #f2f2f2;
-        border-radius: 2px;
+        border-radius: 10px;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
+        font-size: 15px;
         color: #686868;
-        line-height: 1.2;
         padding: 5px;
+        text-align: center;
         -webkit-transition: all 0.4s;
         -o-transition: all 0.4s;
         -moz-transition: all 0.4s;
         transition: all 0.4s;
-        margin-top: 5px;
         }
         
 .affianco{
     display: inline;
-
 }
 
 /*css profilo*/
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    max-width: 350px;
     margin: auto;
     text-align: center;
     font-family: arial;
@@ -2056,7 +2055,7 @@ position: relative;
 .column-card {
     float: left;
     width: 50%;
-    padding: 0 10px;
+    padding: 0 100px;
   }
 
 .row-card {margin: 0 -5px;}
@@ -2066,5 +2065,39 @@ position: relative;
   content: "";
   display: table;
   clear: both;
+}
+.btn-red{
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 11px 16px;
+    vertical-align: middle;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+    width:100%;
+    background-color: #ff0000;
+}
+.btn-red:hover{
+    width:100%;
+    background-color: #b20000;
+}
+.btn-green{
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 11px 16px;
+    vertical-align: middle;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+    width:100%;
+    background-color: #8fce00;
+}
+.btn-green:hover{
+    width:100%;
+    background-color: #649000;
 }
 

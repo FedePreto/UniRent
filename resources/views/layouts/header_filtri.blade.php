@@ -1,5 +1,31 @@
+
+
+
+
+
+
 <!-- Header -->
 <header id="portfolio">
+
+<link rel="stylesheet" href="jqueryui/style.css">
+<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script>
+  $(function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 1000,
+      values: [ 0, 1000 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - €" + $( "#slider-range" ).slider( "values", 1 ) );
+  });
+  </script>
   <!-- Searchbar -->
   <!--<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>-->
   <div class="w3-container" style="padding-top:50px">
@@ -15,6 +41,7 @@
     <div class="w3-container wrapper" id="filtri">
       <div id="reveal-content" class='hide'>
 
+
         <div class="my-align">
           {{Form::label("Tipo di camera:")}}<br>
           <ul class="w3-bar-block w3-text my-filter ">
@@ -25,21 +52,12 @@
         </div>
 
 
-        <div class="my-align">
-
-        <!--
-          <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-          <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-          <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-          <link rel="stylesheet" href="jqueryui/style.css">
-        -->
-          <p>
-            <label for="amount">Costo：</label>
-            <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
-          </p>
-
+        <div class="my-align range">
+          <label for="amount">Costo：</label>
+          <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
           <div id="slider-range"></div>
         </div>
+
 
         @isset($servizi)
         <div class="my-align">
@@ -65,6 +83,9 @@
         </div>
 
         @endisset
+
+
+
       </div>
     </div>
   </div>

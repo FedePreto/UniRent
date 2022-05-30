@@ -2133,3 +2133,8 @@ position: relative;
 .transtion{
     transition:1s;
 }
+
+.range{
+    position: relative;
+    top: -110px;
+}

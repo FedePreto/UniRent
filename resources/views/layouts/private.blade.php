@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
 <head>
     <title>UniRent | @yield('title', 'HomePage')</title>
     <meta charset="UTF-8">
@@ -8,10 +9,12 @@
     @section('link')
     <link rel="stylesheet" href="{{ asset('css/w3-style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     @show
     @section('scripts')
     <script language="JavaScript" type="text/javascript" src="{{ asset('js/script.js') }}"></script>
     <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    
     @show
 </head>
 

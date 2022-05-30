@@ -14,15 +14,20 @@
         <div class="w3-third w3-container w3-margin-bottom">
             <h1>{{$alloggio->titolo}}</h1>
             <p>€ {{$alloggio->prezzo}}</p>
+            <button >Contatta</button>
         </div>
     </div>
     @isset($servizi)
-    <ul>
+    <hr>
+    <p>Servizi offerti :</p>
+    <ul class='my-filter'>
         @foreach($servizi as $servizio)
             <li>{{$servizio->nome}}</li>
         @endforeach
     </ul>
     @endisset
+    <hr>
+    <p>Descrizione:</p>
     <p>{{$alloggio->descrizione}}</p>
 
     

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder {
             ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'20210505102417-4.jpg'],
             ['titolo'=>'Favoloso appartamento','regione' => 'Marche','citta' => 'Ancona', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 23, 'prezzo' => 265.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 58,'letti' => 3,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'AM1506.jpg'],
             ['titolo'=>'Bellissimo appartamento','regione' => 'Marche','citta' => 'Fermo', 'cap' => 63900, 'indirizzo' => 'Via Ludovio Einaudi', 'numero' => 10, 'prezzo' => 320.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 60,'letti' => 3,'opzionato' => 0,'tipologia'=> 1,'locatore' => 5,'foto'=>'77561779.jpg'],
-            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Amandola', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5,'foto'=>'20210505102417-4.jpg']
+            ['titolo'=>'Stupendo appartamento','regione' => 'Marche','citta' => 'Amandola', 'cap' => 60121, 'indirizzo' => 'Via Brecce Bianche', 'numero' => 22, 'prezzo' => 260.00 , 'descrizione' => 'Ampio appartamento a due passi dall\'università' ,'superficie' => 55,'letti' => 2,'opzionato' => 0,'tipologia'=> 0,'locatore' => 5, 'foto' => NULL]
 
         ]);
         
@@ -92,6 +92,24 @@ class DatabaseSeeder extends Seeder {
             ['foto_profilo' => '', 'name' => 'Federico', 'cognome' => 'Pretini', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_loca', 'password' => Hash::make('fede_loca'), 'cellulare' => "3661147561", 'livello' => 1, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => '', 'name' => 'Federico', 'cognome' => 'Pretini', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_lario', 'password' => Hash::make('fede_lario'), 'cellulare' => "3661147562", 'livello' => 2, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
 
+        ]);
+
+        DB::table('vincoli')->insert([
+            ['nome'=>'Solo_ragazzi'],
+            ['nome'=>'Solo_ragazze'],
+            ['nome'=>'Solo_matricole']
+        ]);
+
+        DB::table('vincoli_annuncio')->insert([
+            ['id_annuncio'=>1,'id_vincolo'=>2],
+            ['id_annuncio'=>1,'id_vincolo'=>1],
+            ['id_annuncio'=>2,'id_vincolo'=>1],
+            ['id_annuncio'=>3,'id_vincolo'=>2],
+            ['id_annuncio'=>3,'id_vincolo'=>0],
+            ['id_annuncio'=>4,'id_vincolo'=>0],
+            ['id_annuncio'=>5,'id_vincolo'=>1],
+            ['id_annuncio'=>8,'id_vincolo'=>2],
+            ['id_annuncio'=>10,'id_vincolo'=>0]
         ]);
     }
 

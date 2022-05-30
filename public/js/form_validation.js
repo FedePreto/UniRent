@@ -1,7 +1,10 @@
 //implementa l'inizione dell'errore nella form
-function getErrorHtml(elemErrors) {
-    if ((typeof (elemErrors) === 'undefined') || (elemErrors.length < 1))
+function getErrorHtml(elemErrors, id) {
+    if ((typeof (elemErrors) === 'undefined') || (elemErrors.length < 1)){
+        $("#" + id).removeClass("label-input-error");
         return;
+    }
+    $("#" + id).addClass("label-input-error");
     var out = '<ul class="errors">';
     for (var i = 0; i < elemErrors.length; i++) {
         out += '<li>' + elemErrors[i] + '</li>';
@@ -30,10 +33,11 @@ function doElemValidation(id, actionUrl, formId) {
                 if (data.status === 422) { //se il codice di errore è quello che ci dice che il dato e unprocessable
                     var errMsgs = JSON.parse(data.responseText); //prendiamo il testo di errore e lo parsiamo in array associativo
                     $("#" + id).parent().find('.errors').html(' '); //azzeriamo eventuali altri messaggi di errore nel DOM 
-                    $("#" + id).after(getErrorHtml(errMsgs[id])); // aggiunge a valle dell'elemento che ha generato l'errore tutti gli
+                    $("#" + id).after(getErrorHtml(errMsgs[id],id)); // aggiunge a valle dell'elemento che ha generato l'errore tutti gli
                                                                   // errori mediante una funzione alla quale apassa come parametro l'insieme
                                                                   // dei messaggi di errore ricevuti ma filtrando solo quelli associati all'elemento che stiamo testando
                                                                   // questo perchè il server alla ricezione della utility attiva tutti i validatori per tutti gli elementi della form ridandoci indietro messaggi di errore anche per elementi che non ci interessano
+
                 }
             },
             contentType: false, // impediamo che nella richiesta ajax sia implementata il content type di default
@@ -44,7 +48,12 @@ function doElemValidation(id, actionUrl, formId) {
     var elem = $("#" + id); // recuperiamo l'elemento da testare
     //Se l'elemento è di tipo file dobbiamo creare il valore da inviare al server associato a questo input
     if (elem.attr('type') === 'file') {
-        inputVal = elem.get(0).files[0]; //Prendo il wrapp set e prendo il primo elemento che è una struttura file che è a sua volta un'array e prendo il il primo elemento della proprietà files dell'oggetto che rappresenta le caratteristiche del primo ed unico file selezionato
+        // elemento di input type=file valorizzato
+        if (elem.val() !== '') {
+            inputVal = elem.get(0).files[0];
+        } else {
+            inputVal = new File([""], "");
+        }
     } else {
         // elemento di input type != file
         inputVal = elem.val();
@@ -58,7 +67,6 @@ function doElemValidation(id, actionUrl, formId) {
 }
 
 function doFormValidation(actionUrl, formId) {
-
     var form = new FormData(document.getElementById(formId));
     $.ajax({
         type: 'POST',
@@ -70,7 +78,7 @@ function doFormValidation(actionUrl, formId) {
                 var errMsgs = JSON.parse(data.responseText);
                 $.each(errMsgs, function (id) {
                     $("#" + id).parent().find('.errors').html(' ');
-                    $("#" + id).after(getErrorHtml(errMsgs[id]));
+                    $("#" + id).after(getErrorHtml(errMsgs[id],id));
                 });
             }
         },

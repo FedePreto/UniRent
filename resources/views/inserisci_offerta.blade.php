@@ -6,7 +6,6 @@
 
 @parent
 <script src="{{ asset('js/form_validation.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     $(  function() {
         var actionUrl = "{{ route('addHome.store') }}";

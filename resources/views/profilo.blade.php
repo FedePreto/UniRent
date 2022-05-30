@@ -5,7 +5,7 @@
 @section('scripts')
 
 @parent
-<script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script language="JavaScript" type="text/javascript" src="{{ asset('js/form_validation.js') }}"></script>
 <script language="JavaScript" type="text/javascript">
   $(function() {
     $("#card-modifica").hide();
@@ -18,7 +18,7 @@
   });
 
   $(function() {
-    var actionUrl = "{{ route('updateProfile.store') }}";
+    var actionUrl = "{{ route('updateProfilo.update') }}";
     var formId = 'updateProfile';
     $(":input").on('blur', function(event) {
       var formElementId = $(this).attr('id'); //recupera l'id dell'oggetto che ha perso il focus 
@@ -70,36 +70,36 @@
 
     <div id="card-modifica" class="card">
       <h5>ricompila i campi dei dati che desideri modificare</h5>
-      {{ Form::open(array('route' => 'updateProfile.store', 'id' => 'updateProfile', 'files' => true)) }}
+      {{ Form::open(array('route' => 'updateProfilo.update', 'id' => 'updateProfile', 'files' => true)) }}
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
-        {{ Form::label('name', ' Nome', ['class' => 'label-input-app']) }}
-        {{ Form::text('name',auth()->user()->name, ['class' => 'input-app', 'id' => 'name']) }}
+        {{ Form::label('name', ' Nome', ['class' => 'label-input-card']) }}
+        {{ Form::text('name',auth()->user()->name, ['class' => 'input-card', 'id' => 'name']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
-        {{ Form::label('cognome', ' Cognome', ['class' => 'label-input-app']) }}
-        {{ Form::text('cognome',auth()->user()->cognome, ['class' => 'input-app', 'id' => 'cognome']) }}
+        {{ Form::label('cognome', ' Cognome', ['class' => 'label-input-card']) }}
+        {{ Form::text('cognome',auth()->user()->cognome, ['class' => 'input-card', 'id' => 'cognome']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-birthday-cake']) }}
-        {{ Form::label('data_nascita', ' Data di Nascita', ['class' => 'label-input-app']) }}
-        {{ Form::date('data_nascita', auth()->user()->data_nascita, ['class' => 'input-app', 'id' => 'data_nascita']) }}
+        {{ Form::label('data_nascita', ' Data di Nascita', ['class' => 'label-input-card']) }}
+        {{ Form::date('data_nascita', auth()->user()->data_nascita, ['class' => 'input-card', 'id' => 'data_nascita']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-envelope ']) }}
-        {{ Form::label('email', ' Email', ['class' => 'label-input-app']) }}
-        {{ Form::text('email', auth()->user()->email, ['class' => 'input-app', 'id' => 'email']) }}
+        {{ Form::label('email', ' Email', ['class' => 'label-input-card']) }}
+        {{ Form::text('email', auth()->user()->email, ['class' => 'input-card', 'id' => 'email']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-phone']) }}
-        {{ Form::label('cellulare', ' Cellulare', ['class' => 'label-input-app']) }}
-        {{ Form::text('cellulare', auth()->user()->cellulare, ['class' => 'input-app', 'id' => 'cellulare']) }}
+        {{ Form::label('cellulare', ' Cellulare', ['class' => 'label-input-card']) }}
+        {{ Form::text('cellulare', auth()->user()->cellulare, ['class' => 'input-card', 'id' => 'cellulare']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-user-circle ']) }}
-        {{ Form::label('foto', 'Immagine profilo', ['class' => 'label-input-app']) }}
-        {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
+        {{ Form::label('foto', 'Immagine profilo', ['class' => 'label-input-card']) }}
+        {{ Form::file('foto', ['class' => 'input-card', 'id' => 'foto']) }}
       </div>
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::submit('Salva', ['class' => 'btn-green']) }}

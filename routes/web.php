@@ -34,8 +34,7 @@ Route::get('/Messaggi', 'LocatoreController@showMessaggi')->name('messaggi');
 Route::get('Locatore/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('can:isLocatore');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
 
-Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('updateProfilo');
-Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('updateProfilo.store');
+Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 
 Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');

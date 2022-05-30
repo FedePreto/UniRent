@@ -8,7 +8,7 @@
 <script src="{{ asset('js/form_validation.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-    $(function() {
+    $(  function() {
         var actionUrl = "{{ route('addHome.store') }}";
         var formId = 'addHome';
         $(":input").on('blur', function(event) {
@@ -116,6 +116,7 @@
                 <ul class="w3-bar-block w3-text">
                     @foreach ( $servizi as $servizio)
                     <li>{{Form::checkBox($servizio->nome,$servizio->id)}} {{Form::Label($servizio->nome)}}</li>
+                    @endforeach
                 </ul>
             </div>
 

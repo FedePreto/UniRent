@@ -58,5 +58,5 @@ class LocatoreController extends Controller{
         return response()->json(['redirect' => route('locatore')]);
     }
 
-    public function update
+    public function update(){}
 }

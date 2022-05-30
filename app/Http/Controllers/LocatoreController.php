@@ -9,11 +9,7 @@ use App\Models\Catalogo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< Updated upstream
-use Illuminate\Http\Request;
-=======
 use Illuminate\Support\Facades\File;
->>>>>>> Stashed changes
 
 class LocatoreController extends Controller{
 

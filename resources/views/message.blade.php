@@ -33,7 +33,7 @@
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom w3-large"><img src="https://www.w3schools.com/images/w3schools.png" style="width:60%;"></a>
     <a href="javascript:void(0)" onclick="w3_close()" title="Chiudi la SideMenu" class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a>
-    <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button"><i class="fa fa-inbox w3-margin-right"></i>Inbox<i class="fa fa-caret-down w3-margin-left"></i></a>
+    <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button"><i class="fa fa-inbox w3-margin-right"></i>Messaggi<i class="fa fa-caret-down w3-margin-left"></i></a>
     <div id="Demo1" class="w3-hide w3-animate-left">
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
 
@@ -99,7 +99,36 @@
     <i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
     <a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 
-    <div id="Borge" class="w3-container person">
+<!-- CHAT -->
+    <div class="container">
+        <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+        <p>Hello. How are you today?</p>
+        <span class="time-right">11:00</span>
+    </div>
+
+    <div class="container darker">
+        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+        <p>Hey! I'm fine. Thanks for asking!</p>
+        <span class="time-left">11:01</span>
+    </div>
+
+    <div class="container">
+        <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+        <p>Sweet! So, what do you wanna do today?</p>
+        <span class="time-right">11:02</span>
+    </div>
+
+    <div class="container darker">
+        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+        <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+        <span class="time-left">11:05</span>
+    </div>
+
+
+
+
+
+    <!--<div id="Borge" class="w3-container person">
         <br>
         <img class="w3-round  w3-animate-top" src="/w3images/avatar3.png" style="width:20%;">
         <h5 class="w3-opacity">Subject: Remember Me</h5>
@@ -134,6 +163,7 @@
         <hr>
         <p>Welcome.</p>
         <p>That's it!</p>
-    </div>
+    </div>-->
+
 
 </div>

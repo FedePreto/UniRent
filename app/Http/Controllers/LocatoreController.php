@@ -6,8 +6,14 @@ use App\Models\Locatore;
 use App\Models\Resources\Alloggi;
 use App\Http\Requests\NewHomeRequest;
 use App\Models\Catalogo;
-use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+<<<<<<< Updated upstream
+use Illuminate\Http\Request;
+=======
+use Illuminate\Support\Facades\File;
+>>>>>>> Stashed changes
 
 class LocatoreController extends Controller{
 
@@ -40,24 +46,63 @@ class LocatoreController extends Controller{
     }
 
     //Funzione che viene attivata una volta che i dati sono stati validati
-    public function updateProfilo(Request $request){
+    public function storeHome(NewHomeRequest $request){
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $imageName = $image->getClientOriginalName();
+        }
+        else {
+            $imageName = NULL;
+        }
+
+        $alloggio = new Alloggi;
+        //Associa alle proprietà all'oggetto alloggio i dati validati
+        $alloggio->fill($request->validated());
+        $alloggio->locatore = Auth::id();
+        $alloggio->foto = $imageName;
+        $alloggio->save();
+
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/img/alloggi';
+            $image->move($destinationPath, $imageName);
+        };
+
+        return response()->json(['redirect' => route('locatore')]);
+    }
+
+    public function updateProfilo(Request $request, $id){
+
         $request->validate([
-            'foto_profilo' => 'required',
+            'foto_profilo' => 'file|mimes:jpeg,png|max:5000',
             'name' => 'required',
             'cognome' => 'required',
             'data_nascita' => 'required',
             'email' => 'required',
             'cellulare' => 'required',
         ]);
-        $alloggio = new Alloggi;
-        //Associa alle proprietà all'oggetto alloggio i dati validati
-        $alloggio->fill($request->validated());
-        $alloggio->foto = 1;
-        $alloggio->locatore = Auth::id();
-        $alloggio->save();
 
-        return response()->json(['redirect' => route('locatore')]);
+        if ($request->hasFile('foto_profilo')) {
+            $image = $request->file('foto_profilo');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path() . '/img/foto_profilo';
+            $oldImage = $destinationPath . Auth::foto_profilo();
+            if(File::exists($oldImage) && Auth::foto_profilo()!='') {
+                File::delete($oldImage);
+            }
+        }
+        else {
+            $imageName = NULL;
+        }
+        $user = User::find($id);
+        $user->fill($request->validated());
+        $user->foto_profilo = $imageName;
+        $user->save();
+
+        if (!is_null($imageName)) {
+            
+            $image->move($destinationPath, $imageName);
+        }
+
+        return response()->json(['redirect' => route('profilo')]);
     }
-
-    public function update(){}
 }

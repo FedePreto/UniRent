@@ -11,6 +11,7 @@
     @show
     @section('scripts')
     <script language="JavaScript" type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
     @show
 </head>
 

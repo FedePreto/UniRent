@@ -29,6 +29,8 @@ class CreateAlloggiTable extends Migration
             $table->boolean('tipologia')->index();
             $table->integer('locatore')->references('id')->on('users');
             $table->string('foto')->nullable();
+            $table->date('periodo_locazione')->index();
+            $table->date('data_assegnazione')->index();
             $table->timestamps();
         });
     }

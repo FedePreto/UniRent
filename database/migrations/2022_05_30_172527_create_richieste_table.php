@@ -14,7 +14,12 @@ class CreateRichiesteTable extends Migration
     public function up()
     {
         Schema::create('richieste', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->index();
+            $table->date('data_richiesta')->index();
+            $table->date('data_risposta')->index();
+            $table->integer('stato')->index();
+            $table->integer('locatario')->references('id')->on('users');
+            $table->integer('id_alloggio')->references('id')->on('alloggi');
             $table->timestamps();
         });
     }

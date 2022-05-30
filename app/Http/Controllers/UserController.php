@@ -29,12 +29,15 @@ class UserController extends Controller
                     ->with('request',$ricerca);          
     }
 
-    public function getAnnuncio(int $id){
+    public function getAnnuncio(Request $request,int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
-        $servizi = $this->_catalogModel->getAlloggioServizi($id);
+        $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
+        $servizi = $this->_catalogModel->getServizi();
         Log::info($servizi);
         return view('annuncio')
                 ->with('alloggio',$alloggio[0])
-                ->with('servizi',$servizi);
+                ->with('servizi',$servizi)
+                ->with('servizi_inclusi',$servizi_inclusi)
+                ->with('request',$request);
     }
 }

@@ -14,7 +14,6 @@
         <div class="w3-container w3-white">
             <p class="price"><b>€{{ $alloggio->prezzo }}</b></p>
             <p class="title"><b>{{$alloggio->titolo}}</b></p>
-         <!--   <p>{{ $alloggio->descrizione }}</p> -->
             <p>{{$alloggio->citta}}, {{$alloggio->indirizzo}} {{ $alloggio->numero }}</p>
         </div>
     </div>

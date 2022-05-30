@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Incluso extends Model
 {
     protected $table = 'incluso';
-    //protected $primaryKey = ['alloggio','servizio'];
+    
+    
 
     
     

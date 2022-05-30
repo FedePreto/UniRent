@@ -2101,3 +2101,10 @@ position: relative;
     background-color: #649000;
 }
 
+.hover-no-filter:hover{
+    filter:none;
+    transition:1s;
+}
+.transtion{
+    transition:1s;
+}

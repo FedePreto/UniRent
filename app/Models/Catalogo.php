@@ -26,7 +26,7 @@ class Catalogo {
             $alloggi_filtri = Alloggi::leftJoin('incluso','incluso.alloggio','=','alloggi.id');
             if(count($filtri)>1){
                 foreach(array_keys($filtri) as $key){
-                    //Log::info("ciao".$filtri[$key]);
+                    
                     $alloggi_filtri = $alloggi_filtri->orWhere('servizio',$filtri[$key]);
                 }
             }else{
@@ -36,13 +36,8 @@ class Catalogo {
             $alloggi_filtri = $alloggi_filtri->select('alloggio')->distinct('alloggio')->get();
             $alloggi = $alloggi->whereIn('alloggi.id',$alloggi_filtri->toArray());
 
-        }
-        //Log::info(implode(',',(array)$alloggi_filtri));
-
-        
+        }        
         //se gli alloggi si trovano nell'array $alloggi_filtri
-       
-
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);
         }elseif($tipo=='posto_letto'){

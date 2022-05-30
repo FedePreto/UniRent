@@ -7,6 +7,7 @@ use App\Models\Resources\Alloggi;
 use App\Http\Requests\NewHomeRequest;
 use App\Models\Catalogo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LocatoreController extends Controller{
 

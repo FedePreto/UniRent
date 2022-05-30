@@ -93,6 +93,24 @@ class DatabaseSeeder extends Seeder {
             ['foto_profilo' => '', 'name' => 'Federico', 'cognome' => 'Pretini', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_lario', 'password' => Hash::make('fede_lario'), 'cellulare' => "3661147562", 'livello' => 2, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
 
         ]);
+
+        DB::table('vincoli')->insert([
+            ['nome'=>'Solo_ragazzi'],
+            ['nome'=>'Solo_ragazze'],
+            ['nome'=>'Solo_matricole']
+        ]);
+
+        DB::table('vincoli_annuncio')->insert([
+            ['id_annuncio'=>1,'id_vincolo'=>2],
+            ['id_annuncio'=>1,'id_vincolo'=>1],
+            ['id_annuncio'=>2,'id_vincolo'=>1],
+            ['id_annuncio'=>3,'id_vincolo'=>2],
+            ['id_annuncio'=>3,'id_vincolo'=>0],
+            ['id_annuncio'=>4,'id_vincolo'=>0],
+            ['id_annuncio'=>5,'id_vincolo'=>1],
+            ['id_annuncio'=>8,'id_vincolo'=>2],
+            ['id_annuncio'=>10,'id_vincolo'=>0]
+        ]);
     }
 
 }

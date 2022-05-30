@@ -5,9 +5,8 @@ namespace App\Models;
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Servizi;
-use App\Models\Resources\Foto;
-use App\Modela\Resources\Incluso;
-use PhpParser\Node\Stmt\ElseIf_;
+use App\Models\Resources\Incluso;
+
 use Illuminate\Support\Facades\Log;
 
 class Catalogo {
@@ -73,5 +72,10 @@ class Catalogo {
     }
     public function getAlloggio($id){
         return Alloggi::where('id',$id)->get();
+    }
+    public function getAlloggioServizi($id){
+        $servizi =  Incluso::leftJoin('servizi','servizi.id','incluso.servizio')->where('incluso.alloggio',$id)->get();
+        Log::info($servizi);
+        return $servizi;
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inlcuso extends Model
+class Incluso extends Model
 {
     protected $table = 'incluso';
-    protected $primaryKey = ['alloggio','servizio'];
+    //protected $primaryKey = ['alloggio','servizio'];
 
     
     

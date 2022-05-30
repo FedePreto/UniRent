@@ -2181,3 +2181,9 @@ position: relative;
     float: left;
     color: #999;
   }
+
+  .descrizione{
+      max-width: 250px;
+      max-height:150px;
+      text-align: center;
+  }

@@ -32,10 +32,10 @@ Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isA
 Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore');
 
 Route::get('/Messaggi', 'LocatoreController@showMessaggi')->name('messaggi');
-Route::get('Locatore/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('can:isLocatore');
+Route::get('Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
 
-Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
+Route::post('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 
 Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');

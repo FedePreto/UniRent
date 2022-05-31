@@ -2091,6 +2091,7 @@ position: relative;
   display: table;
   clear: both;
 }
+
 .btn-red{
     position: relative;
     border: none;
@@ -2125,6 +2126,11 @@ position: relative;
     width:100%;
     background-color: #649000;
 }
+
+textarea { resize:none;
+           height: 200px;
+}
+
 
 .hover-no-filter:hover{
     filter:none;
@@ -2194,8 +2200,25 @@ position: relative;
     height: 500px;
     overflow: hidden;
   }
-  .thumb > img {
+  .thumb.who{
     height: 500px;
     width: 400px; 
     margin-left: -77px;  
   }
+
+  .thumb.card{
+    height: 500px;
+    width: 100%; 
+    margin-left: -77px;  
+  }
+/*alert button */
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  
+  .alert.success {background-color: #04AA6D;}

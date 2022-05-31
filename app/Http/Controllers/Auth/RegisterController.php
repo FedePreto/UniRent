@@ -55,12 +55,12 @@ class RegisterController extends Controller
             'cognome' => ['required', 'string', 'max:255'],
             'sesso' => ['required', 'string'],
             'data_nascita' => ['required', 'date'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'unique:users', 'regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'cellulare' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
             'livello' => ['required', 'integer'],
-            'descrizione' => ['required', 'max:2500']
+            'descrizione' => ['string','max:2500']
         ]);
     }
 
@@ -73,7 +73,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (request()->has('foto_profilo')) {
+        if (request()->hasFile('foto_profilo')) {
             $image = request()->file('foto_profilo');
             $imageName = $image->getClientOriginalName();
             $destinationPath = public_path().'/img/foto_profilo';

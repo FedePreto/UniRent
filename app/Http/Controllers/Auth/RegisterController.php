@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -60,7 +59,8 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'cellulare' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
-            'livello' => ['required', 'integer']
+            'livello' => ['required', 'integer'],
+            'descrizione' => ['required', 'max:2500']
         ]);
     }
 
@@ -73,8 +73,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['foto_profilo'] !== '') {
-            $image = $data['foto_profilo']->file('foto');
+        if (request()->has('foto_profilo')) {
+            $image =request()->file('foto_profilo');
             $imageName = $image->getClientOriginalName();
         } else {
             $imageName = NULL;
@@ -89,11 +89,12 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
             'cellulare' => $data['cellulare'],
-            'livello' => $data['livello']
+            'livello' => $data['livello'],
+            'descrizione' => $data['descrizione']
         ]);
 
         if (!is_null($imageName)) {
-            $destinationPath = public_path() . '/img/foto_profilo';
+            $destinationPath = public_path('/img/foto_profilo');
             $image->move($destinationPath, $imageName);
         };
     }

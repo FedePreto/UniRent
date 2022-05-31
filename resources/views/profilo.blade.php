@@ -16,21 +16,6 @@
       $("#annulla_modifica").toggle();
     });
   });
-
-  $(function() {
-    var actionUrl = "{{ route('updateProfilo.update') }}";
-    var formId = 'updateProfile';
-    $(":input").on('blur', function(event) {
-      var formElementId = $(this).attr('id'); //recupera l'id dell'oggetto che ha perso il focus 
-      doElemValidation(formElementId, actionUrl, formId); //funzione js che prende il valore dell'elemento lo invia
-      // al server usando ajax e processerà la ripsota proveniente dal server
-    });
-    $("#updateProfile").on('submit', function(event) {
-      event.preventDefault(); //funzione che attiva il metodo associato all'evento di click sul bottone che blocca il meccanismo standard
-      // di gestione dell'evento da parte del browser
-      doFormValidation(actionUrl, formId); //attiva una funzione js definita da noi che invece implementa la submit
-    });
-  });
 </script>
 @endsection
 
@@ -65,10 +50,10 @@
       <p><button id="annulla_modifica" class="btn btn-red">Annulla Modifica</button></p>
     </div>
   </div>
-  <div class="column-card">
+  <div id="card-modifica" class="column-card">
     <h3 style="text-align:center">Ciao <b>{{auth()->user()->name}}</b></h3>
 
-    <div id="card-modifica" class="card">
+    <div class="card">
       <h5>ricompila i campi dei dati che desideri modificare</h5>
       {{ Form::open(array('route' => 'updateProfilo.update', 'id' => 'updateProfile', 'files' => true)) }}
       <div class="wrap-input  rs1-wrap-input">

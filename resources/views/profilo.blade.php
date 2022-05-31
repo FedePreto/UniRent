@@ -18,6 +18,10 @@
       $("#annulla_modifica").toggle();
     });
   });
+
+  $(function() {
+    $(".alert").show().delay(2000).fadeOut();
+  })
 </script>
 @endsection
 
@@ -25,11 +29,22 @@
 
 <div class="row-card">
   <div id="colonna_1" class="column-card">
-    <h3 style="text-align:center">Il tuo profilo</h3>
-    <div class="alert success">
-      <span class="closebtn">&times;</span>
-      <strong>Success!</strong> 
+    @if ($errors->any())
+    <div class="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
     </div>
+    <br />
+    @endif
+    @if (session('status'))
+    <div class="alert success">
+      {{ session('status') }}
+    </div>
+    @endif
+    <h3 style="text-align:center">Il tuo profilo</h3>
     <div style="font-size: 20px" class="card">
       @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>
@@ -66,97 +81,48 @@
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
         {{ Form::label('name', ' Nome', ['class' => 'label-input-card']) }}
         {{ Form::text('name',auth()->user()->name, ['class' => 'input-card', 'id' => 'name']) }}
-        @if ($errors->first('name'))
-        <ul class="errors">
-          @foreach ($errors->get('name') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
         {{ Form::label('cognome', ' Cognome', ['class' => 'label-input-card']) }}
         {{ Form::text('cognome',auth()->user()->cognome, ['class' => 'input-card', 'id' => 'cognome']) }}
-        @if ($errors->first('cognome'))
-        <ul class="errors">
-          @foreach ($errors->get('cognome') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
         {{ Form::label('sesso', ' Sesso', ['class' => 'label-input-card']) }}
         {{ Form::select('sesso', ['Maschio'=>'Maschio','Femmina'=>'Femmina'], auth()->user()->sesso, ['class' => 'input-card', 'id' => 'sesso']) }}
-        @if ($errors->first('sesso'))
-        <ul class="errors">
-          @foreach ($errors->get('sesso') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-birthday-cake']) }}
         {{ Form::label('data_nascita', ' Data di Nascita', ['class' => 'label-input-card']) }}
         {{ Form::date('data_nascita', auth()->user()->data_nascita, ['class' => 'input-card', 'id' => 'data_nascita']) }}
-        @if ($errors->first('data_nascita'))
-        <ul class="errors">
-          @foreach ($errors->get('data_nascita') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-envelope ']) }}
         {{ Form::label('email', ' Email', ['class' => 'label-input-card']) }}
         {{ Form::text('email', auth()->user()->email, ['class' => 'input-card', 'id' => 'email']) }}
-        @if ($errors->first('email'))
-        <ul class="errors">
-          @foreach ($errors->get('email') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-phone']) }}
         {{ Form::label('cellulare', ' Cellulare', ['class' => 'label-input-card']) }}
         {{ Form::text('cellulare', auth()->user()->cellulare, ['class' => 'input-card', 'id' => 'cellulare']) }}
-        @if ($errors->first('cellulare'))
-        <ul class="errors">
-          @foreach ($errors->get('cellulare') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-user-circle ']) }}
         {{ Form::label('foto_profilo', 'Immagine profilo', ['class' => 'label-input-card']) }}
         {{ Form::file('foto_profilo', ['class' => 'input-card', 'id' => 'foto']) }}
-        @if ($errors->first('foto_profilo'))
-        <ul class="errors">
-          @foreach ($errors->get('foto_profilo') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
+
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-user-circle ']) }}
         {{ Form::label('descrizione', 'Descrizione', ['class' => 'label-input-card']) }}
         {{ Form::textarea('descrizione',auth()->user()->descrizione ,['class' => 'input-card', 'id' => 'foto']) }}
-        @if ($errors->first('descrizione'))
-        <ul class="errors">
-          @foreach ($errors->get('descrizione') as $message)
-          <li>{{ $message }}</li>
-          @endforeach
-        </ul>
-        @endif
       </div>
 
       <div class="wrap-input  rs1-wrap-input">

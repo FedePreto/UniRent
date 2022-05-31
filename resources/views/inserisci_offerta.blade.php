@@ -116,10 +116,7 @@
 
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('periodo_locazione', 'Periodo di locazione:', ['class' => 'label-input-app']) }}
-                {{ Form::select('periodo_locazione',[1=>'3 Mesi',
-                                           2=>'6 Mesi',
-                                           3=>'1 Anno']
-                                           , null, ['class' => 'input','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
+                {{ Form::select('periodo_locazione',[3 => '3 Mesi',6 => '6 Mesi', 12 => '1 Anno'], null, ['class' => 'input','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
             </div>
 
 

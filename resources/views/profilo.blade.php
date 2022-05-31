@@ -18,6 +18,10 @@
       $("#annulla_modifica").toggle();
     });
   });
+
+  $(function() {
+    $(".alert").show().delay(2000).fadeOut();
+  })
 </script>
 @endsection
 
@@ -25,11 +29,22 @@
 
 <div class="row-card">
   <div id="colonna_1" class="column-card">
-    <h3 style="text-align:center">Il tuo profilo</h3>
-    <div class="alert success">
-      <span class="closebtn">&times;</span>
-      <strong>Success!</strong> 
+    @if ($errors->any())
+    <div class="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
     </div>
+    <br />
+    @endif
+    @if (session('status'))
+    <div class="alert success">
+      {{ session('status') }}
+    </div>
+    @endif
+    <h3 style="text-align:center">Il tuo profilo</h3>
     <div style="font-size: 20px" class="card">
       @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>

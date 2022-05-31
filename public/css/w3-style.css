@@ -2200,42 +2200,20 @@ textarea { resize:none;
     height: 500px;
     overflow: hidden;
   }
-  .thumb.who{
+  .thumb > img {
     height: 500px;
     width: 400px; 
     margin-left: -77px;  
   }
 
-  .thumb.card{
-    height: 500px;
-    width: 100%; 
-    margin-left: -77px;  
-  }
 /*alert button */
   .alert {
     padding: 20px;
     background-color: #f44336;
+    text-align: center;
     color: white;
     opacity: 1;
     transition: opacity 0.6s;
     margin-bottom: 15px;
   }
-  
   .alert.success {background-color: #04AA6D;}
-
-  .box img {
-    width: 100%;
-    height: 100%;
-}
-
-.box1 img {
-    object-fit: cover;
-}
-
-.box2 img {
-    object-fit: contain;
-}
-
-.box3 img {
-    object-fit: fill;
-}

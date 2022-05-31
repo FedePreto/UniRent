@@ -102,6 +102,7 @@ class LocatoreController extends Controller
         $data['foto_profilo'] = $imageName;
         User::find(auth()->user()->id)->update($data);
 
-        return redirect()->route('profilo');
+        return redirect()->route('profilo')
+               ->with('status', 'Profilo aggiornato correttamente!');
     }
 }

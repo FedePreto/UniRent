@@ -31,7 +31,7 @@
       <strong>Success!</strong> 
     </div>
     <div style="font-size: 20px" class="card">
-      @include('helpers/profileImage', ['attrs' => 'thumb','imgFile'=>auth()->user()->foto_profilo])
+      @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>
       <p><b>Cognome: </b>{{auth()->user()->cognome}}</p>
       <p><b>Sesso: </b>{{auth()->user()->sesso}}</p>

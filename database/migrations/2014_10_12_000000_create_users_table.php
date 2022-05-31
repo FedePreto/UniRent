@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('foto_profilo')->nullable();
             $table->string('name'); //Non modifico il nome della colonna perchè potrei avere problemi di funzionamento di processi che ne fanno uso
             $table->string('cognome');
+            $table->string('sesso');
             $table->date('data_nascita');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();

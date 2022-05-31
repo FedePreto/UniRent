@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!-- Header -->
 <header id="portfolio">
 
@@ -50,7 +44,6 @@
             <li>{{ Form::radio('tipo_camera','posto_letto', isset($request) ? $request->tipo_camera == 'post_letto' : false,array('form'=>'ricerca'))}}Posto Letto</li>
           </ul>
         </div>
-
 
         <div class="my-align range">
           <label for="amount">Costo：</label>

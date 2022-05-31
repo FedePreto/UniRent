@@ -51,14 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'foto_profilo' => ['file', 'mimes:jpeg,png', 'max:5000'],
             'name' => ['required', 'string', 'max:255'],
-            'cognome' => ['required', 'string','max:255'],
-            'data_nascita' =>['required', 'date'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'sesso' => ['required', 'string'],
+            'data_nascita' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' =>['required', 'string', 'min:8', 'unique:users'],
+            'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cellulare' =>['required','string','min:10', 'max:10','unique:users'],
-            'livello' => ['required','integer']
+            'cellulare' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
+            'livello' => ['required', 'integer']
         ]);
     }
 
@@ -71,9 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if ($data['foto_profilo'] !== '') {
+            $image = $data['foto_profilo']->file('foto');
+            $imageName = $image->getClientOriginalName();
+        } else {
+            $imageName = NULL;
+        }
         return User::create([
+            'foto_profilo' => $imageName,
             'name' => $data['name'],
             'cognome' => $data['cognome'],
+            'sesso' => $data['sesso'],
             'data_nascita' => $data['data_nascita'],
             'email' => $data['email'],
             'username' => $data['username'],
@@ -81,5 +91,10 @@ class RegisterController extends Controller
             'cellulare' => $data['cellulare'],
             'livello' => $data['livello']
         ]);
+
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/img/foto_profilo';
+            $image->move($destinationPath, $imageName);
+        };
     }
 }

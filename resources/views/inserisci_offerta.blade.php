@@ -119,8 +119,8 @@
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                    <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
-                    <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'prezzo']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
+                    <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
+                    <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
                 </ul>
             </div>
 

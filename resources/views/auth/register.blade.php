@@ -129,7 +129,7 @@
 
             <div  class="wrap-input">
                 {{ Form::label('descrizione', 'Descrizione', ['class' => 'label-input']) }}
-                {{ Form::textarea('descrizione', '', ['class' => 'input descrizione w3-center', 'id' => 'descrizione']) }}
+                {{ Form::textarea('descrizione', '', ['class' => 'input descrizione', 'id' => 'descrizione']) }}
                 @if ($errors->first('descrizione'))
                 <ul class="errors">
                     @foreach ($errors->get('descrizione') as $message)

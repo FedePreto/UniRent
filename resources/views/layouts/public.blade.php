@@ -4,8 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @section('links')
         <link rel="stylesheet" type="text/css" href= "{{ asset('css/w3-style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Da qui prendiamo le icone-->
+        @show
+        @section('scripts')
         <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
         
         <!-- Add jQuery library -->
@@ -16,6 +19,7 @@
         <script type="text/javascript">$(function() {
         $('.map').maphilight();});
         </script>
+        @show
                
     </head>
 
@@ -42,7 +46,7 @@
         <footer class="w3-center w3-black w3-padding-16">
             UniRent | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
             <a  href="mailto:info@unirent.it">info@unirent.it</a> | <span itemprop="telephone">+39 347 58 30 387</span>
-            <br><a target="_blank" href="#"> privacy</a> | <a target="_blank" href="#"> cookie policy</a>
+            <br><a href="{{route('privacy')}}"> Privacy e Cookie Policy</a> | <a href="{{route('termini_condizioni')}}"> Termini e Condizioni </a>
             <ul class="social-media-list">
                     <li><a target="_blank" href="https://www.facebook.com/"><img src="{{asset('img/social/facebook.png')}}"  title="Facebook" alt="Facebook icon"></a></li>
                     <li><a target="_blank" href="https://twitter.com/i/flow/login/"><img src="{{asset('img/social/twitter.png')}}" title="Twitter" alt="Twitter icon"></a></li>

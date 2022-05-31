@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="w3-container w3-padding-32" id="faq">
-      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>FAQ</b></h3>
+      <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center"><b>FAQ</b></h2>
       <section class="faq-container">
           @isset($faqs)
             @foreach($faqs as $faq)

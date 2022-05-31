@@ -67,7 +67,12 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Come posso effettuare la registrazione al sito?', 'risposta' => 'In alto a destra nella home page troverai diversi pulsanti, clicca su quello che riporta la parola \'SignUp\'.'],
             ['domanda' => 'Come posso mettere in affitto un appartamento?', 'risposta' => 'Per mettere in affitto un appartamneto devi prima registrarti al sito come locatore e compilare una semplice form.'],
             ['domanda' => 'Posso accordarmi direttamente con il locatore tramite il sito?', 'risposta' => 'Sì, effettuando l\'accesso e selezionando l\'appartamento interessato, sarà possibile avviare una chat con il locatore in questione attraverso il sito stesso.'],
-        ]);
+            ['domanda' => 'Perché dovrei affidarmi a UniRent?', 'risposta' => 'Trovare casa in una nuova città non è mai facile. UniRent seleziona le migliori soluzioni, evitando il rischio di brutte esperienze e garantendo sempre un regolare contratto.'],  
+            ['domanda' => 'Come funziona?', 'risposta' => 'Scegli tra le nostre offerte a seconda delle tue preferenze e delle tue necessità. '],
+            ['domanda' => 'Quanto costa?', 'risposta' => 'Il servizio è completamente gratuito.'],
+            ['domanda' => 'Posso offrire in affitto una sola stanza?', 'risposta' => 'Assecondiamo le tue richieste: puoi offrire in affitto tutta la casa o una sola camera. Un intero immobile o più appartamenti.'],
+            ['domanda' => 'Dove vi trovo? Come vi contatto?', 'risposta' => 'Siamo raggiungibili via e-mail scrivendo a \'info@sturent.it\' oppure ai recapiti indicati nella pagina \'Contatti\' di questo sito.'],
+            ]);
         
         DB::table('contratto')->insert([
             ['dataInizio' => '2022-05-11' ,'dataFine' => '2023-05-11' , 'locatario' => 2, 'alloggio' => 0]            

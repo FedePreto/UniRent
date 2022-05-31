@@ -25,6 +25,7 @@ Route::view('/Where','where')->name('where');
 Route::view('/What','what')->name('what');
 Route::view('/Privacy','privacy_cookies')->name('privacy');
 Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni');
+
 //Route Admin
 Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
 

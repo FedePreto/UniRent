@@ -55,7 +55,7 @@
             
             Designed by<br>
             <div class="credits">
-                <a target="_blank" href="#"><img width="100" src="img/logo.png" title="#" alt="#"></a>
+                <a  href="{{route('who')}}"><img width="100" src="img/logo.png" title="Home" alt="Home"></a>
             </div>
         </footer>
     </body>

@@ -7,7 +7,7 @@
 @parent
 <script src="{{ asset('js/form_validation.js') }}"></script>
 <script>
-    $(  function() {
+    $(function() {
         var actionUrl = "{{ route('addHome.store') }}";
         var formId = 'addHome';
         $(":input").on('blur', function(event) {
@@ -92,6 +92,14 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
+                {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
+                <ul class="my-filter">
+                    <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
+                    <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
+                </ul>
+            </div>
+
+            <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-app']) }}
                 {{ Form::text('superficie', '', ['class' => 'input-app', 'id' => 'superficie']) }}
             </div>
@@ -114,15 +122,9 @@
                                            , null, ['class' => 'input','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
             </div>
 
-           
 
-            <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
-                <ul class="my-filter">
-                    <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
-                    <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
-                </ul>
-            </div>
+
+
 
 
             <div class="w3-row-padding">

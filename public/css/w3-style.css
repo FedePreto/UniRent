@@ -2187,3 +2187,15 @@ position: relative;
       max-height:150px;
       text-align: center;
   }
+
+  
+  .thumb {
+    width: auto;
+    height: 500px;
+    overflow: hidden;
+  }
+  .thumb > img {
+    height: 500px;
+    width: 400px; 
+    margin-left: -77px;  
+  }

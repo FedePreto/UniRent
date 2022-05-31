@@ -74,8 +74,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if (request()->has('foto_profilo')) {
-            $image =request()->file('foto_profilo');
+            $image = request()->file('foto_profilo');
             $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path().'/img/foto_profilo';
+            $image->move($destinationPath, $imageName);
         } else {
             $imageName = NULL;
         }
@@ -93,9 +95,5 @@ class RegisterController extends Controller
             'descrizione' => $data['descrizione']
         ]);
 
-        if (!is_null($imageName)) {
-            $destinationPath = public_path('/img/foto_profilo');
-            $image->move($destinationPath, $imageName);
-        };
     }
 }

@@ -2238,3 +2238,7 @@ textarea { resize:none;
     margin-bottom: 15px;
   }
   .alert.success {background-color: #04AA6D;}
+
+  .accanto{
+      display:"inline";
+  }

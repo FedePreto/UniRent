@@ -4,89 +4,92 @@
 
 @section('content')
 <div class="static w3-center">
-    <h3>Registrazione</h3>
+    <h2><b>Registrazione</b></h2>
     <p>Utilizza questa form per registrarti al sito.</p>
-
+    <hr>
     <div class="container-contact">
         <div class="wrap-contact1">
             {{ Form::open(array('route' => 'register', 'files' => true, 'class' => 'contact-form')) }}
+            
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => 'fa fa-picture-o']) }}
+                    {{ Form::label('foto_profilo', 'Foto profilo', ['class' => 'label-input ']) }}
+                    {{ Form::file('foto_profilo', ['class' => 'input', 'id' => 'foto_profilo']) }}
+                    @if ($errors->first('foto_profilo'))
+                    <ul class="errors">
+                        @foreach ($errors->get('foto_profilo') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
 
-            <div class="wrap-input">
-                {{ Form::label('foto_profilo', 'Foto profilo', ['class' => 'label-input']) }}
-                {{ Form::file('foto_profilo', ['class' => 'input', 'id' => 'foto_profilo']) }}
-                @if ($errors->first('foto_profilo'))
-                <ul class="errors">
-                    @foreach ($errors->get('foto_profilo') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => ' fa fa-id-card-o']) }}
+                    {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
+                    {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
+                    @if ($errors->first('name'))
+                    <ul class="errors">
+                        @foreach ($errors->get('name') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => 'fa fa-id-card-o']) }}
+                    {{ Form::label('cognome', 'Cognome', ['class' => 'label-input ']) }}
+                    {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'surname']) }}
+                    @if ($errors->first('cognome'))
+                    <ul class="errors">
+                        @foreach ($errors->get('cognome') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
 
-            <div class="wrap-input">
-                {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
-                {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
-                @if ($errors->first('name'))
-                <ul class="errors">
-                    @foreach ($errors->get('name') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-
-            <div class="wrap-input">
-                {{ Form::label('cognome', 'Cognome', ['class' => 'label-input']) }}
-                {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'surname']) }}
-                @if ($errors->first('cognome'))
-                <ul class="errors">
-                    @foreach ($errors->get('cognome') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-
-            <div class="wrap-input">
-                {{ Form::label('sesso', 'Sesso', ['class' => 'label-input']) }}
-                {{ Form::select('sesso',['Maschio'=>'Maschio', 'Femmina'=>'Femmina'], null, ['class' => 'input','id' => 'sesso', 'placeholder' => 'Seleziona il tuo sesso']) }}
-                @if ($errors->first('sesso'))
-                <ul class="errors">
-                    @foreach ($errors->get('sesso') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => 'fa fa-venus-mars']) }}
+                    {{ Form::label('sesso', 'Sesso', ['class' => 'label-input']) }}
+                    {{ Form::select('sesso',['Maschio'=>'Maschio', 'Femmina'=>'Femmina'], null, ['class' => 'input','id' => 'sesso', 'placeholder' => 'Seleziona il tuo sesso']) }}
+                    @if ($errors->first('sesso'))
+                    <ul class="errors">
+                        @foreach ($errors->get('sesso') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
 
 
-            <div class="wrap-input">
-                {{ Form::label('', '', ['class' => 'fa fa-birthday-cake']) }}
-                {{ Form::label('data_nascita', 'Data di Nascita', ['class' => 'label-input']) }}
-                {{Form::date('data_nascita', \Carbon\Carbon::now(),['class'=>'input'])}}
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => 'fa fa-birthday-cake']) }}
+                    {{ Form::label('data_nascita', 'Data di Nascita', ['class' => 'label-input']) }}
+                    {{Form::date('data_nascita', \Carbon\Carbon::now(),['class'=>'input'])}}
 
-                @if ($errors->first('data_nascita'))
-                <ul class="errors">
-                    @foreach ($errors->get('data_nascita') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+                    @if ($errors->first('data_nascita'))
+                    <ul class="errors">
+                        @foreach ($errors->get('data_nascita') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
 
-            <div class="wrap-input">
-                {{ Form::label('', '', ['class' => 'fa fa-envelope']) }}
-                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
-                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
-                @if ($errors->first('email'))
-                <ul class="errors">
-                    @foreach ($errors->get('email') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-
+                <div class="wrap-input">
+                    {{ Form::label('', '', ['class' => 'fa fa-envelope']) }}
+                    {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
+                    {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
+                    @if ($errors->first('email'))
+                    <ul class="errors">
+                        @foreach ($errors->get('email') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
+            
             <div class="wrap-input">
                 {{ Form::label('', '', ['class' => 'fa fa-user']) }}
                 {{ Form::label('username', 'Username', ['class' => 'label-input']) }}

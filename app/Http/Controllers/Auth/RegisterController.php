@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'cellulare' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
             'livello' => ['required', 'integer'],
-            'descrizione' => ['string','max:2500']
+            'descrizione' => ['max:2500']
         ]);
     }
 

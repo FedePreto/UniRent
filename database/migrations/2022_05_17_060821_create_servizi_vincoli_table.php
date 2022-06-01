@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVincoliTable extends Migration
+class CreateServiziVincoliTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateVincoliTable extends Migration
      */
     public function up()
     {
-        Schema::create('vincoli', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nome');
+        Schema::create('servizi_vincoli', function (Blueprint $table) {
+            $table->bigIncrements('id')->index();
+            $table->boolean('tipologia');
+            $table->string('nome')->index();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateVincoliTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vincoli');
+        Schema::dropIfExists('servizi_vincoli');
     }
 }

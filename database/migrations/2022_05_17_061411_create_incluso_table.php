@@ -15,8 +15,8 @@ class CreateInclusoTable extends Migration
     {
         Schema::create('incluso', function (Blueprint $table) {
             $table->integer('alloggio')->references('id')->on('alloggi')->index();
-            $table->integer('servizio')->references('id')->on('servizi')->index();
-           /* $table->primary(['alloggio','servizio']);*/
+            $table->integer('servizio_vincolo')->references('id')->on('servizi_vincoli')->index();
+           /*$table->primary(['alloggio','servizio']);*/
             $table->timestamps();
         });
     }

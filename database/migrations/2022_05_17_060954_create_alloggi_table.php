@@ -24,7 +24,8 @@ class CreateAlloggiTable extends Migration
             $table->float('prezzo')->index();
             $table->longText('descrizione');
             $table->float('superficie')->index();
-            $table->integer('letti')->index();
+            $table->integer('letti_pl')->nullable();
+            $table->integer('letti_ap');
             $table->integer('n_camere')->index()->default(1);
             $table->boolean('opzionato')->index()->default(0);
             $table->boolean('tipologia')->index();

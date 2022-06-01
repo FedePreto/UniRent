@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('data_nascita');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('username',20)->unique();
+            $table->string('username')->unique();
             $table->string('password');
             $table->string('cellulare')->unique();
             $table->integer('livello');

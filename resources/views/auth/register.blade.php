@@ -89,7 +89,7 @@
 
             <div class="wrap-input">
                 {{ Form::label('', '', ['class' => 'fa fa-user']) }}
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
+                {{ Form::label('username', 'Username', ['class' => 'label-input']) }}
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
                 <ul class="errors">

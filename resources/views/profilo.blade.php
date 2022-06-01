@@ -76,7 +76,7 @@
     <h3 style="text-align:center">Ciao <b>{{auth()->user()->name}}</b></h3>
     <div class="card">
       <h5>ricompila i campi dei dati che desideri modificare</h5>
-      {{ Form::open(array('route' => 'updateProfilo.update', 'id' => 'updateProfile', 'files' => true)) }}
+      {{ Form::open(array('route' => 'updateProfilo.update', 'method' => 'PUT', 'files' => true)) }}
       <div class="wrap-input  rs1-wrap-input">
         {{ Form::label('','', ['class' => 'fa fa-id-card']) }}
         {{ Form::label('name', ' Nome', ['class' => 'label-input-card']) }}

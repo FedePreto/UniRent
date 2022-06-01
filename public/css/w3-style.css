@@ -1192,8 +1192,8 @@ a {
    
 }
 .w3-padding-32 {
-    padding-top: 32px !important;
-    padding-bottom: 32px !important;
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 .w3-padding-48 {
     padding-top: 48px !important;
@@ -1768,14 +1768,21 @@ ul.social-media-list img:hover {
   background-color: #ccc;
 }
 
+.google-maps{
+    overflow:hidden;
+    padding-bottom: 45%;
+    position:relative;
+    height:0;
 
-.google-maps iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
+}
+
+.google-maps iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+
 }
 
 .faq-heading{

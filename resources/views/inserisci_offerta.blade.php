@@ -21,6 +21,29 @@
             doFormValidation(actionUrl, formId); //attiva una funzione js definita da noi che invece implementa la submit
         });
     });
+
+    $(function() {
+        $('#letti_posto_letto').hide();
+        $('input[name = "tipologia"]').click(function(){
+            var tipo = $('input[name = "tipologia"]:checked').val();  
+        if(tipo==1)
+            $('#letti_posto_letto').show();        
+        else
+            $('#letti_posto_letto').hide();
+        
+        });
+    });
+
+    $(function() {
+        $('#vincolo').click(function(){
+            var tipo = $('input[name = "tipologia"]:checked').val();  
+        if(tipo==1)
+            $('#letti_posto_letto').show();        
+        else
+            $('#letti_posto_letto').hide();
+        
+        });
+    });
 </script>
 @endsection
 
@@ -33,8 +56,13 @@
         <div class="wrap-contact">
             {{ Form::open(array('route' => 'addHome.store', 'id' => 'addHome', 'files' => true, 'class' => 'contact-form')) }}
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('titolo', 'Titolo Appartamento:', ['class' => 'label-input-app']) }}
+                {{ Form::label('titolo', 'Titolo annuncio:', ['class' => 'label-input-app']) }}
                 {{ Form::text('titolo', '', ['class' => 'input-app', 'id' => 'titolo']) }}
+            </div>
+
+            <div class="wrap-input  rs1-wrap-input">
+                {{ Form::label('foto', 'Foto annuncio:', ['class' => 'label-input-app']) }}
+                {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
@@ -77,25 +105,20 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('numero', 'N°:', ['class' => 'label-input-app']) }}
-                {{ Form::text('numero','', ['class' => 'input-app','id' => 'numero']) }}
+                {{ Form::label('numero_civico', 'N° civico:', ['class' => 'label-input-app']) }}
+                {{ Form::text('numero_civico','', ['class' => 'input-app','id' => 'numero']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('prezzo', 'Prezzo:', ['class' => 'label-input-app']) }}
+                {{ Form::label('prezzo', 'Canone mensile:', ['class' => 'label-input-app']) }}
                 {{ Form::text('prezzo', '', ['class' => 'input-app', 'id' => 'prezzo']) }}
-            </div>
-
-            <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-app']) }}
-                {{ Form::textarea('descrizione', '', ['class' => 'input-app', 'id' => 'descrizione']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('tipologia', 'Tipologia Offerta:', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                    <li>{{ Form::radio('tipologia',0,true, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }} </li>
-                    <li>{{ Form::radio('tipologia',1,false, ['class' => 'input-app', 'id' => 'tipologia']) }} {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }} </li>
+                    <li>{{ Form::radio('tipologia',0,true, ['id' => 'appartamento']) }} {{ Form::label('appartamento','Appartamento') }}</li>
+                    <li>{{ Form::radio('tipologia',1,false, ['id' => 'posto_letto']) }} {{ Form::label('posto_letto', 'Posto letto') }}</li>
                 </ul>
             </div>
 
@@ -105,8 +128,13 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti', 'N° Letti:', ['class' => 'label-input-app']) }}
-                {{ Form::text('letti', '', ['class' => 'input-app', 'id' => 'letti']) }}
+                {{ Form::label('letti_appartamento', 'N° letti nell\'appartamento:', ['class' => 'label-input-app']) }}
+                {{ Form::text('letti_appartamento', '', ['class' => 'input-app', 'id' => 'letti_appartamento']) }}
+            </div>
+
+            <div id='letti_posto_letto' class="wrap-input  rs1-wrap-input">
+                {{ Form::label('letti_posto_letto', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
+                {{ Form::select('letti_posto_letto', [1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'tipologia_posto_letto', 'placeholder' => 'Seleziona la tipologia']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
@@ -119,30 +147,65 @@
                 {{ Form::select('periodo_locazione',[3 => '3 Mesi',6 => '6 Mesi', 12 => '1 Anno'], null, ['class' => 'input','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
             </div>
 
-
-
-
-
-
+            @isset($servizi)
             <div class="w3-row-padding">
                 {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-app']) }}
                 <ul class="w3-bar-block w3-text">
                     @foreach ( $servizi as $servizio)
-                    <li>{{Form::checkBox($servizio->nome,$servizio->id)}} {{Form::Label($servizio->nome)}}</li>
+                    <li>{{Form::checkBox($servizio->nome,$servizio->id)}}
+                        {{Form::label($servizio->nome)}}
+                    </li>
                     @endforeach
                 </ul>
             </div>
+            @endisset
+
+            @isset($vincoli)
+            <div class="wrap-input  rs1-wrap-input">
+                {{ Form::label('tipologia', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
+                <ul class="my-filter">
+                    <li>{{ Form::radio('vincoli',0,true, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Si') }}</li>
+                    <li>{{ Form::radio('tipologia',1,false, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
+                </ul>
+            </div>
+            <div class="w3-row-padding">
+                {{ Form::label('vincolo', 'Vuoi mostrare i vincoli ?', ['class' => 'label-input-app']) }}
+                {{ Form::label('vincolo', 'Vincoli:', ['class' => 'label-input-app']) }}
+                <ul class="w3-bar-block w3-text">
+                    @foreach($vincoli as $vincolo)
+                    <li>{{Form::radio($vincolo->nome,$vincolo->id,['class' => 'radio','id' => 'vincolo'])}} {{Form::label($vincolo->nome)}}</li>
+
+                    @endforeach
+           <!--         
+                    @foreach ($vincoli as $vincolo)
+
+                    @php
+
+                    if($vincolo->id === 17 || $vincolo->id === 18)
+                    $name = 'sesso';
+                    
+                    elseif($vincolo->id === 19 || $vincolo->id === 20)
+                    $name = 'matricola';
+                    @endphp
+
+                    <li>{{Form::radio($name, $vincolo->id, false)}} {{Form::Label($vincolo->nome)}}</li>
+
+                    @endforeach -->
+                </ul>
+            </div>
+            @endisset
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('foto', 'Immagine:', ['class' => 'label-input-app']) }}
-                {{ Form::file('foto', ['class' => 'input-app', 'id' => 'foto']) }}
+                {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-app']) }}
+                {{ Form::textarea('descrizione', '', ['class' => 'input-app', 'id' => 'descrizione']) }}
             </div>
 
 
             <div class="container-form-btn">
-                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
+                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}          
             </div>
             {{Form::close()}}
+            <button onclick="uncheck()">Resetta</button>
         </div>
     </div>
 </div>

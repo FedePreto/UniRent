@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Faq;
-use App\Models\Resources\Servizi;
+use App\Models\Resources\ServiziVincoli;
 use App\Models\Resources\Incluso;
 
 use Illuminate\Support\Facades\Log;
@@ -62,8 +62,8 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getServizi(){
-        return Servizi::all();
+    public function getServiziVincoli(){
+        return ServiziVincoli::all();
     }
     public function getAlloggio($id){
         $alloggio =  Alloggi::find($id);

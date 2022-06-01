@@ -36,16 +36,17 @@ class LocatoreController extends Controller
     public function index_lario()
     {
         $alloggi = $this->_catalogModel->getCatalog();
-        $servizi = $this->_catalogModel->getServizi();
+        $servizi = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
             ->with('alloggi', $alloggi)
             ->with('servizi', $servizi);
     }
     public function addHome()
     {
-        $servizi = $this->_locatoreModel->getAlloggiServizi();
+        $servizi_vincoli = $this->_locatoreModel->getAlloggiSV();
         return view('inserisci_offerta')
-            ->with('servizi', $servizi);
+            ->with('servizi', $servizi_vincoli[0])
+            ->with('vincoli', $servizi_vincoli[1]);
     }
 
     //Funzione che viene attivata una volta che i dati sono stati validati

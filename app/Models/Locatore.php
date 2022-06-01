@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Models;
- use App\Models\Resources\Servizi;
+ use App\Models\Resources\ServiziVincoli;
  use App\Models\Resources\Alloggi;
  use Illuminate\Support\Facades\Auth;
 
 class Locatore{
 
-    public function getAlloggiServizi(){
-        return Servizi::all();
+    public function getAlloggiSV(){
+        $servizi =  ServiziVincoli::where('tipologia', '=' ,0)->get();
+        $vincoli = ServiziVincoli::where('tipologia', '=' ,1)->get();
+        return [$servizi, $vincoli];
     }
 
     public function getCatalogo(){

@@ -238,7 +238,15 @@
                                 @endif
                             @endif
                         @endforeach
-                    @endforeach  
+                    @endforeach
+                    @if($alloggio->eta_max < 90)
+                        @if(!(is_null($alloggio->eta_max)))
+                            <tr><td style="width:33.3333%; padding-top:5px;  padding-left:20px;"> <span>Range Età: 18 - {{$alloggio->eta_max}}</span></td></tr>
+                            @php
+                                $flag=1;
+                            @endphp
+                        @endif 
+                    @endif
                     @if($flag==0)
                     <tr>
                         <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>

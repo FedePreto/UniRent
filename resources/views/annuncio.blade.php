@@ -114,33 +114,115 @@
             <div style="padding-top:10px;">
                 <span style="font-size:26px; color:black;">Descrizione</span>
             </div>
-            <hr style="margin:5px; margin-bottom:10px;"> >
+            <hr style="margin:5px; margin-bottom:10px;">
             {{$alloggio->descrizione}}
         </div>
         <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:320px; float:right; width:66%;">
             <div style="padding-top:10px;">
-                <span style="font-size:26px; color:black;">Servizi Offerti e Vincoli di Affitto</span>
+                <span style="font-size:26px; color:black;">Servizi Offerti</span>
             </div>
-            <hr style="margin:5px; margin-bottom:10px;"> 
-            {{$alloggio->descrizione}}
-        </div>
-        <div style="text-align:center; width:1%;">          
+            <hr style="margin:5px; margin-bottom:5px;"> 
+            <div style="width:100%">
+                <table style="width:100%">
+                @isset($servizivincoli)
+                    @php
+                        $i = 0;
+                        $flag=0;
+                    @endphp
+                    @foreach($servizivincoli as $servizio)
+                        @foreach($servizi_inclusi as $incluso)
+                            @if(($servizio->id)===($incluso->servizio_vincolo))
+                                @if(($servizio->tipologia)===0)
+                                    @switch($i)
+                                        @case(0)
+                                            <tr >
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"> <span><i class="fa fa-calendar" style="color:black;"></i>{{$servizio->nome}}</span></td>                                            
+                                                @php
+                                                    $i = 1;
+                                                    $flag=1;
+                                                @endphp
+                                        @break
+                                        @case(1)
+                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-bath" style="color:black;"></i>{{$servizio->nome}}</span></td>
+                                                @php
+                                                    $i = 2;
+                                                @endphp
+                                        @break
+                                        @case(2)
+                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-crop" style="color:black;"></i> {{$servizio->nome}}</span></td>
+                                            </tr>
+                                            @php
+                                                $i = 0;
+                                            @endphp
+                                        @break
+                                    @endswitch
+                                @endif
+                            @endif
+                        @endforeach
+                    @endforeach
+                    @if($flag==0)
+                    <tr>
+                        <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Servizio Offerto</span></td>
+                    </tr>
+                    @endif       
+                @endisset
+                </table>
+            </div>
+            <div style="padding-top:10px;">
+                <span style="font-size:26px; color:black;">Vincoli Affitto</span>
+            </div>
+            <hr style="margin:5px; margin-bottom:5px;">
+            <div style="width:100%">
+                <table style="width:100%">
+                @isset($servizivincoli)
+                    @php
+                        $i = 0;
+                        $flag=0;
+                    @endphp
+                    @foreach($servizivincoli as $servizio)
+                        @foreach($servizi_inclusi as $incluso)
+                            @if(($servizio->id)===($incluso->servizio_vincolo))
+                                @if(($servizio->tipologia)===1)
+                                    @switch($i)
+                                        @case(0)
+                                            <tr >
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"> <span><i class="fa fa-calendar" style="color:black;"></i>{{$servizio->nome}}</span></td>                                            
+                                                @php
+                                                    $i = 1; $flag=1;
+                                                @endphp
+                                        @break
+                                        @case(1)
+                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-bath" style="color:black;"></i>{{$servizio->nome}}</span></td>
+                                                @php
+                                                    $i = 2;
+                                                @endphp
+                                        @break
+                                        @case(2)
+                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-crop" style="color:black;"></i> {{$servizio->nome}}</span></td>
+                                            </tr>
+                                            @php
+                                                $i = 0;
+                                            @endphp
+                                        @break
+                                    @endswitch
+                                @endif
+                            @endif
+                        @endforeach
+                    @endforeach  
+                    @if($flag==0)
+                    <tr>
+                        <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>
+                    </tr>
+                    @endif
+                @endisset
+                </table>
+            </div>      
         </div>
     </div>
+    <div style="text-align:center; width:1%;">          
+    </div>
+</div>
     
         
-
-    @isset($servizi)
-    <hr>
-    <p>Servizi offerti :</p>
-    <ul class='my-filter'>
-        @foreach($servizi as $servizio)
-            <li>{{$servizio->nome}}</li>
-        @endforeach
-    </ul>
-    @endisset
-
-    Sesso: solo ragazzi/solo ragazze/nessun vincolo
-                Tipo Studente: solo matricole/no matricole/nessun servizio_vincolo
 </div>
 @endsection

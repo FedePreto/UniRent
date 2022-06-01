@@ -35,12 +35,12 @@ class UserController extends Controller
     public function getAnnuncio(int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
-        $servizi = $this->_catalogModel->getServiziVincoli();
+        $servizivincoli = $this->_catalogModel->getServiziVincoli();
         $locatore= $this->_annuncioModel->getLocatore($alloggio->locatore);
-        Log::info($servizi);
+        Log::info($servizivincoli);
         return view('annuncio')
                 ->with('alloggio',$alloggio)
-                ->with('servizi',$servizi)
+                ->with('servizivincoli',$servizivincoli)
                 ->with('servizi_inclusi',$servizi_inclusi)
                 ->with('locatore',$locatore);
                 

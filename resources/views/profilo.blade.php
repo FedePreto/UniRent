@@ -20,7 +20,7 @@
   });
 
   $(function() {
-    $(".alert").show().delay(2000).fadeOut();
+    $(".alert").show().delay(2000).fadeOut("show");
   })
 </script>
 @endsection

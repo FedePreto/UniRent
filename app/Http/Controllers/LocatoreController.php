@@ -146,4 +146,12 @@ class LocatoreController extends Controller
         return redirect()->route('profilo')
             ->with('status', 'Profilo aggiornato correttamente!');
     }
+
+    public function deleteAnnuncio($id){
+        $alloggio = $this->_catalogModel->getAlloggio($id);
+        $alloggio->delete();
+
+        return  redirect()->route('locatore')
+                ->with('status', 'Alloggio eliminato correttamente!');
+    }
 }

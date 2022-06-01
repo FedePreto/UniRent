@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
+use App\Models\Annuncio;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     protected $_catalogModel ;
-    
+    protected $_annuncioModel;
+
     public function __construct(){
         $this->_catalogModel = new Catalogo;
+        $this->_annuncioModel = new Annuncio;
     }
     //
     public function searchCatalogo(Request $ricerca ){
@@ -33,10 +36,13 @@ class UserController extends Controller
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
         $servizi = $this->_catalogModel->getServizi();
+        $locatore= $this->_annuncioModel->getLocatore($alloggio->locatore);
         Log::info($servizi);
         return view('annuncio')
-                ->with('alloggio',$alloggio[0])
+                ->with('alloggio',$alloggio)
                 ->with('servizi',$servizi)
-                ->with('servizi_inclusi',$servizi_inclusi);
+                ->with('servizi_inclusi',$servizi_inclusi)
+                ->with('locatore',$locatore);
+                
     }
 }

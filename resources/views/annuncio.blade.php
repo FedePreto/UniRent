@@ -27,8 +27,8 @@
                 <div>               
                     <i class="fa fa-map-o" style="color:black;"></i> {{$alloggio->regione}}, {{$alloggio->citta}}, {{$alloggio->cap}}, {{$alloggio->indirizzo}}, {{$alloggio->numero}} 
                     <div style="float:right;">
-                        <span style="font-size:10px;"><i class="fa fa-upload" style="color:black;"></i> Aggiunto il: {{$alloggio->created_at}}12/02/2022   </span>
-                        <span style="font-size:10px; padding-left:16px;"><i class="fa fa-refresh" style="color:black;"></i> Ultima modifica il: {{$alloggio->updated_at}}12/02/2022   </span>                                  
+                        <span style="font-size:10px;"><i class="fa fa-upload" style="color:black;"></i> Aggiunto il: {{$alloggio->created_at}}   </span>
+                        <span style="font-size:10px; padding-left:16px;"><i class="fa fa-refresh" style="color:black;"></i> Ultima modifica il: {{$alloggio->updated_at}}   </span>                                  
                     </div>                         
                 </div>   
                 <div style="padding-top:10px;">
@@ -97,7 +97,6 @@
                                         <button class="buttonAlloggio buttonAlloggio1 roundedcorners" >Richiedi </button>
                                     @endif
                                     <button class="buttonAlloggio buttonAlloggio1 roundedcorners" >Contatta Locatore</button>
-                                    <button class="buttonAlloggio buttonAlloggio1 roundedcorners"></button>
                                 </div>
                             @endcan           
                             <div style="text-align:center;">               

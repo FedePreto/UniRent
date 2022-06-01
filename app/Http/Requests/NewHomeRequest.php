@@ -30,18 +30,21 @@ class NewHomeRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'titolo' => 'required|max:30',
-            'regione' => 'required',
-            'citta' => 'required',
+            'titolo' => 'required|string|max:30',
+            'regione' => 'required|string',
+            'citta' => 'required|string',
             'cap' => 'required|integer',
-            'indirizzo' => 'required',
+            'indirizzo' => 'required|string',
             'numero' => 'required|integer',
             'prezzo' => 'required|numeric|min:0',
-            'descrizione' => 'required|max:2500',
-            'superficie' => 'required|integer',
-            'letti' => 'required|integer',
+            'descrizione' => 'required|string|max:2500',
+            'superficie' => 'required|integer|min:0',
+            'letti_pl' => 'sometimes|integer|min:0',
+            'letti_ap' => 'required|integer|min:0',
+            'n_camere' => 'required|integer|min:0',
             'tipologia' => 'required|boolean',
-            'foto' => 'file|mimes:jpeg,png|max:1024'
+            'foto' => 'sometimes|file|mimes:jpeg,png|max:1024',
+            'periodo_locazione' => 'required|integer|min:3|max:12'
         ];
     }
 

@@ -50,7 +50,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'foto_profilo' => ['file', 'mimes:jpeg,png', 'max:5000'],
+            'foto_profilo' => ['sometimes','file', 'mimes:jpeg,png', 'max:5000'],
             'name' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
             'sesso' => ['required', 'string'],
@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'cellulare' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
             'livello' => ['required', 'integer'],
-            'descrizione' => ['max:2500']
+            'descrizione' => ['sometimes','string','max:2500']
         ]);
     }
 

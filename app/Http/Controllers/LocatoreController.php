@@ -8,7 +8,7 @@ use App\Http\Requests\NewHomeRequest;
 use App\Models\Catalogo;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Resources\Incluso;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 
@@ -60,12 +60,23 @@ class LocatoreController extends Controller
         }
 
         $alloggio = new Alloggi;
+        
+
         //Associa alle proprietà all'oggetto alloggio i dati validati
         $alloggio->fill($request->validated());
-        $alloggio->locatore = Auth::id();
+        $alloggio->locatore = auth()->user()->id;
         $alloggio->foto = $imageName;
         $alloggio->created_at = Carbon::now()->format('Y-m-d');
         $alloggio->save();
+
+        
+        foreach($request->get('servizi') as $servizio){
+            $incluso = new Incluso([
+                'alloggio' => $alloggio->id,
+                'servizio_vincolo' => $servizio
+            ]);
+            $incluso->save();            
+        };
 
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/img/alloggi';

@@ -35,6 +35,7 @@
                 $('#letti_posto_letto').hide();
                 $('#Angolo_studio').hide();
                 $('#Locale_Ricreativo').show();
+                $('#letti_pl').prop('selectedIndex',0);
             }
 
         });
@@ -42,8 +43,8 @@
 
     $(function() {
         $('#vincoli').hide();
-        $('input[name="vuoi_vincoli"]').click(function() {
-            var tipo = $('input[name = "vuoi_vincoli"]:checked').val();
+        $('input[name="vuoiVincoli"]').click(function() {
+            var tipo = $('input[name = "vuoiVincoli"]:checked').val();
             if (tipo == 0)
                 $('#vincoli').show();
             else {
@@ -114,8 +115,8 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('numero_civico', 'N° civico:', ['class' => 'label-input-app']) }}
-                {{ Form::text('numero_civico','', ['class' => 'input-app','id' => 'numero']) }}
+                {{ Form::label('numero', 'N° civico:', ['class' => 'label-input-app']) }}
+                {{ Form::text('numero','', ['class' => 'input-app','id' => 'numero']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
@@ -137,15 +138,15 @@
             </div>
 
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti_appartamento', 'N° letti nell\'appartamento:', ['class' => 'label-input-app']) }}
-                {{ Form::text('letti_appartamento', '', ['class' => 'input-app', 'id' => 'letti_appartamento']) }}
+                {{ Form::label('letti_ap', 'N° letti nell\'appartamento:', ['class' => 'label-input-app']) }}
+                {{ Form::text('letti_ap', '', ['class' => 'input-app', 'id' => 'letti_ap']) }}
             </div>
 
             <div id='letti_posto_letto' class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti_posto_letto', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
-                {{ Form::select('letti_posto_letto', [1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'tipologia_posto_letto', 'placeholder' => 'Seleziona la tipologia']) }}
+                {{ Form::label('letti_pl', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
+                {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'letti_pl']) }}
             </div>
-
+            
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('n_camere', 'N° Camere:', ['class' => 'label-input-app']) }}
                 {{ Form::text('n_camere', '', ['class' => 'input-app', 'id' => 'n_camere']) }}
@@ -161,7 +162,7 @@
                 {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-app']) }}
                 <ul class="w3-bar-block w3-text">
                     @foreach ( $servizi as $servizio)
-                    <li id={{$servizio->nome}}> {{Form::checkBox($servizio->nome,$servizio->id)}}
+                    <li id={{$servizio->nome}}> {{Form::checkBox('servizi[]',$servizio->id)}}
                         {{Form::label($servizio->nome)}}
                     </li>
                     @endforeach
@@ -171,10 +172,10 @@
 
             @isset($vincoli)
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('vuoi_vincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
+                {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                    <li>{{ Form::radio('vuoi_vincoli',0,false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
-                    <li>{{ Form::radio('vuoi_vincoli',1,true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
+                    <li>{{ Form::radio('vuoiVincoli',0,false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
+                    <li>{{ Form::radio('vuoiVincoli',1,true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
                 </ul>
             </div>
             <div id="vincoli" class="w3-row-padding">
@@ -204,12 +205,10 @@
                 {{ Form::textarea('descrizione', '', ['class' => 'input-app', 'id' => 'descrizione']) }}
             </div>
 
-
             <div class="container-form-btn">
                 {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
             </div>
             {{Form::close()}}
-            <button onclick="uncheck()">Resetta</button>
         </div>
     </div>
 </div>

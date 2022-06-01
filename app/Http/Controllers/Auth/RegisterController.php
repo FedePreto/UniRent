@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
             'sesso' => ['required', 'string'],
-            'data_nascita' => ['required', 'date'],
+            'data_nascita' => ['required', 'date','before:18 years ago'],
             'email' => ['required', 'string', 'unique:users', 'regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

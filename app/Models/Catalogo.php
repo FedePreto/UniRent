@@ -70,7 +70,7 @@ class Catalogo {
         return $alloggio;
     }
     public function getAlloggioServizi($id){
-        $servizi =  Incluso::leftJoin('servizi','servizi.id','incluso.servizio')->where('incluso.alloggio',$id)->get();
+        $servizi =  Incluso::leftJoin('servizi_vincoli','servizi_vincoli.id','incluso.servizio_vincolo')->where('incluso.alloggio',$id)->get();
         Log::info($servizi);
         return $servizi;
     }

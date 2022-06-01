@@ -25,7 +25,7 @@ class UserController extends Controller
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
-        $servizi = $this->_catalogModel->getServizi();
+        $servizi = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
                     ->with('alloggi',$alloggi)
                     ->with('servizi',$servizi)
@@ -35,7 +35,7 @@ class UserController extends Controller
     public function getAnnuncio(int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
-        $servizi = $this->_catalogModel->getServizi();
+        $servizi = $this->_catalogModel->getServiziVincoli();
         $locatore= $this->_annuncioModel->getLocatore($alloggio->locatore);
         Log::info($servizi);
         return view('annuncio')

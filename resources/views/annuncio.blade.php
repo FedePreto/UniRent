@@ -135,25 +135,40 @@
                                 @if(($servizio->tipologia)===0)
                                     @switch($i)
                                         @case(0)
-                                            <tr >
-                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"> <span><i class="fa fa-calendar" style="color:black;"></i>{{$servizio->nome}}</span></td>                                            
+                                            <tr >                          
                                                 @php
+                                                    $nomi= explode("_", $servizio->nome);
                                                     $i = 1;
                                                     $flag=1;
                                                 @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                         @break
                                         @case(1)
-                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-bath" style="color:black;"></i>{{$servizio->nome}}</span></td>
                                                 @php
+                                                    $nomi= explode("_", $servizio->nome);
                                                     $i = 2;
                                                 @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                         @break
                                         @case(2)
-                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-crop" style="color:black;"></i> {{$servizio->nome}}</span></td>
+                                                @php
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 0;
+                                                @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                             </tr>
-                                            @php
-                                                $i = 0;
-                                            @endphp
                                         @break
                                     @endswitch
                                 @endif
@@ -186,23 +201,39 @@
                                     @switch($i)
                                         @case(0)
                                             <tr >
-                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"> <span><i class="fa fa-calendar" style="color:black;"></i>{{$servizio->nome}}</span></td>                                            
                                                 @php
-                                                    $i = 1; $flag=1;
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 1;
+                                                    $flag=1;
                                                 @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                         @break
                                         @case(1)
-                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-bath" style="color:black;"></i>{{$servizio->nome}}</span></td>
                                                 @php
+                                                    $nomi= explode("_", $servizio->nome);
                                                     $i = 2;
                                                 @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                         @break
                                         @case(2)
-                                                <td style="width:33.3333%;  padding-top:5px; padding-left:20px;"><span><i class="fa fa-crop" style="color:black;"></i> {{$servizio->nome}}</span></td>
+                                                @php
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 0;
+                                                @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
                                             </tr>
-                                            @php
-                                                $i = 0;
-                                            @endphp
                                         @break
                                     @endswitch
                                 @endif

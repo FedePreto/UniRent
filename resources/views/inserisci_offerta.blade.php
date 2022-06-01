@@ -35,7 +35,7 @@
                 $('#letti_posto_letto').hide();
                 $('#Angolo_studio').hide();
                 $('#Locale_Ricreativo').show();
-                $('#letti_pl').prop('selectedIndex',0);
+                $('#letti_pl').prop('selectedIndex', 0);
             }
 
         });
@@ -45,12 +45,14 @@
         $('#vincoli').hide();
         $('input[name="vuoiVincoli"]').click(function() {
             var tipo = $('input[name = "vuoiVincoli"]:checked').val();
-            if (tipo == 0)
+            if (tipo == 'Si')
                 $('#vincoli').show();
             else {
                 $('#vincoli').hide();
                 $('input[name="sesso"]').prop('checked', false);
                 $('input[name="matricola"]').prop('checked', false);
+                $('input[name="eta_max"]').val(90);
+                $('input[name="eta_max"]').prop('disable', true);
             }
         });
     });
@@ -132,6 +134,11 @@
                 </ul>
             </div>
 
+            <div id='letti_posto_letto' class="wrap-input  rs1-wrap-input">
+                {{ Form::label('letti_pl', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
+                {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'letti_pl']) }}
+            </div>
+
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-app']) }}
                 {{ Form::text('superficie', '', ['class' => 'input-app', 'id' => 'superficie']) }}
@@ -142,11 +149,8 @@
                 {{ Form::text('letti_ap', '', ['class' => 'input-app', 'id' => 'letti_ap']) }}
             </div>
 
-            <div id='letti_posto_letto' class="wrap-input  rs1-wrap-input">
-                {{ Form::label('letti_pl', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
-                {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'letti_pl']) }}
-            </div>
-            
+
+
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('n_camere', 'N° Camere:', ['class' => 'label-input-app']) }}
                 {{ Form::text('n_camere', '', ['class' => 'input-app', 'id' => 'n_camere']) }}
@@ -174,8 +178,9 @@
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                    <li>{{ Form::radio('vuoiVincoli',0,false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
-                    <li>{{ Form::radio('vuoiVincoli',1,true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
+                    <li>{{ Form::radio('vuoiVincoli','No',true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
+                    <li>{{ Form::radio('vuoiVincoli','Si',false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
+
                 </ul>
             </div>
             <div id="vincoli" class="w3-row-padding">
@@ -196,6 +201,7 @@
                     <li>{{Form::radio($name, $vincolo->id, false)}} {{Form::Label($vincolo->nome)}}</li>
 
                     @endforeach
+                    <li>{{ Form::label('eta_max', 'Età massima: ') }}{{ Form::number('eta_max', 90, ['id' => 'eta_max']) }} </li>
                 </ul>
             </div>
             @endisset

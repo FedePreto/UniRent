@@ -32,8 +32,8 @@ Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isA
 //Route Locatore
 Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore');
 
-Route::get('/Messaggi', 'LocatoreController@showMessaggi')->name('messaggi');
-Route::get('Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
+Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi');
+Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');

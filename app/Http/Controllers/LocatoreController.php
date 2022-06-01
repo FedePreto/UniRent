@@ -58,24 +58,53 @@ class LocatoreController extends Controller
         } else {
             $imageName = NULL;
         }
+        if ($request->eta_max == 90)
+            $vincolo_eta = NULL;
+        else
+            $vincolo_eta = $request->eta_max;
+
+        if ($request->letti_pl == 0)
+            $posto_letto = NULL;
+        else
+            $posto_letto = $request->letto_pl;
+
 
         $alloggio = new Alloggi;
-        
 
         //Associa alle proprietà all'oggetto alloggio i dati validati
         $alloggio->fill($request->validated());
         $alloggio->locatore = auth()->user()->id;
         $alloggio->foto = $imageName;
+        $alloggio->eta_max = $vincolo_eta;
+        $alloggio->letti_pl = $posto_letto;
         $alloggio->created_at = Carbon::now()->format('Y-m-d');
         $alloggio->save();
 
-        
-        foreach($request->get('servizi') as $servizio){
+        foreach ($request->get('servizi') as $servizio) {
             $incluso = new Incluso([
                 'alloggio' => $alloggio->id,
                 'servizio_vincolo' => $servizio
             ]);
-            $incluso->save();            
+            $incluso->save();
+        };
+
+        
+
+        if ($request->vuoiVincoli === 'Si') {
+            if ($request->has('sesso')) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $request->sesso
+                ]);
+                $incluso->save();
+            };
+            if ($request->has('matricola')) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $request->matricola
+                ]);
+                $incluso->save();
+            };
         };
 
         if (!is_null($imageName)) {
@@ -115,6 +144,6 @@ class LocatoreController extends Controller
         User::find(auth()->user()->id)->update($data);
 
         return redirect()->route('profilo')
-               ->with('status', 'Profilo aggiornato correttamente!');
+            ->with('status', 'Profilo aggiornato correttamente!');
     }
 }

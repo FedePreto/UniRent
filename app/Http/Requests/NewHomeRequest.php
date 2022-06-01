@@ -44,7 +44,8 @@ class NewHomeRequest extends FormRequest {
             'n_camere' => 'required|integer|min:0',
             'tipologia' => 'required|boolean',
             'foto' => 'sometimes|file|mimes:jpeg,png|max:1024',
-            'periodo_locazione' => 'required|integer|min:3|max:12'
+            'periodo_locazione' => 'required|integer|min:3|max:12',
+            'eta_max'=>'sometimes|integer|max:90|min:18'
         ];
     }
 

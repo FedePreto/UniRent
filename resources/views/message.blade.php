@@ -28,8 +28,8 @@
 
 
 @section('content')
-
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card" style="z-index:3;width:320px;" id="mySidebar">
+<div>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card" style="z-index:3;width:320px;" id="mySidebar">
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom w3-large"><img src="https://www.w3schools.com/images/w3schools.png" style="width:60%;"></a>
     <a href="javascript:void(0)" onclick="w3_close()" title="Chiudi la SideMenu" class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a>
@@ -138,3 +138,5 @@
 
 
 </div>
+</div>
+@endsection

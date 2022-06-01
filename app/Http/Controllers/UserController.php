@@ -45,4 +45,8 @@ class UserController extends Controller
                 ->with('locatore',$locatore);
                 
     }
+
+    public function showMessaggi(){
+        return view('message');
+    }
 }

@@ -24,24 +24,33 @@
 
     $(function() {
         $('#letti_posto_letto').hide();
-        $('input[name = "tipologia"]').click(function(){
-            var tipo = $('input[name = "tipologia"]:checked').val();  
-        if(tipo==1)
-            $('#letti_posto_letto').show();        
-        else
-            $('#letti_posto_letto').hide();
-        
+        $('#Angolo_studio').hide();
+        $('input[name = "tipologia"]').click(function() {
+            var tipo = $('input[name = "tipologia"]:checked').val();
+            if (tipo == 1) {
+                $('#letti_posto_letto').show();
+                $('#Angolo_studio').show();
+                $('#Locale_Ricreativo').hide();
+            } else {
+                $('#letti_posto_letto').hide();
+                $('#Angolo_studio').hide();
+                $('#Locale_Ricreativo').show();
+            }
+
         });
     });
 
     $(function() {
-        $('#vincolo').click(function(){
-            var tipo = $('input[name = "tipologia"]:checked').val();  
-        if(tipo==1)
-            $('#letti_posto_letto').show();        
-        else
-            $('#letti_posto_letto').hide();
-        
+        $('#vincoli').hide();
+        $('input[name="vuoi_vincoli"]').click(function() {
+            var tipo = $('input[name = "vuoi_vincoli"]:checked').val();
+            if (tipo == 0)
+                $('#vincoli').show();
+            else {
+                $('#vincoli').hide();
+                $('input[name="sesso"]').prop('checked', false);
+                $('input[name="matricola"]').prop('checked', false);
+            }
         });
     });
 </script>
@@ -152,7 +161,7 @@
                 {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-app']) }}
                 <ul class="w3-bar-block w3-text">
                     @foreach ( $servizi as $servizio)
-                    <li>{{Form::checkBox($servizio->nome,$servizio->id)}}
+                    <li id={{$servizio->nome}}> {{Form::checkBox($servizio->nome,$servizio->id)}}
                         {{Form::label($servizio->nome)}}
                     </li>
                     @endforeach
@@ -162,35 +171,30 @@
 
             @isset($vincoli)
             <div class="wrap-input  rs1-wrap-input">
-                {{ Form::label('tipologia', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
+                {{ Form::label('vuoi_vincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-app']) }}
                 <ul class="my-filter">
-                    <li>{{ Form::radio('vincoli',0,true, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Si') }}</li>
-                    <li>{{ Form::radio('tipologia',1,false, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
+                    <li>{{ Form::radio('vuoi_vincoli',0,false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
+                    <li>{{ Form::radio('vuoi_vincoli',1,true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
                 </ul>
             </div>
-            <div class="w3-row-padding">
-                {{ Form::label('vincolo', 'Vuoi mostrare i vincoli ?', ['class' => 'label-input-app']) }}
+            <div id="vincoli" class="w3-row-padding">
                 {{ Form::label('vincolo', 'Vincoli:', ['class' => 'label-input-app']) }}
                 <ul class="w3-bar-block w3-text">
-                    @foreach($vincoli as $vincolo)
-                    <li>{{Form::radio($vincolo->nome,$vincolo->id,['class' => 'radio','id' => 'vincolo'])}} {{Form::label($vincolo->nome)}}</li>
 
-                    @endforeach
-           <!--         
                     @foreach ($vincoli as $vincolo)
 
                     @php
 
                     if($vincolo->id === 17 || $vincolo->id === 18)
                     $name = 'sesso';
-                    
+
                     elseif($vincolo->id === 19 || $vincolo->id === 20)
                     $name = 'matricola';
                     @endphp
 
                     <li>{{Form::radio($name, $vincolo->id, false)}} {{Form::Label($vincolo->nome)}}</li>
 
-                    @endforeach -->
+                    @endforeach
                 </ul>
             </div>
             @endisset
@@ -202,7 +206,7 @@
 
 
             <div class="container-form-btn">
-                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}          
+                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
             </div>
             {{Form::close()}}
             <button onclick="uncheck()">Resetta</button>

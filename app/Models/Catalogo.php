@@ -66,7 +66,8 @@ class Catalogo {
         return Servizi::all();
     }
     public function getAlloggio($id){
-        return Alloggi::where('id',$id)->get();
+        $alloggio =  Alloggi::find($id);
+        return $alloggio;
     }
     public function getAlloggioServizi($id){
         $servizi =  Incluso::leftJoin('servizi','servizi.id','incluso.servizio')->where('incluso.alloggio',$id)->get();

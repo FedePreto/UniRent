@@ -2213,6 +2213,20 @@ textarea { resize:none;
     margin-left: -77px;  
   }
 
+  
+  .thumbannunci {
+    width: auto;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  .thumbannunci > img {
+    height: 500px;
+    width: 400px; 
+    margin-left: -77px;  
+  }
+
+
 /*alert button */
   .alert {
     padding: 20px;

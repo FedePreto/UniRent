@@ -53,9 +53,7 @@ class DatabaseSeeder extends Seeder {
             ['nome'=>'Solo_Ragazzi', 'tipologia' => 1],
             ['nome'=>'Solo_Ragazze', 'tipologia' => 1],
             ['nome'=>'Solo_Matricole', 'tipologia' => 1],
-            ['nome'=>'No_Matricole', 'tipologia' => 1],
-            ['nome'=>'No_Animali_Domestici', 'tipologia' => 1],
-            ['nome'=>'No_Fumatori', 'tipologia' => 1],
+            ['nome'=>'No_Matricole', 'tipologia' => 1]
         ]);
         /*
         DB::table('foto')->insert([

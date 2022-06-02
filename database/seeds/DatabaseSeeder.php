@@ -36,24 +36,24 @@ class DatabaseSeeder extends Seeder {
         DB::table('servizi_vincoli')->insert([
             ['nome' => 'Parcheggio', 'tipologia' => 0],
             ['nome' => 'Piscina', 'tipologia' => 0],
-            ['nome' => 'Cucina_Completa', 'tipologia' => 0],
-            ['nome' => 'Locale_Ricreativo', 'tipologia' => 0],
+            ['nome' => 'Cucina Completa', 'tipologia' => 0],
+            ['nome' => 'Locale Ricreativo', 'tipologia' => 0],
             ['nome' => 'Lavatrice', 'tipologia' => 0],
             ['nome' => 'Asciugatrice', 'tipologia' => 0],
-            ['nome' => 'Animali_Domestici', 'tipologia' => 0],
+            ['nome' => 'Animali Domestici', 'tipologia' => 0],
             ['nome' => 'Riscladamento', 'tipologia' => 0],
             ['nome' => 'Cortile', 'tipologia' => 0],
             ['nome' => 'WI-FI', 'tipologia' => 0],
             ['nome' => 'TV', 'tipologia' => 0],
-            ['nome' => 'Ferro_da_Stiro', 'tipologia' => 0],
-            ['nome' => 'Allarme_Antincendio', 'tipologia' => 0],
-            ['nome' => 'Rilevatore_Monossido_Di_Carbonio', 'tipologia' => 0],
-            ['nome' => 'Aria_condizionata', 'tipologia' => 0],
-            ['nome' => 'Angolo_studio', 'tipologia' => 0],
-            ['nome'=>'Solo_Ragazzi', 'tipologia' => 1],
-            ['nome'=>'Solo_Ragazze', 'tipologia' => 1],
-            ['nome'=>'Solo_Matricole', 'tipologia' => 1],
-            ['nome'=>'No_Matricole', 'tipologia' => 1]
+            ['nome' => 'Ferro da Stiro', 'tipologia' => 0],
+            ['nome' => 'Allarme Antincendio', 'tipologia' => 0],
+            ['nome' => 'Rilevatore Monossido Di Carbonio', 'tipologia' => 0],
+            ['nome' => 'Aria condizionata', 'tipologia' => 0],
+            ['nome' => 'Angolo studio', 'tipologia' => 0],
+            ['nome'=>'Solo Ragazzi', 'tipologia' => 1],
+            ['nome'=>'Solo Ragazze', 'tipologia' => 1],
+            ['nome'=>'Solo Matricole', 'tipologia' => 1],
+            ['nome'=>'No Matricole', 'tipologia' => 1]
         ]);
         /*
         DB::table('foto')->insert([

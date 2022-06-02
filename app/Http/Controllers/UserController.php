@@ -6,16 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
 use App\Models\Annuncio;
+use App\Models\Locatore;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     protected $_catalogModel ;
     protected $_annuncioModel;
+    protected $_locatoreModel;
 
     public function __construct(){
         $this->_catalogModel = new Catalogo;
         $this->_annuncioModel = new Annuncio;
+        $this->_locatoreModel = new Locatore;
     }
     //
     public function searchCatalogo(Request $ricerca ){
@@ -25,22 +28,27 @@ class UserController extends Controller
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
-        $servizi = $this->_catalogModel->getServiziVincoli();
+        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
         return view('dashboard')
                     ->with('alloggi',$alloggi)
-                    ->with('servizi',$servizi)
+                    ->with('servizi',$servizi_vincoli[0])
                     ->with('request',$ricerca);          
     }
 
     public function getAnnuncio(int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
-        $servizivincoli = $this->_catalogModel->getServiziVincoli();
-        $locatore= $this->_annuncioModel->getLocatore($alloggio->locatore);
-        Log::info($servizivincoli);
+        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
+        $locatore = $this->_annuncioModel->getLocatore($alloggio->locatore);
+        $sv_alloggio = $this->_annuncioModel->getAlloggioServiziVincoli($id); //Questo array è più comodo degli altri due passa
+                                                                              //in due array separati vincoli [1] e servizi [0] dell'alloggio in questione
+                                                                              //inoltre sia vincoli che servizi sono associati al rispettivo nome   
+        Log::info($servizi_vincoli);
         return view('annuncio')
                 ->with('alloggio',$alloggio)
-                ->with('servizivincoli',$servizivincoli)
+                ->with('servizi_vincoli', $servizi_vincoli[0])
+                ->with('vincoli', $servizi_vincoli[1])
+                ->with('sv_alloggio_nome', $sv_alloggio)
                 ->with('servizi_inclusi',$servizi_inclusi)
                 ->with('locatore',$locatore);
                 

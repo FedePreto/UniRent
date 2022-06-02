@@ -233,65 +233,66 @@
                     $flag=0;
                     @endphp
                     @foreach($servizivincoli as $servizio)
-                        @foreach($servizi_inclusi as $incluso)
-                            @if(($servizio->id)===($incluso->servizio_vincolo))
-                                @if(($servizio->tipologia)===1)
-                                    @switch($i)
-                                        @case(0)
-                                            <tr >
-                                                @php
-                                                    $nomi= explode("_", $servizio->nome);
-                                                    $i = 1;
-                                                    $flag=1;
-                                                @endphp
-                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                                    @foreach($nomi as $nome)
-                                                        {{$nome}}
-                                                    @endforeach
-                                                </span></td>
-                                        @break
-                                        @case(1)
-                                                @php
-                                                    $nomi= explode("_", $servizio->nome);
-                                                    $i = 2;
-                                                @endphp
-                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                                    @foreach($nomi as $nome)
-                                                        {{$nome}}
-                                                    @endforeach
-                                                </span></td>
-                                        @break
-                                        @case(2)
-                                                @php
-                                                    $nomi= explode("_", $servizio->nome);
-                                                    $i = 0;
-                                                @endphp
-                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                                    @foreach($nomi as $nome)
-                                                        {{$nome}}
-                                                    @endforeach
-                                                </span></td>
-                                            </tr>
-                                        @break
-                                    @endswitch
-                                @endif
-                            @endif
-                        @endforeach
-                    @endforeach
-                    @if($alloggio->eta_max < 90)
-                        @if(!(is_null($alloggio->eta_max)))
-                            <tr><td style="width:33.3333%; padding-top:5px;  padding-left:20px;"> <span>Range Età: 18 - {{$alloggio->eta_max}}</span></td></tr>
-                            @php
-                                $flag=1;
-                            @endphp
-                        @endif 
-                    @endif
-                    @if($flag==0)
+                    @foreach($servizi_inclusi as $incluso)
+                    @if(($servizio->id)===($incluso->servizio_vincolo))
+                    @if(($servizio->tipologia)===1)
+                    @switch($i)
+                    @case(0)
                     <tr>
-                        <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>
+                        @php
+                        $nomi= explode("_", $servizio->nome);
+                        $i = 1;
+                        $flag=1;
+                        @endphp
+                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                @foreach($nomi as $nome)
+                                {{$nome}}
+                                @endforeach
+                            </span></td>
+                        @break
+                        @case(1)
+                        @php
+                        $nomi= explode("_", $servizio->nome);
+                        $i = 2;
+                        @endphp
+                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                @foreach($nomi as $nome)
+                                {{$nome}}
+                                @endforeach
+                            </span></td>
+                        @break
+                        @case(2)
+                        @php
+                        $nomi= explode("_", $servizio->nome);
+                        $i = 0;
+                        @endphp
+                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                @foreach($nomi as $nome)
+                                {{$nome}}
+                                @endforeach
+                            </span></td>
                     </tr>
+                    @break
+                    @endswitch
                     @endif
-                    @endisset
+                    @endif
+                    @endforeach
+                    @endforeach
+                    @if($alloggio->eta_max < 90) @if(!(is_null($alloggio->eta_max)))
+                        <tr>
+                            <td style="width:33.3333%; padding-top:5px;  padding-left:20px;"> <span>Range Età: 18 - {{$alloggio->eta_max}}</span></td>
+                        </tr>
+                        @php
+                        $flag=1;
+                        @endphp
+                        @endif
+                        @endif
+                        @if($flag==0)
+                        <tr>
+                            <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>
+                        </tr>
+                        @endif
+                        @endisset
                 </table>
             </div>
         </div>
@@ -345,6 +346,20 @@
                     {{ Form::label('prezzo', 'Canone mensile', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('prezzo', $alloggio->prezzo, ['class' => 'text-input-alloggio', 'id' => 'prezzo']) }}
 
+
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="state">State</label>
+                            <input class='text-input-alloggio' type="text" id="state" name="state" placeholder="NY">
+                        </div>
+                        <div class="col-50">
+                            <label for="zip">Zip</label>
+                            <input class='text-input-alloggio' type="text" id="zip" name="zip" placeholder="10001">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-50">
                     {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input-alloggio']) }}
 
                     @if($alloggio->tipologia === 0)
@@ -372,15 +387,27 @@
                     {{ Form::label('periodo_locazione', 'Periodo di locazione:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::select('periodo_locazione',[3 => '3 Mesi',6 => '6 Mesi', 12 => '1 Anno'], $alloggio->periodo_locazione, ['class' => 'text-input-alloggio','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
 
-                    @isset($servizivincoli)
-                    <div class="w3-row-padding">
-                        {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-alloggio']) }}
-                        <ul class="w3-bar-block w3-text">
-                            @foreach ( $servizi as $servizio)
-                            <li id={{$servizio->nome}}> {{Form::checkBox('servizi[]',$servizio->id)}}
-                                {{Form::label($servizio->nome)}}
-                            </li>
-                            @endforeach
+                    @isset($servizi)
+
+                        {{ Form::label('servizio', 'Servizi inlcusi', ['class' => 'label-input-alloggio']) }}
+                            <table class='table-input-alloggio'>
+                                <tr>
+                                    @php
+                                    $i=1;
+                                    @endphp
+                                    @foreach( $servizi as $servizio)
+                                    <td id={{$servizio->nome}}> {{Form::checkBox('servizi[]',$servizio->id,true)}}
+                                        {{Form::label($servizio->nome)}}
+                                    </td>
+                                    @if($i%4 == 0)
+                                </tr><tr>
+                                    @endif
+                                    @php
+                                    $i++;
+                                    @endphp
+                                    @endforeach
+                                    </tr>
+                            </table>
                         </ul>
                     </div>
                     @endisset
@@ -421,28 +448,6 @@
                         {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-alloggio']) }}
                         {{ Form::textarea('descrizione', '', ['class' => 'text-input-alloggio', 'id' => 'descrizione']) }}
                     </div>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                    <input class='text-input-alloggio' type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                    <input class='text-input-alloggio' type="text" id="email" name="email" placeholder="john@example.com">
-                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                    <input class='text-input-alloggio' type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                    <input class='text-input-alloggio' type="text" id="city" name="city" placeholder="New York">
-
-                    <div class="row">
-                        <div class="col-50">
-                            <label for="state">State</label>
-                            <input class='text-input-alloggio' type="text" id="state" name="state" placeholder="NY">
-                        </div>
-                        <div class="col-50">
-                            <label for="zip">Zip</label>
-                            <input class='text-input-alloggio' type="text" id="zip" name="zip" placeholder="10001">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-50">
                     <h3>Payment</h3>
                     <label for="fname">Accepted Cards</label>
                     <div class="icon-container">

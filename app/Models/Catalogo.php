@@ -62,9 +62,6 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getServiziVincoli(){
-        return ServiziVincoli::all();
-    }
     public function getAlloggio($id){
         $alloggio =  Alloggi::find($id);
         return $alloggio;

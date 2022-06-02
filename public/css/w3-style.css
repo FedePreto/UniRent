@@ -2393,6 +2393,20 @@ textarea {
     color: #555555;
     line-height: 1, 5;
 }
+.table-input-alloggio {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.table-input-alloggio tr,
+.table-input-alloggio td{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+  }
+
+
 /*CSS MESSAGE BOX*/
 
 .w3-sidebar-mess {
@@ -2432,3 +2446,4 @@ textarea {
     float: none;
     outline: 0;
 }
+

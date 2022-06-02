@@ -8,8 +8,5 @@ class Incluso extends Model
 {
     protected $table = 'incluso';
     protected $primaryKey = 'id';
-    protected $fillable = [
-        'alloggio',
-        'servizio_vincolo'
-    ];      
+    protected $fillable = ['alloggio','servizio_vincolo'];      //abbiamo bisogno di poter inserire massivamente questi attributi
 }

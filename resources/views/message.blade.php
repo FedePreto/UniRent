@@ -14,8 +14,8 @@
     openRichieste.click();
 
     function w3_open() {
-        document.getElementById("mySidebar").style.display = "fixed";
-        document.getElementById("myOverlay").style.display = "fixed";
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
     }
 
     function w3_close() {
@@ -63,7 +63,7 @@
 @section('content')
 <div>
     <div>
-        <nav class="w3-sidebar-mess w3-bar-block-mess w3-collapse-mess w3-white w3-animate-left w3-card" style="z-index:3;width:500px;" id="mySidebar">
+        <nav class="w3-sidebar-mess w3-bar-block-mess w3-collapse-mess w3-white w3-animate-left-mess w3-card" style="z-index:3;width:500px;" id="mySidebar">
 
             <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" class="w3-bar-item-mess w3-button w3-hide-large w3-large">Chiudi <i class="fa fa-remove"></i></a>
             <a href="javascript:void(0)" class="w3-bar-item-mess w3-button w3-dark-grey w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a>
@@ -72,20 +72,20 @@
 
             <!--ANTEPRIMA MESSAGGI IN BOX-->
             <div id="Demo1" class="w3-hide w3-animate-left">
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');" id="firstTab">
                     <div class="w3-container">
                         <img class="w3-round w3-margin-right" src="/w3images/avatar3.png" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
                         <h6>Subject: Remember Me</h6>
                         <p>Hello, i just wanted to let you know that i'll be home at...</p>
                     </div>
                 </a>
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');w3_close();">
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');">
                     <div class="w3-container">
                         <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                     </div>
                 </a>
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');w3_close();">
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');">
                     <div class="w3-container">
                         <img class="w3-round w3-margin-right" src="/w3images/avatar2.png" style="width:15%;"><span class="w3-opacity w3-large">John Doe</span>
                         <p>Welcome!</p>
@@ -93,7 +93,7 @@
                 </a>
             </div>
             <!--PULSANTI -->
-            <a id="myBtnRichieste" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Richieste<i class="fa fa-caret-down w3-margin-left"></i></a>
+            <a id="myBtnRichieste" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Richieste<i class="fa fa-caret-down w3-margin-left"></i></a>
 
         </nav>
 

@@ -27,10 +27,10 @@ class Catalogo {
             if(count($filtri)>1){
                 foreach(array_keys($filtri) as $key){
                     
-                    $alloggi_filtri = $alloggi_filtri->orWhere('servizio',$filtri[$key]);
+                    $alloggi_filtri = $alloggi_filtri->orWhere('servizio_vincolo',$filtri[$key]);
                 }
             }else{
-                $alloggi_filtri = $alloggi_filtri->where('servizio',$filtri[array_key_first($filtri)]);
+                $alloggi_filtri = $alloggi_filtri->where('servizio_vincolo',$filtri[array_key_first($filtri)]);
             }
             //distinguo gli id degli alloggi in modo da poter confrontare questa tabella con quella degli alloggi
             $alloggi_filtri = $alloggi_filtri->select('alloggio')->distinct('alloggio')->get();

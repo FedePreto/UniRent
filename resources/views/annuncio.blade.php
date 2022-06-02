@@ -233,51 +233,59 @@
                     $flag=0;
                     @endphp
                     @foreach($servizivincoli as $servizio)
-                    @foreach($servizi_inclusi as $incluso)
-                    @if(($servizio->id)===($incluso->servizio_vincolo))
-                    @if(($servizio->tipologia)===1)
-                    @switch($i)
-                    @case(0)
-                    <tr>
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 1;
-                        $flag=1;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(1)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 2;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(2)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 0;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                    </tr>
-                    @break
-                    @endswitch
-                    @endif
-                    @endif
+                        @foreach($servizi_inclusi as $incluso)
+                            @if(($servizio->id)===($incluso->servizio_vincolo))
+                                @if(($servizio->tipologia)===1)
+                                    @switch($i)
+                                        @case(0)
+                                            <tr >
+                                                @php
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 1;
+                                                    $flag=1;
+                                                @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
+                                        @break
+                                        @case(1)
+                                                @php
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 2;
+                                                @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
+                                        @break
+                                        @case(2)
+                                                @php
+                                                    $nomi= explode("_", $servizio->nome);
+                                                    $i = 0;
+                                                @endphp
+                                                <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
+                                                    @foreach($nomi as $nome)
+                                                        {{$nome}}
+                                                    @endforeach
+                                                </span></td>
+                                            </tr>
+                                        @break
+                                    @endswitch
+                                @endif
+                            @endif
+                        @endforeach
                     @endforeach
-                    @endforeach
+                    @if($alloggio->eta_max < 90)
+                        @if(!(is_null($alloggio->eta_max)))
+                            <tr><td style="width:33.3333%; padding-top:5px;  padding-left:20px;"> <span>Range Età: 18 - {{$alloggio->eta_max}}</span></td></tr>
+                            @php
+                                $flag=1;
+                            @endphp
+                        @endif 
+                    @endif
                     @if($flag==0)
                     <tr>
                         <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>

@@ -2359,33 +2359,7 @@ textarea {
     animation: animatezoom 0.6s
   }
 
-  .btn {
-    background-color: #ffffff;
-    color: white;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    width: 400px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 17px;
-    display: inline-block;
-  }
-
-  .btn.red{
-    background-color:#b20000
-  }
-
-  .btn.green{
-    background-color:#43cc83
-
-  }
-
-  .btn.blue{
-    background-color:#0a6bdb
-  }
-
-  .label-input-alloggio {
+.label-input-alloggio {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 18px;

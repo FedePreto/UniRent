@@ -31,13 +31,13 @@
             if (tipo == 1) {
                 $('#letti_posto_letto').show();
                 $('.Angolo_Studio').show();
-                $('#Locale_Ricreativo').prop("checked",false);
+                $('#Locale_Ricreativo').prop("checked", false);
                 $('.Locale_Ricreativo').hide();
-                
+
             } else {
                 $('#letti_posto_letto').hide();
-                $('#Angolo_Studio').prop("checked",false);
-                $('.Angolo_Studio').hide();                
+                $('#Angolo_Studio').prop("checked", false);
+                $('.Angolo_Studio').hide();
                 $('.Locale_Ricreativo').show();
                 $('#letti_pl').prop('selectedIndex', 0);
             }
@@ -63,6 +63,10 @@
             }
         });
     });
+
+    $(function() {
+        $(".alert").show().delay(2000).fadeOut("show");
+    })
 </script>
 @endsection
 
@@ -71,6 +75,23 @@
 <a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
 
 <div class="w3-content w3-padding" style="max-width:1654px">
+    <div class="w3-row-padding">
+        @if ($errors->any())
+        <div class="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        <br />
+        @endif
+        @if (session('status'))
+        <div class="alert success">
+            {{ session('status') }}
+        </div>
+        @endif
+    </div>
     <div class="w3-row-padding">
         <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding-right: 20px; padding-top: 0px ;padding-left: 0px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:258px;">
             <div class=" w3-container w3-margin-bottom " style=" width: 400px; max-height:300px; float:left; padding-left: 0px;">
@@ -344,8 +365,22 @@
                     <h3 style='text-align:center;'>Form di modifica annuncio</h3>
                     {{ Form::label('titolo', 'Titolo annuncio', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('titolo', $alloggio->titolo, ['class' => 'text-input-alloggio', 'id' => 'titolo']) }}
+                    @if ($errors->first('titolo'))
+                    <ul class="errors">
+                        @foreach ($errors->get('titolo') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('foto', 'Foto annuncio', ['class' => 'label-input-alloggio']) }}
                     {{ Form::file('foto', ['class' => 'text-input-alloggio', 'id' => 'foto']) }}
+                    @if ($errors->first('foto'))
+                    <ul class="errors">
+                        @foreach ($errors->get('foto') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('regione', 'Regione', ['class' => 'label-input-alloggio']) }}
                     {{ Form::select('regione',['Abruzzo'=>'Abruzzo',
                                            'Basilicata'=>'Basilicata',
@@ -367,16 +402,58 @@
                                            'Umbria'=>'Umbria',
                                            'Valle d\'Aosta'=>'Valle d\'Aosta',
                                            'Veneto'=>'Veneto'], $alloggio->regione, ['class' => 'text-input-alloggio','id' => 'regione', 'placeholder' => 'Seleziona una regione']) }}
+                    @if ($errors->first('regione'))
+                    <ul class="errors">
+                        @foreach ($errors->get('regione') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('citta', 'Città', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('citta', $alloggio->citta, ['class' => 'text-input-alloggio', 'id' => 'citta']) }}
+                    @if ($errors->first('citta'))
+                    <ul class="errors">
+                        @foreach ($errors->get('citta') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('cap', 'CAP', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('cap', $alloggio->cap, ['class' => 'text-input-alloggio', 'id' => 'cap']) }}
+                    @if ($errors->first('cap'))
+                    <ul class="errors">
+                        @foreach ($errors->get('cap') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('indirizzo', $alloggio->indirizzo, ['class' => 'text-input-alloggio', 'id' => 'indirizzo']) }}
+                    @if ($errors->first('indirizzo'))
+                    <ul class="errors">
+                        @foreach ($errors->get('indirizzo') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('numero', 'N° civico', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('numero',$alloggio->numero, ['class' => 'text-input-alloggio','id' => 'numero']) }}
+                    @if ($errors->first('numero'))
+                    <ul class="errors">
+                        @foreach ($errors->get('numero') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('prezzo', 'Canone mensile', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('prezzo', $alloggio->prezzo, ['class' => 'text-input-alloggio', 'id' => 'prezzo']) }}
+                    @if ($errors->first('prezzo'))
+                    <ul class="errors">
+                        @foreach ($errors->get('prezzo') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
 
 
                     <div class="row">
@@ -394,14 +471,36 @@
                                 <li>{{ Form::radio('tipologia',1,true, ['id' => 'posto_letto','class' => 'radio-input-alloggio']) }} {{ Form::label('posto_letto', 'Posto letto', ['class' => 'label-input-alloggio']) }}</li>
                             </ul>
                             @endif
+                            @if ($errors->first('tipologia'))
+                            <ul class="errors">
+                                @foreach ($errors->get('tipologia') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
+
                         <div id=letti_posto_letto class="col-50">
                             {{ Form::label('letti_pl', 'Posto letto in camera', ['class' => 'label-input-alloggio']) }}
                             {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], $alloggio->letti_pl, ['class' => 'text-input-alloggio','id' => 'letti_pl']) }}
+                            @if ($errors->first('letti_pl'))
+                            <ul class="errors">
+                                @foreach ($errors->get('letti_pl') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                     </div>
                     {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('superficie', $alloggio->superficie, ['class' => 'text-input-alloggio', 'id' => 'superficie']) }}
+                    @if ($errors->first('superficie'))
+                    <ul class="errors">
+                        @foreach ($errors->get('superficie') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                 </div>
 
                 <div class="col-50">
@@ -409,11 +508,31 @@
 
                     {{ Form::label('letti_ap', 'N° letti nell\'appartamento:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('letti_ap', $alloggio->letti_ap, ['class' => 'text-input-alloggio', 'id' => 'letti_ap']) }}
+                    @if ($errors->first('letti_ap'))
+                    <ul class="errors">
+                        @foreach ($errors->get('letti_ap') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('n_camere', 'N° Camere:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('n_camere', $alloggio->n_camere, ['class' => 'text-input-alloggio', 'id' => 'n_camere']) }}
+                    @if ($errors->first('n_camere'))
+                    <ul class="errors">
+                        @foreach ($errors->get('n_camere') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     {{ Form::label('periodo_locazione', 'Periodo di locazione:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::select('periodo_locazione',[3 => '3 Mesi',6 => '6 Mesi', 12 => '1 Anno'], $alloggio->periodo_locazione, ['class' => 'text-input-alloggio','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
-
+                    @if ($errors->first('periodo_locazione'))
+                    <ul class="errors">
+                        @foreach ($errors->get('periodo_locazione') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     @isset($servizi)
                     {{ Form::label('servizio', 'Servizi inlcusi', ['class' => 'label-input-alloggio']) }}
                     <table class='table-input-alloggio'>
@@ -447,9 +566,23 @@
                         </tr>
                     </table>
                     @endisset
+                    @if ($errors->first('servizio'))
+                    <ul class="errors">
+                        @foreach ($errors->get('servizio') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
 
                     {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'text-input-alloggio', 'id' => 'descrizione', 'style'=>'text-align:left']) }}
+                    @if ($errors->first('descrizione'))
+                        <ul class="errors">
+                            @foreach ($errors->get('descrizione') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
 
 
                     @isset($vincoli)
@@ -472,21 +605,21 @@
                     <div id='vincoli' class="col-50">
                         {{ Form::label('vincolo', 'Vincoli', ['class' => 'label-input-alloggio']) }}
 
-                        @foreach ($vincoli as $vincolo)                        
+                        @foreach ($vincoli as $vincolo)
 
                         @php
-                        $selected = false; 
+                        $selected = false;
 
                         foreach($vincoli_alloggio as $vincolo_alloggio){
-                              if($vincolo->id == $vincolo_alloggio->id){
-                                $selected = true;
-                                break;
-                              }
+                        if($vincolo->id == $vincolo_alloggio->id){
+                        $selected = true;
+                        break;
+                        }
                         }
 
                         if($vincolo->id === 17 || $vincolo->id === 18)
-                            $name = 'sesso';
-                           
+                        $name = 'sesso';
+
 
                         else if($vincolo->id === 19 || $vincolo->id === 20)
                         $name = 'matricola';
@@ -496,14 +629,30 @@
                         {{Form::radio($name, $vincolo->id, $selected)}} {{Form::Label($name, $vincolo->nome)}}
                         @endforeach
 
+                        @if ($errors->first('vincoli'))
+                        <ul class="errors">
+                            @foreach ($errors->get('vincoli') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+
                         <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', 90, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
-                    </div>
+                        @if ($errors->first('eta_max'))
+                        <ul class="errors">
+                            @foreach ($errors->get('eta_max') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    
+                    </div>                    
                 </div>
                 @endisset
             </div>
             <div style="width:100%; text-align: center;">
-                {{ Form::submit('Conferma Modifica', ['class' => 'btn green' , 'style'=> "display: inline-block"]) }}
-                <input type="button" value="Annulla Modifica" onclick="document.getElementById('modifica').style.display='none'" style="display: inline-block" class="btn red">
+                <div style='display:inline-block;'>{{ Form::submit('Conferma Modifica', ['class' => 'btn-green' , 'style'=> "display: inline-block"]) }}</div>
+                <div style='display:inline-block;'><input type="button" value="Annulla Modifica" onclick="document.getElementById('modifica').style.display='none'" style="display: inline-block" class="btn-red"></div>
             </div>
             {{ Form::close() }}
         </div>

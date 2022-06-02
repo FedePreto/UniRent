@@ -175,7 +175,7 @@
       </div>
 
       <div class="wrap-input  rs1-wrap-input">
-        {{ Form::submit('Salva', ['class' => 'btn-green']) }}
+        {{ Form::submit('Conferma Modifica', ['class' => 'btn-green']) }}
       </div>
       {{ Form::close() }}
     </div>

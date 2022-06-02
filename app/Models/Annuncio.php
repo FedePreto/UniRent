@@ -12,6 +12,10 @@ class Annuncio {
         return $locatore;
     }
 
+    public function deleteServiziVincoli($id_alloggio){
+        Incluso::where('alloggio',$id_alloggio)->delete();
+    }
+
     public function getAlloggioServiziVincoli($id_alloggio){
         
         $alloggio_servizi = Incluso::join('servizi_vincoli','incluso.servizio_vincolo','=', 'servizi_vincoli.id')

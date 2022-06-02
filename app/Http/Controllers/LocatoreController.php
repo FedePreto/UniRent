@@ -6,6 +6,7 @@ use App\Models\Locatore;
 use App\Models\Resources\Alloggi;
 use App\Http\Requests\NewHomeRequest;
 use App\Models\Catalogo;
+use App\Models\Annuncio;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\Resources\Incluso;
@@ -17,11 +18,13 @@ class LocatoreController extends Controller
 
     protected $_locatoreModel;
     protected $_catalogModel;
+    protected $_annuncioModel;
 
     public function __construct()
     {
         $this->_locatoreModel = new Locatore;
         $this->_catalogModel = new Catalogo;
+        $this->_annuncioModel = new Annuncio;
     }
     public function index_loca()
     {
@@ -43,7 +46,7 @@ class LocatoreController extends Controller
     }
     public function addHome()
     {
-        $servizi_vincoli = $this->_locatoreModel->getAlloggiSV();
+        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
         return view('inserisci_offerta')
             ->with('servizi', $servizi_vincoli[0])
             ->with('vincoli', $servizi_vincoli[1]);
@@ -87,7 +90,6 @@ class LocatoreController extends Controller
             ]);
             $incluso->save();
         };
-
         
 
         if ($request->vuoiVincoli === 'Si') {
@@ -154,35 +156,95 @@ class LocatoreController extends Controller
         return  redirect()->route('locatore')
                 ->with('status', 'Alloggio eliminato correttamente!');
     }
-    public function updateAnnuncio(Request $request)
+
+    public function updateAnnuncio(Request $request, $id)
     {
-        $data = $request->validate([
-            'foto_profilo' => 'file|mimes:jpeg,png|max:5000',
-            'name' => 'required|string|max:255',
-            'cognome' => 'required|string|max:255',
-            'sesso' => 'required|string',
-            'data_nascita' => 'required|date',
-            'email' => 'required|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
-            'cellulare' => 'required|min:10|max:10',
-            'descrizione' => 'string|max:2500'
+        $data_alloggio = $request->validate([
+            'titolo' => 'required|string|max:30',
+            'regione' => 'required|string',
+            'citta' => 'required|string',
+            'cap' => 'required|integer',
+            'indirizzo' => 'required|string',
+            'numero' => 'required|integer',
+            'prezzo' => 'required|numeric|min:0',
+            'descrizione' => 'required|string|max:2500',
+            'superficie' => 'required|integer|min:0',
+            'letti_pl' => 'sometimes|integer|min:0',
+            'letti_ap' => 'required|integer|min:0',
+            'n_camere' => 'required|integer|min:0',
+            'tipologia' => 'required|boolean',
+            'foto' => 'sometimes|file|mimes:jpeg,png|max:1024',
+            'periodo_locazione' => 'required|integer|min:3|max:12',
+            'eta_max'=>'sometimes|integer|max:90|min:18'
         ]);
 
+        $data_incluso = $request->validate([
+            'servizi'    => "sometimes|array",
+            'servizi.*'  => "sometimes|integer|distinct",
+            'vuoiVincoli' => "sometimes|string",
+            'matricola' => "sometimes|integer",
+            'sesso' => "sometimes|integer"
+        ]);
 
-        if ($request->hasFile('foto_profilo')) {
-            $image = $request->file('foto_profilo');
+        $alloggio = $this->_catalogModel->getAlloggio($id);
+
+
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
             $imageName = $image->getClientOriginalName();
-            $destinationPath = public_path() . '/img/foto_profilo';
-            $oldImage = $destinationPath . '/' . auth()->user()->foto_profilo;
+            $destinationPath = public_path() . '/img/alloggi';
+            $oldImage = $destinationPath . '/' . $alloggio->foto;
             File::delete($oldImage);
             $image->move($destinationPath, $imageName);
         } else {
-            $imageName = auth()->user()->foto_profilo;
+            $imageName = $alloggio->foto;
         }
 
-        $data['foto_profilo'] = $imageName;
-        User::find(auth()->user()->id)->update($data);
+        $data_alloggio['foto'] = $imageName;
 
-        return redirect()->route('profilo')
-            ->with('status', 'Profilo aggiornato correttamente!');
+        if($data_alloggio['eta_max'] == 90){
+            $data_alloggio['eta_max'] = NULL;
+        }
+
+        if($data_alloggio['tipologia']==0){
+            $data_alloggio['letti_pl'] = NULL;
+        }
+
+        
+
+        $alloggio->update($data_alloggio);
+
+        $this->_annuncioModel->deleteServiziVincoli($id);
+
+        foreach ($data_incluso['servizi'] as $servizio) {
+            $incluso = new Incluso([
+                'alloggio' => $alloggio->id,
+                'servizio_vincolo' => $servizio
+            ]);
+            $incluso->save();
+        };
+        
+
+        if ($data_incluso['vuoiVincoli'] === 'Si') {
+            if ($request->has('sesso')) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $request->sesso
+                ]);
+                $incluso->save();
+            };
+            if ($request->has('matricola')) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $request->matricola
+                ]);
+                $incluso->save();
+            };
+        };        
+
+
+
+        return redirect()->route('annuncio', $id)
+            ->with('status', 'Annuncio aggiornato correttamente!');
     }
 }

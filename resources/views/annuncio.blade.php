@@ -68,7 +68,7 @@
 
 @section('content')
 
-<a href='{{url()->previous()}}'><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
+<a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
 
 <div class="w3-content w3-padding" style="max-width:1654px">
     <div class="w3-row-padding">
@@ -122,7 +122,7 @@
                                 <span style="color:lightgreen;">● Disponibile</span>
                                 @endif
                             </div>
-                            @if(($alloggio->tipologia)===0)
+                            @if(($alloggio->tipologia)===1)
                             <div style="float:left; ">
                                 @if(($alloggio->letti_pl)===1)
                                 <span><i class="fa fa-bed" style="color:black;"></i> Camera Singola </span>
@@ -337,7 +337,7 @@
 <div id='modifica' class="row modal">
     <div class="col-75">
         <div class="container">
-            {{ Form::open(array('route' => ['annuncio.update', $alloggio->id], 'method' => 'PUT', 'files' => true, 'class' => 'animate')) }}
+            {{ Form::open(array('route' => ['annuncio.update', $alloggio->id], 'method' => 'PUT', 'files' => true, 'id'=>'modificaAnnuncio', 'class' => 'animate')) }}
             <div class="row">
                 <span onclick="document.getElementById('modifica').style.display='none'" class="close" title="Chiudi Form Modifica">&times;</span>
                 <div class="col-50">

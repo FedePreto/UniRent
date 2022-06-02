@@ -37,21 +37,19 @@ class UserController extends Controller
 
     public function getAnnuncio(int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
-        $servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
+        //$servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
         $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
         $locatore = $this->_annuncioModel->getLocatore($alloggio->locatore);
         $sv_alloggio = $this->_annuncioModel->getAlloggioServiziVincoli($id); //Questo array è più comodo degli altri due passa
                                                                               //in due array separati vincoli [1] e servizi [0] dell'alloggio in questione
                                                                               //inoltre sia vincoli che servizi sono associati al rispettivo nome   
-        Log::info($servizi_vincoli);
         return view('annuncio')
                 ->with('alloggio',$alloggio)
-                ->with('servizi_vincoli', $servizi_vincoli[0])
+                ->with('servizi', $servizi_vincoli[0])
                 ->with('vincoli', $servizi_vincoli[1])
-                ->with('sv_alloggio_nome', $sv_alloggio)
-                ->with('servizi_inclusi',$servizi_inclusi)
-                ->with('locatore',$locatore);
-                
+                ->with('servizi_alloggio', $sv_alloggio[0])
+                ->with('vincoli_alloggio', $sv_alloggio[1])
+                ->with('locatore',$locatore);                
     }
 
     public function showMessaggi(){

@@ -24,16 +24,18 @@
 
     $(function() {
         $('#letti_posto_letto').hide();
-        $('#Angolo_studio').hide();
+        $('#Angolo_Studio').hide();
         $('input[name = "tipologia"]').click(function() {
             var tipo = $('input[name = "tipologia"]:checked').val();
             if (tipo == 1) {
                 $('#letti_posto_letto').show();
-                $('#Angolo_studio').show();
+                $('#Angolo_Studio').show();
                 $('#Locale_Ricreativo').hide();
+                $('#Locale_Ricreativo').prop('checked',false);
             } else {
                 $('#letti_posto_letto').hide();
-                $('#Angolo_studio').hide();
+                $('#Angolo_Studio').hide();
+                $('#Angolo_Studio').prop('checked',false);
                 $('#Locale_Ricreativo').show();
                 $('#letti_pl').prop('selectedIndex', 0);
             }
@@ -166,7 +168,7 @@
                 {{ Form::label('servizio', 'Servizi inlcusi:', ['class' => 'label-input-app']) }}
                 <ul class="w3-bar-block w3-text">
                     @foreach ( $servizi as $servizio)
-                    <li id={{$servizio->nome}}> {{Form::checkBox('servizi[]',$servizio->id)}}
+                    <li id="{{$servizio->nome}}"> {{Form::checkBox('servizi[]',$servizio->id)}}
                         {{Form::label($servizio->nome)}}
                     </li>
                     @endforeach

@@ -15,21 +15,52 @@
     }
 
     $(function() {
-        $('#letti_posto_letto').hide();
-        $('#Angolo_studio').hide();
+
+        if ($("#appartamento").prop("checked")) {
+            $('#letti_posto_letto').hide();
+            $('.Angolo_Studio').hide();
+            $('.Locale_Ricreativo').show();
+        } else if ($('#posto_letto').prop("checked")) {
+            $('#letti_posto_letto').show();
+            $('.Angolo_Studio').show();
+            $('.Locale_Ricreativo').hide();
+        }
+
         $('input[name = "tipologia"]').click(function() {
-            var tipo = $('input[name = "tipologia"]:checked').val();
+            tipo = $('input[name = "tipologia"]:checked').val();
             if (tipo == 1) {
                 $('#letti_posto_letto').show();
-                $('#Angolo_studio').show();
-                $('#Locale_Ricreativo').hide();
+                $('.Angolo_Studio').show();
+                $('#Locale_Ricreativo').prop("checked",false);
+                $('.Locale_Ricreativo').hide();
+                
             } else {
                 $('#letti_posto_letto').hide();
-                $('#Angolo_studio').hide();
-                $('#Locale_Ricreativo').show();
+                $('#Angolo_Studio').prop("checked",false);
+                $('.Angolo_Studio').hide();                
+                $('.Locale_Ricreativo').show();
                 $('#letti_pl').prop('selectedIndex', 0);
             }
 
+        });
+    });
+
+    $(function() {
+        if ($("#affermativo").prop("checked"))
+            $('#vincoli').show();
+        else if ($('#negativo').prop('checked'))
+            $('#vincoli').hide();
+        $('input[name="vuoiVincoli"]').click(function() {
+            var tipo = $('input[name = "vuoiVincoli"]:checked').val();
+            if (tipo == 'Si')
+                $('#vincoli').show();
+            else {
+                $('#vincoli').hide();
+                $('input[name="sesso"]').prop('checked', false);
+                $('input[name="matricola"]').prop('checked', false);
+                $('input[name="eta_max"]').val(90);
+                $('input[name="eta_max"]').prop('disable', true);
+            }
         });
     });
 </script>
@@ -50,7 +81,7 @@
                     <span style="font-size:32px; color:black;">{{$alloggio->titolo}}</span>
                     <div style="float:right; padding-right: 10px; padding-top:12px;">
                         @if(($alloggio->tipologia)===1)
-                        <span id="categoria" style="font-size: 12px; background: lightgray; border-radius: 4px; padding-left: 4px; padding-right: 4px; ">POSTI LETTO</span>
+                        <span id="categoria" style="font-size: 12px; background: lightgray; border-radius: 4px; padding-left: 4px; padding-right: 4px; ">POSTO LETTO</span>
                         @else
                         <span id="categoria" style="font-size: 12px; background: lightgray; border-radius: 4px; padding-left: 4px; padding-right: 4px; ">APPARTAMENTI</span>
                         @endif
@@ -302,6 +333,7 @@
 </div>
 
 
+
 <div id='modifica' class="row modal">
     <div class="col-75">
         <div class="container">
@@ -349,37 +381,32 @@
 
                     <div class="row">
                         <div class="col-50">
-                            <label for="state">State</label>
-                            <input class='text-input-alloggio' type="text" id="state" name="state" placeholder="NY">
+                            {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input-alloggio']) }}
+
+                            @if($alloggio->tipologia === 0)
+                            <ul class="my-filter">
+                                <li>{{ Form::radio('tipologia',0,true, ['id' => 'appartamento','class' => 'radio-input-alloggio']) }} {{ Form::label('appartamento','Appartamento', ['class' => 'label-input-alloggio']) }}</li>
+                                <li>{{ Form::radio('tipologia',1,false, ['id' => 'posto_letto','class' => 'radio-input-alloggio']) }} {{ Form::label('posto_letto', 'Posto letto', ['class' => 'label-input-alloggio']) }}</li>
+                            </ul>
+                            @else
+                            <ul class="my-filter">
+                                <li>{{ Form::radio('tipologia',0,false, ['id' => 'appartamento','class' => 'radio-input-alloggio']) }} {{ Form::label('appartamento','Appartamento', ['class' => 'label-input-alloggio']) }}</li>
+                                <li>{{ Form::radio('tipologia',1,true, ['id' => 'posto_letto','class' => 'radio-input-alloggio']) }} {{ Form::label('posto_letto', 'Posto letto', ['class' => 'label-input-alloggio']) }}</li>
+                            </ul>
+                            @endif
                         </div>
-                        <div class="col-50">
-                            <label for="zip">Zip</label>
-                            <input class='text-input-alloggio' type="text" id="zip" name="zip" placeholder="10001">
+                        <div id=letti_posto_letto class="col-50">
+                            {{ Form::label('letti_pl', 'Posto letto in camera', ['class' => 'label-input-alloggio']) }}
+                            {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], $alloggio->letti_pl, ['class' => 'text-input-alloggio','id' => 'letti_pl']) }}
                         </div>
                     </div>
+                    {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-alloggio']) }}
+                    {{ Form::text('superficie', $alloggio->superficie, ['class' => 'text-input-alloggio', 'id' => 'superficie']) }}
                 </div>
 
                 <div class="col-50">
-                    {{ Form::label('tipologia', 'Tipologia Offerta', ['class' => 'label-input-alloggio']) }}
+                    <h3 style='text-align:center;'>Form di modifica annuncio</h3>
 
-                    @if($alloggio->tipologia === 0)
-                    <ul class="my-filter">
-                        <li>{{ Form::radio('tipologia',0,true, ['id' => 'appartamento','class' => 'radio-input-alloggio']) }} {{ Form::label('appartamento','Appartamento', ['class' => 'label-input-alloggio']) }}</li>
-                        <li>{{ Form::radio('tipologia',1,false, ['id' => 'posto_letto','class' => 'radio-input-alloggio']) }} {{ Form::label('posto_letto', 'Posto letto', ['class' => 'label-input-alloggio']) }}</li>
-                    </ul>
-                    @else
-                    <ul class="my-filter">
-                        <li>{{ Form::radio('tipologia',0,false, ['id' => 'appartamento','class' => 'radio-input-alloggio']) }} {{ Form::label('appartamento','Appartamento', ['class' => 'label-input-alloggio']) }}</li>
-                        <li>{{ Form::radio('tipologia',1,true, ['id' => 'posto_letto','class' => 'radio-input-alloggio']) }} {{ Form::label('posto_letto', 'Posto letto', ['class' => 'label-input-alloggio']) }}</li>
-                        @endif
-                    </ul>
-                    <div id=letti_posto_letto>
-                        {{ Form::label('letti_pl', 'Posto letto in camera', ['class' => 'label-input-alloggio']) }}
-                        {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], $alloggio->letti_pl, ['class' => 'text-input-alloggio','id' => 'letti_pl']) }}
-                    </div>
-
-                    {{ Form::label('superficie', 'Superficie in metri quadri:', ['class' => 'label-input-alloggio']) }}
-                    {{ Form::text('superficie', $alloggio->superficie, ['class' => 'text-input-alloggio', 'id' => 'superficie']) }}
                     {{ Form::label('letti_ap', 'N° letti nell\'appartamento:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::text('letti_ap', $alloggio->letti_ap, ['class' => 'text-input-alloggio', 'id' => 'letti_ap']) }}
                     {{ Form::label('n_camere', 'N° Camere:', ['class' => 'label-input-alloggio']) }}
@@ -388,99 +415,99 @@
                     {{ Form::select('periodo_locazione',[3 => '3 Mesi',6 => '6 Mesi', 12 => '1 Anno'], $alloggio->periodo_locazione, ['class' => 'text-input-alloggio','id' => 'periodo_locazione', 'placeholder' => 'Seleziona un periodo']) }}
 
                     @isset($servizi)
-
-                        {{ Form::label('servizio', 'Servizi inlcusi', ['class' => 'label-input-alloggio']) }}
-                            <table class='table-input-alloggio'>
-                                <tr>
-                                    @php
-                                    $i=1;
-                                    @endphp
-                                    @foreach( $servizi as $servizio)
-                                    <td id={{$servizio->nome}}> {{Form::checkBox('servizi[]',$servizio->id,true)}}
-                                        {{Form::label($servizio->nome)}}
-                                    </td>
-                                    @if($i%4 == 0)
-                                </tr><tr>
-                                    @endif
-                                    @php
-                                    $i++;
-                                    @endphp
-                                    @endforeach
-                                    </tr>
-                            </table>
-                        </ul>
-                    </div>
-                    @endisset
-
-                    @isset($vincoli)
-                    <div class="wrap-input  rs1-wrap-input">
-                        {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-alloggio']) }}
-                        <ul class="my-filter">
-                            <li>{{ Form::radio('vuoiVincoli','No',true, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No') }}</li>
-                            <li>{{ Form::radio('vuoiVincoli','Si',false, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì') }}</li>
-
-                        </ul>
-                    </div>
-                    <div id="vincoli" class="w3-row-padding">
-                        {{ Form::label('vincolo', 'Vincoli:', ['class' => 'label-input-alloggio']) }}
-                        <ul class="w3-bar-block w3-text">
-
-                            @foreach ($vincoli as $vincolo)
-
+                    {{ Form::label('servizio', 'Servizi inlcusi', ['class' => 'label-input-alloggio']) }}
+                    <table class='table-input-alloggio'>
+                        <tr>
                             @php
-
-                            if($vincolo->id === 17 || $vincolo->id === 18)
-                            $name = 'sesso';
-
-                            elseif($vincolo->id === 19 || $vincolo->id === 20)
-                            $name = 'matricola';
+                            $i=1;
                             @endphp
 
-                            <li>{{Form::radio($name, $vincolo->id, false)}} {{Form::Label($vincolo->nome)}}</li>
+                            @foreach($servizi as $servizio)
+                            @php
+                            $checked = false;
+                            @endphp
 
+                            @foreach($servizi_alloggio as $servizio_alloggio)
+                            @php
+                            if($servizio->id == $servizio_alloggio->id){
+                            $checked = true;
+                            break;
+                            }
+                            @endphp
                             @endforeach
-                            <li>{{ Form::label('eta_max', 'Età massima: ') }}{{ Form::number('eta_max', 90, ['id' => 'eta_max']) }} </li>
-                        </ul>
-                    </div>
+                            <td class="{{$servizio->nome}}"> {{Form::checkBox('servizi[]',$servizio->id, $checked, ['id' => $servizio->nome])}} {{Form::label($servizio->nome)}}</td>
+                            @if($i%3 == 0)
+                        </tr>
+                        <tr>
+                            @endif
+                            @php
+                            $i++;
+                            @endphp
+                            @endforeach
+                        </tr>
+                    </table>
                     @endisset
 
-                    <div class="wrap-input  rs1-wrap-input">
-                        {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-alloggio']) }}
-                        {{ Form::textarea('descrizione', '', ['class' => 'text-input-alloggio', 'id' => 'descrizione']) }}
+                    {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-alloggio']) }}
+                    {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'text-input-alloggio', 'id' => 'descrizione', 'style'=>'text-align:left']) }}
+
+
+                    @isset($vincoli)
+                    <div class="row"></div>
+
+                    @php
+                    if(empty($vincoli_alloggio))
+                    $vincolo_presente = false;
+                    else
+                    $vincolo_presente = true;
+                    @endphp
+
+                    <div class="col-50">
+                        {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-alloggio']) }}
+                        <ul class="my-filter">
+                            <li>{{ Form::radio('vuoiVincoli','No', !($vincolo_presente), ['id' => 'negativo']) }} {{ Form::label('negativo', 'No', ['class' => 'label-input-alloggio']) }}</li>
+                            <li>{{ Form::radio('vuoiVincoli','Si', $vincolo_presente, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì', ['class' => 'label-input-alloggio']) }}</li>
+                        </ul>
                     </div>
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                    </div>
-                    <label for="cname">Name on Card</label>
-                    <input class='text-input-alloggio' type="text" id="cname" name="cardname" placeholder="John More Doe">
-                    <label for="ccnum">Credit card number</label>
-                    <input class='text-input-alloggio' type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                    <label for="expmonth">Exp Month</label>
-                    <input class='text-input-alloggio' type="text" id="expmonth" name="expmonth" placeholder="September">
-                    <div class="row">
-                        <div class="col-50">
-                            <label for="expyear">Exp Year</label>
-                            <input class='text-input-alloggio' type="text" id="expyear" name="expyear" placeholder="2018">
-                        </div>
-                        <div class="col-50">
-                            <label for="cvv">CVV</label>
-                            <input class='text-input-alloggio' type="text" id="cvv" name="cvv" placeholder="352">
-                        </div>
+                    <div id='vincoli' class="col-50">
+                        {{ Form::label('vincolo', 'Vincoli', ['class' => 'label-input-alloggio']) }}
+
+                        @foreach ($vincoli as $vincolo)                        
+
+                        @php
+                        $selected = false; 
+
+                        foreach($vincoli_alloggio as $vincolo_alloggio){
+                              if($vincolo->id == $vincolo_alloggio->id){
+                                $selected = true;
+                                break;
+                              }
+                        }
+
+                        if($vincolo->id === 17 || $vincolo->id === 18)
+                            $name = 'sesso';
+                           
+
+                        else if($vincolo->id === 19 || $vincolo->id === 20)
+                        $name = 'matricola';
+
+                        @endphp
+
+                        {{Form::radio($name, $vincolo->id, $selected)}} {{Form::Label($name, $vincolo->nome)}}
+                        @endforeach
+
+                        <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', 90, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
                     </div>
                 </div>
-                <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                </label>
-                <div style="width:100%; text-align: center;">
-                    <div style="display: inline-block"><input type="submit" value="Conferma Modifica" class="btn green"></div>
-                    <div style="display: inline-block"><input type="submit" value="Annulla Modifica" style="display: inline-block" class="btn red"></div>
-                </div>
-                {{ Form::close() }}
+                @endisset
             </div>
+            <div style="width:100%; text-align: center;">
+                {{ Form::submit('Conferma Modifica', ['class' => 'btn green' , 'style'=> "display: inline-block"]) }}
+                <input type="button" value="Annulla Modifica" onclick="document.getElementById('modifica').style.display='none'" style="display: inline-block" class="btn red">
+            </div>
+            {{ Form::close() }}
         </div>
-        @endsection
+    </div>
+</div>
+</div>
+@endsection

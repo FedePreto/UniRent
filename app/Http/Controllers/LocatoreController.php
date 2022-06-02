@@ -154,4 +154,35 @@ class LocatoreController extends Controller
         return  redirect()->route('locatore')
                 ->with('status', 'Alloggio eliminato correttamente!');
     }
+    public function updateAnnuncio(Request $request)
+    {
+        $data = $request->validate([
+            'foto_profilo' => 'file|mimes:jpeg,png|max:5000',
+            'name' => 'required|string|max:255',
+            'cognome' => 'required|string|max:255',
+            'sesso' => 'required|string',
+            'data_nascita' => 'required|date',
+            'email' => 'required|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
+            'cellulare' => 'required|min:10|max:10',
+            'descrizione' => 'string|max:2500'
+        ]);
+
+
+        if ($request->hasFile('foto_profilo')) {
+            $image = $request->file('foto_profilo');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path() . '/img/foto_profilo';
+            $oldImage = $destinationPath . '/' . auth()->user()->foto_profilo;
+            File::delete($oldImage);
+            $image->move($destinationPath, $imageName);
+        } else {
+            $imageName = auth()->user()->foto_profilo;
+        }
+
+        $data['foto_profilo'] = $imageName;
+        User::find(auth()->user()->id)->update($data);
+
+        return redirect()->route('profilo')
+            ->with('status', 'Profilo aggiornato correttamente!');
+    }
 }

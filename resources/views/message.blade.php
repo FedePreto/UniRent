@@ -62,40 +62,101 @@
 
 @section('content')
 <div>
-    <div>
-        <nav class="w3-sidebar-mess w3-bar-block-mess w3-collapse-mess w3-white w3-animate-left-mess w3-card" style="z-index:3;width:500px;" id="mySidebar">
+<div class="w3-row-padding">
+        <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:left; width:19.5%;">
+            <div >
+            <div><a href="javascript:void(0)" style="display:block; text-align:center;" class="w3-button w3-bar-item-mess w3-dark-grey w3-hover-black " onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a></div>
+            <div><a id="myBtn" onclick="myFunc('Demo1')" style="display:block; text-align:center;" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-inbox w3-margin-right"></i>Inbox<i class="fa fa-caret-down w3-margin-left"></i></a></div>
 
-            <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" class="w3-bar-item-mess w3-button w3-hide-large w3-large">Chiudi <i class="fa fa-remove"></i></a>
-            <a href="javascript:void(0)" class="w3-bar-item-mess w3-button w3-dark-grey w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a>
-            <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-inbox w3-margin-right"></i>Inbox<i class="fa fa-caret-down w3-margin-left"></i></a>
-
-
-            <!--ANTEPRIMA MESSAGGI IN BOX-->
+            
+            
             <div id="Demo1" class="w3-hide w3-animate-left">
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');" id="firstTab">
-                    <div class="w3-container">
-                        <img class="w3-round w3-margin-right" src="/w3images/avatar3.png" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
-                        <h6>Subject: Remember Me</h6>
-                        <p>Hello, i just wanted to let you know that i'll be home at...</p>
+                <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');" id="firstTab">
+                    <div>
+                        <div><span class="w3-opacity w3-large">Borge dfgfdghfdwghershrterwnnya berbtyebRefsnes</span></div>
+                        <div><h6>Subject: Remember Me</h6></div>
+                        <div><p>Hello, i just wanted to let you know that i'll be home at...</p></div>
+                        
+                        
+                        
                     </div>
                 </a>
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');">
+                <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');">
                     <div class="w3-container">
-                        <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
+                        <span class="w3-opacity w3-large">Jane Doe</span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                     </div>
                 </a>
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');">
+                <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');">
                     <div class="w3-container">
-                        <img class="w3-round w3-margin-right" src="/w3images/avatar2.png" style="width:15%;"><span class="w3-opacity w3-large">John Doe</span>
+                       <span class="w3-opacity w3-large">John Doe</span>
                         <p>Welcome!</p>
                     </div>
                 </a>
             </div>
-            <!--PULSANTI -->
-            <a id="myBtnRichieste" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Richieste<i class="fa fa-caret-down w3-margin-left"></i></a>
+            
+            
+            <div><a id="myBtnRichieste" onclick="myFunc('Demo2')" style="display:block; text-align:center;" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Richieste<i class="fa fa-caret-down w3-margin-left"></i></a></div>
 
-        </nav>
+
+            </div>
+        </div>
+        <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:right; width:79.5%;">
+            <div style="padding-top:10px;">
+
+            <div style="padding-left: 15px">
+            <i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
+            <a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
+
+            <div id="Borge">
+                <h5 class="w3-opacity">Subject: Remember Me</h5>
+                <h4><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
+                <a class="w3-button w3-light-grey" href="#">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
+                <a class="w3-button w3-light-grey" href="#">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
+                <hr>
+                <p>Hello, i just wanted to let you know that i'll be home at lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Best Regards, <br>Borge Refsnes</p>
+            </div>
+
+            <div id="Jane">
+                <br>
+                <h5 class="w3-opacity">Subject: None</h5>
+                <h4><i class="fa fa-clock-o"></i> From Jane Doe, Sep 25, 2015.</h4>
+                <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
+                <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Forever yours,<br>Jane</p>
+            </div>
+
+            <div id="John">
+                <br>
+                <h5 class="w3-opacity">Subject: None</h5>
+                <h4><i class="fa fa-clock-o"></i> From John Doe, Sep 23, 2015.</h4>
+                <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
+                <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
+                <hr>
+                <p>Welcome.</p>
+                <p>That's it!</p>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+            </div>
+            
+        </div>
+
+        <div style="text-align:center; width:1%;">
+        </div>
+    </div>
+    <div style="width:100%">
 
         <!-- Modal that pops up when you click on "New Message" -->
         <div id="id01" class="w3-modal" style="z-index:4">
@@ -117,53 +178,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Overlay effect when opening the side navigation on small screens -->
-        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
-
-        <!-- Page content -->
-        <div class="w3-main" style="margin-left:400px;">
-            <i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
-            <a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
-
-            <div id="Borge" class="w3-container person">
-                <br>
-                <img class="w3-round  w3-animate-top" src="/w3images/avatar3.png" style="width:20%;">
-                <h5 class="w3-opacity">Subject: Remember Me</h5>
-                <h4><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
-                <a class="w3-button w3-light-grey" href="#">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                <a class="w3-button w3-light-grey" href="#">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                <hr>
-                <p>Hello, i just wanted to let you know that i'll be home at lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Best Regards, <br>Borge Refsnes</p>
-            </div>
-
-            <div id="Jane" class="w3-container person">
-                <br>
-                <img class="w3-round w3-animate-top" src="/w3images/avatar5.png" style="width:20%;">
-                <h5 class="w3-opacity">Subject: None</h5>
-                <h4><i class="fa fa-clock-o"></i> From Jane Doe, Sep 25, 2015.</h4>
-                <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Forever yours,<br>Jane</p>
-            </div>
-
-            <div id="John" class="w3-container person">
-                <br>
-                <img class="w3-round w3-animate-top" src="/w3images/avatar2.png" style="width:20%;">
-                <h5 class="w3-opacity">Subject: None</h5>
-                <h4><i class="fa fa-clock-o"></i> From John Doe, Sep 23, 2015.</h4>
-                <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                <hr>
-                <p>Welcome.</p>
-                <p>That's it!</p>
-            </div>
-
         </div>
     </div>
 </div>

@@ -192,7 +192,36 @@
                                 @if(($alloggio->opzionato)===0)
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Richiedi </button>
                                 @endif
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Contatta Locatore</button>
+                                <a href="javascript:void(0)" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('id01').style.display='block'">Contatta locatore</a>
+                            </div>
+                            <div style="width:100%">
+
+                                <!-- Modal that pops up when you click on "New Message" -->
+                                <div id="id01" class="w3-modal" style="z-index:4">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                        <div class="w3-container w3-padding w3-blue">
+                                            <h2>Invia Messaggio</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div align="center">
+                                                {{ Form::label('destinatario', 'Destinatario:', ['class' => 'label-input-app']) }}<br>
+                                                {{ Form::label('destinatario',$alloggio->locatore, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
+                                                <hr>
+                                                {{ Form::label('mittente', 'Mittente:', ['class' => 'label-input-app']) }}<br>
+                                                {{ Form::label('mittente', 'Tu', ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
+                                                <hr>
+                                                {{ Form::label('oggetto', 'Oggetto:', ['class' => 'label-input-app']) }}<br>
+                                                {{ Form::label('oggetto',$alloggio->titolo, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto', 'placeholder'=>'Inserire l\'oggetto del messaggio...']) }}<br>
+                                                <hr>
+                                                {{ Form::textarea('corpo_messaggio','', ['class' => 'input-app w3-input w3-border', 'id' => 'corpo_messaggio', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
+                                            </div>
+                                            <div class="w3-section">
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('id01').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                <a class="w3-button w3-right w3-blue" style="width:150px" onclick="document.getElementById('id01').style.display='none'">Invia <i class="fa fa-paper-plane"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             @endcan
                             <div style="text-align:center;">
@@ -219,44 +248,45 @@
             <hr style="margin:5px; margin-bottom:5px;">
             @isset($servizi_alloggio)
             <table style="width:100%">
-                    <tr>
+                <tr>
                     @php
                     $i=0;
                     @endphp
 
                     @foreach($servizi_alloggio as $servizio_alloggio)
-                        @php 
-                            $output = str_replace('_', ' ', $servizio_alloggio->nome);
-                            $i++;
-                        @endphp                 
-                        <td>{{$output}}</td>
-                        @if($i%3 == 0)
-                        </tr><tr>
-                        @endif
-                    @endforeach                 
+                    @php
+                    $output = str_replace('_', ' ', $servizio_alloggio->nome);
+                    $i++;
+                    @endphp
+                    <td>{{$output}}</td>
+                    @if($i%3 == 0)
+                </tr>
+                <tr>
+                    @endif
+                    @endforeach
                 </tr>
             </table>
             @endisset
             <div style="padding-top:10px;">
                 <span style="font-size:26px; color:black;">Vincoli Affitto</span>
             </div>
-             <hr style="margin:5px; margin-bottom:5px;">
+            <hr style="margin:5px; margin-bottom:5px;">
             @isset($vincoli_alloggio)
             <table style="width:100%">
-                    <tr>
+                <tr>
                     @foreach($vincoli_alloggio as $vincolo_alloggio)
-                        @php 
-                            $output = str_replace('_', ' ', $vincolo_alloggio->nome);
-                            $i++;
-                        @endphp                 
-                        <td>{{$output}}</td>
+                    @php
+                    $output = str_replace('_', ' ', $vincolo_alloggio->nome);
+                    $i++;
+                    @endphp
+                    <td>{{$output}}</td>
                     @endforeach
-                    @if(!is_null($alloggio->eta_max ))                       
-                        <td>Range Età: 18 - {{$alloggio->eta_max}}</td>
+                    @if(!is_null($alloggio->eta_max ))
+                    <td>Range Età: 18 - {{$alloggio->eta_max}}</td>
                     @endif
-                    </tr>                
+                </tr>
             </table>
-            @endisset 
+            @endisset
         </div>
     </div>
 </div>
@@ -485,12 +515,12 @@
                     {{ Form::label('descrizione', 'Descrizione Appartamento:', ['class' => 'label-input-alloggio']) }}
                     {{ Form::textarea('descrizione', $alloggio->descrizione, ['class' => 'text-input-alloggio', 'id' => 'descrizione', 'style'=>'text-align:left']) }}
                     @if ($errors->first('descrizione'))
-                        <ul class="errors">
-                            @foreach ($errors->get('descrizione') as $message)
-                            <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                        @endif
+                    <ul class="errors">
+                        @foreach ($errors->get('descrizione') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
 
 
                     @isset($vincoli)
@@ -499,10 +529,10 @@
                     @php
                     $vincolo_presente = false;
                     if(!empty($vincoli_alloggio))
-                    $vincolo_presente = true;                
+                    $vincolo_presente = true;
                     @endphp
 
-                    
+
 
                     <div class="col-50">
                         {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-alloggio']) }}
@@ -554,8 +584,8 @@
                             @endforeach
                         </ul>
                         @endif
-                    
-                    </div>                    
+
+                    </div>
                 </div>
                 @endisset
             </div>

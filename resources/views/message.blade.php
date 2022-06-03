@@ -65,7 +65,6 @@
     <div class="w3-row-padding">
         <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:left; width:19.5%;">
             <div>
-                <div><a href="javascript:void(0)" style="display:block; text-align:center;" class="w3-button w3-bar-item-mess w3-dark-grey w3-hover-black " onclick="document.getElementById('id01').style.display='block'">Nuovo Messaggio <i class="w3-padding fa fa-pencil"></i></a></div>
                 <div><a id="myBtn" onclick="myFunc('Demo1')" style="display:block; text-align:center;" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-inbox w3-margin-right"></i>Inbox<i class="fa fa-caret-down w3-margin-left"></i></a></div>
 
 
@@ -98,10 +97,6 @@
                         </div>
                     </a>
                 </div>
-
-
-                <div><a id="myBtnRichieste" onclick="myFunc('Demo2')" style="display:block; text-align:center;" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Richieste<i class="fa fa-caret-down w3-margin-left"></i></a></div>
-
 
             </div>
         </div>
@@ -158,36 +153,6 @@
         </div>
 
         <div style="text-align:center; width:1%;">
-        </div>
-    </div>
-    <div style="width:100%">
-
-        <!-- Modal that pops up when you click on "New Message" -->
-        <div id="id01" class="w3-modal" style="z-index:4">
-            <div class="w3-modal-content w3-animate-zoom">
-                <div class="w3-container w3-padding w3-red">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-red w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
-                    <h2>Invia Messaggio</h2>
-                </div>
-                <div class="w3-panel">
-                    <div align="center">
-                        {{ Form::label('destinatario', 'Destinatario:', ['class' => 'label-input-app']) }}<br>
-                        {{ Form::select('destinatario',['utenti'=>'persone'],null, ['class' => 'input-app w3-border', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
-                        <hr>
-                        {{ Form::label('mittente', 'Mittente:', ['class' => 'label-input-app']) }}<br>
-                        {{ Form::label('mittente','Persona che invia', ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
-                        <hr>
-                        {{ Form::label('oggetto', 'Oggetto:', ['class' => 'label-input-app']) }}<br>
-                        {{ Form::text('oggetto','', ['class' => 'input-app w3-input w3-border', 'id' => 'oggetto', 'placeholder'=>'Inserire l\'oggetto del messaggio...']) }}<br>
-                        <hr>
-                        {{ Form::textarea('corpo_messaggio','', ['class' => 'input-app w3-input w3-border', 'id' => 'corpo_messaggio', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
-                    </div>
-                    <div class="w3-section">
-                        <a class="w3-button w3-red" onclick="document.getElementById('id01').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
-                        <a class="w3-button w3-light-grey w3-right" onclick="document.getElementById('id01').style.display='none'">Invia <i class="fa fa-paper-plane"></i></a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

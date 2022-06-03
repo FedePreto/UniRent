@@ -7,12 +7,6 @@ namespace App\Models;
 
 class Locatore{
 
-    public function getServiziVincoli(){
-        $servizi =  ServiziVincoli::where('tipologia', '=' ,0)->get();
-        $vincoli = ServiziVincoli::where('tipologia', '=' ,1)->get();
-        return [$servizi, $vincoli];
-    }
-
     public function getCatalogo(){
         $alloggi_user = Alloggi::where('locatore','=', Auth::id()); 
         return $alloggi_user->paginate(6);       

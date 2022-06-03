@@ -71,8 +71,13 @@
 @endsection
 
 @section('content')
-
+@can('isLocatore')
+<a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
+@endcan
+@can('isLocatario')
 <a href="{{url()->previous()}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
+@endcan
+
 
 <div class="w3-content w3-padding" style="max-width:1654px">
     <div class="w3-row-padding">
@@ -212,144 +217,47 @@
                 <span style="font-size:26px; color:black;">Servizi Offerti</span>
             </div>
             <hr style="margin:5px; margin-bottom:5px;">
-            <div style="width:100%">
-                <table style="width:100%">
-                    @isset($servizivincoli)
+            @isset($servizi_alloggio)
+            <table style="width:100%">
+                    <tr>
                     @php
-                    $i = 0;
-                    $flag=0;
+                    $i=0;
                     @endphp
-                    @foreach($servizivincoli as $servizio)
-                    @foreach($servizi_inclusi as $incluso)
-                    @if(($servizio->id)===($incluso->servizio_vincolo))
-                    @if(($servizio->tipologia)===0)
-                    @switch($i)
-                    @case(0)
-                    <tr>
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 1;
-                        $flag=1;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(1)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 2;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(2)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 0;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                    </tr>
-                    @break
-                    @endswitch
-                    @endif
-                    @endif
-                    @endforeach
-                    @endforeach
-                    @if($flag==0)
-                    <tr>
-                        <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Servizio Offerto</span></td>
-                    </tr>
-                    @endif
-                    @endisset
-                </table>
-            </div>
+
+                    @foreach($servizi_alloggio as $servizio_alloggio)
+                        @php 
+                            $output = str_replace('_', ' ', $servizio_alloggio->nome);
+                            $i++;
+                        @endphp                 
+                        <td>{{$output}}</td>
+                        @if($i%3 == 0)
+                        </tr><tr>
+                        @endif
+                    @endforeach                 
+                </tr>
+            </table>
+            @endisset
             <div style="padding-top:10px;">
                 <span style="font-size:26px; color:black;">Vincoli Affitto</span>
             </div>
-            <hr style="margin:5px; margin-bottom:5px;">
-            <div style="width:100%">
-                <table style="width:100%">
-                    @isset($servizivincoli)
-                    @php
-                    $i = 0;
-                    $flag=0;
-                    @endphp
-                    @foreach($servizivincoli as $servizio)
-                    @foreach($servizi_inclusi as $incluso)
-                    @if(($servizio->id)===($incluso->servizio_vincolo))
-                    @if(($servizio->tipologia)===1)
-                    @switch($i)
-                    @case(0)
+             <hr style="margin:5px; margin-bottom:5px;">
+            @isset($vincoli_alloggio)
+            <table style="width:100%">
                     <tr>
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 1;
-                        $flag=1;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(1)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 2;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                        @break
-                        @case(2)
-                        @php
-                        $nomi= explode("_", $servizio->nome);
-                        $i = 0;
-                        @endphp
-                        <td style="width:33.3333%;  padding-top:5px;  padding-left:20px;"><span>
-                                @foreach($nomi as $nome)
-                                {{$nome}}
-                                @endforeach
-                            </span></td>
-                    </tr>
-                    @break
-                    @endswitch
-                    @endif
-                    @endif
+                    @foreach($vincoli_alloggio as $vincolo_alloggio)
+                        @php 
+                            $output = str_replace('_', ' ', $vincolo_alloggio->nome);
+                            $i++;
+                        @endphp                 
+                        <td>{{$output}}</td>
                     @endforeach
-                    @endforeach
-                    @if($alloggio->eta_max < 90) @if(!(is_null($alloggio->eta_max)))
-                        <tr>
-                            <td style="width:33.3333%; padding-top:5px;  padding-left:20px;"> <span>Range Età: 18 - {{$alloggio->eta_max}}</span></td>
-                        </tr>
-                        @php
-                        $flag=1;
-                        @endphp
-                        @endif
-                        @endif
-                        @if($flag==0)
-                        <tr>
-                            <td style="width:33.3333%; font-size:18px; padding-top:5px;  padding-left:20px;"> <span>Nessun Vincolo di Affitto</span></td>
-                        </tr>
-                        @endif
-                        @endisset
-                </table>
-            </div>
+                    @if(!is_null($alloggio->eta_max ))                       
+                        <td>Range Età: 18 - {{$alloggio->eta_max}}</td>
+                    @endif
+                    </tr>                
+            </table>
+            @endisset 
         </div>
-    </div>
-    <div style="text-align:center; width:1%;">
     </div>
 </div>
 
@@ -589,16 +497,17 @@
                     <div class="row"></div>
 
                     @php
-                    if(empty($vincoli_alloggio))
                     $vincolo_presente = false;
-                    else
-                    $vincolo_presente = true;
+                    if(!empty($vincoli_alloggio))
+                    $vincolo_presente = true;                
                     @endphp
+
+                    
 
                     <div class="col-50">
                         {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-alloggio']) }}
                         <ul class="my-filter">
-                            <li>{{ Form::radio('vuoiVincoli','No', !($vincolo_presente), ['id' => 'negativo']) }} {{ Form::label('negativo', 'No', ['class' => 'label-input-alloggio']) }}</li>
+                            <li>{{ Form::radio('vuoiVincoli','No', $vincolo_presente, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No', ['class' => 'label-input-alloggio']) }}</li>
                             <li>{{ Form::radio('vuoiVincoli','Si', $vincolo_presente, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì', ['class' => 'label-input-alloggio']) }}</li>
                         </ul>
                     </div>
@@ -637,7 +546,7 @@
                         </ul>
                         @endif
 
-                        <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', 90, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
+                        <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', $alloggio->eta_max, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
                         @if ($errors->first('eta_max'))
                         <ul class="errors">
                             @foreach ($errors->get('eta_max') as $message)

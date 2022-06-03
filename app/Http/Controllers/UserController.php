@@ -37,21 +37,23 @@ class UserController extends Controller
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
-        $servizi = $this->_catalogModel->getServizi();
+        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
                     ->with('alloggi',$alloggi)
-                    ->with('servizi',$servizi)
+                    ->with('servizi',$servizi_vincoli[0])
                     ->with('request',$ricerca);          
     }
 
     public function getAnnuncio(int $id){
         $alloggio = $this->_catalogModel->getAlloggio($id);
-        //$servizi_inclusi = $this->_catalogModel->getAlloggioServizi($id);
-        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
+        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         $locatore = $this->_annuncioModel->getLocatore($alloggio->locatore);
         $sv_alloggio = $this->_annuncioModel->getAlloggioServiziVincoli($id); //Questo array è più comodo degli altri due passa
                                                                               //in due array separati vincoli [1] e servizi [0] dell'alloggio in questione
-                                                                              //inoltre sia vincoli che servizi sono associati al rispettivo nome   
+                                                                              //inoltre sia vincoli che servizi sono associati al rispettivo nome 
+        Log::info($sv_alloggio[0]);
+        Log::info($sv_alloggio[1]);
+        Log::info($servizi_vincoli);  
         return view('annuncio')
                 ->with('alloggio',$alloggio)
                 ->with('servizi', $servizi_vincoli[0])

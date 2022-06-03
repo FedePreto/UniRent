@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 // Aggiunti per response JSON
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -39,7 +40,7 @@ class NewHomeRequest extends FormRequest {
             'prezzo' => 'required|numeric|min:0',
             'descrizione' => 'required|string|max:2500',
             'superficie' => 'required|integer|min:0',
-            'letti_pl' => 'sometimes|integer|min:0',
+            'letti_pl' => 'exclude_if:tipologia,0|integer|min:1|max:2',
             'letti_ap' => 'required|integer|min:0',
             'n_camere' => 'required|integer|min:0',
             'tipologia' => 'required|boolean',

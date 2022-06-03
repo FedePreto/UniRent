@@ -71,4 +71,7 @@ class Catalogo {
         Log::info($servizi);
         return $servizi;
     }
+    public function getServizi(){
+        return ServiziVincoli::all()->where('tipologia','0');
+    }
 }

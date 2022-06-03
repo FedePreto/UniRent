@@ -60,45 +60,23 @@
             $i = 1;
             @endphp
             @foreach($servizi as $servizio)
-            @if($servizio->tipologia != 1)
-            <li>{{Form::checkbox($servizio->nome,$servizio->id,isset($request) ? $request->only($servizio->nome)!=null : false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
-            @if($i%4==0 )
-          </ul>
-        </div>
-        <div class="my-align">
-          <ul class="w3-bar-block w3-text my-filter">
-            @endif
-            @php
-            $i++;
-            @endphp
-            @endif
+              @if($servizio->tipologia != 1)
+                  <li>{{Form::checkbox($servizio->nome,$servizio->id,isset($request) ? $request->only($servizio->nome)!=null : false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
+                @if($i%4==0)
+                    </ul>
+                  </div>
+                  <div class="my-align">
+                    <ul class="w3-bar-block w3-text my-filter">
+                @endif
+                @php
+                  $i++;
+                @endphp
+              @endif
             @endforeach
           </ul>
         </div>
         <br>
-        <div class="my-align">
-          {{Form::label('Vincoli: ')}}
-        <ul class="w3-bar-block w3-text my-filter">
-          @php
-          $i = 1;
-          @endphp
-          @foreach($servizi as $servizio)
-            @if($servizio->tipologia == 1)
-            <li>{{Form::checkbox($servizio->nome,$servizio->id,isset($request) ? $request->only($servizio->nome)!=null : false,array('form'=>'ricerca'))}} {{Form::label($servizio->nome)}}</li>
-            @endif  
-            @if($i%4==0 )
-          </ul>
-        </div>
-        <div class="my-align">
-          <ul class="w3-bar-block w3-text my-filter">
-            @endif
-            @php
-            $i++;
-            @endphp        
-          @endforeach
-        </ul>
         @endisset
-        </div>
 
 
       </div>

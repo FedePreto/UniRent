@@ -39,7 +39,7 @@ class LocatoreController extends Controller
     public function index_lario()
     {
         $alloggi = $this->_catalogModel->getCatalog();
-        $servizi = $this->_catalogModel->getServiziVincoli();
+        $servizi = $this->_catalogModel->getServizi();
         return view('dashboard')
             ->with('alloggi', $alloggi)
             ->with('servizi', $servizi);

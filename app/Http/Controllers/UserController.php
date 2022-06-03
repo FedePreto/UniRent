@@ -28,10 +28,10 @@ class UserController extends Controller
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
-        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
+        $servizi = $this->_catalogModel->getServizi();
         return view('dashboard')
                     ->with('alloggi',$alloggi)
-                    ->with('servizi',$servizi_vincoli[0])
+                    ->with('servizi',$servizi)
                     ->with('request',$ricerca);          
     }
 

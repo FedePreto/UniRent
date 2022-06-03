@@ -72,7 +72,7 @@
 
 @section('content')
 
-<a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
+<a href="{{url()->previous()}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
 
 <div class="w3-content w3-padding" style="max-width:1654px">
     <div class="w3-row-padding">

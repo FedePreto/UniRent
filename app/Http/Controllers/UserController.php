@@ -15,16 +15,25 @@ class UserController extends Controller
     protected $_annuncioModel;
     protected $_locatoreModel;
 
+
     public function __construct(){
         $this->_catalogModel = new Catalogo;
         $this->_annuncioModel = new Annuncio;
         $this->_locatoreModel = new Locatore;
     }
     //
-    public function searchCatalogo(Request $ricerca ){
+    public function searchCatalogo(Request $ricerca  ){
         Log::info($ricerca);
-        if($ricerca!=null){
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine']));
+        if($this->checkRequest($ricerca)){
+            $prezzo = [];
+            if(isset($ricerca->prezzo_min)){
+                $prezzo['min'] = $ricerca->prezzo_min;
+            }
+            if(isset($ricerca->prezzo_max)){
+                $prezzo['max'] = $ricerca->prezzo_max;
+            }
+           
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine']),$prezzo);
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
@@ -56,5 +65,14 @@ class UserController extends Controller
 
     public function showMessaggi(){
         return view('message');
+    }
+
+    private function checkRequest(Request $request){
+        if(count($request->all())<=2){
+            if($request->citta == '' and $request->tipo_camera == 'tutte'){
+                return false;
+            }
+        }
+        return true;
     }
 }

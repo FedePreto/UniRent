@@ -46,9 +46,9 @@
         </div>
 
         <div class="my-align range">
-          <label for="amount">Costo：</label>
-          <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
-          <div id="slider-range"></div>
+          {{Form::label('Prezzo: ')}}
+          {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'1000','form'=>'ricerca','placeholder'=>'min'))}}
+          {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'1000','form'=>'ricerca','placeholder'=>'max'))}}
         </div>
 
 

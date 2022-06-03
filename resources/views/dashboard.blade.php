@@ -15,6 +15,7 @@
 @endsection
 
 @isset($alloggi)
+
 <p class="w3-margin">Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
 @if (session('status'))
 <div class="alert success">

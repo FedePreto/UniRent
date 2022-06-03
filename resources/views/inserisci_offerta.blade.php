@@ -138,7 +138,7 @@
 
             <div id='letti_posto_letto' class="wrap-input  rs1-wrap-input">
                 {{ Form::label('letti_pl', 'Posto letto in camera:', ['class' => 'label-input-app']) }}
-                {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia',1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'letti_pl']) }}
+                {{ Form::select('letti_pl', [0 =>'Seleziona la tipologia', 1 => 'Singola',2 => 'Doppia'], null, ['class' => 'input','id' => 'letti_pl']) }}
             </div>
 
             <div class="wrap-input  rs1-wrap-input">

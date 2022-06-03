@@ -39,14 +39,14 @@ class LocatoreController extends Controller
     public function index_lario()
     {
         $alloggi = $this->_catalogModel->getCatalog();
-        $servizi = $this->_catalogModel->getServizi();
+        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
             ->with('alloggi', $alloggi)
-            ->with('servizi', $servizi);
+            ->with('servizi', $servizi_vincoli[0]);
     }
     public function addHome()
     {
-        $servizi_vincoli = $this->_locatoreModel->getServiziVincoli();
+        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         return view('inserisci_offerta')
             ->with('servizi', $servizi_vincoli[0])
             ->with('vincoli', $servizi_vincoli[1]);
@@ -69,7 +69,7 @@ class LocatoreController extends Controller
         if ($request->letti_pl == 0)
             $posto_letto = NULL;
         else
-            $posto_letto = $request->letto_pl;
+            $posto_letto = $request->letti_pl;
 
 
         $alloggio = new Alloggi;
@@ -80,17 +80,19 @@ class LocatoreController extends Controller
         $alloggio->foto = $imageName;
         $alloggio->eta_max = $vincolo_eta;
         $alloggio->letti_pl = $posto_letto;
-        $alloggio->created_at = Carbon::now()->format('Y-m-d');
+        $alloggio->created_at = Carbon::now()->addHours(2);
         $alloggio->save();
 
-        foreach ($request->get('servizi') as $servizio) {
-            $incluso = new Incluso([
-                'alloggio' => $alloggio->id,
-                'servizio_vincolo' => $servizio
-            ]);
-            $incluso->save();
+        if (!is_null($request->get('servizi'))) {
+            foreach ($request->get('servizi') as $servizio) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $servizio
+                ]);
+                $incluso->save();
+            }
         };
-        
+
 
         if ($request->vuoiVincoli === 'Si') {
             if ($request->has('sesso')) {
@@ -149,12 +151,15 @@ class LocatoreController extends Controller
             ->with('status', 'Profilo aggiornato correttamente!');
     }
 
-    public function deleteAnnuncio($id){
+    public function deleteAnnuncio($id)
+    {
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $alloggio->delete();
+        $incluso = $this->_catalogModel->getAlloggioIncluso($id);
+        $incluso->delete();
 
         return  redirect()->route('locatore')
-                ->with('status', 'Alloggio eliminato correttamente!');
+            ->with('status', 'Alloggio eliminato correttamente!');
     }
 
     public function updateAnnuncio(Request $request, $id)
@@ -169,13 +174,13 @@ class LocatoreController extends Controller
             'prezzo' => 'required|numeric|min:0',
             'descrizione' => 'required|string|max:2500',
             'superficie' => 'required|integer|min:0',
-            'letti_pl' => 'sometimes|integer|min:0',
+            'letti_pl' => 'exclude_if:tipologia,0|integer|min:1',
             'letti_ap' => 'required|integer|min:0',
             'n_camere' => 'required|integer|min:0',
             'tipologia' => 'required|boolean',
             'foto' => 'sometimes|file|mimes:jpeg,png|max:1024',
             'periodo_locazione' => 'required|integer|min:3|max:12',
-            'eta_max'=>'sometimes|integer|max:90|min:18'
+            'eta_max' => 'sometimes|integer|max:90|min:18'
         ]);
 
         $data_incluso = $request->validate([
@@ -202,28 +207,30 @@ class LocatoreController extends Controller
 
         $data_alloggio['foto'] = $imageName;
 
-        if($data_alloggio['eta_max'] == 90){
+        if ($data_alloggio['eta_max'] == 90) {
             $data_alloggio['eta_max'] = NULL;
         }
 
-        if($data_alloggio['tipologia']==0){
+        if ($data_alloggio['tipologia'] == 0) {
             $data_alloggio['letti_pl'] = NULL;
         }
 
-        
 
+        $alloggio->updated_at = Carbon::now()->addHours(2);
         $alloggio->update($data_alloggio);
 
         $this->_annuncioModel->deleteServiziVincoli($id);
 
-        foreach ($data_incluso['servizi'] as $servizio) {
-            $incluso = new Incluso([
-                'alloggio' => $alloggio->id,
-                'servizio_vincolo' => $servizio
-            ]);
-            $incluso->save();
+        if (array_key_exists('servizi', $data_incluso)) {
+            foreach ($data_incluso['servizi'] as $servizio) {
+                $incluso = new Incluso([
+                    'alloggio' => $alloggio->id,
+                    'servizio_vincolo' => $servizio
+                ]);
+                $incluso->save();
+            }
         };
-        
+
 
         if ($data_incluso['vuoiVincoli'] === 'Si') {
             if ($request->has('sesso')) {
@@ -240,7 +247,7 @@ class LocatoreController extends Controller
                 ]);
                 $incluso->save();
             };
-        };        
+        };
 
 
 

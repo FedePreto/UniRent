@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Faq;
-use App\Models\Resources\ServiziVincoli;
 use App\Models\Resources\Incluso;
+use App\Models\Resources\ServiziVincoli;
 
 use Illuminate\Support\Facades\Log;
 
@@ -66,12 +66,13 @@ class Catalogo {
         $alloggio =  Alloggi::find($id);
         return $alloggio;
     }
-    public function getAlloggioServizi($id){
-        $servizi =  Incluso::where('alloggio',$id)->get();
-        Log::info($servizi);
+    public function getAlloggioIncluso($id){
+        $servizi =  Incluso::where('alloggio',$id);
         return $servizi;
     }
-    public function getServizi(){
-        return ServiziVincoli::all()->where('tipologia','0');
+    public function getServiziVincoli(){
+        $servizi =  ServiziVincoli::where('tipologia', 0)->get();
+        $vincoli = ServiziVincoli::where('tipologia',1)->get();
+        return [$servizi, $vincoli];
     }
 }

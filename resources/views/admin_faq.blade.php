@@ -7,9 +7,7 @@
 <script  language="JavaScript" type="text/javascript">
     $(function() {
         $(".alert").show().delay(2000).fadeOut("show");
-    })
-
-});
+    });
 
 </script>
     

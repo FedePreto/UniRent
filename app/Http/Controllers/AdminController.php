@@ -35,7 +35,7 @@ class AdminController extends Controller{
             'risposta' => 'required|string|max:190',
         ]);
 
-        return redirect()->route('admin_faq')
+        return redirect()->route('faqindex')
             ->with('status', 'Faq aggiornata correttamente!');
     }
 
@@ -44,7 +44,7 @@ class AdminController extends Controller{
         $faq->fill($request->validated());
         $faq->save();
 
-        return redirect()->route('admin_faq')
+        return redirect()->route('faqindex')
             ->with('status', 'Faq inserita correttamente!');
     }
 
@@ -53,7 +53,7 @@ class AdminController extends Controller{
         $faq = $this->_catalogModel->getThisFaq($id);
         $faq->delete();
 
-        return  redirect()->route('admin_faq')
+        return  redirect()->route('faqindex')
             ->with('status', 'FAQ eliminata correttamente!');
     }
 

@@ -5,21 +5,7 @@
 <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script>
-  $(function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 1000,
-      values: [ 0, 1000 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - €" + $( "#slider-range" ).slider( "values", 1 ) );
-  });
-  </script>
+
   <!-- Searchbar -->
   <!--<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>-->
   <div class="w3-container" style="padding-top:50px">
@@ -45,10 +31,18 @@
           </ul>
         </div>
 
-        <div class="my-align range">
+        <div class="my-align ">
           {{Form::label('Prezzo: ')}}
-          {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'1000','form'=>'ricerca','placeholder'=>'min'))}}
-          {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'1000','form'=>'ricerca','placeholder'=>'max'))}}
+          {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'min'))}}
+          {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'max'))}}
+          @if ($errors->first('prezzo_max'))
+          
+          <ul class='errors'>
+            @foreach($errors->get('prezzo_max') as $error)
+              <li>{{$error}}</li>
+            @endforeach
+          </ul>
+          @endif
         </div>
 
 

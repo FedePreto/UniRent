@@ -20,13 +20,13 @@ class Catalogo {
         
         //creo la tabella alloggi
         $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
-
+        
+        //filtri
         if($filtri != null){
             //creao la tabella join tra alloggi e incluso
             $alloggi_filtri = Alloggi::leftJoin('incluso','incluso.alloggio','=','alloggi.id');
             if(count($filtri)>1){
                 foreach(array_keys($filtri) as $key){
-                    
                     $alloggi_filtri = $alloggi_filtri->orWhere('servizio_vincolo',$filtri[$key]);
                 }
             }else{
@@ -36,7 +36,8 @@ class Catalogo {
             $alloggi_filtri = $alloggi_filtri->select('alloggio')->distinct('alloggio')->get();
             $alloggi = $alloggi->whereIn('alloggi.id',$alloggi_filtri->toArray());
 
-        }        
+        }
+
         //se gli alloggi si trovano nell'array $alloggi_filtri
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);
@@ -55,6 +56,8 @@ class Catalogo {
             }
         }
         //return$alloggi;
+
+        //fare join con incluso e poi count(alloggi) group by alloggi
         return $alloggi->paginate(6);
     }
     

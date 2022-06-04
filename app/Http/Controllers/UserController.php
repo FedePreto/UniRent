@@ -8,7 +8,7 @@ use App\Models\Catalogo;
 use App\Models\Annuncio;
 use App\Models\Locatore;
 use Illuminate\Support\Facades\Log;
-
+use App\Rules\GreaterThan;
 class UserController extends Controller
 {
     protected $_catalogModel ;
@@ -20,19 +20,28 @@ class UserController extends Controller
         $this->_catalogModel = new Catalogo;
         $this->_annuncioModel = new Annuncio;
         $this->_locatoreModel = new Locatore;
+        
     }
     //
-    public function searchCatalogo(Request $ricerca  ){
-        Log::info($ricerca);
+    public function searchCatalogo(Request $ricerca ){
+        //Log::info($ricerca);
+        
+        
+        
         if($this->checkRequest($ricerca)){
             $prezzo = [];
             if(isset($ricerca->prezzo_min)){
                 $prezzo['min'] = $ricerca->prezzo_min;
+                
             }
             if(isset($ricerca->prezzo_max)){
                 $prezzo['max'] = $ricerca->prezzo_max;
             }
-            Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
+            request()->validate([
+               'prezzo_min'=>'min:0',
+               'prezzo_max' =>['min:0',new GreaterThan($ricerca->prezzo_min)]
+            ]);
+            //Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
             $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']),$prezzo);
             //return $alloggi ;
         }else{
@@ -76,4 +85,5 @@ class UserController extends Controller
         }
         return true;
     }
+   
 }

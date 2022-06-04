@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
- use App\Models\Resources\ServiziVincoli;
  use App\Models\Resources\Alloggi;
  use Illuminate\Support\Facades\Auth;
 

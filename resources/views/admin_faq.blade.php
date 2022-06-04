@@ -7,34 +7,10 @@
 <script  language="JavaScript" type="text/javascript">
     $(function() {
         $(".alert").show().delay(2000).fadeOut("show");
-    });
+    })
 
-    $(function(){
-        $(".modifica").click(function(){
-            var numero = $(this).attr('id');
-            
-            var form1 =  '{{ Form::open(array("route" => ["faq.update",';
-                form1 = form1.concat(numero);
-            var form2 = '], "method" => "PUT", "id"=>"modificaFaq", "class" => "animate")) }} {{ Form::label("domanda",';
-                form1 = form1.concat(form2);
-            /*    form1 = form1.concat(numero);
-            var form3 =', ["class" => "label-input-alloggio"]) }}' +
-                        '{{ Form::text("domanda", " ", ["class" => "text-input-alloggio", "id" => "risposta"]) }} <br>' +
-                        '{{ Form::label("risposta", "Risposta", ["class" => "label-input-alloggio"]) }}' +
-                        '{{ Form::text("risposta"," " , ["class" => "text-input-alloggio", "id" => "risposta"]) }}' +
-                        '<div class="w3-section">' +
-                        '<a class="w3-button w3-red" style="width:150px; float:left;" onclick="document.getElementById("modifica").style.display="none"">Annulla <i class="fa fa-remove"></i></a>' +
-                        '{{ Form::submit("Modifica", ["class" => "w3-button w3-right w3-blue" , "style"=> "width:150px"]) }}'+
-                        '{{Form::close()}}';
-                form1 = form1.concat(form3);*/
+});
 
-                alert(form1);
-
-            
-           // $("#divscript").html(form1);
-        });
-
-    });
 </script>
     
 @endsection
@@ -87,7 +63,7 @@
             <td>{{$faq->domanda}}</td>
             <td>{{$faq->risposta}} </td>
             <td>
-                <a id="{{$faq->id}}"  class="modifica w3-button w3-blue" onclick="document.getElementById('modifica').style.display='block'">Modifica</a>
+                <button id="{{$faq->id}}"  class="ancora w3-button w3-blue" onClick="myFunction()">Modifica</button>
             </td>
             <td>
             <form action="{{ route('faq.delete', $faq->id)}}" method="post" >
@@ -112,7 +88,8 @@
                 </div>
                 <div class="w3-panel" style="padding-bottom:16px;">
                     <div id="divscript" align='center'>
-                        <!--    
+                        <!--
+                        onclick="document.getElementById('modifica').style.display='block'"    
                         {{ Form::open(array('route' => ['faq.update',$faq->id ], 'method' => 'PUT', 'id'=>'modificaFaq', 'class' => 'animate')) }}
                         {{ Form::label('domanda', 'Domanda', ['class' => 'label-input-alloggio']) }}
                         {{ Form::text('domanda', $faq->domanda, ['class' => 'text-input-alloggio', 'id' => 'risposta']) }}

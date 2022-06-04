@@ -17,9 +17,14 @@ class AdminController extends Controller{
         $this->middleware('can:isAdmin'); 
         $this->_catalogModel = new Catalogo;
     }
+
     public function index(){
+        return view('statistiche');
+    }
+
+    public function showFaq(){
         $faqs = $this->_catalogModel->getFaq();
-        return view('admin')
+        return view('admin_faq')
                 ->with('faqs',$faqs);
     }
 
@@ -30,7 +35,7 @@ class AdminController extends Controller{
             'risposta' => 'required|string|max:190',
         ]);
 
-        return redirect()->route('admin')
+        return redirect()->route('admin_faq')
             ->with('status', 'Faq aggiornata correttamente!');
     }
 
@@ -39,7 +44,7 @@ class AdminController extends Controller{
         $faq->fill($request->validated());
         $faq->save();
 
-        return redirect()->route('admin')
+        return redirect()->route('admin_faq')
             ->with('status', 'Faq inserita correttamente!');
     }
 
@@ -48,7 +53,9 @@ class AdminController extends Controller{
         $faq = $this->_catalogModel->getThisFaq($id);
         $faq->delete();
 
-        return  redirect()->route('admin')
+        return  redirect()->route('admin_faq')
             ->with('status', 'FAQ eliminata correttamente!');
     }
+
+    
 }

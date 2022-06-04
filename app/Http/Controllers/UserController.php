@@ -36,9 +36,10 @@ class UserController extends Controller
             if (isset($ricerca->prezzo_max)) {
                 $prezzo['max'] = $ricerca->prezzo_max;
             }
-
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera, $ricerca->except(['citta', 'tipo_camera', 'data_inizio', 'data_fine']), $prezzo);
-        } else {
+            Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']),$prezzo);
+            //return $alloggi ;
+        }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();

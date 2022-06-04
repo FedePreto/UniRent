@@ -19,7 +19,7 @@ class Catalogo {
     public function getCatalogSearch($citta,$tipo='tutte',$filtri=null,$prezzo){
         
         //creo la tabella alloggi
-        $alloggi = Alloggi::select('*')->where('citta','LIKE','%'.$citta.'%');
+        $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
 
         if($filtri != null){
             //creao la tabella join tra alloggi e incluso
@@ -45,14 +45,16 @@ class Catalogo {
         }
         
         //filtro per prezzo
-
-            if(isset($prezzo->min)){
-                $alloggi = $alloggi->orWhere('alloggi.prezzo','>=',$prezzo->min.'00');
+        //Log::info($prezzo['max']);
+        if($prezzo != null){
+            if(isset($prezzo['min'])){
+                $alloggi = $alloggi->where('alloggi.prezzo','>=',$prezzo['min']);
             }
-            if(isset($prezzo->max ) and  $prezzo->max =! 1){
-                $alloggi = $alloggi->orWhere('prezzo','<=',$prezzo->max);
+            if(isset($prezzo['max'])){
+                $alloggi = $alloggi->where('alloggi.prezzo','<=',$prezzo['max']);
             }
-       Log::info($alloggi->toSql());
+        }
+        //return$alloggi;
         return $alloggi->paginate(6);
     }
     

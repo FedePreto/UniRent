@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Alloggi;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Incluso;
+use App\Models\Resources\Richieste;
 use App\Models\Resources\ServiziVincoli;
 
 use Illuminate\Support\Facades\Log;
@@ -94,5 +95,70 @@ class Catalogo {
         $servizi =  ServiziVincoli::where('tipologia', 0)->get();
         $vincoli = ServiziVincoli::where('tipologia',1)->get();
         return [$servizi, $vincoli];
+    }
+
+    public function getStatistiche($inizio_intervallo,$fine_intervallo,$tipo_camera){
+
+
+        if((is_null($inizio_intervallo))and(is_null($fine_intervallo))and($tipo_camera==2)){
+            $richieste= Richieste::all()->count();
+            $rifiuti= Richieste::where('stato', 0)->count();
+            $attese= Richieste::where('stato', 1)->count();
+            $locazioni= Richieste::where('stato', 2)->count();
+            $alloggi= Alloggi::all()->count();
+        }elseif((is_null($inizio_intervallo))and(is_null($fine_intervallo))and($tipo_camera!=2)){
+            $richieste= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)->count();
+            $rifiuti= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 0)->count();
+            $attese=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 1)->count();
+            $locazioni=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 2)->count();
+            $alloggi= Alloggi::where('tipologia', $tipo_camera)->count();
+        }elseif((isset($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera==2)){
+            $richieste= Richieste::where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $rifiuti= Richieste::where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)
+                ->where('stato', 0)->count();
+            $attese= Richieste::where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)
+                ->where('stato', 1)->count();
+            $locazioni= Richieste::where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)
+                ->where('stato', 2)->count();
+            $alloggi= Alloggi::where('created_at','>=',$inizio_intervallo)
+                ->where('created_at','<=',$fine_intervallo)->count();
+        }elseif((isset($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera!=2)){
+            $richieste= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $rifiuti= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 0)
+                ->where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $attese=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 1)
+                ->where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $locazioni=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 2)
+                ->where('data_richiesta','>=',$inizio_intervallo)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $alloggi= Alloggi::where('tipologia', $tipo_camera)
+                ->where('created_at','>=',$inizio_intervallo)
+                ->where('created_at','<=',$fine_intervallo)->count();
+        
+
+        }
+        return [$richieste,$rifiuti,$attese,$locazioni,$alloggi];
     }
 }

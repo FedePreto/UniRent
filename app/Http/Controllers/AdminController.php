@@ -22,6 +22,15 @@ class AdminController extends Controller{
         return view('statistiche');
     }
 
+    public function showStatistiche(Request $request){
+        $statistiche= $this->_catalogModel->getStatistiche($request->inizio_intervallo,$request->fine_intervallo,$request->tipo_camera); 
+        return dd($statistiche);
+        return view('statistiche');
+            -with('richieste',[$statistiche[0],$statistiche[1],$statistiche[2]])
+            -with('locazioni',$statistiche[3])
+            -with('alloggi',$statistiche[4]);
+    }
+
     public function showFaq(){
         $faqs = $this->_catalogModel->getFaq();
         return view('admin_faq')

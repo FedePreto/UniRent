@@ -26,6 +26,7 @@ Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni');
 
 //Route Admin
 Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
+Route::post('/Admin','AdminController@showStatistiche')->name('adminfilter');
 Route::get('/Admin/Faq','AdminController@showFaq')->name('faqindex');
 Route::post('/Admin/Faq','AdminController@storeFaq')->name('faq.store');
 Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update');

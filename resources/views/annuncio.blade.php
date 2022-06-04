@@ -192,32 +192,35 @@
                                 @if(($alloggio->opzionato)===0)
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Richiedi </button>
                                 @endif
-                                <a href="javascript:void(0)" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('id01').style.display='block'">Contatta locatore</a>
+                                <a href="javascript:void(0)" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('messaggio').style.display='block'">Contatta locatore</a>
                             </div>
                             <div style="width:100%">
 
                                 <!-- Modal that pops up when you click on "New Message" -->
-                                <div id="id01" class="w3-modal" style="z-index:4">
+                                <div id="messaggio" class="modal" style="z-index:4">
                                     <div class="w3-modal-content w3-animate-zoom">
                                         <div class="w3-container w3-padding w3-blue">
                                             <h2>Invia Messaggio</h2>
                                         </div>
                                         <div class="w3-panel">
-                                            <div align="center">
-                                                {{ Form::label('destinatario', 'Destinatario:', ['class' => 'label-input-app']) }}<br>
-                                                {{ Form::label('destinatario',$alloggio->locatore, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
+                                            <div align='center'>
+                                                {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'files' => true, 'id'=>'messaggio', 'class' => 'animate')) }}
+                                                {{ Form::label('destinatario', 'Destinatario', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
                                                 <hr>
-                                                {{ Form::label('mittente', 'Mittente:', ['class' => 'label-input-app']) }}<br>
-                                                {{ Form::label('mittente', 'Tu', ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
+                                                {{ Form::label('mittente', 'Mittente', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('mittente', auth()->user()->name." ".auth()->user()->cognome, ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
                                                 <hr>
-                                                {{ Form::label('oggetto', 'Oggetto:', ['class' => 'label-input-app']) }}<br>
-                                                {{ Form::label('oggetto',$alloggio->titolo, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto', 'placeholder'=>'Inserire l\'oggetto del messaggio...']) }}<br>
+                                                {{ Form::label('oggetto', 'Oggetto', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('oggetto',$alloggio->titolo.", ".$alloggio->citta.", ".$alloggio->indirizzo.", ".$alloggio->numero, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto', 'placeholder'=>'Inserire l\'oggetto del messaggio...']) }}<br>
                                                 <hr>
-                                                {{ Form::textarea('corpo_messaggio','', ['class' => 'input-app w3-input w3-border', 'id' => 'corpo_messaggio', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
+                                                {{ Form::textarea('contenuto','', ['class' => 'input-app w3-input w3-border', 'id' => 'contenuto', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
                                             </div>
                                             <div class="w3-section">
-                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('id01').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
-                                                <a class="w3-button w3-right w3-blue" style="width:150px" onclick="document.getElementById('id01').style.display='none'">Invia <i class="fa fa-paper-plane"></i></a>
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('messaggio').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                {{ Form::submit('Invia', ['class' => 'w3-button w3-right w3-blue' , 'style'=> "width:150px"]) }}
+                                                {{Form::close()}}
+                                                
                                             </div>
                                         </div>
                                     </div>

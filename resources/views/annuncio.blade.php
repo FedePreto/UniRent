@@ -204,7 +204,7 @@
                                         </div>
                                         <div class="w3-panel">
                                             <div align='center'>
-                                                {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'files' => true, 'id'=>'messaggio', 'class' => 'animate')) }}
+                                                {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'id'=>'messaggio', 'class' => 'animate')) }}
                                                 {{ Form::label('destinatario', 'Destinatario', ['class' => 'label-input-alloggio']) }}<br>
                                                 {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
                                                 <hr>

@@ -71,6 +71,11 @@ class Catalogo {
         $faqs = Faq::all();
         return $faqs;
     }
+
+    public function getThisFaq($id){
+        $faq = Faq::find($id);
+        return $faq;
+    }
     
     public function getCatalogoRegionale($regione){
         $alloggi = Alloggi::where('regione',$regione);

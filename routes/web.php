@@ -26,7 +26,9 @@ Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni');
 
 //Route Admin
 Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
-
+Route::post('/Admin/Faq','AdminController@storeFaq')->name('faq.store');
+Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update');
+Route::delete('/Admin/Faq/{faq}','AdminController@deletefaq')->name('faq.delete');
 //Route Locatore
 Route::get('/Locatore','LocatoreController@index_loca')->name('locatore');
 

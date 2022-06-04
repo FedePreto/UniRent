@@ -9,14 +9,18 @@ use App\Models\Annuncio;
 use App\Models\Locatore;
 use Illuminate\Support\Facades\Log;
 use App\Rules\GreaterThan;
+use App\Models\Resources\Messaggi;
+use Carbon\Carbon;
+
 class UserController extends Controller
 {
-    protected $_catalogModel ;
+    protected $_catalogModel;
     protected $_annuncioModel;
     protected $_locatoreModel;
 
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->_catalogModel = new Catalogo;
         $this->_annuncioModel = new Annuncio;
         $this->_locatoreModel = new Locatore;
@@ -30,11 +34,11 @@ class UserController extends Controller
         
         if($this->checkRequest($ricerca)){
             $prezzo = [];
-            if(isset($ricerca->prezzo_min)){
+            if (isset($ricerca->prezzo_min)) {
                 $prezzo['min'] = $ricerca->prezzo_min;
                 
             }
-            if(isset($ricerca->prezzo_max)){
+            if (isset($ricerca->prezzo_max)) {
                 $prezzo['max'] = $ricerca->prezzo_max;
             }
             request()->validate([
@@ -49,41 +53,63 @@ class UserController extends Controller
         }
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
-                    ->with('alloggi',$alloggi)
-                    ->with('servizi',$servizi_vincoli[0])
-                    ->with('request',$ricerca);          
+            ->with('alloggi', $alloggi)
+            ->with('servizi', $servizi_vincoli[0])
+            ->with('request', $ricerca);
     }
 
-    public function getAnnuncio(int $id){
+    public function getAnnuncio(int $id)
+    {
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         $locatore = $this->_annuncioModel->getLocatore($alloggio->locatore);
         $sv_alloggio = $this->_annuncioModel->getAlloggioServiziVincoli($id); //Questo array è più comodo degli altri due passa
-                                                                              //in due array separati vincoli [1] e servizi [0] dell'alloggio in questione
-                                                                              //inoltre sia vincoli che servizi sono associati al rispettivo nome 
+        //in due array separati vincoli [1] e servizi [0] dell'alloggio in questione
+        //inoltre sia vincoli che servizi sono associati al rispettivo nome 
         Log::info($sv_alloggio[0]);
         Log::info($sv_alloggio[1]);
-        Log::info($servizi_vincoli);  
+        Log::info($servizi_vincoli);
         return view('annuncio')
-                ->with('alloggio',$alloggio)
-                ->with('servizi', $servizi_vincoli[0])
-                ->with('vincoli', $servizi_vincoli[1])
-                ->with('servizi_alloggio', $sv_alloggio[0])
-                ->with('vincoli_alloggio', $sv_alloggio[1])
-                ->with('locatore',$locatore);                
+            ->with('alloggio', $alloggio)
+            ->with('servizi', $servizi_vincoli[0])
+            ->with('vincoli', $servizi_vincoli[1])
+            ->with('servizi_alloggio', $sv_alloggio[0])
+            ->with('vincoli_alloggio', $sv_alloggio[1])
+            ->with('locatore', $locatore);
     }
 
-    public function showMessaggi(){
+    public function showMessaggi()
+    {
         return view('message');
     }
 
-    private function checkRequest(Request $request){
-        if(count($request->all())<=2){
-            if($request->citta == '' and $request->tipo_camera == 'tutte'){
+    private function checkRequest(Request $request)
+    {
+        if (count($request->all()) <= 2) {
+            if ($request->citta == '' and $request->tipo_camera == 'tutte') {
                 return false;
             }
         }
         return true;
     }
-   
+
+
+
+    public function sendMessaggio(Request $request, $id_alloggio, $id_destinatario)
+    {
+        $request->validate([
+            'contenuto' => 'required|string|max:2500'
+        ]);
+
+        $messaggio = new Messaggi([
+            'contenuto' => $request->get('contenuto'),
+            'data' => Carbon::now()->addHours(2),
+            'mittente' => auth()->user()->id,
+            'destinatario' => $id_destinatario,
+            'id_alloggio' => $id_alloggio
+        ]);
+        $messaggio->save();
+        return redirect()->route('annuncio', $id_alloggio)
+            ->with('status', 'Messaggio inviato correttamente!');
+    }
 }

@@ -48,6 +48,7 @@ Route::delete('/Locatore/Delete/Annuncio/{alloggio}', 'LocatoreController@delete
 Route::put('/Locatore/Update/Annuncio/{alloggio}', 'LocatoreController@updateAnnuncio')->name('annuncio.update');
 
 Route::post('/Messaggi/{alloggio}/{destinatario}', 'UserController@sendMessaggio')->name('messaggio.store');
+Route::get('/Chat/{alloggio}/{destinatario}', 'UserController@showChat')->name('conversazione');
 //Route Locatario
 Route::get('/Locatario','LocatoreController@index_lario')->name('locatario');
 //Sottoinsime di Auth::routes()

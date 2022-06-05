@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Log;
 use App\Rules\GreaterThan;
 use App\Models\Resources\Messaggi;
 use Carbon\Carbon;
+use App\Models\Messaggistica;
 
 class UserController extends Controller
 {
     protected $_catalogModel;
     protected $_annuncioModel;
     protected $_locatoreModel;
+    protected $_messaggisticaModel;
 
 
     public function __construct()
@@ -24,6 +26,7 @@ class UserController extends Controller
         $this->_catalogModel = new Catalogo;
         $this->_annuncioModel = new Annuncio;
         $this->_locatoreModel = new Locatore;
+        $this->_messaggisticaModel = new Messaggistica;
         
     }
     //
@@ -80,7 +83,23 @@ class UserController extends Controller
 
     public function showMessaggi()
     {
-        return view('message');
+        $chat=$this->_messaggisticaModel->getChat(auth()->user()->id);
+
+        return view("message")
+                ->with('chat',$chat);
+
+    }
+
+    public function showChat($alloggio,$destinatario)
+    {
+        $chat=$this->_messaggisticaModel->getChat(auth()->user()->id);
+        $messaggi=$this->_messaggisticaModel->getConversazione(auth()->user()->id, $destinatario,$alloggio);
+
+        return view("message")
+                ->with('chat',$chat)
+                ->with('messaggi',$messaggi)
+                ->with('id', auth()->user()->id);
+
     }
 
     private function checkRequest(Request $request)

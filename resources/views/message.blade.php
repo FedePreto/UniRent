@@ -36,7 +36,7 @@
     }
 
 
-    openMail("Borge")
+    openMail()
 
     function openMail(personName) {
         var i;
@@ -64,95 +64,63 @@
 <div>
     <div class="w3-row-padding">
         <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:left; width:19.5%;">
-            <div>
-                <div><a id="myBtn" onclick="myFunc('Demo1')" style="display:block; text-align:center;" href="javascript:void(0)" class="w3-bar-item-mess w3-button"><i class="fa fa-inbox w3-margin-right"></i>Inbox<i class="fa fa-caret-down w3-margin-left"></i></a></div>
 
+            @if(count($chat)>0)
+            @foreach($chat as $chatAperta)
+            <div class=" w3-animate-left">
+                <!--<a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail($destinatario);" id="firstTab">-->
+                <a href="{{route('conversazione',[$chatAperta['alloggio'][0]['id'],$chatAperta['utente'][0]['id']])}}" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail($destinatario);" id="firstTab">
 
-
-                <div id="Demo1" class="w3-hide w3-animate-left">
-                    <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');" id="firstTab">
+                    <div>
+                        <div><span class="w3-opacity w3-large"><b>{{$chatAperta["utente"][0]["name"]}} {{$chatAperta["utente"][0]["cognome"]}}</b></span></div>
                         <div>
-                            <div><span class="w3-opacity w3-large">Borge dfgfdghfdwghershrterwnnya berbtyebRefsnes</span></div>
-                            <div>
-                                <h6>Subject: Remember Me</h6>
-                            </div>
-                            <div>
-                                <p>Hello, i just wanted to let you know that i'll be home at...</p>
-                            </div>
-
-
-
+                            <h5>per<br>
+                                {{$chatAperta["alloggio"][0]["titolo"]}}<br>
+                                {{$chatAperta["alloggio"][0]["citta"]}},
+                                {{$chatAperta["alloggio"][0]["cap"]}},<br>
+                                {{$chatAperta["alloggio"][0]["indirizzo"]}},
+                                {{$chatAperta["alloggio"][0]["numero"]}}
+                            </h5>
                         </div>
-                    </a>
-                    <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');">
-                        <div class="w3-container">
-                            <span class="w3-opacity w3-large">Jane Doe</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                        </div>
-                    </a>
-                    <a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');">
-                        <div class="w3-container">
-                            <span class="w3-opacity w3-large">John Doe</span>
-                            <p>Welcome!</p>
-                        </div>
-                    </a>
-                </div>
-
+                    </div>
+                </a>
             </div>
+            @endforeach
+            @else
+            <div align="center" class="w3-padding"><span class="w3-opacity w3-large"><b>Non hai chat aperte.</b></span></div>
+            @endif
+
+
         </div>
         <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:right; width:79.5%;">
+            @if(isset($messaggi))
             <div style="padding-top:10px;">
+                @foreach($messaggi["messaggi"] as $messaggio)
+                @if($messaggio["mittente"]==$id)
 
-                <div style="padding-left: 15px">
-                    <i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
-                    <a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
-
-                    <div id="Borge">
-                        <h5 class="w3-opacity">Subject: Remember Me</h5>
-                        <h4><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
-                        <a class="w3-button w3-light-grey" href="#">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                        <a class="w3-button w3-light-grey" href="#">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                        <hr>
-                        <p>Hello, i just wanted to let you know that i'll be home at lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p>Best Regards, <br>Borge Refsnes</p>
+                <div style="padding-left: 15px;">
+                    <div>
+                        <h4 align="right"><b>{{$messaggio["contenuto"]}}</b></h4>
+                        <h6 align="right">{{$messaggio["data"]}}</h6>
                     </div>
-
-                    <div id="Jane">
-                        <br>
-                        <h5 class="w3-opacity">Subject: None</h5>
-                        <h4><i class="fa fa-clock-o"></i> From Jane Doe, Sep 25, 2015.</h4>
-                        <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                        <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p>Forever yours,<br>Jane</p>
-                    </div>
-
-                    <div id="John">
-                        <br>
-                        <h5 class="w3-opacity">Subject: None</h5>
-                        <h4><i class="fa fa-clock-o"></i> From John Doe, Sep 23, 2015.</h4>
-                        <a class="w3-button w3-light-grey">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-                        <a class="w3-button w3-light-grey">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
-                        <hr>
-                        <p>Welcome.</p>
-                        <p>That's it!</p>
-                    </div>
-
                 </div>
-
-
-
-
-
-
-
+                @else
+                <div style="padding-left: 15px;">
+                    <div>
+                        <h4 align="left"><b>{{$messaggio["contenuto"]}}</b></h4>
+                        <h6 align="left">{{$messaggio["data"]}}</h6>
+                    </div>
+                </div>
+                @endif
+                <br>
+                <hr>
+                @endforeach
             </div>
+            @else
+            <h2 align="center"><b>Seleziona una chat per visualizzare la conversazione!</b></h2>
+            @endif
+            
 
-        </div>
-
-        <div style="text-align:center; width:1%;">
         </div>
     </div>
 </div>

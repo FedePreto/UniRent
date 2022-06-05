@@ -117,7 +117,7 @@
                 @endforeach
             </div>
             @else
-            <h2 align="center"><b>Seleziona una chat per visualizzare la conversazione!</b></h2>
+            <h2 align="center" style="padding-top:150px;"><b>Seleziona una chat per visualizzare la conversazione!</b></h2>
             @endif
             
 

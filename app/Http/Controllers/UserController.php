@@ -115,7 +115,7 @@ class UserController extends Controller
     {
         $chat = $this->_messaggisticaModel->getChat(auth()->user()->id);
         $messaggi = $this->_messaggisticaModel->getConversazione(auth()->user()->id, $destinatario, $alloggio);
-
+        
         return view("message")
             ->with('chat', $chat)
             ->with('messaggi', $messaggi)
@@ -148,6 +148,7 @@ class UserController extends Controller
             'id_alloggio' => $id_alloggio
         ]);
         $messaggio->save();
+        
         return redirect()->route('annuncio', $id_alloggio)
             ->with('status', 'Messaggio inviato correttamente!');
     }

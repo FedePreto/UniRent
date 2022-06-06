@@ -1,4 +1,4 @@
-<div class="w3-center w3-padding-32">
+<div class="w3-center ">
     <div class="w3-bar">
 
         @if ($paginator->hasPages())
@@ -6,7 +6,7 @@
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="page-item disabled w3-bar-item w3-button w3-hover-black" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                <li class="page-item disabled w3-bar-item w3-button " aria-disabled="true" aria-label="@lang('pagination.previous')">
                     <span class="page-link" aria-hidden="true">&lsaquo;</span>
                 </li>
             @else
@@ -40,7 +40,7 @@
                     <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
                 </li>
             @else
-                <li class="page-item disabled w3-bar-item w3-button w3-hover-black" aria-disabled="true" aria-label="@lang('pagination.next')">
+                <li class="page-item disabled w3-bar-item w3-button " aria-disabled="true" aria-label="@lang('pagination.next')">
                     <span class="page-link" aria-hidden="true">&rsaquo;</span>
                 </li>
             @endif

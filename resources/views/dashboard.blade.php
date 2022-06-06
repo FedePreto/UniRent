@@ -42,8 +42,7 @@
 
 </div>
 
-@include('pagination.paginator',['paginator'=>$alloggi])
-
+{{$alloggi->appends(request()->input())->links()}}
 
 @endisset
 @endsection

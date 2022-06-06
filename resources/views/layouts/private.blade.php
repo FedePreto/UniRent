@@ -21,9 +21,7 @@
 <body>
 
     <!-- Header -->
-    @can('isLocatario')
-    @include('layouts/header_filtri')
-    @endcan
+    
 
 
     <!-- Navbar (sit on top) -->

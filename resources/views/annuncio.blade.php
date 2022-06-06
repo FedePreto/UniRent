@@ -14,6 +14,7 @@
         }
     }
 
+
     $(function() {
 
         if ($("#appartamento").prop("checked")) {
@@ -175,9 +176,10 @@
                                 <span style="font-size: 24px; color:black;">{{$alloggio->prezzo}}€ </span>/mese
                             </div>
                             @can('isLocatore')
-                            <form style="float:right;">
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
-                            </form>
+                            <div style="float:right;">
+                                <button id="richiestebtn" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
+                            </div>
+                            
                             <button style="float:right;" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('modifica').style.display='block'">Modifica Annuncio</button>
                             <form action="{{ route('annuncio.delete', $alloggio->id)}}" method="post" style="float:right;">
                                 @csrf
@@ -186,6 +188,7 @@
                                                               form, you will need to add a hidden _method field to the form. The value sent with the _method field will be used as the HTTP request method:-->
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners" type="submit">Rimuovi Annuncio</button>
                             </form>
+                            
                             @endcan
                             @can('isLocatario')
                             <div style="float:right; ">
@@ -295,34 +298,13 @@
 </div>
 
 
-<div id="richieste" class="modal" style="z-index:4">
-                                    <div class="w3-modal-content w3-animate-zoom">
-                                        <div class="w3-container w3-padding w3-blue">
-                                            <h2>Invia Messaggio</h2>
-                                        </div>
-                                        <div class="w3-panel">
-                                            <div align='center'>
-                                                {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'id'=>'messaggio', 'class' => 'animate')) }}
-                                                {{ Form::label('destinatario', 'Destinatario', ['class' => 'label-input-alloggio']) }}<br>
-                                                {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario']) }}<br>
-                                                <hr>
-                                                {{ Form::label('mittente', 'Mittente', ['class' => 'label-input-alloggio']) }}<br>
-                                                {{ Form::label('mittente', auth()->user()->name." ".auth()->user()->cognome, ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
-                                                <hr>
-                                                {{ Form::label('oggetto', 'Oggetto', ['class' => 'label-input-alloggio']) }}<br>
-                                                {{ Form::label('oggetto',$alloggio->titolo.", ".$alloggio->citta.", ".$alloggio->indirizzo.", ".$alloggio->numero, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto']) }}<br>
-                                                <hr>
-                                                {{ Form::textarea('contenuto','', ['class' => 'input-app w3-input w3-border', 'id' => 'contenuto', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
-                                            </div>
-                                            <div class="w3-section">
-                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('messaggio').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
-                                                {{ Form::submit('Invia', ['class' => 'w3-button w3-right w3-blue' , 'style'=> "width:150px"]) }}
-                                                {{Form::close()}}
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+<div id="richieste" class="modal">
+    <div class="container">
+        <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+</div>
 
 
 

@@ -44,17 +44,39 @@ class UserController extends Controller
             if (isset($ricerca->prezzo_max)) {
                 $prezzo['max'] = $ricerca->prezzo_max;
             }
+            
             request()->validate([
-               'prezzo_min'=>'min:0',
-               'prezzo_max' =>['min:0',new GreaterThan($ricerca->prezzo_min)]
+                'prezzo_min'=>'min:0',
+                'prezzo_max' =>['min:0',new GreaterThan($ricerca->prezzo_min)]
             ]);
+            $filtri_particolari = [];
+            if($ricerca->tipo_camera == 'appartamento'){
+                if(isset($ricerca->superficie)){
+                    $filtri_particolari['superficie'] = $ricerca->superficie;
+                }
+                if(isset($ricerca->n_camere)){
+                    $filtri_particolari['n_camere'] = $ricerca->n_camere;
+                }
+                if(isset($ricerca->letti_ap)){
+                    $filtri_particolari['letti_ap'] = $ricerca->letti_ap;
+                }
+            }
+            if($ricerca->tipo_camera == 'posto_letto'){
+                if(isset($ricerca->superficie)){
+                    $filtri_particolari['superficie'] = $ricerca->superficie;
+                }
+                if(isset($ricerca->letti_pl)){
+                    $filtri_particolari['letti_pl'] = $ricerca->letti_pl;
+                }
+            }
+
+            $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
             //Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']),$prezzo);
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta,$ricerca->tipo_camera,$ricerca->only($servizi_vincoli[0]),$prezzo,$filtri_particolari);
             //return $alloggi ;
         }else{
             $alloggi = $this->_catalogModel->getCatalog();
         }
-        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         return view('dashboard')
             ->with('alloggi', $alloggi)
             ->with('servizi', $servizi_vincoli[0])

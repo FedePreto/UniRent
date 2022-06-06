@@ -14,6 +14,10 @@
 
 @endsection
 
+@can('isLocatario')
+    @include('layouts/header_filtri')
+    @endcan
+
 @isset($alloggi)
 
 <p class="w3-margin">Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>

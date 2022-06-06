@@ -62,7 +62,7 @@
             @if(isset($messaggi))
             <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 5px ;padding-left: 20px;padding-bottom: 5px; height:150px; float:top; width:100%;">
                 <h3><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h3>
-                <h5><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h5>
+                <a href='{{route('annuncio',$messaggi['alloggio'][0]['id'])}}'><h5><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h5></a>
                 <h6>{{$messaggi["alloggio"][0]["descrizione"]}}</h6>
             </div>
             <div style="padding-top:0px; padding-bottom:0px;">

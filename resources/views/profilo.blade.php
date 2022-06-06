@@ -47,7 +47,7 @@
     @endif
     <h3 style="text-align:center">Il tuo profilo</h3>
     <div style="font-size: 20px" class="card">
-      @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo])
+      @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo,'style'=>'width:100%'])
       <p><b>Nome: </b>{{auth()->user()->name}}</p>
       <p><b>Cognome: </b>{{auth()->user()->cognome}}</p>
       <p><b>Sesso: </b>{{auth()->user()->sesso}}</p>

@@ -45,10 +45,10 @@ class Catalogo {
             if(count($filtri_particolari)>0){
                 if(count($filtri_particolari)>1){
                     foreach(array_keys($filtri_particolari) as $key){
-                        $alloggi = $alloggi->oRwhere($key,'>=',$filtri_particolari[$key]);
+                        $alloggi = $alloggi->where($key,'>=',$filtri_particolari[$key]);
                     }
                 }else{
-                    $alloggi = $alloggi->oRwhere(array_keys($filtri_particolari)[0],$filtri_particolari[array_keys($filtri_particolari)[0]]);
+                    $alloggi = $alloggi->where(array_keys($filtri_particolari)[0],'>=',$filtri_particolari[array_keys($filtri_particolari)[0]]);
                 }
             }
             
@@ -57,10 +57,10 @@ class Catalogo {
             if(count($filtri_particolari)>0){
                 if(count($filtri_particolari)>1){
                     foreach(array_keys($filtri_particolari) as $key){
-                        $alloggi = $alloggi->oRwhere($key,'>=',$filtri_particolari[$key]);
+                        $alloggi = $alloggi->where($key,'>=',$filtri_particolari[$key]);
                     }
                 }else{
-                    $alloggi = $alloggi->oRwhere(array_keys($filtri_particolari)[0],$filtri_particolari[array_keys($filtri_particolari)[0]]);
+                    $alloggi = $alloggi->where(array_keys($filtri_particolari)[0],'>=',$filtri_particolari[array_keys($filtri_particolari)[0]]);
                 }
             }
         }
@@ -179,5 +179,13 @@ class Catalogo {
 
         }
         return [$richieste,$rifiuti,$attese,$locazioni,$alloggi];
+    }
+    public function getServizi(){
+        $servizi =  ServiziVincoli::select('nome')->where('tipologia',0)->get();
+        $tmp = [];
+        for($i = 0;$i<count($servizi);$i++){
+            $tmp[$i] = $servizi[$i]['nome'];
+        }
+        return $tmp;
     }
 }

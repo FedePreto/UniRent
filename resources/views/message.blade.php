@@ -29,7 +29,7 @@
 
 
         <!-- Div delle chat a sinistra-->
-        <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:left; width:19.5%;">
+        <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:left; width:19.5%; overflow:scroll;">
 
             @if(count($chat)>0)
             @foreach($chat as $chatAperta)
@@ -61,7 +61,8 @@
         <div id="conversazione" style="overflow:auto; border: 1px solid rgb(221, 221, 221);  padding-top: 0spx ;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:right; width:80%;">
             @if(isset($messaggi))
             <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 5px ;padding-left: 20px;padding-bottom: 5px; height:150px; float:top; width:100%;">
-                <h3><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h3>
+                @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>$messaggi['mittente'][0]['foto_profilo'],'style'=>'width:5%;'])
+                <h3 style='display:inline;'><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h3>
                 <a href='{{route('annuncio',$messaggi['alloggio'][0]['id'])}}'><h5><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h5></a>
                 <h6>{{$messaggi["alloggio"][0]["descrizione"]}}</h6>
             </div>
@@ -96,8 +97,8 @@
         @isset($messaggi)
         <div align="right">
             {{Form::open(array("route"=>['messaggio.send', $messaggi['alloggio'][0]['id'], $messaggi['mittente'][0]['id']],"method"=>"POST"))}}
-            {{Form::textarea('messaggio','',['placeholder'=>'Inserisci qui il tuo messaggio...','class'=>'input-app w3-input w3-border', 'style'=>'height:50px; width:1130px;'])}}
-            {{Form::submit('Invia',['style'=>'float:top; width:150px; height:40px; ', 'class'=>'w3-button w3-right w3-blue'])}}
+            {{Form::textarea('messaggio','',['placeholder'=>'Inserisci qui il tuo messaggio...','class'=>'input-app w3-input w3-border', 'style'=>'height:50px; width:1130px;display:inline;margin:5px;'])}}
+            {{Form::submit('Invia',['style'=>'float:top; width:150px; height:50px; margin-top:5px;border-radius:3px; ', 'class'=>'w3-button w3-right w3-green'])}}
             {{Form::close()}}
         </div>
         @endisset

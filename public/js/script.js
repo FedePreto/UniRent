@@ -15,21 +15,7 @@ function dropdown() {
         }
       }
     }
-    if(event.target.matches('#btn-reveal')){
-      let el = document.getElementById('reveal-content');
-      var arrow = document.getElementById('profile-arrow');
-      if (el.classList.contains('hide')) {
-        el.classList.remove('hide');
-        
-      } else {
-        el.classList.add('hide');
-      }
-      if(arrow.classList.contains('rotate')){
-        arrow.classList.remove('rotate');
-      }else{
-        arrow.classList.add('rotate');
-      }
-      }
+    
   }
 
 /*Responsive */

@@ -74,7 +74,7 @@
                     <div>
                         <div><span class="w3-opacity w3-large"><b>{{$chatAperta["utente"][0]["name"]}} {{$chatAperta["utente"][0]["cognome"]}}</b></span></div>
                         <div>
-                            <h5>per<br>
+                            <h5>
                                 {{$chatAperta["alloggio"][0]["titolo"]}}<br>
                                 {{$chatAperta["alloggio"][0]["citta"]}},
                                 {{$chatAperta["alloggio"][0]["cap"]}},<br>
@@ -95,7 +95,9 @@
         <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:right; width:80%;">
             @if(isset($messaggi))
             <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 10px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:150px; float:top; width:100%;">
-            
+                <h2><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h2>
+                <h4><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h4>
+                <h5>{{$messaggi["alloggio"][0]["descrizione"]}}</h5>
             </div>
             <div style="padding-top:10px;">
                 @foreach($messaggi["messaggi"] as $messaggio)
@@ -114,22 +116,17 @@
                         <h6 align="left">{{$messaggio["data"]}}</h6>
                     </div>
                 </div>
-                
+
                 @endif
                 <br>
                 <hr>
-                
+
                 @endforeach
-                
+
             </div>
             @else
             <h2 align="center" style="padding-top:150px;"><b>Seleziona una chat per visualizzare la conversazione!</b></h2>
             @endif
-            
-            
-            <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 10px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:50px; float:bottom; width:100%;">
-                {{Form::text('risposta','',['class'=>"input", 'id'=>'risposta'])}}
-                </div>
         </div>
     </div>
 </div>

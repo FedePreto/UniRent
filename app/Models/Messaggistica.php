@@ -32,8 +32,6 @@ class Messaggistica extends Model
             $i++;
         }
         
-        $utenti=User::whereIn("id",array_keys($contatti))->get();
-        $alloggi=Alloggi::whereIn("id",array_values($contatti))->get();
         return $result;
     }
 

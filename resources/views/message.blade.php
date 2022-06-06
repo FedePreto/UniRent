@@ -29,7 +29,7 @@
 
 
         <!-- Div delle chat a sinistra-->
-        <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:850px; float:left; width:19.5%;">
+        <div style="border: 1px solid rgb(221, 221, 221);  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:left; width:19.5%;">
 
             @if(count($chat)>0)
             @foreach($chat as $chatAperta)
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Div delle conversazioni a destra-->
-        <div id="conversazione" style="overflow:auto; border: 1px solid rgb(221, 221, 221);  padding-top: 0spx ;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:850px; float:right; width:80%;">
+        <div id="conversazione" style="overflow:auto; border: 1px solid rgb(221, 221, 221);  padding-top: 0spx ;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:right; width:80%;">
             @if(isset($messaggi))
             <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 5px ;padding-left: 20px;padding-bottom: 5px; height:150px; float:top; width:100%;">
                 <h3><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h3>
@@ -69,14 +69,14 @@
                 @foreach($messaggi["messaggi"] as $messaggio)
                 @if($messaggio["mittente"]==$id)
 
-                <div style="padding-left: 15px; padding-right: 15px; background-color:beige; padding-top:10px; padding-bottom:10px;">
+                <div style="padding-left: 350px; padding-right: 15px; background-color:beige; padding-top:10px; padding-bottom:10px;">
                     <div>
                         <h5 align="right">{{$messaggio["contenuto"]}}</h5>
                         <h6 align="right">{{$messaggio["data"]}}</h6>
                     </div>
                 </div>
                 @else
-                <div style="padding-left: 15px; padding-right: 15px; padding-top:10px; padding-bottom:10px;">
+                <div style="padding-left: 15px; padding-right: 350px; padding-top:10px; padding-bottom:10px;">
                     <div>
                         <h5 align="left">{{$messaggio["contenuto"]}}</h5>
                         <h6 align="left">{{$messaggio["data"]}}</h6>
@@ -96,9 +96,8 @@
         @isset($messaggi)
         <div align="right">
             {{Form::open(array("route"=>['messaggio.send', $messaggi['alloggio'][0]['id'], $messaggi['mittente'][0]['id']],"method"=>"POST"))}}
-
-            {{Form::textarea('messaggio','',['placeholder'=>'Inserisci qui il tuo messaggio...','class'=>'input-app w3-input w3-border', 'style'=>'height:70px; width:1130px;'])}}
-            {{Form::submit('Invia',['style'=>'float:top; width:150px; height:50px; ', 'class'=>'w3-button w3-right w3-blue'])}}
+            {{Form::textarea('messaggio','',['placeholder'=>'Inserisci qui il tuo messaggio...','class'=>'input-app w3-input w3-border', 'style'=>'height:50px; width:1130px;'])}}
+            {{Form::submit('Invia',['style'=>'float:top; width:150px; height:40px; ', 'class'=>'w3-button w3-right w3-blue'])}}
             {{Form::close()}}
         </div>
         @endisset

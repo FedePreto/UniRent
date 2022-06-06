@@ -132,9 +132,9 @@
                             </div>
                             <div style="text-align:center;">
                                 @if(($alloggio->tipologia)===0)
-                                <span><i class="fa fa-crop" style="color:black;"></i> Superficie Camera: {{$alloggio->superficie}} mq </span>
-                                @else
                                 <span><i class="fa fa-crop" style="color:black;"></i> Superficie: {{$alloggio->superficie}} mq </span>
+                                @else
+                                <span><i class="fa fa-crop" style="color:black;"></i> Superficie Camera: {{$alloggio->superficie}} mq </span>
                                 @endif
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                             </div>
                             @can('isLocatore')
                             <form style="float:right;">
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Visualizza Richieste</button>
+                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
                             </form>
                             <button style="float:right;" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('modifica').style.display='block'">Modifica Annuncio</button>
                             <form action="{{ route('annuncio.delete', $alloggio->id)}}" method="post" style="float:right;">
@@ -293,6 +293,40 @@
         </div>
     </div>
 </div>
+
+
+<div id="richieste" class="modal" style="z-index:4">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                        <div class="w3-container w3-padding w3-blue">
+                                            <h2>Invia Messaggio</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div align='center'>
+                                                {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'id'=>'messaggio', 'class' => 'animate')) }}
+                                                {{ Form::label('destinatario', 'Destinatario', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario']) }}<br>
+                                                <hr>
+                                                {{ Form::label('mittente', 'Mittente', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('mittente', auth()->user()->name." ".auth()->user()->cognome, ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
+                                                <hr>
+                                                {{ Form::label('oggetto', 'Oggetto', ['class' => 'label-input-alloggio']) }}<br>
+                                                {{ Form::label('oggetto',$alloggio->titolo.", ".$alloggio->citta.", ".$alloggio->indirizzo.", ".$alloggio->numero, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto']) }}<br>
+                                                <hr>
+                                                {{ Form::textarea('contenuto','', ['class' => 'input-app w3-input w3-border', 'id' => 'contenuto', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
+                                            </div>
+                                            <div class="w3-section">
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('messaggio').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                {{ Form::submit('Invia', ['class' => 'w3-button w3-right w3-blue' , 'style'=> "width:150px"]) }}
+                                                {{Form::close()}}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
 
 
 

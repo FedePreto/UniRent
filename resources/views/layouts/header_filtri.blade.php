@@ -26,7 +26,7 @@
           {{Form::label("Tipo di camera:")}}<br>
           <ul class="w3-bar-block w3-text my-filter ">
             <li>{{ Form::radio('tipo_camera','tutte',isset($request) ? $request->tipo_camera == 'tutte' : true,array('form'=>'ricerca'))}}Tutte</li>
-            <li>{{ Form::radio('tipo_camera','appartamento',isset($request) ? $request->tipo_camera == 'appartamento': false,array('form'=>'ricerca'))}}Appartamento</li>
+            <li>{{ Form::radio('tipo_camera','appartamento',isset($request) ? $request->tipo_camera == 'appartamento': false,array('form'=>'ricerca','onclick'=>'mostraFiltriParticolari("appartamento")'))}}Appartamento</li>
             <li>{{ Form::radio('tipo_camera','posto_letto', isset($request) ? $request->tipo_camera == 'post_letto' : false,array('form'=>'ricerca'))}}Posto Letto</li>
           </ul>
         </div>
@@ -72,7 +72,37 @@
         <br>
         @endisset
 
-
+        <!-- Filtri alloggio -->
+        <div id="alloggio">
+          <hr>
+          <h3>Filtri alloggio: </h3><br>
+          <div class="my-align">
+            {{Form::label('Dimensioni: ')}}
+            {{Form::number("superficie",isset($request->superficie) ? $request->superficie : false,array('form'=>'ricerca','min'=>0,'max'=>9999))}}<p style="display:inline"> m<sup>2</sup></p><br>
+          </div>
+          <div class="my-align">
+            {{Form::label("Camere: ")}}
+            {{Form::number('n_camere',isset($request->n_camere) ? $request->n_camere : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
+          </div>
+          <div class="my-align">
+            {{Form::label('Posti letto: ')}}
+            {{Form::number("letti_ap",isset($request->letti_ap) ? $request->letti_ap : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
+          </div>
+        </div>
+        <!-- Filtri posto letto-->
+        <div id="posto_letto">
+          <hr>
+          <h3>Filtri posto letto:</h3><br>
+          <div class="my-align">
+            {{Form::label('Dimensione camera: ')}}
+            {{Form::number('superficie',isset($request->superficie) ? $request->superficie : false,array('form'=>'ricerca','min'=>0,'max'=>9999))}}<br>
+          </div>
+          <div class="my-align">
+            {{Form::label("Posti letto totali: ")}}
+            {{Form::number("letti_pl",isset($request->letti_ap) ? $request->letti_ap : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>

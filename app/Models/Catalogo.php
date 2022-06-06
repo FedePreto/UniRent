@@ -17,7 +17,7 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getCatalogSearch($citta,$tipo='tutte',$filtri=null,$prezzo){
+    public function getCatalogSearch($citta,$tipo='tutte',$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
         $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
@@ -42,8 +42,27 @@ class Catalogo {
         //se gli alloggi si trovano nell'array $alloggi_filtri
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);
+            if(count($filtri_particolari)>0){
+                if(count($filtri_particolari)>1){
+                    foreach(array_keys($filtri_particolari) as $key){
+                        $alloggi = $alloggi->oRwhere($key,'>=',$filtri_particolari[$key]);
+                    }
+                }else{
+                    $alloggi = $alloggi->oRwhere(array_keys($filtri_particolari)[0],$filtri_particolari[array_keys($filtri_particolari)[0]]);
+                }
+            }
+            
         }elseif($tipo=='posto_letto'){
             $alloggi = $alloggi->where('tipologia',1);
+            if(count($filtri_particolari)>0){
+                if(count($filtri_particolari)>1){
+                    foreach(array_keys($filtri_particolari) as $key){
+                        $alloggi = $alloggi->oRwhere($key,'>=',$filtri_particolari[$key]);
+                    }
+                }else{
+                    $alloggi = $alloggi->oRwhere(array_keys($filtri_particolari)[0],$filtri_particolari[array_keys($filtri_particolari)[0]]);
+                }
+            }
         }
         
         //filtro per prezzo

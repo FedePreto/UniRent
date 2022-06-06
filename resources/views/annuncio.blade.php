@@ -14,6 +14,7 @@
         }
     }
 
+
     $(function() {
 
         if ($("#appartamento").prop("checked")) {
@@ -132,9 +133,9 @@
                             </div>
                             <div style="text-align:center;">
                                 @if(($alloggio->tipologia)===0)
-                                <span><i class="fa fa-crop" style="color:black;"></i> Superficie Camera: {{$alloggio->superficie}} mq </span>
-                                @else
                                 <span><i class="fa fa-crop" style="color:black;"></i> Superficie: {{$alloggio->superficie}} mq </span>
+                                @else
+                                <span><i class="fa fa-crop" style="color:black;"></i> Superficie Camera: {{$alloggio->superficie}} mq </span>
                                 @endif
                             </div>
                         </div>
@@ -175,9 +176,10 @@
                                 <span style="font-size: 24px; color:black;">{{$alloggio->prezzo}}€ </span>/mese
                             </div>
                             @can('isLocatore')
-                            <form style="float:right;">
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Visualizza Richieste</button>
-                            </form>
+                            <div style="float:right;">
+                                <button id="richiestebtn" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
+                            </div>
+                            
                             <button style="float:right;" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('modifica').style.display='block'">Modifica Annuncio</button>
                             <form action="{{ route('annuncio.delete', $alloggio->id)}}" method="post" style="float:right;">
                                 @csrf
@@ -186,6 +188,7 @@
                                                               form, you will need to add a hidden _method field to the form. The value sent with the _method field will be used as the HTTP request method:-->
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners" type="submit">Rimuovi Annuncio</button>
                             </form>
+                            
                             @endcan
                             @can('isLocatario')
                             <div style="float:right; ">
@@ -293,6 +296,19 @@
         </div>
     </div>
 </div>
+
+
+
+<div id="richieste" class="modal">
+    <div class="container">
+        <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+</div>
+
+
+
+
 
 
 

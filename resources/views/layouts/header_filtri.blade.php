@@ -44,9 +44,9 @@
       <img src="{{asset('img/right-arrow.png')}}" width="20px" class="profile-name arrow " id="profile-arrow"> Mostra filtri</button>
     <div class="w3-container wrapper" id="filtri">
       <div id="reveal-content" class='hide'>
+      <div style="padding-top:20px;">
 
-
-        <div class="my-align">
+        <div class="w3-align" style="display: inline-block;">
           {{Form::label("Tipo di camera:")}}<br>
           <ul class="w3-bar-block w3-text my-filter ">
             <li>{{ Form::radio('tipo_camera','tutte',isset($request) ? $request->tipo_camera == 'tutte' : true,array('form'=>'ricerca'))}} Tutte</li>
@@ -55,13 +55,13 @@
           </ul>
         </div>
 
-        <div class="my-align ">
+        <div class="w3-align" style="display: inline-block;">
           {{Form::label('Prezzo: ')}}
           {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'min'))}}
           {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'max'))}}
           @if ($errors->first('prezzo_max'))
 
-          <ul class='errors'>
+          <ul class='errors' style="max-width:229px">
             @foreach($errors->get('prezzo_max') as $error)
             <li>{{$error}}</li>
             @endforeach
@@ -71,9 +71,10 @@
 
 
         @isset($servizi)
-        <div class="my-align">
+        <div style="display: inline-block;">
+        <div class="w3-align" style="display: inline-block;"></div>
           {{Form::label('Servizi opzionali: ')}}
-          <ul class="w3-bar-block w3-text my-filter">
+          <ul class="w3-bar-block w3-text my-filter" style="margin-top: 0px;">
             @php
             $i = 1;
             @endphp
@@ -83,7 +84,7 @@
             @if($i%4==0)
           </ul>
         </div>
-        <div class="my-align">
+        <div class="w3-align" style="display: inline-block;">
           <ul class="w3-bar-block w3-text my-filter">
             @endif
             @php
@@ -92,6 +93,8 @@
             @endif
             @endforeach
           </ul>
+          </div>
+        </div>
         </div>
         <br>
         @endisset

@@ -92,8 +92,11 @@
 
 
         </div>
-        <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:right; width:79.5%;">
+        <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); padding-right: 20px; padding-top: 0px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:650px; float:right; width:80%;">
             @if(isset($messaggi))
+            <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 10px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:150px; float:top; width:100%;">
+            
+            </div>
             <div style="padding-top:10px;">
                 @foreach($messaggi["messaggi"] as $messaggio)
                 @if($messaggio["mittente"]==$id)
@@ -111,16 +114,22 @@
                         <h6 align="left">{{$messaggio["data"]}}</h6>
                     </div>
                 </div>
+                
                 @endif
                 <br>
                 <hr>
+                
                 @endforeach
+                
             </div>
             @else
             <h2 align="center" style="padding-top:150px;"><b>Seleziona una chat per visualizzare la conversazione!</b></h2>
             @endif
             
-
+            
+            <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 10px ;padding-left: 20px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:50px; float:bottom; width:100%;">
+                {{Form::text('risposta','',['class'=>"input", 'id'=>'risposta'])}}
+                </div>
         </div>
     </div>
 </div>

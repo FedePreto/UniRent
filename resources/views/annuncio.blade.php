@@ -206,13 +206,13 @@
                                             <div align='center'>
                                                 {{ Form::open(array('route' => ['messaggio.store', $alloggio->id, $locatore->id], 'id'=>'messaggio', 'class' => 'animate')) }}
                                                 {{ Form::label('destinatario', 'Destinatario', ['class' => 'label-input-alloggio']) }}<br>
-                                                {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario', 'placeholder'=>'Inserire il destinatario']) }}<br>
+                                                {{ Form::label('destinatario',$locatore->name." ".$locatore->cognome, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'destinatario']) }}<br>
                                                 <hr>
                                                 {{ Form::label('mittente', 'Mittente', ['class' => 'label-input-alloggio']) }}<br>
                                                 {{ Form::label('mittente', auth()->user()->name." ".auth()->user()->cognome, ['class' => 'input-app w3-input label-input-app w3-border', 'id' => 'mittente']) }}<br>
                                                 <hr>
                                                 {{ Form::label('oggetto', 'Oggetto', ['class' => 'label-input-alloggio']) }}<br>
-                                                {{ Form::label('oggetto',$alloggio->titolo.", ".$alloggio->citta.", ".$alloggio->indirizzo.", ".$alloggio->numero, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto', 'placeholder'=>'Inserire l\'oggetto del messaggio...']) }}<br>
+                                                {{ Form::label('oggetto',$alloggio->titolo.", ".$alloggio->citta.", ".$alloggio->indirizzo.", ".$alloggio->numero, ['class' => 'input-app w3-input w3-border label-input-app', 'id' => 'oggetto']) }}<br>
                                                 <hr>
                                                 {{ Form::textarea('contenuto','', ['class' => 'input-app w3-input w3-border', 'id' => 'contenuto', 'placeholder'=>'Cosa vuole scrivere?']) }}<br>
                                             </div>

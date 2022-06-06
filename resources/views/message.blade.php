@@ -102,20 +102,20 @@
                 <h5><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h5>
                 <h6>{{$messaggi["alloggio"][0]["descrizione"]}}</h6>
             </div>
-            <div style="padding-top:0px;">
+            <div style="padding-top:5px; padding-bottom:5px;">
                 @foreach($messaggi["messaggi"] as $messaggio)
                 @if($messaggio["mittente"]==$id)
 
                 <div style="padding-left: 15px; padding-right: 15px; background-color:beige;">
-                    <div >
-                        <h4 align="right"><b>{{$messaggio["contenuto"]}}</b></h4>
+                    <div>
+                        <h5 align="right">{{$messaggio["contenuto"]}}</h5>
                         <h6 align="right">{{$messaggio["data"]}}</h6>
                     </div>
                 </div>
                 @else
                 <div style="padding-left: 15px; padding-right: 15px;">
                     <div>
-                        <h4 align="left"><b>{{$messaggio["contenuto"]}}</b></h4>
+                        <h5 align="left">{{$messaggio["contenuto"]}}</h5>
                         <h6 align="left">{{$messaggio["data"]}}</h6>
                     </div>
                 </div>

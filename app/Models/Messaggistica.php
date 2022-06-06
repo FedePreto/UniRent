@@ -41,7 +41,7 @@ class Messaggistica extends Model
 
         $messaggi = Messaggi::select("contenuto","data","mittente","destinatario")->where("id_alloggio", $alloggio)
         ->whereIn("destinatario",[$destinatario,$mittente])->whereIn("mittente",[$destinatario,$mittente])
-        ->orderBy("data","asc")->get();
+        ->orderBy("data","desc")->get();
         $mittente = User::where("id", $mittente)->get();
         $alloggio = Alloggi::where("id",$alloggio)->get();
         return ["messaggi"=>$messaggi,"mittente"=>$mittente,"alloggio"=>$alloggio];

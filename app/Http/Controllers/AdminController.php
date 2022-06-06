@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
+use App\Rules\GreaterThan;
 use App\Models\Resources\Faq;
 use App\Http\Requests\NewFaqRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -23,12 +24,17 @@ class AdminController extends Controller{
     }
 
     public function showStatistiche(Request $request){
+
+        request()->validate([
+           'fine_intervallo' =>[new GreaterThan($request->inizio_intervallo)]
+        ]);
+
         $statistiche= $this->_catalogModel->getStatistiche($request->inizio_intervallo,$request->fine_intervallo,$request->tipo_camera); 
-        return dd($statistiche);
-        return view('statistiche');
-            -with('richieste',[$statistiche[0],$statistiche[1],$statistiche[2]])
-            -with('locazioni',$statistiche[3])
-            -with('alloggi',$statistiche[4]);
+       // return dd($statistiche);
+        return view('statistiche')
+            ->with('richieste',[$statistiche[0],$statistiche[1],$statistiche[2]])
+            ->with('locazioni',$statistiche[3])
+            ->with('alloggi',$statistiche[4]);
     }
 
     public function showFaq(){

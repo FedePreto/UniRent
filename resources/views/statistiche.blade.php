@@ -44,12 +44,25 @@
         <div>        {{ Form::label('inizio_intervallo', ' Inizio Intervallo', ['class' => 'label-input-card']) }}
         </div>
 
-        {{ Form::date('inizio_intervallo', NULL, ['class' => 'input-card', 'id' => 'inizio_intervallo', 'style' => 'width:300px']) }}</div>
+        {{ Form::date('inizio_intervallo', NULL, ['class' => 'input-card', 'id' => 'inizio_intervallo', 'style' => 'width:300px']) }}
+        @if ($errors->first('fine_intervallo'))
+          
+          <ul class='errors'>
+            @foreach($errors->get('fine_intervallo') as $error)
+              <li>{{$error}}</li>
+            @endforeach
+          </ul>
+          @endif
+      </div>
+        
         <div style="float:right; padding-right:100px;">
         <div>        {{ Form::label('fine_intervallo', ' Fine Intervallo', ['class' => 'label-input-card']) }}
         </div>
 
         {{ Form::date('fine_intervallo', NULL, ['class' => 'input-card', 'id' => 'fine_intervallo', 'style' => 'width:300px']) }}</div>
+        
+        </div>
+       
         {{Form::close()}}
         
       </div>
@@ -62,27 +75,28 @@
   <table class="w3-table-all table-striped">
     <thead>
         <tr>
-          <td><b style="font-size:18px;">Domanda</b></td>
-          <td><b style="font-size:18px;">Risposta</b></td>
-          <td colspan = 2><b style="font-size:18px;">Azioni</b></td>
+          <td><b style="font-size:18px;">Richieste</b></td>
+          <td><b style="font-size:18px; color:red;">Rifiutate</b></td>
+          <td><b style="font-size:18px; color:#DEB887;">In Attesa</b></td>
+          <td><b style="font-size:18px; color:green;">Locazioni</b></td>
+          <td><b style="font-size:18px;">Alloggi</b></td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td></td>
-            <td> </td>
-            <td>
-                <button  class="ancora w3-button w3-blue" onClick="myFunction()">Modifica</button>
-            </td>
-            <td>
-            <form method="post" >
-                  <button class="w3-button w3-red" type="submit">Elimina</button>
-                </form>
-            </td>
+          @isset($richieste)
+          @foreach($richieste as $richiesta)
+            <td>{{$richiesta}}</td>
+          @endforeach
+          @endisset
+          @isset($locazioni)
+            <td>{{$locazioni}}</td>
+          @endisset
+          @isset($alloggi)
+            <td>{{$alloggi}}</td>
+          @endisset
         </tr>
     </tbody>
+
   </table>
-
-
-
  @endsection

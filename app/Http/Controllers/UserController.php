@@ -78,11 +78,10 @@ class UserController extends Controller
             $alloggi = $this->_catalogModel->getCatalog();
         }
         return view('dashboard')
-            ->with('alloggi', $alloggi)
-            ->with('servizi', $servizi_vincoli[0])
+            ->with('alloggi', $alloggi) 
+            ->with('servizi',$servizi_vincoli[0])       
             ->with('request', $ricerca);
     }
-
     public function getAnnuncio(int $id)
     {
         $alloggio = $this->_catalogModel->getAlloggio($id);

@@ -9,4 +9,4 @@
     
 @endphp
 
-<img src="{{asset('img/alloggi/'.$imgFile) }}" style="width:100%; border-radius: 12px; height:257px;" {{!! $attrs !!}}>
+<img src="{{asset('img/alloggi/'.$imgFile) }}" style="width:100%; border-radius: 12px; height:300px;" {{!! $attrs !!}}>

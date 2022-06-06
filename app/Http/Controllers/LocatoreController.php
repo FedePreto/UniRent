@@ -153,10 +153,7 @@ class LocatoreController extends Controller
 
     public function deleteAnnuncio($id)
     {
-        $alloggio = $this->_catalogModel->getAlloggio($id);
-        $alloggio->delete();
-        $incluso = $this->_catalogModel->getAlloggioIncluso($id);
-        $incluso->delete();
+        $this->_annuncioModel->deleteAnnuncio($id);
 
         return  redirect()->route('locatore')
             ->with('status', 'Alloggio eliminato correttamente!');

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Resources\Alloggi;
 use App\User;
 use App\Models\Resources\Incluso;
+use App\Models\Resources\Messaggi;
 
 class Annuncio {
 
@@ -29,5 +31,14 @@ class Annuncio {
                                    ->get(['servizi_vincoli.*']);
                                    
         return [$alloggio_servizi, $alloggio_vincoli];
+    }
+
+    public function deleteAnnuncio($id){
+        $alloggio = Alloggi::where('id',$id);
+        $incluso = Incluso::where('alloggio', $id);
+        $messaggi = Messaggi::where('id_alloggio', $id);
+        $alloggio->delete();
+        $incluso->delete();
+        $messaggi->delete();
     }
 }

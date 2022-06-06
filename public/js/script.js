@@ -118,11 +118,11 @@ var openInbox = document.getElementById("myBtn");
 function mostraFiltriParticolari(oggetto){
   if(oggetto==='appartamento'){
     console.log("funzione chiamata");
-    if(document.getElementById('alloggio').classList.contains('mostra')){
-      document.getElementById('alloggio').classList.add('mostra');
+    if(document.getElementById('alloggio').classList.contains('show')){
+      document.getElementById('alloggio').classList.add('show');
       console.log("mostra alloggio")
-      if(document.getElementById('posto_letto').classList.contains('mostra')){
-        document.getElementById('posto_letto').classList.remove('mostra');
+      if(document.getElementById('posto_letto').classList.contains('show')){
+        document.getElementById('posto_letto').classList.remove('show');
       }
     }
   }

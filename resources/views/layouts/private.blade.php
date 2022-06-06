@@ -30,8 +30,7 @@
 
 
     <div class="w3-content w3-padding" style="max-width:1654px">
-        <br>
-        <br>
+        
         @yield('content')
     </div>
 

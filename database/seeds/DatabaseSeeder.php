@@ -57,8 +57,8 @@ class DatabaseSeeder extends Seeder {
         ]);
        
         DB::table('messaggi')->insert([
-            ['contenuto' => 'Ciao ti scrivo per poter avere ulteriori informazioni sull\'appartamento' , 'data' => '2022-05-10 13:22:11' , 'mittente' => 1 , 'destinatario' => 2, 'id_alloggio'=>1],
-            ['contenuto' => 'Ciao cosa vorresti sapere di preciso?' , 'data' => '2022-05-10 13:25:32' , 'mittente' => 2 , 'destinatario' => 1,'id_alloggio'=>1],
+            ['contenuto' => 'Ciao ti scrivo per poter avere ulteriori informazioni sull\'appartamento, vorrei sapere se bla bla bla vsdkdeo kdeo kd oke kcoe ck. Kdo dkaofk ao ckao caokcc aok okao kcoka okcoak ockaock oakco kao kcoak coka ockao koak coak coka ocko akc ?' , 'data' => '2022-05-10 13:22:11' , 'mittente' => 3 , 'destinatario' => 2, 'id_alloggio'=>1],
+            ['contenuto' => 'Ciao cosa vorresti sapere di preciso? Vuoi denunziarmi? Fallo vedra iche ti succede. Ho degli avvocati migliori di quelli di Depp. Mi dovrai risarcire di 34 miliomi di euro. Fascista' , 'data' => '2022-05-10 13:25:32' , 'mittente' => 2 , 'destinatario' => 3,'id_alloggio'=>1],
             ['contenuto' => 'Mi piacerebbe sapere se è possibile visitarlo domani nel pomeriggio' , 'data' => '2022-05-09 19:21:11' , 'mittente' => 3 , 'destinatario' => 4,'id_alloggio'=>2],
             ['contenuto' => 'Ciao cosa vorresti sapere di preciso?' , 'data' => '2022-05-10 19:21:11' , 'mittente' => 4 , 'destinatario' => 3,'id_alloggio'=>2],
             ['contenuto' => 'Mi piacerebbe sapere se è possibile visitarlo domani nel pomeriggio' , 'data' => '2022-05-10 19:21:11' , 'mittente' => 3 , 'destinatario' => 5,'id_alloggio'=>3]

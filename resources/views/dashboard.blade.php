@@ -24,6 +24,9 @@
   @else
   <br>
 @endauth
+@can('isLocatore')
+<br>
+@endcan
 
 <p class="w3-margin">Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
 @if (session('status'))

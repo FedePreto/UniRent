@@ -20,8 +20,6 @@
 
 <body>
 
-    <!-- Header -->
-    
 
 
     <!-- Navbar (sit on top) -->

@@ -61,6 +61,8 @@
 
 
 @section('content')
+<br>
+<br>
 <div>
     <div class="w3-row-padding">
 

@@ -26,7 +26,8 @@
 @endsection
 
 @section('content')
-
+<br>
+<br>
 <div class="row-card">
   <div id="colonna_1" class="column-card">
     @if ($errors->any())

@@ -72,6 +72,8 @@
 @endsection
 
 @section('content')
+<br>
+<br>
 @can('isLocatore')
 <a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
 @endcan

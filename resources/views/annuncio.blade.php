@@ -195,7 +195,7 @@
                             @can('isLocatario')
                             <div style="float:right; ">
                                 @if(($alloggio->opzionato)===0)
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners">Richiedi </button>
+                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richiedi').style.display='block'">Richiedi </button>
                                 @endif
                                 <a href="javascript:void(0)" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('messaggio').style.display='block'">Contatta locatore</a>
                             </div>
@@ -308,6 +308,22 @@
     </div>
 </div>
 
+<div id="richiedi" class="modal" style="z-index:4">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                        <div class="w3-container w3-padding w3-blue">
+                                            <h2 style="text-align:center">Sei sicuro di voler richedere quest'annuncio al locatore?</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div class="w3-section">
+                                                {{ Form::open(array('route' => ['richiesta.store', $alloggio->id, auth()->user()->id], 'method' => 'POST', 'id'=>'richiesta', 'class' => 'animate')) }}
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('richiedi').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                {{ Form::submit('Invia', ['class' => 'w3-button w3-right w3-green' , 'style'=> "width:150px"]) }}
+                                                {{Form::close()}}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 

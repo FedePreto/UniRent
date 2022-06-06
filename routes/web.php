@@ -51,6 +51,7 @@ Route::post('/Messaggi/{alloggio}/{destinatario}', 'UserController@sendMessaggio
 Route::get('/Chat/{alloggio}/{destinatario}', 'UserController@showChat')->name('conversazione');
 //Route Locatario
 Route::get('/Locatario','LocatoreController@index_lario')->name('locatario');
+Route::post('/Annuncio/{alloggio}/{locatario}','LocatarioController@sendRichiesta')->name('richiesta.store');
 //Sottoinsime di Auth::routes()
 Route::get('login','Auth\LoginController@showLoginForm')->name('login'); //Rotta che genera la form GET
 Route::post('login','Auth\LoginController@login');//Usata al submit della form che attiva il processo di autenticazione

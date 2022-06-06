@@ -2425,13 +2425,6 @@ textarea {
     outline: 0;
 }
 
-#posto_letto{
-    display:none;
-}
-
-#alloggio{
-    display:none;
-}
 .mostra{
     display:show !important;
 }

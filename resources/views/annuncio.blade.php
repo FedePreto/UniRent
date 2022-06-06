@@ -74,12 +74,8 @@
 @section('content')
 <br>
 <br>
-@can('isLocatore')
-<a href="{{route('locatore')}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
-@endcan
-@can('isLocatario')
+
 <a href="{{url()->previous()}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
-@endcan
 
 
 <div class="w3-content w3-padding" style="max-width:1654px">
@@ -232,6 +228,9 @@
                                 </div>
                             </div>
                             @endcan
+                            @guest
+                            ciao
+                            @endguest
                             <div style="text-align:center;">
                             </div>
                         </div>
@@ -299,7 +298,7 @@
     </div>
 </div>
 
-
+@can('isLoggato')
 
 <div id="richieste" class="modal">
     <div class="container">
@@ -634,5 +633,6 @@
         </div>
     </div>
 </div>
+@endcan
 </div>
 @endsection

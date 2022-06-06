@@ -94,6 +94,7 @@ class UserController extends Controller
     }
     public function getAnnuncio(int $id)
     {
+        
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         $locatore = $this->_annuncioModel->getLocatore($alloggio->locatore);

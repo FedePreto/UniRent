@@ -36,6 +36,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isLocatario', function($user){
             return $user->hasLivello(2);
         });
+        Gate::define('isLoggato',function($user){
+            return isset($user);
+        });
         
     }
 }

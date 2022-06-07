@@ -62,6 +62,7 @@ class UserController extends Controller
             }else{
                 $superficie=null;
             }
+            
            
             $filtri_particolari = [];
             if ($ricerca->tipo_camera == 'appartamento') {

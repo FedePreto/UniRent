@@ -116,14 +116,22 @@
             <li>{{ Form::radio('tipo_camera','posto_letto', isset($request) ? $request->tipo_camera == 'posto_letto' : false,array('form'=>'ricerca','id'=>'radio_posto_letto'))}} Posto Letto</li>
           </ul>
         </div>
-        
+        <div class="w3-align" style="display: inline-block;">
+          <b>{{Form::label("Periodo di locazione:")}}</b><br>
+          <ul class="w3-bar-block w3-text my-filter ">
+            <li>{{ Form::radio('periodo_locazione','tutti',isset($request) ? $request->periodo_locazione == 'tutti' : true,array('form'=>'ricerca'))}} Tutti</li>
+            <li>{{ Form::radio('periodo_locazione','3_mesi',isset($request) ? $request->periodo_locazione == '3_mesi' : false,array('form'=>'ricerca'))}} 3 Mesi</li>
+            <li>{{ Form::radio('periodo_locazione','6_mesi',isset($request) ? $request->periodo_locazione == '6_mesi': false,array('form'=>'ricerca','id'=>'radio_appartamento'))}} 6 Mesi</li>
+            <li>{{ Form::radio('periodo_locazione','12_mesi', isset($request) ? $request->periodo_locazione == '12_mesi' : false,array('form'=>'ricerca','id'=>'radio_posto_letto'))}} 12 Mesi</li>
+          </ul>
+        </div>
         <div class="w3-align" style="display: inline-block;">
         <div>
           <b>{{Form::label('Prezzo: ')}}</b>
           {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'min'))}}
           {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'max'))}}
           @if ($errors->first('prezzo_max'))
-
+        
           <ul class='errors' style="max-width:270px; padding-left:20px; margin-top:10px; margin-bottom:0px;">
             @foreach($errors->get('prezzo_max') as $error)
             <li>{{$error}}</li>

@@ -188,7 +188,7 @@
           <h3><b>Filtri posto letto:</b></h3><br>
           <div class="my-align">
             {{Form::label("Posti letto totali: ")}}
-            {{Form::number("letti_pl",isset($request->letti_ap) ? $request->letti_ap : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
+            {{Form::number("letti_pl",isset($request->letti_pl) ? $request->letti_pl : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
           </div>
         </div>
 

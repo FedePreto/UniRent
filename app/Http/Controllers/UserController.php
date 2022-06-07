@@ -13,7 +13,7 @@ use App\Models\Resources\Messaggi;
 use Carbon\Carbon;
 use App\Models\Messaggistica;
 use App\Models\Resources\ServiziVincoli;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     protected $_catalogModel;
@@ -35,6 +35,7 @@ class UserController extends Controller
         //Log::info($ricerca);
 
         
+        $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
         if ($this->checkRequest($ricerca)) {
             $prezzo = [];
             if (isset($ricerca->prezzo_min)) {
@@ -56,12 +57,14 @@ class UserController extends Controller
                 }
             }
             
+            if (isset($ricerca->superficie)) {
+                $superficie = $ricerca->superficie;
+            }else{
+                $superficie=null;
+            }
            
             $filtri_particolari = [];
             if ($ricerca->tipo_camera == 'appartamento') {
-                if (isset($ricerca->superficie)) {
-                    $filtri_particolari['superficie'] = $ricerca->superficie;
-                }
                 if (isset($ricerca->n_camere)) {
                     $filtri_particolari['n_camere'] = $ricerca->n_camere;
                 }
@@ -70,33 +73,30 @@ class UserController extends Controller
                 }
             }
             if ($ricerca->tipo_camera == 'posto_letto') {
-                if (isset($ricerca->superficie)) {
-                    $filtri_particolari['superficie'] = $ricerca->superficie;
-                }
+                
                 if (isset($ricerca->letti_pl)) {
                     $filtri_particolari['letti_pl'] = $ricerca->letti_pl;
                 }
             }
             
             $servizi = $this->_catalogModel->getServizi();
-            $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
-            //return $servizi;
-            //Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera, $ricerca->only($servizi), $prezzo, $filtri_particolari);
-            //return $alloggi ;
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera,$superficie, $ricerca->only($servizi), $prezzo, $filtri_particolari);
         } else {
             $alloggi = $this->_catalogModel->getCatalog();
         }
         return view('dashboard')
             ->with('alloggi', $alloggi)
-            ->with('servizi', $servizi_vincoli[0])
+            ->with('servizi',  $servizi_vincoli[0])
             ->with('request', $ricerca);
     }
     public function getAnnuncio(int $id)
     {
         $richieste_locatario=NULL;
-        if((auth()->user()->livello)==2){
-            $richieste_locatario=$this->_annuncioModel->getAlloggioLocatarioRichiesteAttesa(auth()->user()->id,$id);
+        if(Auth::check()){
+            if((auth()->user()->livello)==2){
+                $richieste_locatario=$this->_annuncioModel->getAlloggioLocatarioRichiesteAttesa(auth()->user()->id,$id);
+            }
+
         }
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();

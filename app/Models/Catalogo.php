@@ -17,7 +17,7 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getCatalogSearch($citta,$tipo='tutte',$filtri=null,$prezzo,$filtri_particolari=null){
+    public function getCatalogSearch($citta,$tipo='tutte',$superficie,$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
         $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
@@ -38,7 +38,9 @@ class Catalogo {
             $alloggi = $alloggi->whereIn('alloggi.id',$alloggi_filtri->toArray());
 
         }
-
+        if(null != $superficie){
+            $alloggi = $alloggi->where('superficie','>=',$superficie);
+        }
         //se gli alloggi si trovano nell'array $alloggi_filtri
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);

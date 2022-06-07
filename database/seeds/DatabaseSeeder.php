@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder {
             ['nome' => 'TV', 'tipologia' => 0],
             ['nome' => 'Ferro_da_Stiro', 'tipologia' => 0],
             ['nome' => 'Allarme_Antincendio', 'tipologia' => 0],
-            ['nome' => 'Rilevatore_Monossido Di Carbonio', 'tipologia' => 0],
+            ['nome' => 'Rilevatore_Monossido_Di_Carbonio', 'tipologia' => 0],
             ['nome' => 'Aria_Condizionata', 'tipologia' => 0],
             ['nome' => 'Locale_Ricreativo', 'tipologia' => 0],
             ['nome' => 'Angolo_Studio', 'tipologia' => 0],

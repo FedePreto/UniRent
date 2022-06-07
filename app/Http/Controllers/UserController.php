@@ -92,11 +92,14 @@ class UserController extends Controller
     public function getAnnuncio(int $id)
     {
         $richieste_locatario=NULL;
+        $richieste_annuncio=NULL;
         if(Auth::check()){
             if((auth()->user()->livello)==2){
                 $richieste_locatario=$this->_annuncioModel->getAlloggioLocatarioRichiesteAttesa(auth()->user()->id,$id);
             }
-
+            if((auth()->user()->livello)==1){
+                $richieste_annuncio=$this->_annuncioModel->getAlloggioRichieste($id);
+            }
         }
         $alloggio = $this->_catalogModel->getAlloggio($id);
         $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
@@ -114,7 +117,8 @@ class UserController extends Controller
             ->with('servizi_alloggio', $sv_alloggio[0])
             ->with('vincoli_alloggio', $sv_alloggio[1])
             ->with('locatore', $locatore)
-            ->with('richieste_locatario',$richieste_locatario);
+            ->with('richieste_locatario',$richieste_locatario)
+            ->with('richieste_annuncio',$richieste_annuncio);
     }
 
     /**Visualizza la lista delle chat aperte */

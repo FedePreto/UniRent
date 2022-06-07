@@ -37,6 +37,7 @@ Route::get('/Locatore','LocatoreController@index_loca')->name('locatore');
 Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi');
 Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
+Route::put('/Locatore/Richieste/{richiesta}', 'LocatoreController@refuseRichiesta')->name('richiesta.refuse');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 

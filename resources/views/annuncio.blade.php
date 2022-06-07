@@ -304,12 +304,116 @@
 
 @can('isLoggato')
 
+
+
+
+
+
+
+
 <div id="richieste" class="modal">
-    <div class="container">
-        <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
-        <p>Some text in the Modal..</p>
+    <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
+    <div class="container w3-animate-left" style=" overflow:auto;">
+    <!--<a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail($destinatario);" id="firstTab">-->
+
+    <a  style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"  id="firstTab">
+        
+        <div>
+        <table class="w3-table-all table-striped">
+    <thead>
+        <tr>
+          <td colspan = 2><b style="font-size:18px;">Nome</b></td>
+          <td><b style="font-size:18px;">Sesso</b></td>
+          <td><b style="font-size:18px;">Data di Nascità</b></td>
+          <td><b style="font-size:18px;">Cellulare</b></td>
+          <td><b style="font-size:18px;">Email</b></td>
+          <td colspan = 2><b style="font-size:18px;">Azioni</b></td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($richieste_annuncio as $richiesta)
+        <tr>
+            <td>{{$richiesta->name}}</td>
+            <td>{{$richiesta->cognome}}</td>
+            <td>{{$richiesta->sesso}}</td>
+            <td>{{$richiesta->data_nascita}}</td>
+            <td>{{$richiesta->cellulare}}</td>
+            <td>{{$richiesta->email}}</td>
+            <td>
+                <button class="ancora w3-button w3-green" onclick="document.getElementById('confermaopzione').style.display='block'">Accetta</button>
+            </td>
+            <td>
+                  <button class="w3-button w3-red" type="submit" onclick="document.getElementById('confermarifiuto').style.display='block'">Rifiuta</button>
+ 
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+  </table>
+        </div>
+    </a>
     </div>
 </div>
+
+
+
+
+<div id="confermarifiuto" class="modal" style="z-index:4">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                        <div class="w3-container w3-padding w3-blue">
+                                            <h2 style="text-align:center">Sei sicuro di voler rifiutare l'opzione di questo locatore?</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div>
+                                                <h4 style="text-align:center">Se rifiuti questa richiesta, il locatario potrà richiedere nuovamente l'opzione dell'annuncio fino alla sua opzione.</h4>
+                                            </div>
+                                            <div class="w3-section">
+                                                {{ Form::open(array('route' => ['richiesta.refuse', $richiesta->id], 'method' => 'PUT', 'id'=>'richiesta', 'class' => 'animate')) }}
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('confermarifiuto').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                {{ Form::submit('Rifiuta', ['class' => 'w3-button w3-right w3-green' , 'style'=> "width:150px"]) }}
+                                                {{Form::close()}}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+<div id="confermaopzione" class="modal" style="z-index:4">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                        <div class="w3-container w3-padding w3-blue">
+
+                                            <h2 style="text-align:center">Sei sicuro di voler accettare l'opzione di questo locatore?</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div>
+                                                <h4 style="text-align:center">Se accetti questa richiesta, verranno automaticamente rifiutate le altre richieste in attesa per questo alloggio.</h4>
+                                            </div>
+                                            <div class="w3-section">
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('confermaopzione').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
+                                                {{ Form::submit('Accetta', ['class' => 'w3-button w3-right w3-green' , 'style'=> "width:150px"]) }}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="richiedi" class="modal" style="z-index:4">
                                     <div class="w3-modal-content w3-animate-zoom">

@@ -43,9 +43,17 @@ class Annuncio {
         $messaggi->delete();
     }
 
+    public function getRichiesta($id){
+        $richiesta= Richieste::find($id);
+        return $richiesta;
+    }
+
     public function getAlloggioRichieste($id_alloggio){
-        
-        $richieste_alloggio = Richieste::where('richieste.id_alloggio', $id_alloggio);                                 
+        $richieste_alloggio = Richieste::join('users','richieste.locatario','=','users.id')
+            ->where('richieste.id_alloggio', $id_alloggio)
+            ->where('stato','=',1)
+            ->select('richieste.id','richieste.data_richiesta','richieste.stato','richieste.locatario','richieste.id_alloggio','users.name','users.cognome','users.sesso','users.data_nascita','users.email','users.cellulare')
+            ->get();                         
         return $richieste_alloggio;
     }
 

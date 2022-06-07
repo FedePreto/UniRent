@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Locatore;
 use App\Models\Resources\Alloggi;
+use App\Models\Resources\Richieste;
 use App\Http\Requests\NewHomeRequest;
 use App\Models\Catalogo;
 use App\Models\Annuncio;
@@ -250,5 +251,16 @@ class LocatoreController extends Controller
 
         return redirect()->route('annuncio', $id)
             ->with('status', 'Annuncio aggiornato correttamente!');
+    }
+
+    public function refuseRichiesta($id){
+
+        $data= $this->_annuncioModel->getRichiesta($id);
+        $data->data_risposta= Carbon::now();
+        $data->stato=0;
+        Richieste::find($id)->update($data);
+
+        return redirect()->route('annuncio', $data->id_alloggio)
+            ->with('status', 'Richiesta rifiutata correttamente!');
     }
 }

@@ -229,7 +229,7 @@
                             </div>
                             @endcan
                             @guest
-                            ciao
+                            
                             @endguest
                             <div style="text-align:center;">
                             </div>

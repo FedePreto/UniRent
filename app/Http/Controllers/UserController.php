@@ -160,7 +160,7 @@ class UserController extends Controller
             'id_alloggio' => $id_alloggio
         ]);
         $messaggio->save();
-        
+        //return back()->withInput();
         return redirect()->route('annuncio', $id_alloggio)
             ->with('status', 'Messaggio inviato correttamente!');
     }

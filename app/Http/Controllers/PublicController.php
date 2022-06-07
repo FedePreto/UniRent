@@ -55,4 +55,13 @@ class PublicController extends Controller{
             return view('homepage');                
         }                   
     }
+
+    public static function urlPreviousTwice(){
+        $links = session()->has('links') ? session('links') : [];
+        $currentLink = request()->path(); // Getting current URI like 'category/books/'
+        array_unshift($links, $currentLink); // Putting it in the beginning of links array
+        session(['links' => $links]); // Saving links array to the session
+
+        return session(['links']);
+    }
 }

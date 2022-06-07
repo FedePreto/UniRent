@@ -2453,4 +2453,4 @@ ul.pagination li a.activetor {
     border-radius: 5px;
 }
 
-ul.pagination li a:hover:not(.activetor) {background-color: #ddd;}
+ul.pagination li a:hover:not(.activetor) {background-color: rgb(167, 167, 167);}

@@ -118,7 +118,7 @@
         </div>
         <div class="w3-align" style="display: inline-block;">
           <b>{{Form::label("Periodo di locazione:")}}</b><br>
-          <ul class="w3-bar-block w3-text my-filter ">
+          <ul class="w3-bar-block w3-text my-filter " style="margin-top:0px; margin-bottom:0px;">
             <li>{{ Form::radio('periodo_locazione','tutti',isset($request) ? $request->periodo_locazione == 'tutti' : true,array('form'=>'ricerca'))}} Tutti</li>
             <li>{{ Form::radio('periodo_locazione','3_mesi',isset($request) ? $request->periodo_locazione == '3_mesi' : false,array('form'=>'ricerca'))}} 3 Mesi</li>
             <li>{{ Form::radio('periodo_locazione','6_mesi',isset($request) ? $request->periodo_locazione == '6_mesi': false,array('form'=>'ricerca','id'=>'radio_appartamento'))}} 6 Mesi</li>

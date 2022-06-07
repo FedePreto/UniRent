@@ -32,15 +32,22 @@ class LocatarioController extends Controller
     //
     public function sendRichiesta(Request $request, $id_alloggio, $id_locatario)
     {
-        $richiesta = new Richieste([
-            'data_richiesta' => Carbon::now()->addHours(2),
-            'data_risposta' => NULL,
-            'stato' => 1,
-            'locatario'=> $id_locatario,
-            'id_alloggio' => $id_alloggio
-        ]);
-        $richiesta->save();
-        return redirect()->route('annuncio', $id_alloggio)
-            ->with('status', 'Richiesta inoltrata correttamente!');
+        $richieste_attive= $this->_annuncioModel->getAlloggioLocatarioRichiesteAttesa($id_locatario,$id_alloggio);
+        if($richieste_attive== NULL){
+            $richiesta = new Richieste([
+                'data_richiesta' => Carbon::now()->addHours(2),
+                'data_risposta' => NULL,
+                'stato' => 1,
+                'locatario'=> $id_locatario,
+                'id_alloggio' => $id_alloggio
+            ]);
+            $richiesta->save();
+            return redirect()->route('annuncio', $id_alloggio)
+                ->with('status', 'Richiesta inoltrata correttamente!');
+        }else{
+            return redirect()->route('annuncio', $id_alloggio)
+                ->with('status', 'Richiesta non inoltrata, è gia presente una richiesta in attesa per questo annuncio!');
+        }
+
     }
 }

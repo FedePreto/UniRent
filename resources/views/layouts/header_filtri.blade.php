@@ -118,22 +118,25 @@
         </div>
 
         <div class="w3-align" style="display: inline-block;">
+        <div>
           <b>{{Form::label('Prezzo: ')}}</b>
           {{Form::number('prezzo_min',isset($request)? $request->prezzo_min : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'min'))}}
           {{Form::number('prezzo_max',isset($request)? $request->prezzo_max : false,array('min'=>'0','max'=>'9999','form'=>'ricerca','placeholder'=>'max'))}}
           @if ($errors->first('prezzo_max'))
 
-          <ul class='errors' style="max-width:229px">
+          <ul class='errors' style="max-width:270px; padding-left:20px; margin-top:10px; margin-bottom:0px;">
             @foreach($errors->get('prezzo_max') as $error)
             <li>{{$error}}</li>
             @endforeach
           </ul>
+            
           @endif
-          <br>
-          <br>
+           </div> 
+          <div style="margin-top:10px;">
           <b>{{Form::label('Dimensioni: ')}}</b>
           {{Form::number('superficie',isset($request->superficie) ? $request->superficie : false,array('form'=>'ricerca','min'=>0,'max'=>9999))}}
           <p style="display:inline"> m<sup>2</sup></p><br>
+          </div>
         </div>
 
 

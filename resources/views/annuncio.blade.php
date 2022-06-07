@@ -99,7 +99,7 @@
     <div class="w3-row-padding">
         <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding-right: 20px; padding-top: 0px ;padding-left: 0px;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:258px;">
             <div class=" w3-container w3-margin-bottom " style=" width: 400px; max-height:300px; float:left; padding-left: 0px;">
-                @include('helpers/alloggioImage',['attrs'=>"",'imgFile'=>$alloggio->foto])
+                @include('helpers/alloggioImage',['attrs'=>"style='height:257px'",'imgFile'=>$alloggio->foto])
             </div>
             <div>
                 <div style="padding-top:10px;">

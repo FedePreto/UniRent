@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Alloggi;
 use App\User;
 use App\Models\Resources\Incluso;
+use App\Models\Resources\Richieste;
 use App\Models\Resources\Messaggi;
 
 class Annuncio {
@@ -40,5 +41,28 @@ class Annuncio {
         $alloggio->delete();
         $incluso->delete();
         $messaggi->delete();
+    }
+
+    public function getAlloggioRichieste($id_alloggio){
+        
+        $richieste_alloggio = Richieste::where('richieste.id_alloggio', $id_alloggio);                                 
+        return $richieste_alloggio;
+    }
+
+    public function getAlloggioLocatarioRichiesteAttesa($id_locatario,$id_alloggio){
+        $richieste_alloggio_locatario= Richieste::where('richieste.id_alloggio','=', $id_alloggio)
+            ->where('richieste.locatario','=', $id_locatario)
+            ->where('stato','=',1)->get();
+        $flag=true;
+        foreach($richieste_alloggio_locatario as $richiesta){
+            
+            if(($richiesta->stato)==1){
+                $flag=false;
+            }
+        }
+        if($flag==true){
+            $richieste_alloggio_locatario=NULL; 
+        }
+        return $richieste_alloggio_locatario;
     }
 }

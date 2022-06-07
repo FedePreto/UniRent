@@ -313,7 +313,9 @@
 
 <div id="richiedi" class="modal" style="z-index:4">
                                     <div class="w3-modal-content w3-animate-zoom">
+                                        @if($richieste_locatario==NULL)
                                         <div class="w3-container w3-padding w3-blue">
+
                                             <h2 style="text-align:center">Sei sicuro di voler richedere quest'annuncio al locatore?</h2>
                                         </div>
                                         <div class="w3-panel">
@@ -325,6 +327,17 @@
                                                 
                                             </div>
                                         </div>
+                                        @else
+                                        <div class="w3-container w3-padding w3-blue">
+
+                                            <h2 style="text-align:center">Hai già richiesto questo annuncio, attendi la risposta del locatore!</h2>
+                                        </div>
+                                        <div class="w3-panel">
+                                            <div class="w3-section" style="text-align:center">
+                                                <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('richiedi').style.display='none'">Chiudi <i class="fa fa-remove"></i></a>               
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
 

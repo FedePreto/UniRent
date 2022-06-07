@@ -17,7 +17,7 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getCatalogSearch($citta,$tipo='tutte',$superficie,$filtri=null,$prezzo,$filtri_particolari=null){
+    public function getCatalogSearch($citta,$tipo='tutte',$periodo_locazione,$superficie,$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
         $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
@@ -77,7 +77,18 @@ class Catalogo {
                 $alloggi = $alloggi->where('alloggi.prezzo','<=',$prezzo['max']);
             }
         }
-        //return$alloggi;
+        if($periodo_locazione!=null){
+            if($periodo_locazione!='tutte'){
+                switch($periodo_locazione){
+                    case '3_mesi' :$alloggi = $alloggi->where('periodo_locazione',3);
+                                    break;
+                    case '6_mesi' :$alloggi = $alloggi->where('periodo_locazione',6);
+                                    break;
+                    case '12_mesi' :$alloggi = $alloggi->where('periodo_locazione',12);
+                                    break;
+                }
+            }
+        }
 
         //fare join con incluso e poi count(alloggi) group by alloggi
         return $alloggi->paginate(6);

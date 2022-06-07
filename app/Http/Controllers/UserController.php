@@ -56,7 +56,10 @@ class UserController extends Controller
                     ]);
                 }
             }
-            
+            $periodo_locazione=null;
+            if(isset($ricerca->periodo_locazione)){
+                $periodo_locazione = $ricerca->periodo_locazione;
+            }
             if (isset($ricerca->superficie)) {
                 $superficie = $ricerca->superficie;
             }else{
@@ -81,7 +84,7 @@ class UserController extends Controller
             }
             
             $servizi = $this->_catalogModel->getServizi();
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera,$superficie, $ricerca->only($servizi), $prezzo, $filtri_particolari);
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera,$periodo_locazione,$superficie, $ricerca->only($servizi), $prezzo, $filtri_particolari);
         } else {
             $alloggi = $this->_catalogModel->getCatalog();
         }

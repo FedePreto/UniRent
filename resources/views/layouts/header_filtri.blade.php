@@ -107,7 +107,7 @@
     <div class="w3-container wrapper" id="filtri">
       <div id="reveal-content" >
       <div style="padding-top:20px;">
-
+        
         <div class="w3-align" style="display: inline-block;">
           <b>{{Form::label("Tipo di camera:")}}</b><br>
           <ul class="w3-bar-block w3-text my-filter ">
@@ -116,7 +116,7 @@
             <li>{{ Form::radio('tipo_camera','posto_letto', isset($request) ? $request->tipo_camera == 'posto_letto' : false,array('form'=>'ricerca','id'=>'radio_posto_letto'))}} Posto Letto</li>
           </ul>
         </div>
-
+        
         <div class="w3-align" style="display: inline-block;">
         <div>
           <b>{{Form::label('Prezzo: ')}}</b>

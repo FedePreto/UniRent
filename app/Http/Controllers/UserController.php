@@ -79,7 +79,7 @@ class UserController extends Controller
             }
             
             $servizi = $this->_catalogModel->getServizi();
-            $serivzi_vincoli = $this->_catalogModel->getServiziVincoli();
+            $servizi_vincoli = $this->_catalogModel->getServiziVincoli();
             //return $servizi;
             //Log::info($ricerca->except(['citta','tipo_camera','data_inizio','data_fine','prezzo_min','prezzo_max']));
             $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera, $ricerca->only($servizi), $prezzo, $filtri_particolari);
@@ -89,7 +89,7 @@ class UserController extends Controller
         }
         return view('dashboard')
             ->with('alloggi', $alloggi)
-            ->with('servizi', $serivzi_vincoli[0])
+            ->with('servizi', $servizi_vincoli[0])
             ->with('request', $ricerca);
     }
     public function getAnnuncio(int $id)

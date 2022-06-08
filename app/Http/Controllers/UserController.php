@@ -202,5 +202,13 @@ class UserController extends Controller
             ->with('messaggi', $messaggi)
             ->with('id', auth()->user()->id);
     }
+
+    public function getContratto($id_richiesta){
+        $result = $this->_locatoreModel->getContratto($id_richiesta);
+        $alloggio = $result['alloggio'];
+        $locatore = $result['locatore'];
+        $locatario = $result['locatario'];
+
+    }
     
 }

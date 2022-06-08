@@ -60,5 +60,6 @@ Route::post('logout','Auth\LoginController@logout')->name('logout');
 Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register')->middleware('guest');//Rotta che genera la form di registrazione
 Route::post('register','Auth\RegisterController@register'); //Rotta che effettivamente registra l'utente
 
+Route::get('/Contratto/{$id_richiesta}','UserController@getContratto')->name('contratto');
 //Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

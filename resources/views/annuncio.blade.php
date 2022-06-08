@@ -188,7 +188,7 @@
                                 @method('DELETE')
                                 <!--Le form HTML non supportano il metodo delete o put so, when defining PUT, PATCH, or DELETE routes that are called from an HTML 
                                                               form, you will need to add a hidden _method field to the form. The value sent with the _method field will be used as the HTTP request method:-->
-                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" type="submit" onclik= "return confirm('Sei sicuro di voler eliminare l\'annuncio?')">Rimuovi Annuncio</button>
+                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" type="submit" onclick= "return confirm('Sei sicuro di voler eliminare l\'annuncio?')">Rimuovi Annuncio</button>
                             </form>
                             
                             @endcan

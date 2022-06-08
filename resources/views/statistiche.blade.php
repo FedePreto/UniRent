@@ -72,6 +72,22 @@
   <!-- First Photo Grid-->
   <div style="padding-left: 20px; padding-right: 20px;">
 <div class="col-sm-12">   
+  @isset($filtri[2])
+    @if($filtri[2]==2)
+    <h3>Statistiche per Tutti gli annunci
+    @elseif($filtri[2]==0)
+    <h3>Statistiche per gli Appartamenti
+    @else
+    <h3>Statistiche per i Posti letto
+    @endif
+  @endisset
+  @isset($filtri[1])
+    @if(isset($filtri[0]))
+      , dal {{$filtri[0]}} al {{$filtri[1]}}</h3>
+    @else
+     , fino al {{$filtri[1]}}</h3>
+    @endif
+  @endisset
   <table class="w3-table-all table-striped">
     <thead>
         <tr>

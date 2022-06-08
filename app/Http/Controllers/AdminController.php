@@ -28,13 +28,15 @@ class AdminController extends Controller{
         request()->validate([
            'fine_intervallo' =>[new GreaterThan($request->inizio_intervallo)]
         ]);
-
         $statistiche= $this->_catalogModel->getStatistiche($request->inizio_intervallo,$request->fine_intervallo,$request->tipo_camera); 
-       // return dd($statistiche);
+        $filtri[0]=$request->inizio_intervallo;
+        $filtri[1]=$request->fine_intervallo;
+        $filtri[2]=$request->tipo_camera;
         return view('statistiche')
             ->with('richieste',[$statistiche[0],$statistiche[1],$statistiche[2]])
             ->with('locazioni',$statistiche[3])
-            ->with('alloggi',$statistiche[4]);
+            ->with('alloggi',$statistiche[4])
+            ->with('filtri',$filtri);
     }
 
     public function showFaq(){

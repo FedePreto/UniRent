@@ -138,6 +138,12 @@ class Catalogo {
             $attese= Richieste::where('stato', 1)->count();
             $locazioni= Richieste::where('stato', 2)->count();
             $alloggi= Alloggi::all()->count();
+        }elseif((is_null($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera==2)){
+            $richieste= Richieste::all()->where('data_richiesta','<=',$fine_intervallo)->count();
+            $rifiuti= Richieste::where('stato', 0)->where('data_richiesta','<=',$fine_intervallo)->count();
+            $attese= Richieste::where('stato', 1)->where('data_richiesta','<=',$fine_intervallo)->count();
+            $locazioni= Richieste::where('stato', 2)->where('data_richiesta','<=',$fine_intervallo)->count();
+            $alloggi= Alloggi::all()->where('created_at','<=',$fine_intervallo)->count();
         }elseif((is_null($inizio_intervallo))and(is_null($fine_intervallo))and($tipo_camera!=2)){
             $richieste= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
                 ->where('alloggi.tipologia',$tipo_camera)->count();
@@ -150,6 +156,23 @@ class Catalogo {
             $locazioni=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
                 ->where('alloggi.tipologia',$tipo_camera)
                 ->where('stato', 2)->count();
+            $alloggi= Alloggi::where('tipologia', $tipo_camera)->count();
+        }elseif((is_null($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera!=2)){
+            $richieste= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $rifiuti= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 0)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $attese=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 1)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
+            $locazioni=Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')
+                ->where('alloggi.tipologia',$tipo_camera)
+                ->where('stato', 2)
+                ->where('data_richiesta','<=',$fine_intervallo)->count();
             $alloggi= Alloggi::where('tipologia', $tipo_camera)->count();
         }elseif((isset($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera==2)){
             $richieste= Richieste::where('data_richiesta','>=',$inizio_intervallo)
@@ -164,6 +187,7 @@ class Catalogo {
                 ->where('data_richiesta','<=',$fine_intervallo)
                 ->where('stato', 2)->count();
             $alloggi= Alloggi::where('created_at','>=',$inizio_intervallo)
+                ->where('created_at','<=',$fine_intervallo)
                 ->where('created_at','<=',$fine_intervallo)->count();
         }elseif((isset($inizio_intervallo))and(isset($fine_intervallo))and($tipo_camera!=2)){
             $richieste= Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')

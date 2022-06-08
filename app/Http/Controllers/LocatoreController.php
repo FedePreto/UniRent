@@ -253,14 +253,23 @@ class LocatoreController extends Controller
             ->with('status', 'Annuncio aggiornato correttamente!');
     }
 
-    public function refuseRichiesta($id){
+    public function richiestaRisposta($id,$risposta){
 
-        $data= $this->_annuncioModel->getRichiesta($id);
-        $data->data_risposta= Carbon::now()->addHours(2);
-        $data->stato=0;
-        Richieste::find($id)->update($data);
+        $richiesta= $this->_annuncioModel->getRichiesta($id);
+        $richiesta->data_risposta= Carbon::now();
+        $richiesta->stato=$risposta;
+        $richiesta->update();
 
-        return redirect()->route('annuncio', $data->id_alloggio)
-            ->with('status', 'Richiesta rifiutata correttamente!');
+        if($risposta == 2){
+           $alloggio = $this->_catalogModel->getAlloggio($richiesta->id_alloggio);
+           $alloggio->opzionato = 1;
+           $alloggio->update();
+           $risposta='Richiesta accettata correttamente!';
+        }
+        elseif($risposta == 0)
+           $risposta='Richiesta rifiutata correttamente!';
+
+        return redirect()->route('annuncio', $richiesta->id_alloggio)
+            ->with('status', $risposta);
     }
 }

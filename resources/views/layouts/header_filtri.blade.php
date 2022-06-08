@@ -89,7 +89,7 @@
       });
     });
 
-
+    /** Funzione per far apparire i servizi specifici per gli appartamenti e posti letto */
     $(function() {
       $('input[name = "tipo_camera"]').click(function() {
         var tipo = $('input[name = "tipo_camera"]:checked').val();

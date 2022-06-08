@@ -170,7 +170,7 @@
 
 
             <div class="wrap-input">
-                <p> Se hai già un account <a href="{{ route('login') }}">effettua il login</a></p>
+                <p> Se hai già un account effettua il  <a href="{{ route('login') }}">login</a></p>
             </div>
             {{ Form::close() }}
         </div>

@@ -29,11 +29,11 @@ Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update')->
 Route::get('/Admin/Faq/{faq}','AdminController@showFaqToUpdate')->name('faq.toupdate')->middleware('can:isAdmin');
 Route::delete('/Admin/Faq/{faq}','AdminController@deletefaq')->name('faq.delete');
 //Route Locatore
-Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can: isLocatore');
+Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore');
 
 Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi')->middleware('auth');
 Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
-//Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste')->middleware('can:isLocatore');
+Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste')->middleware('can:isLocatore');
 Route::put('/Locatore/Richieste/{richiesta}', 'LocatoreController@refuseRichiesta')->name('richiesta.refuse')->middleware('can:isLocatore');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');

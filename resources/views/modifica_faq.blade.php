@@ -3,17 +3,30 @@
 
 @section('content')
 @isset($faq)
-@if ($errors->any())
-<div class="alert">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-<!--MODIFICA FAQ-->
-<div class="w3-container" align='center'>
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="portfolio">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+      <h1 id="titolo" style="margin-bottom:0px;"><b>Gestione FAQ</b></h1>
+      <div class=" w3-bottombar w3-padding-16" style="margin-bottom:16px;">
+      </div>
+      @if (session('status'))
+      <div class="alert success">
+        {{ session('status') }}
+      </div>
+      @endif
+    </div>
+  </header>
+
+  <!-- First Photo Grid-->
+  <div style="padding-left: 20px; padding-right: 20px;">
+    <div class="col-sm-12">
+    <div class="w3-container" align='center'>
     <div class="w3-modal-content w3-animate-zoom">
         <div class="w3-container  w3-blue">
             <h2>Modifica FAQ</h2>
@@ -45,5 +58,7 @@
         </div>
     </div>
 </div>
+
+
 @endisset
 @endsection

@@ -256,7 +256,7 @@ class LocatoreController extends Controller
     public function refuseRichiesta($id){
 
         $data= $this->_annuncioModel->getRichiesta($id);
-        $data->data_risposta= Carbon::now();
+        $data->data_risposta= Carbon::now()->addHours(2);
         $data->stato=0;
         Richieste::find($id)->update($data);
 

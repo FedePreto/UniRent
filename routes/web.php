@@ -34,7 +34,7 @@ Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middl
 Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi')->middleware('auth');
 Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
 Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste')->middleware('can:isLocatore');
-Route::put('/Locatore/Richieste/{richiesta}', 'LocatoreController@refuseRichiesta')->name('richiesta.refuse')->middleware('can:isLocatore');
+Route::put('/Locatore/Richieste/{richiesta}/{risposta}', 'LocatoreController@richiestaRisposta')->name('richiestaRisposta')->middleware('can:isLocatore');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 

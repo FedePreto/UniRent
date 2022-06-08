@@ -305,12 +305,7 @@
 @can('isLoggato')
 
 
-
-
-
-
-
-
+@can('isLocatore')
 <div id="richieste" class="modal">
     <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
     <div class="container w3-animate-left" style=" overflow:auto;">
@@ -326,7 +321,7 @@
         <table class="w3-table-all table-striped">
         <thead>
         <tr>
-          <td colspan = 2><b style="font-size:18px;">Nome</b></td>
+          <td colspan = 2><b style="font-size:18px;">Locatario</b></td>
           <td><b style="font-size:18px;">Sesso</b></td>
           <td><b style="font-size:18px;">Data di Nascità</b></td>
           <td><b style="font-size:18px;">Cellulare</b></td>
@@ -339,18 +334,22 @@
     @foreach($richieste_annuncio as $richiesta)
 
         <tr>
-            <td>{{$richiesta->name}}</td>
-            <td>{{$richiesta->cognome}}</td>
+            <td>{{$richiesta->name}} {{$richiesta->cognome}}</td>
             <td>{{$richiesta->sesso}}</td>
             <td>{{$richiesta->data_nascita}}</td>
             <td>{{$richiesta->cellulare}}</td>
             <td>{{$richiesta->email}}</td>
             <td>
-                <button class="ancora w3-button w3-green" onclick="document.getElementById('confermaopzione').style.display='block'">Accetta</button>
-            </td>
-            <td>
-                  <button class="w3-button w3-red" type="submit" onclick="document.getElementById('confermarifiuto').style.display='block'">Rifiuta</button>
- 
+            <form action="{{ route('richiestaRisposta', [$richiesta->id, 2])}}" method="post" style="float:right;">
+                @csrf
+                @method('PUT')
+                <button class="w3-button w3-green" type="submit" onclick= "return confirm('Sei sicuro di voler accettare l\'offerta?')">Accetta</button>
+            </form>
+            <form action="{{ route('richiestaRisposta', [$richiesta->id, 0])}}" method="post" style="float:right;">
+                @csrf
+                @method('PUT')
+                <button class="w3-button w3-red" type="submit" onclick= "return confirm('Sei sicuro di voler rifiutare l\'offerta?')">Rifiuta</button>
+            </form>
             </td>
         </tr>
         @endforeach
@@ -362,6 +361,7 @@
     </a>
     </div>
 </div>
+@endcan
 
 
 

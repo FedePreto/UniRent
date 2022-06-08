@@ -331,8 +331,10 @@
         </tr>
     </thead>
     <tbody>
-        @can('_isLocatore')
+
+    @isset($richieste_annuncio)
     @foreach($richieste_annuncio as $richiesta)
+
         <tr>
             <td>{{$richiesta->name}}</td>
             <td>{{$richiesta->cognome}}</td>
@@ -349,7 +351,7 @@
             </td>
         </tr>
         @endforeach
-        @endcan
+        @endisset
     </tbody>
   </table>
         </div>

@@ -318,9 +318,13 @@
 
     <a  style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"  id="firstTab">
         
-        <div>
+    <div>
+    @isset($richieste_annuncio)
+    @if($richieste_annuncio->isEmpty())
+    <span>Spiacenti, ma ancora non hai ricevuto nessuna richiesta per questo alloggio!</span>
+    @else
         <table class="w3-table-all table-striped">
-    <thead>
+        <thead>
         <tr>
           <td colspan = 2><b style="font-size:18px;">Nome</b></td>
           <td><b style="font-size:18px;">Sesso</b></td>
@@ -331,8 +335,7 @@
         </tr>
     </thead>
     <tbody>
-
-    @isset($richieste_annuncio)
+    
     @foreach($richieste_annuncio as $richiesta)
 
         <tr>
@@ -354,6 +357,7 @@
         @endisset
     </tbody>
   </table>
+  @endif
         </div>
     </a>
     </div>

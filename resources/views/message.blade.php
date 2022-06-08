@@ -61,7 +61,7 @@
         <div id="conversazione" style="overflow:auto; border: 1px solid rgb(221, 221, 221);  padding-top: 0spx ;padding-bottom: 0px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px; height:700px; float:right; width:80%;">
             @if(isset($messaggi))
             <div style="overflow:auto; border: 1px solid rgb(221, 221, 221); background-color:rgb(220, 220, 220); padding-right: 20px; padding-top: 5px ;padding-left: 20px;padding-bottom: 5px; height:150px; float:top; width:100%;">
-                @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>$messaggi['mittente'][0]['foto_profilo'],'style'=>'width:5%;'])
+                @include('helpers/profileImage', ['attrs' => '  ' ,'style'=>'width:5%', 'imgFile'=>$messaggi['mittente'][0]['foto_profilo']])
                 <h3 style='display:inline;'><b>{{$messaggi["mittente"][0]["name"]." ".$messaggi["mittente"][0]["cognome"]}}</b></h3>
                 <a href='{{route('annuncio',$messaggi['alloggio'][0]['id'])}}'><h5><b>{{$messaggi["alloggio"][0]["titolo"].", ".$messaggi["alloggio"][0]["cap"].", ".$messaggi["alloggio"][0]["citta"].", ".$messaggi["alloggio"][0]["indirizzo"].", ".$messaggi["alloggio"][0]["numero"]}}</b></h5></a>
                 <h6>{{$messaggi["alloggio"][0]["descrizione"]}}</h6>

@@ -331,6 +331,7 @@
         </tr>
     </thead>
     <tbody>
+        @can('_isLocatore')
     @foreach($richieste_annuncio as $richiesta)
         <tr>
             <td>{{$richiesta->name}}</td>
@@ -348,6 +349,7 @@
             </td>
         </tr>
         @endforeach
+        @endcan
     </tbody>
   </table>
         </div>
@@ -368,11 +370,12 @@
                                                 <h4 style="text-align:center">Se rifiuti questa richiesta, il locatario potrà richiedere nuovamente l'opzione dell'annuncio fino alla sua opzione.</h4>
                                             </div>
                                             <div class="w3-section">
+                                                @can('_isLocatore')
                                                 {{ Form::open(array('route' => ['richiesta.refuse', $richiesta->id], 'method' => 'PUT', 'id'=>'richiesta', 'class' => 'animate')) }}
                                                 <a class="w3-button w3-red" style="width:150px" onclick="document.getElementById('confermarifiuto').style.display='none'">Annulla <i class="fa fa-remove"></i></a>
                                                 {{ Form::submit('Rifiuta', ['class' => 'w3-button w3-right w3-green' , 'style'=> "width:150px"]) }}
                                                 {{Form::close()}}
-                                                
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>

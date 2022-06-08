@@ -31,11 +31,11 @@
                 $('#letti_posto_letto').show();
                 $('#Angolo_Studio').show();
                 $('#Locale_Ricreativo').hide();
-                $('#Locale_Ricreativo').prop('checked',false);
+                $('#Locale_Ricreativo').prop('checked', false);
             } else {
                 $('#letti_posto_letto').hide();
                 $('#Angolo_Studio').hide();
-                $('#Angolo_Studio').prop('checked',false);
+                $('#Angolo_Studio').prop('checked', false);
                 $('#Locale_Ricreativo').show();
                 $('#letti_pl').prop('selectedIndex', 0);
             }
@@ -82,7 +82,7 @@
             <div class="wrap-input  rs1-wrap-input">
                 {{ Form::label('regione', 'Regione:', ['class' => 'label-input-app']) }}
                 {{ Form::select('regione',['Abruzzo'=>'Abruzzo',
-                                           'Basilicata'=>'Basilicata',
+                          'Basilicata'=>'Basilicata',
                                            'Calabria'=>'Calabria',
                                            'Campania'=>'Campania', 
                                            'Emilia Romagna'=>'Emilia Romagna',

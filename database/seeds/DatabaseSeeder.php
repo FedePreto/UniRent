@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder {
      *
      * @return void
      */
-    const DESCPROD = '<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Phasellus pellentesque. Mauris quam enim, molestie in, rhoncus ut, lobortis a, est. </p><p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Phasellus pellentesque. Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>';
 
     public function run() {
 
@@ -57,8 +56,6 @@ class DatabaseSeeder extends Seeder {
         ]);
        
         DB::table('messaggi')->insert([
-            ['contenuto' => 'Ciao ti scrivo per poter avere ulteriori informazioni sull\'appartamento, vorrei sapere se bla bla bla vsdkdeo kdeo kd oke kcoe ck. Kdo dkaofk ao ckao caokcc aok okao kcoka okcoak ockaock oakco kao kcoak coka ockao koak coak coka ocko akc ?' , 'data' => '2022-05-10 13:22:11' , 'mittente' => 3 , 'destinatario' => 2, 'id_alloggio'=>1],
-            ['contenuto' => 'Ciao cosa vorresti sapere di preciso? Vuoi denunziarmi? Fallo vedra iche ti succede. Ho degli avvocati migliori di quelli di Depp. Mi dovrai risarcire di 34 miliomi di euro. Fascista' , 'data' => '2022-05-10 13:25:32' , 'mittente' => 2 , 'destinatario' => 3,'id_alloggio'=>1],
             ['contenuto' => 'Mi piacerebbe sapere se è possibile visitarlo domani nel pomeriggio' , 'data' => '2022-05-09 19:21:11' , 'mittente' => 3 , 'destinatario' => 4,'id_alloggio'=>2],
             ['contenuto' => 'Ciao cosa vorresti sapere di preciso?' , 'data' => '2022-05-10 19:21:11' , 'mittente' => 4 , 'destinatario' => 5,'id_alloggio'=>1],
             ['contenuto' => 'Mi piacerebbe sapere se è possibile visitarlo domani nel pomeriggio' , 'data' => '2022-05-10 19:21:11' , 'mittente' => 4 , 'destinatario' => 5,'id_alloggio'=>3]
@@ -76,9 +73,6 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Come posso effettuare un ricerca più adatta alle mie esigenze?', 'risposta' => 'Per usufruire del filtraggio nella ricerca dell\'appartamento/posto letto bisogna registrarsi al sito.']
             ]);
         
-        DB::table('contratto')->insert([
-            ['dataInizio' => '2022-05-11' ,'dataFine' => '2023-05-11' , 'locatario' => 2, 'alloggio' => 0]            
-        ]);
                 
         DB::table('incluso')->insert([
             ['alloggio' => 1, 'servizio_vincolo' =>1],
@@ -108,6 +102,15 @@ class DatabaseSeeder extends Seeder {
             ['foto_profilo' => NULL, 'name' => 'Federico', 'cognome' => 'Pretini', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_loca', 'password' => Hash::make('fede_loca'), 'cellulare' => "3661147561", 'livello' => 1,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => NULL, 'name' => 'Federico', 'cognome' => 'Pretini', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_lario', 'password' => Hash::make('fede_lario'), 'cellulare' => "3661147562", 'livello' => 2,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
 
+        ]);
+
+        DB::table('richieste')->insert([            
+            ['data_richiesta' => Carbon::create('2022','06','02'), 'data_risposta'=> Carbon::create('2022','06','04') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>2],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>3],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>8],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>11],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>8],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>11]
         ]);
     }
 

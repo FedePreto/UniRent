@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PublicController@showHomepage')->name('home')->middleware('guest');
+Route::get('/', 'PublicController@showHomepage')->name('home');
 Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale')->middleware('guest');
 Route::get('/Faq','PublicController@getFaq')->name('faq');
 Route::view('/Who','who')->name('who');
@@ -60,6 +60,6 @@ Route::post('logout','Auth\LoginController@logout')->name('logout');
 Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register')->middleware('guest');//Rotta che genera la form di registrazione
 Route::post('register','Auth\RegisterController@register'); //Rotta che effettivamente registra l'utente
 
-Route::get('/Contratto/{$id_richiesta}','UserController@getContratto')->name('contratto');
+Route::get('/Contratto/{richiesta}','LocatoreController@showContratto')->name('contratto');
 //Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

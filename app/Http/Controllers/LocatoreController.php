@@ -253,23 +253,40 @@ class LocatoreController extends Controller
             ->with('status', 'Annuncio aggiornato correttamente!');
     }
 
-    public function richiestaRisposta($id,$risposta){
+    public function richiestaRisposta($id, $risposta)
+    {
 
-        $richiesta= $this->_annuncioModel->getRichiesta($id);
-        $richiesta->data_risposta= Carbon::now();
-        $richiesta->stato=$risposta;
+        $richiesta = $this->_annuncioModel->getRichiesta($id);
+        $richiesta->data_risposta = Carbon::now();
+        $richiesta->stato = $risposta;
         $richiesta->update();
 
-        if($risposta == 2){
-           $alloggio = $this->_catalogModel->getAlloggio($richiesta->id_alloggio);
-           $alloggio->opzionato = 1;
-           $alloggio->update();
-           $risposta='Richiesta accettata correttamente!';
+        if ($risposta == 2) {
+            $alloggio = $this->_catalogModel->getAlloggio($richiesta->id_alloggio);
+            $alloggio->opzionato = 1;
+            $alloggio->update();
+            $richieste = $this->_annuncioModel->getAlloggioRichieste($richiesta->id_alloggio);
+            foreach ($richieste as $ric) {
+                $ric->data_risposta = Carbon::now();
+                $ric->stato = 0;
+                $ric->update();
+            }
+            return redirect()->route('contratto', $id);
+        } elseif ($risposta == 0) {
+            return redirect()->route('annuncio', $richiesta->id_alloggio)
+                ->with('status', 'Richiesta rifiutata correttamente!');
         }
-        elseif($risposta == 0)
-           $risposta='Richiesta rifiutata correttamente!';
+    }
 
-        return redirect()->route('annuncio', $richiesta->id_alloggio)
-            ->with('status', $risposta);
+    public function showContratto($id){
+        $result = $this->_locatoreModel->getContratto($id);
+        $alloggio = $result['alloggio'];
+        $locatore = $result['locatore'];
+        $locatario = $result['locatario'];
+
+        return view('contratto')
+            ->with('alloggio', $alloggio)
+            ->with('locatore', $locatore)
+            ->with('locatario', $locatario);
     }
 }

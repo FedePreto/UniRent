@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Unirent | Contratto</title>
@@ -8,18 +9,19 @@
         </style>
     </head>
     <body>
+        <a href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
         <h2 class='titolo'>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</h2>
         <br><br>
-        <p>Il Sig./La Sig.ra {{$locatore->nome}}{{$locatore->cognome}}  di seguito denominato/a, per brevità, “Locatore” </p><br>
-        <p>Il Sig./La Sig.ra {{$locatario->nome}}{{$locatario->cognome}} di seguito denominato, per brevità, “Conduttore”</p><br>
+        <p>Il Sig./La Sig.ra {{$locatore[0]->name}} {{$locatore[0]->cognome}}  di seguito denominato/a, per brevità, “Locatore” </p><br>
+        <p>Il Sig./La Sig.ra {{$locatario[0]->name}}{{$locatario[0]->cognome}} di seguito denominato, per brevità, “Conduttore”</p><br>
         <h2 class="titolo">SI CONVIENE E SI STIPULA QUANTO SEGUE</h2>
-        <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in {{$alloggio->indirizzo}}.<br>
+        <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in {{$alloggio[0]->indirizzo}}.<br>
             L’immobile viene consegnato come visto e piaciuto tra le parti all’atto della consegna del bene.<br>
             L’immobile sarà adibito ad uso esclusivo del Conduttore</p>
         <p>
             La locazione è regolata dalle seguenti concordate pattuizioni:<br>
             <h2>1)DURATA</h2><br>
-            <p>La durata della locazione è stabilita in {{$alloggio->periodo_locazione}}</p><br>
+            <p>La durata della locazione è stabilita in {{$alloggio[0]->periodo_locazione}}</p><br>
             <h2>2)RECESSO DEL CONDUTTORE</h2><br>
             <p>
                 Il Locatore riconosce espressamente al Conduttore la facoltà di recedere in qualsiasi momento e per
@@ -30,7 +32,7 @@
             <h2>3)CANONE</h2><br>
             <p>
                 Il canone mensile di locazione, escluse le spese di condominio ordinarie e di riscaldamento, viene
-                consensualmente determinato tra le parti in € {{$alloggio->prezzo}} (xxx/00) mensili che il Conduttore si obbliga a
+                consensualmente determinato tra le parti in € {{$alloggio[0]->prezzo}} (xxx/00) mensili che il Conduttore si obbliga a
                 corrispondere entro il giorno 5 di ogni mese, mediante bonifico bancario da effettuarsi sul conto corrente con
                 codice IBAN IT77S0300203280816917371262, in essere presso la Banca Monte dei Piatti di Scena intestato al Locatore.
             </p>
@@ -89,6 +91,6 @@
             </p>
         </p>
         <p style="float:left;display:inline;">IL LOCATORE</p><p style="float:right;display:inline;">IL CONDUTTORE</p>
-        <div style="height=200px"></div>
+        <div style="height:200px;"></div>
     </body>
 </html>

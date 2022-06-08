@@ -308,15 +308,13 @@
 @can('isLocatore')
 <div id="richieste" class="modal">
     <span onclick="document.getElementById('richieste').style.display='none'" class="close" title="Chiudi Richieste">&times;</span>
-    <div class="container w3-animate-left" style=" overflow:auto;">
-    <!--<a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail($destinatario);" id="firstTab">-->
-
-    <a  style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey"  id="firstTab">
-        
-    <div>
+    <div class="container w3-animate-left" style=" overflow:auto;">        
+    <div style="text-align:center">
     @isset($richieste_annuncio)
-    @if($richieste_annuncio->isEmpty())
+    @if($richieste_annuncio->isEmpty() && $alloggio->opzionato == 0)
     <span>Spiacenti, ma ancora non hai ricevuto nessuna richiesta per questo alloggio!</span>
+    @elseif($richieste_annuncio->isEmpty() && $alloggio->opzionato == 1)
+    <span>Questo alloggio è stato già asseganto!</span>
     @else
         <table class="w3-table-all table-striped">
         <thead>
@@ -358,7 +356,6 @@
   </table>
   @endif
         </div>
-    </a>
     </div>
 </div>
 @endcan

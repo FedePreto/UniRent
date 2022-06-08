@@ -18,7 +18,7 @@
         $("#addHome").on('submit', function(event) {
             event.preventDefault(); //funzione che attiva il metodo associato all'evento di click sul bottone che blocca il meccanismo standard
             // di gestione dell'evento da parte del browser
-            doFormValidation(actionUrl, formId); //attiva una funzione js definita da noi che invece implementa la submit
+            doFormValidation(actionUrl, formId, 'POST'); //attiva una funzione js definita da noi che invece implementa la submit
         });
     });
 

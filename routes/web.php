@@ -30,6 +30,7 @@ Route::post('/Admin','AdminController@showStatistiche')->name('adminfilter');
 Route::get('/Admin/Faq','AdminController@showFaq')->name('faqindex');
 Route::post('/Admin/Faq','AdminController@storeFaq')->name('faq.store');
 Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update');
+Route::get('/Admin/Faq/{faq}','AdminController@showFaqToUpdate')->name('faq.toupdate');
 Route::delete('/Admin/Faq/{faq}','AdminController@deletefaq')->name('faq.delete');
 //Route Locatore
 Route::get('/Locatore','LocatoreController@index_loca')->name('locatore');

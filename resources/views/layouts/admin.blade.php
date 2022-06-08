@@ -11,6 +11,12 @@
 @section('scripts')
 <script language="JavaScript" type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script language="JavaScript" type="text/javascript" src="{{ asset('js/form_validation.js') }}"></script>
+<script>
+$(function() {
+    $(".alert").show().delay(2000).fadeOut("show");
+  })
+</script>
 @show
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}

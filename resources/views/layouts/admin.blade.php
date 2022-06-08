@@ -11,6 +11,12 @@
 @section('scripts')
 <script language="JavaScript" type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script language="JavaScript" type="text/javascript" src="{{ asset('js/form_validation.js') }}"></script>
+<script>
+$(function() {
+    $(".alert").show().delay(2000).fadeOut("show");
+  })
+</script>
 @show
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
@@ -24,7 +30,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
-    @include('helpers/profileImage', ['attrs' => '' , 'imgFile'=>auth()->user()->foto_profilo])<br><br>
+    @include('helpers/profileImage', ['attrs' => '' ,'style'=>'width:100%', 'imgFile'=>auth()->user()->foto_profilo])<br><br>
     <h4><b>{{auth()->user()->name}} {{auth()->user()->cognome}}</b></h4>
   </div>
   <div class="w3-bar-block">

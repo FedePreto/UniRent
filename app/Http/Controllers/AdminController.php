@@ -50,6 +50,9 @@ class AdminController extends Controller{
             'risposta' => 'required|string|max:190',
         ]);
 
+        $faq = $this->_catalogModel->getThisFaq($id);
+        $faq->update($data);
+
         return redirect()->route('faqindex')
             ->with('status', 'Faq aggiornata correttamente!');
     }
@@ -61,6 +64,11 @@ class AdminController extends Controller{
 
         return redirect()->route('faqindex')
             ->with('status', 'Faq inserita correttamente!');
+    }
+
+    public function showFaqToUpdate($id){
+        $faq = $this->_catalogModel->getThisFaq($id);
+        return view('modifica_faq')->with('faq', $faq);
     }
 
     public function deleteFaq($id)

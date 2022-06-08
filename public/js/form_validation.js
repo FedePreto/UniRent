@@ -66,10 +66,10 @@ function doElemValidation(id, actionUrl, formId) {
 
 }
 
-function doFormValidation(actionUrl, formId) {
+function doFormValidation(actionUrl, formId, tipo) {
     var form = new FormData(document.getElementById(formId));
     $.ajax({
-        type: 'POST',
+        type: tipo,
         url: actionUrl,
         data: form,
         dataType: "json",
@@ -88,6 +88,12 @@ function doFormValidation(actionUrl, formId) {
         contentType: false,
         processData: false
     });
+}
+
+function doModifiedSet(id){
+    alert('ciao');
+    return '{{$faqs['+id+']->domanda}}';
+
 }
 
 

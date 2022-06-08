@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', 'PublicController@showHomepage')->name('home');
-
-Route::get('/Catalog','PublicController@showCatalogo')->name('catalogo');
-Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale');
-Route::get('/Search','UserController@searchCatalogo')->name('search');
+Route::get('/', 'PublicController@showHomepage')->name('home')->middleware('guest');
+Route::get('/Catalogo/{regione}','PublicController@showCatalogoRegionale')->name('catalogo_regionale')->middleware('guest');
 Route::get('/Faq','PublicController@getFaq')->name('faq');
-
 Route::view('/Who','who')->name('who');
 Route::view('/Where','where')->name('where');
 Route::view('/What','what')->name('what');
@@ -27,42 +23,41 @@ Route::view('/Regolamento','termini_condizioni')->name('termini_condizioni');
 //Route Admin
 Route::get('/Admin','AdminController@index')->name('admin')->middleware('can:isAdmin');
 Route::post('/Admin','AdminController@showStatistiche')->name('adminfilter');
-Route::get('/Admin/Faq','AdminController@showFaq')->name('faqindex');
+Route::get('/Admin/Faq','AdminController@showFaq')->name('faqindex')->middleware('can:isAdmin');
 Route::post('/Admin/Faq','AdminController@storeFaq')->name('faq.store');
-Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update');
-Route::get('/Admin/Faq/{faq}','AdminController@showFaqToUpdate')->name('faq.toupdate');
+Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update')->middleware('can:isAdmin');
+Route::get('/Admin/Faq/{faq}','AdminController@showFaqToUpdate')->name('faq.toupdate')->middleware('can:isAdmin');
 Route::delete('/Admin/Faq/{faq}','AdminController@deletefaq')->name('faq.delete');
 //Route Locatore
-Route::get('/Locatore','LocatoreController@index_loca')->name('locatore');
+Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can: isLocatore');
 
-Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi');
-Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo');
-Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste');
-Route::put('/Locatore/Richieste/{richiesta}', 'LocatoreController@refuseRichiesta')->name('richiesta.refuse');
+Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi')->middleware('auth');
+Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
+//Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste')->middleware('can:isLocatore');
+Route::put('/Locatore/Richieste/{richiesta}', 'LocatoreController@refuseRichiesta')->name('richiesta.refuse')->middleware('can:isLocatore');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 
-Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome');
+Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome')->middleware('can:isLocatore');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');
-
-Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio');
-Route::delete('/Locatore/Delete/Annuncio/{alloggio}', 'LocatoreController@deleteAnnuncio')->name('annuncio.delete');
+Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio')->middleware('auth');
+Route::delete('/Locatore/Delete/Annuncio/{alloggio}', 'LocatoreController@deleteAnnuncio')->name('annuncio.delete')->middleware('can:isLocatore');
 Route::put('/Locatore/Update/Annuncio/{alloggio}', 'LocatoreController@updateAnnuncio')->name('annuncio.update');
 
 Route::post('/Messaggi/{alloggio}/{destinatario}', 'UserController@sendMessaggio')->name('messaggio.store');
-Route::get('/Chat/{alloggio}/{destinatario}', 'UserController@showChat')->name('conversazione');
+Route::get('/Chat/{alloggio}/{destinatario}', 'UserController@showChat')->name('conversazione')->middleware('auth');
 Route::post('/Send/{alloggio}/{destinatario}','UserController@rispondiMessaggio')->name('messaggio.send');
+
 //Route Locatario
-Route::get('/Locatario','LocatoreController@index_lario')->name('locatario');
+Route::get('/Search','UserController@searchCatalogo')->name('search')->middleware('can:isLocatario');
+Route::get('/Locatario','LocatoreController@index_lario')->name('locatario')->middleware('can:isLocatario');
 Route::post('/Annuncio/{alloggio}/{locatario}','LocatarioController@sendRichiesta')->name('richiesta.store');
+
 //Sottoinsime di Auth::routes()
-Route::get('login','Auth\LoginController@showLoginForm')->name('login'); //Rotta che genera la form GET
+Route::get('login','Auth\LoginController@showLoginForm')->name('login')->middleware('guest'); //Rotta che genera la form GET
 Route::post('login','Auth\LoginController@login');//Usata al submit della form che attiva il processo di autenticazione
-
 Route::post('logout','Auth\LoginController@logout')->name('logout');
-
-
-Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');//Rotta che genera la form di registrazione
+Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register')->middleware('guest');//Rotta che genera la form di registrazione
 Route::post('register','Auth\RegisterController@register'); //Rotta che effettivamente registra l'utente
 
 //Auth::routes();

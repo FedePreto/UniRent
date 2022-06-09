@@ -283,8 +283,8 @@ class LocatoreController extends Controller
         if($result != null){
             $locatore = $result['locatore'];
             $locatario = $result['locatario'];
-            if(auth()->user()->id == $locatore[0]->user_id or auth()->user()->id == $locatario[0]->user_id){
-                $alloggio = $result['alloggio'];
+            $alloggio = $result['alloggio'];
+            if((auth()->user()->id == $locatore[0]->user_id or auth()->user()->id == $locatario[0]->user_id) and $alloggio[0]->stato == 2){
                 return view('contratto')
                     ->with('alloggio', $alloggio)
                     ->with('locatore', $locatore)

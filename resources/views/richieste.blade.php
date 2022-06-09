@@ -45,22 +45,25 @@
                                 @elseif($richiesta[0]->stato==1)
                                     <label style="color:#DEB887; font-size:20px"><b>In Attesa</b></label>
                                 @else
-                                    <label style="color:green; font-size:20px"><b>Accettata</b></label>
+                                    <label style="color:green; font-size:25px"><b>Accettata</b></label>
                                 @endif
                                 </div>
                            <div style="text-align:center; ">
                             <h5>   
+
                                 <label><b>Data Richiesta: </b></label>{{$richiesta[0]->data_richiesta}}, 
                                 @if(isset($richiesta[0]->data_risposta))
-                                <label><b>Data Risposta: </b></label>{{$richiesta[0]->data_risposta}}, 
+                                <label><b>Data Risposta: </b></label>{{$richiesta[0]->data_risposta}},
                                 @endif
+                                
                                 @if($richiesta[0]->tipologia==0)
-                                    <label><b>Appartamento,</b></label>
+                                    <label><b>Appartamento</b>,</label>
                                 @else
-                                    <label><b>Posto Letto,</b></label>
+                                    <label><b>Posto Letto</b>,</label>
                                 @endif
                                 <label><b>Canone Affitto: </b></label>{{$richiesta[0]->prezzo}},
                                 <label><b>Durata: </b></label>{{$richiesta[0]->periodo_locazione}} Mesi
+                                
                             </h5>
                             </div>
                             

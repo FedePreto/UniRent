@@ -45,7 +45,7 @@
     <p>
         La locazione è regolata dalle seguenti concordate pattuizioni:<br>
     <h5><b>1)DURATA</b></h5><br>
-    <p>La durata della locazione è stabilita in {{$alloggio[0]->periodo_locazione}}</p><br>
+    <p>La durata della locazione è stabilita in {{$alloggio[0]->periodo_locazione}} mesi</p><br>
     <h5><b>2)RECESSO DEL CONDUTTORE</b></h5><br>
     <p>
         Il Locatore riconosce espressamente al Conduttore la facoltà di recedere in qualsiasi momento e per

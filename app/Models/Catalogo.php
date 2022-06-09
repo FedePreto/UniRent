@@ -20,7 +20,7 @@ class Catalogo {
     public function getCatalogSearch($citta,$tipo='tutte',$periodo_locazione,$superficie,$letti_ap,$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
-        $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
+        $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%')->oRwhere('regione','LIKE','%'.$citta.'%');
         
         //filtri
         if($filtri != null){

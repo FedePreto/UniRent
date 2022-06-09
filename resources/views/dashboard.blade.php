@@ -28,16 +28,20 @@
 <br>
 @endcan
 
-<p class="w3-margin" style='padding-left:1%;padding-right:1%;'>Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
+<p class="w3-margin" style='padding-left:1%; padding-right:1%;'>Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
 @if (session('status'))
 <div class="alert success">
     {{ session('status') }}
 </div>
 @endif
-<div class="w3-row-padding" style='padding-left:3%;padding-right:3%;'>
+<div class="w3-row-padding" style='padding-left:1%;padding-right:1%;'>
+    @php
+    $i=0;
+    @endphp
     @foreach ( $alloggi as $alloggio)
+    
     <a href="{{route('annuncio',[$alloggio->id])}}">
-        <div class="w3-third w3-container w3-margin-bottom annuncio">
+        <div class="w3-third w3-container w3-margin-bottom annuncio" >
             @include('helpers/alloggioImage',['attrs'=>"w3-hover-opacity cursor",'imgFile'=>$alloggio->foto])
             <div class="w3-container w3-white">
                 <p class="price"><b>€{{ $alloggio->prezzo }}</b></p>
@@ -58,6 +62,14 @@
             </div>
         </div>
     </a>
+
+
+    @php
+    $i+=1;
+    @endphp
+    @if($i%3==0)
+        </div><div class="w3-row-padding" style='padding-left:1%;padding-right:1%;'>
+    @endif
     @endforeach
 
 </div>

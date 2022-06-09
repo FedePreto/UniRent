@@ -162,13 +162,13 @@
               <p style="display:inline"> m<sup>2</sup></p><br>
             </div>
             <div style="margin-top:10px;">
-              <div class="my-align">
-                {{Form::label('Posti letto: ')}}
+              <div >
+              <b>{{Form::label('Posti letto: ')}}</b>
                 {{Form::number("letti_ap",isset($request->letti_ap) ? $request->letti_ap : false,array('form'=>'ricerca','min'=>0,'max'=>99))}}<br>
               </div>
             </div>
           </div>
-
+          
 
           @isset($servizi)
           <div style="display: inline-block;">

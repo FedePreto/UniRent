@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-//require(__DIR__ . '/../../include/connect.php');
+require(__DIR__ . '/../../include/connect.php');
 
 return [
 
@@ -40,11 +40,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => $HOST, //env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3307'),
-            'database' => env('DB_DATABASE', 'grp_06_db'),
-            'username' => env('DB_USERNAME', 'grp_06'),
-            'password' => env('DB_PASSWORD', 'v9YkRHpD'),
+            'database' => $DB, //env('DB_DATABASE', 'grp_06_db'),
+            'username' => $USER, //env('DB_USERNAME', 'grp_06'),
+            'password' => $PASSWORD, //env('DB_PASSWORD', 'v9YkRHpD'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

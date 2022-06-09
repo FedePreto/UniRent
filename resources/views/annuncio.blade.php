@@ -187,12 +187,6 @@
                             <div style="float:right;">
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
                             </div>
-                            @elseif(isset($richiesta_accettata))
-                            <div style="float:right;">
-                                <a class="buttonAlloggio buttonAlloggio1 roundedcorners" href="{{route('contratto',$richiesta_accettata[0]->id)}}">Visualizza Contratto</a>
-                            </div>
-                            @endif
-                            
                             <button style="float:right;" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('modifica').style.display='block'">Modifica Annuncio</button>
                             <form action="{{ route('annuncio.delete', $alloggio->id)}}" method="post" style="float:right;">
                                 @csrf
@@ -201,6 +195,13 @@
                                                               form, you will need to add a hidden _method field to the form. The value sent with the _method field will be used as the HTTP request method:-->
                                 <button class="buttonAlloggio buttonAlloggio1 roundedcorners" type="submit" onclick= "return confirm('Sei sicuro di voler eliminare l\'annuncio?')">Rimuovi Annuncio</button>
                             </form>
+                            @elseif(isset($richiesta_accettata))
+                            <div style="float:right;">
+                                <a class="buttonAlloggio buttonAlloggio1 roundedcorners" href="{{route('contratto',$richiesta_accettata[0]->id)}}">Visualizza Contratto</a>
+                            </div>
+                            @endif
+                            
+                            
                             
                             @endcan
                             @can('isLocatario')
@@ -335,6 +336,7 @@
           <td><b style="font-size:18px;">Data di Nascità</b></td>
           <td><b style="font-size:18px;">Cellulare</b></td>
           <td><b style="font-size:18px;">Email</b></td>
+          <td><b style="font-size:18px;">Data Richiesta</b></td>
           <td colspan = 2><b style="font-size:18px;">Azioni</b></td>
         </tr>
     </thead>
@@ -343,23 +345,24 @@
     @foreach($richieste_annuncio as $richiesta)
 
         <tr>
-            <td>{{$richiesta->name}} {{$richiesta->cognome}}</td>
+            
+            <td>{{$richiesta->name}}</td>
+            <td>{{$richiesta->cognome}}</td>
             <td>{{$richiesta->sesso}}</td>
             <td>{{$richiesta->data_nascita}}</td>
             <td>{{$richiesta->cellulare}}</td>
             <td>{{$richiesta->email}}</td>
-            <td>
-            <form action="{{ route('richiestaRisposta', [$richiesta->id, 2])}}" method="post" style="float:right;">
+            <td>{{$richiesta->data_richiesta}}</td>
+            <td><form action="{{ route('richiestaRisposta', [$richiesta->id, 2])}}" method="post" >
                 @csrf
                 @method('PUT')
                 <button class="w3-button w3-green" type="submit" onclick= "return confirm('Sei sicuro di voler accettare l\'offerta?')">Accetta</button>
-            </form>
-            <form action="{{ route('richiestaRisposta', [$richiesta->id, 0])}}" method="post" style="float:right;">
+            </form></td>
+            <td><form action="{{ route('richiestaRisposta', [$richiesta->id, 0])}}" method="post" >
                 @csrf
                 @method('PUT')
                 <button class="w3-button w3-red" type="submit" onclick= "return confirm('Sei sicuro di voler rifiutare l\'offerta?')">Rifiuta</button>
-            </form>
-            </td>
+            </form></td>
         </tr>
         @endforeach
         @endisset

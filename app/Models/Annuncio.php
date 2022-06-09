@@ -50,6 +50,15 @@ class Annuncio {
         return $richiesta;
     }
 
+    public function getLocatarioRichieste($id){
+        $richieste= Richieste::where('locatario','=',$id)->get();
+        for($i=0;$i<count($richieste);$i++){
+            $richieste[$i] = Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')->where('richieste.id','=',$richieste[$i]->id)->select('richieste.id','richieste.id_alloggio','richieste.data_richiesta','richieste.data_risposta','richieste.stato','alloggi.titolo','alloggi.prezzo','alloggi.tipologia','alloggi.periodo_locazione')->get();         
+        }
+        return $richieste;
+
+    }
+
     public function getAlloggioRichieste($id_alloggio){
         $richieste_alloggio = Richieste::join('users','richieste.locatario','=','users.id')
             ->where('richieste.id_alloggio', $id_alloggio)

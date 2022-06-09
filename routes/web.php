@@ -33,14 +33,14 @@ Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middl
 
 Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi')->middleware('auth');
 Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
-Route::get('/Locatore/Richieste', 'LocatoreController@showRichieste')->name('richieste')->middleware('can:isLocatore');
+Route::get('/Locatario/Richieste', 'LocatarioController@showRichieste')->name('richieste')->middleware('can:isLocatario');
 Route::put('/Locatore/Richieste/{richiesta}/{risposta}', 'LocatoreController@richiestaRisposta')->name('richiestaRisposta')->middleware('can:isLocatore');
 
 Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('updateProfilo.update');
 
 Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome')->middleware('can:isLocatore');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');
-Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio')->middleware('auth');
+Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio');
 Route::delete('/Locatore/Delete/Annuncio/{alloggio}', 'LocatoreController@deleteAnnuncio')->name('annuncio.delete')->middleware('can:isLocatore');
 Route::put('/Locatore/Update/Annuncio/{alloggio}', 'LocatoreController@updateAnnuncio')->name('annuncio.update');
 

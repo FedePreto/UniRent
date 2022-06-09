@@ -30,6 +30,15 @@ class LocatarioController extends Controller
         $this->_messaggisticaModel = new Messaggistica;
         
     }
+
+    public function showRichieste(){
+        $richieste= $this->_annuncioModel->getLocatarioRichieste(auth()->user()->id);
+        return view('richieste')
+            ->with('richieste',$richieste);
+    }
+
+
+
     //
     public function sendRichiesta(Request $request, $id_alloggio, $id_locatario)
     {

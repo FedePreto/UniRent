@@ -38,7 +38,7 @@
     <p>{{$locatore[0]->sesso == 'Maschio' ? 'Il Sig.' : 'La Sig.ra'}} <b>{{$locatore[0]->name}}</b> <b>{{$locatore[0]->cognome}}</b>, nato il <b>{{$locatore[0]->data_nascita}}</b> di seguito denominato/a, per brevità, “Locatore” </p><br>
     <p>{{$locatario[0]->sesso == 'Maschio' ? 'Il Sig.' : 'La Sig.ra'}} <b>{{$locatario[0]->name}}</b> <b>{{$locatario[0]->cognome}}</b> nato il <b>{{$locatario[0]->data_nascita}}</b> di seguito denominato, per brevità, “Conduttore”</p><br>
     <h4><b>SI CONVIENE E SI STIPULA QUANTO SEGUE</b></h4>
-    <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in <b>{{$alloggio[0]->indirizzo}} n.{{$alloggio[0]->numero}}, {{$alloggio[0]->cap}}</b>.<br>
+    <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in <b>{{$alloggio[0]->indirizzo}} n.{{$alloggio[0]->numero}}, {{$alloggio[0]->cap}}, {{$alloggio[0]->citta}},{{$alloggio[0]->regione}}</b>.<br>
         Sotto forma di <b>{{$alloggio[0]->tipologia ? 'posto letto' : 'appartamento'}}</b>.<br>
         L’immobile viene consegnato come visto e piaciuto tra le parti all’atto della consegna del bene.<br>
         L’immobile sarà adibito ad uso esclusivo del Conduttore</p>

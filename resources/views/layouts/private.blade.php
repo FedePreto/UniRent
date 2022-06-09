@@ -42,10 +42,10 @@
             <li><a target="_blank" href="https://www.instagram.com/accounts/login/"><img src="{{asset('img/social/instagram.png')}}" title="Instagram" alt="Instagram icon"></a></li>
         </ul>
 
-        Designed by<br>
-        <div class="credits">
-            <a href="{{route('who')}}"><img width="100" src="{{asset('img/logo.png')}}" title="" alt="#"></a>
-        </div>
+        Scarica la documentazione<br>
+            <div class="credits">
+                <a  href="{{asset('../resources/download/Progetto_TW.pdf')}}" download="Progetto_TW_GRP_06.pdf"><b>QUI!</b></a>
+            </div>
     </footer>
 </body>
 

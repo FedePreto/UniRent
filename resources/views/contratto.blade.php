@@ -26,7 +26,7 @@
     @if((auth()->user()->id == $locatario[0]->user_id or auth()->user()->id == $locatore[0]->user_id) and $alloggio[0]->stato == 2)
 
     <div style='margin-left:-10%;'>
-        <a class="w3-button" href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
+        <a class="w3-button" href="{{url()->previous()}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
         <a class="w3-button" href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->richieste_id)}}"><i class="fa fa-share-square-o"></i><b> Spedisci contratto</b></a>
         <button class="w3-button" onclick="window.print(); return false"><i class="fa fa-print"></i><b> Stampa</b></button>
 

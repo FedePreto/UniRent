@@ -117,8 +117,7 @@
     <p style="float:left;display:inline;">IL LOCATORE</p>
     <p style="float:right;display:inline;">IL CONDUTTORE</p>
     <div style="height:200px;"></div>
-    @else
-    <h3>Non puoi visualizzare questo contratto</h3>
+    
     @endif
 </body>
 

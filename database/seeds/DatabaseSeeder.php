@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder {
             ['foto_profilo' => NULL, 'name' => 'Admin', 'cognome' => 'Admin', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','01','01'), 'email' => 'admin.admin@unirent.it', 'username' => 'adminadmin', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3661147223", 'livello' => 0,'descrizione'=>'Admin del sito', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => NULL, 'name' => 'Locatore', 'cognome' => 'Locatore', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','02','01'), 'email' => 'lore.locre@unirent.it', 'username' => 'lorelore', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3678823475", 'livello' => 1,'descrizione'=>'Locatore', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => NULL, 'name' => 'Locatario', 'cognome' => 'Locatario', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'lario.lario@unirent.it', 'username' => 'lariolario', 'password' => Hash::make('noRX6VyF'), 'cellulare' => "3776640989", 'livello' => 2,'descrizione'=>'Locatario', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
-            ['foto_profilo' => NULL, 'name' => 'Pippo', 'cognome' => 'Baudo', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'dario.dario@unirent.it', 'username' => 'pippo', 'password' => Hash::make('pippo'), 'cellulare' => "3776455849", 'livello' => 2,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
+            ['foto_profilo' => NULL, 'name' => 'Pippo', 'cognome' => 'Baudo', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','03','01'), 'email' => 'dario.dario@unirent.it', 'username' => 'pippobaudo', 'password' => Hash::make('pippobaudo'), 'cellulare' => "3776455849", 'livello' => 2,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => NULL, 'name' => 'Federico', 'cognome' => 'Pretini', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_loca', 'password' => Hash::make('fede_loca'), 'cellulare' => "3661147561", 'livello' => 1,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
             ['foto_profilo' => NULL, 'name' => 'Federico', 'cognome' => 'Pretini', 'sesso' => 'Maschio', 'data_nascita' => Carbon::create('2000','07','06'), 'email' => 'federico.pretini@unirent.it', 'username' => 'fede_lario', 'password' => Hash::make('fede_lario'), 'cellulare' => "3661147562", 'livello' => 2,'descrizione'=>'racazzo carino', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
 
@@ -107,14 +107,14 @@ class DatabaseSeeder extends Seeder {
         DB::table('richieste')->insert([            
             ['data_richiesta' => Carbon::create('2022','06','02'), 'data_risposta'=> Carbon::create('2022','06','04') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>2],
             ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>3],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 2  , 'locatario'=>  4, 'id_alloggio'=>11],
             ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>8],
-            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>11],
-            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>8],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>8],
             ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>11],
-            ['data_richiesta' => Carbon::create('2022','06','02'), 'data_risposta'=> Carbon::create('2022','06','04') ,  'stato'=> 1  , 'locatario'=>  3, 'id_alloggio'=>1],
-            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 1  , 'locatario'=>  1, 'id_alloggio'=>1],
-            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 1  , 'locatario'=>  2, 'id_alloggio'=>1],
-            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 1  , 'locatario'=>  6, 'id_alloggio'=>1]
+            ['data_richiesta' => Carbon::create('2022','06','02'), 'data_risposta'=> NULL ,  'stato'=> 1  , 'locatario'=>  3, 'id_alloggio'=>1],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> NULL ,  'stato'=> 1  , 'locatario'=>  4, 'id_alloggio'=>1],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> NULL ,  'stato'=> 1  , 'locatario'=>  4, 'id_alloggio'=>5],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> NULL ,  'stato'=> 1  , 'locatario'=>  6, 'id_alloggio'=>1]
         ]);
     }
 

@@ -20,7 +20,10 @@ class Catalogo {
     public function getCatalogSearch($citta,$tipo='tutte',$periodo_locazione,$superficie,$letti_ap,$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
-        $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%')->oRwhere('regione','LIKE','%'.$citta.'%');
+        $alloggi = Alloggi::where(function($alloggio) use ($citta){
+            $alloggio->where('citta','LIKE','%'.$citta.'%')
+                    ->oRwhere('regione','LIKE','%'.$citta.'%');
+        });
         
         //filtri
         if($filtri != null){
@@ -52,6 +55,7 @@ class Catalogo {
             if($filtri_particolari!=null and $filtri_particolari!=0){
                 $alloggi = $alloggi->where('letti_pl','=',$filtri_particolari);
             }
+            //return dd($alloggi);
         }
         if($letti_ap != null){
             $alloggi = $alloggi->where('letti_ap','>=',$letti_ap);

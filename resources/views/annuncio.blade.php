@@ -75,11 +75,16 @@
 <br>
 <br>
 
+@can('isLocatore')
+    <a href="{{route('home')}}"><i class="fa fa-arrow-left"></i><b> Torna alla home</b></a>
+@endcan
+@can('isLocatario')
 @if(url()->previous() == url()->current())
     <a href="{{route('home')}}"><i class="fa fa-arrow-left"></i><b> Torna alla home</b></a>
 @else
     <a href="{{url()->previous()}}"><i class="fa fa-arrow-left"></i><b> Torna indietro</b></a>
 @endif
+@endcan
 
 
 <div class="w3-content w3-padding" style="max-width:1654px">

@@ -13,18 +13,25 @@
         </style>
     </head>
     <body>
+        @if((auth()->user()->id == $locatario[0]->user_id or auth()->user()->id == $locatore[0]->user_id) and $alloggio[0]->stato == 2)
+        <button onclick="window.print();return false">Print this page</button>
+        <!-- Dati mancanti:
+                appartamento o posto letto,
+                dati locatario
+                 -->
         <div style='margin-left:-30%;'>
             <a href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
-            <a href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->id)}}">Spedisci contratto</a>
+            <a href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->richieste_id)}}">Spedisci contratto</a>
 
         </div>
 
         <h2 class='titolo'><u>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</u></h2>
         <br><br>
-        <p>Il Sig./La Sig.ra {{$locatore[0]->name}} {{$locatore[0]->cognome}}  di seguito denominato/a, per brevità, “Locatore” </p><br>
-        <p>Il Sig./La Sig.ra {{$locatario[0]->name}}{{$locatario[0]->cognome}} di seguito denominato, per brevità, “Conduttore”</p><br>
+        <p>{{$locatore[0]->sesso == 'Maschio' ? 'Il Sig.' : 'La Sig.ra'}} {{$locatore[0]->name}} {{$locatore[0]->cognome}}, nato il {{$locatore[0]->data_nascita}}  di seguito denominato/a, per brevità, “Locatore” </p><br>
+        <p>{{$locatario[0]->sesso == 'Maschio' ? 'Il Sig.' : 'La Sig.ra'}} {{$locatario[0]->name}} {{$locatario[0]->cognome}} nato il {{$locatario[0]->data_nascita}} di seguito denominato, per brevità, “Conduttore”</p><br>
         <h2 class="titolo">SI CONVIENE E SI STIPULA QUANTO SEGUE</h2>
         <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in {{$alloggio[0]->indirizzo}}.<br>
+            Sotto forma di {{$alloggio[0]->tipologia ? 'posto letto' : 'appartamento'}}.<br>
             L’immobile viene consegnato come visto e piaciuto tra le parti all’atto della consegna del bene.<br>
             L’immobile sarà adibito ad uso esclusivo del Conduttore</p>
         <p>
@@ -101,5 +108,10 @@
         </p>
         <p style="float:left;display:inline;">IL LOCATORE</p><p style="float:right;display:inline;">IL CONDUTTORE</p>
         <div style="height:200px;"></div>
+        @else
+        <a href="{{route('home')}}">< Torna alla Home</a>
+            <h1 style='text-align:center;'>Non puoi visualizzare questo contratto</h1>
+        
+        @endif
     </body>
 </html>

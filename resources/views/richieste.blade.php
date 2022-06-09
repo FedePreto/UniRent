@@ -25,19 +25,21 @@
                 <!--<a href="javascript:void(0)" style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail($destinatario);" id="firstTab">-->
                 <!--<a  style="display:block;" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" >-->
 
-                    <div style="display:block;  text-align:center; padding: 11px 16px;" class="w3-bar-item  w3-border-bottom test ">
-                        <div style="float:right; padding-top: 15px; width:25%;">
+                    <div style="display:block;  text-align:center; padding: 11px 10px;" class="w3-bar-item  w3-border-bottom test ">
+                        
+                    
+                    <div style="float:right; width:30%; margin:auto;">
                         
                         @if($richiesta[0]->stato==2)
-                                <a class="w3-button w3-red" href="{{route('contratto',$richiesta[0]->id)}}" > Visualizza Contratto </a>
+                                <a class="w3-button w3-red" style="margin-top:15px; " href="{{route('contratto',$richiesta[0]->id)}}" > Visualizza Contratto </a>
                         @endif
-                            <a class="w3-button w3-red" href="{{route('annuncio',$richiesta[0]->id_alloggio)}}" > Visualizza Annuncio </a>
+                            <a class="w3-button w3-red" style="margin-top:15px; " href="{{route('annuncio',$richiesta[0]->id_alloggio)}}" > Visualizza Annuncio </a>
                    
                     </div>
-                    <div style="text-align:center; width:75%;">
-                        <div><span class="w3-opacity w3-large"><b>{{$richiesta[0]->titolo}} </b></span></div>
+                    <div style="text-align:center; ">
                         
-                           <div style="float:left">
+                        <div><span class="w3-opacity w3-large"><b>{{$richiesta[0]->titolo}} </b></span></div>
+                        <div style="float:left; ">
                                 @if($richiesta[0]->stato==0)
                                     <label style="color:red; font-size:20px"><b>Rifiutata</b></label>
                                 @elseif($richiesta[0]->stato==1)
@@ -45,22 +47,24 @@
                                 @else
                                     <label style="color:green; font-size:20px"><b>Accettata</b></label>
                                 @endif
-                                </div><div style="text-align:center">
+                                </div>
+                           <div style="text-align:center; ">
                             <h5>   
                                 <label><b>Data Richiesta: </b></label>{{$richiesta[0]->data_richiesta}}, 
                                 @if(isset($richiesta[0]->data_risposta))
                                 <label><b>Data Risposta: </b></label>{{$richiesta[0]->data_risposta}}, 
                                 @endif
                                 @if($richiesta[0]->tipologia==0)
-                                    <label><b>Appartamento</b></label>
+                                    <label><b>Appartamento,</b></label>
                                 @else
-                                    <label><b>Posto Letto</b></label>
+                                    <label><b>Posto Letto,</b></label>
                                 @endif
                                 <label><b>Canone Affitto: </b></label>{{$richiesta[0]->prezzo}},
                                 <label><b>Durata: </b></label>{{$richiesta[0]->periodo_locazione}} Mesi
                             </h5>
                             </div>
-                            </div>
+                            
+                    </div>
                             
                     </div>
                     

@@ -12,6 +12,7 @@ use App\Rules\GreaterThan;
 use App\Models\Resources\Richieste;
 use Carbon\Carbon;
 use App\Models\Messaggistica;
+use App\Models\Resources\Messaggi;
 
 class LocatarioController extends Controller
 {
@@ -42,6 +43,16 @@ class LocatarioController extends Controller
                 'id_alloggio' => $id_alloggio
             ]);
             $richiesta->save();
+            $alloggio = $this->_catalogModel->getAlloggio($id_alloggio);
+            $messaggio = new Messaggi([
+                'contenuto' => 'Ciao sono interessato ed ho richiesto questo alloggio',
+                'data' => Carbon::now()->addHours(2),
+                'mittente' => $id_locatario,
+                'destinatario' => $alloggio->locatore,
+                'id_alloggio' => $id_alloggio
+
+            ]);
+            $messaggio->save();
             return redirect()->route('annuncio', $id_alloggio)
                 ->with('status', 'Richiesta inoltrata correttamente!');
         }else{

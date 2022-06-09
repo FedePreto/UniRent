@@ -14,9 +14,9 @@ class Locatore{
     }
 
     public function getContratto($id_richiesta){
-        $alloggio = Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')->where('richieste.id','=',$id_richiesta)->select('alloggi.id','alloggi.indirizzo','alloggi.periodo_locazione','alloggi.prezzo',)->get();
+        $alloggio = Richieste::join('alloggi','richieste.id_alloggio','=','alloggi.id')->where('richieste.id','=',$id_richiesta)->select('alloggi.id','alloggi.indirizzo','alloggi.periodo_locazione','alloggi.prezzo')->get();
         $locatore = Alloggi::join('users','alloggi.locatore','=','users.id',)->join('richieste','richieste.id_alloggio','=','alloggi.id')->where('richieste.id','=',$id_richiesta)->select('users.name','users.cognome')->get();
-        $locatario = Richieste::join('users','richieste.locatario','=','users.id',)->where('richieste.id','=',$id_richiesta)->select('users.name','users.cognome')->get();
+        $locatario = Richieste::join('users','richieste.locatario','=','users.id',)->where('richieste.id','=',$id_richiesta)->select('users.name','users.cognome','users.email','richieste.id')->get();
         $result=[
             'alloggio'=>$alloggio,
             'locatore'=>$locatore,

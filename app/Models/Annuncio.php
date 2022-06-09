@@ -38,9 +38,11 @@ class Annuncio {
         $alloggio = Alloggi::where('id',$id);
         $incluso = Incluso::where('alloggio', $id);
         $messaggi = Messaggi::where('id_alloggio', $id);
+        $richieste = Richieste::where('id_alloggio',$id);
         $alloggio->delete();
         $incluso->delete();
         $messaggi->delete();
+        $richieste->delete();
     }
 
     public function getRichiesta($id){

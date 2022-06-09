@@ -10,6 +10,8 @@
     </head>
     <body>
         <a href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
+        <a href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->id)}}">Spedisci contratto</a>
+
         <h2 class='titolo'>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</h2>
         <br><br>
         <p>Il Sig./La Sig.ra {{$locatore[0]->name}} {{$locatore[0]->cognome}}  di seguito denominato/a, per brevità, “Locatore” </p><br>

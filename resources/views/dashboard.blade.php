@@ -28,7 +28,7 @@
 <br>
 @endcan
 
-<p class="w3-margin" style='padding-left:3%;padding-right:3%;'>Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
+<p class="w3-margin" style='padding-left:1%;padding-right:1%;'>Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
 @if (session('status'))
 <div class="alert success">
     {{ session('status') }}

@@ -110,7 +110,11 @@ class DatabaseSeeder extends Seeder {
             ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>8],
             ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 2  , 'locatario'=>  3, 'id_alloggio'=>11],
             ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>8],
-            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>11]
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 0  , 'locatario'=>  6, 'id_alloggio'=>11],
+            ['data_richiesta' => Carbon::create('2022','06','02'), 'data_risposta'=> Carbon::create('2022','06','04') ,  'stato'=> 1  , 'locatario'=>  3, 'id_alloggio'=>1],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 1  , 'locatario'=>  1, 'id_alloggio'=>1],
+            ['data_richiesta' => Carbon::create('2022','06','03'), 'data_risposta'=> Carbon::create('2022','06','05') ,  'stato'=> 1  , 'locatario'=>  2, 'id_alloggio'=>1],
+            ['data_richiesta' => Carbon::create('2022','06','04'), 'data_risposta'=> Carbon::create('2022','06','06') ,  'stato'=> 1  , 'locatario'=>  6, 'id_alloggio'=>1]
         ]);
     }
 

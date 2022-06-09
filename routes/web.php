@@ -40,7 +40,7 @@ Route::put('/Locatore/UpdateProfilo','LocatoreController@updateProfilo')->name('
 
 Route::get('/Locatore/NewHome','LocatoreController@addHome')->name('addHome')->middleware('can:isLocatore');
 Route::post('/Locatore/NewHome','LocatoreController@storeHome')->name('addHome.store');
-Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio')->middleware('auth');
+Route::get('/Annuncio/{alloggio}','UserController@getAnnuncio')->name('annuncio');
 Route::delete('/Locatore/Delete/Annuncio/{alloggio}', 'LocatoreController@deleteAnnuncio')->name('annuncio.delete')->middleware('can:isLocatore');
 Route::put('/Locatore/Update/Annuncio/{alloggio}', 'LocatoreController@updateAnnuncio')->name('annuncio.update');
 

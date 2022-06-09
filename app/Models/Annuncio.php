@@ -59,6 +59,12 @@ class Annuncio {
 
     }
 
+    public function getRichiestaAccettata($id_alloggio){
+        $richiesta= Richieste::where('richieste.id_alloggio','=', $id_alloggio)
+            ->where('stato','=',2)->get();                       
+        return $richiesta;
+    }
+
     public function getAlloggioRichieste($id_alloggio){
         $richieste_alloggio = Richieste::join('users','richieste.locatario','=','users.id')
             ->where('richieste.id_alloggio', $id_alloggio)

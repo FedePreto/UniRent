@@ -97,12 +97,14 @@ class UserController extends Controller
     {
         $richieste_locatario=NULL;
         $richieste_annuncio=NULL;
+        $richiesta_accettata=NULL;
         if(Auth::check()){
             if((auth()->user()->livello)==2){
                 $richieste_locatario=$this->_annuncioModel->getAlloggioLocatarioRichiesteAttesa(auth()->user()->id,$id);
             }
             if((auth()->user()->livello)==1){
                 $richieste_annuncio=$this->_annuncioModel->getAlloggioRichieste($id);
+                $richiesta_accettata=$this->_annuncioModel->getRichiestaAccettata($id);
             }
         }
         $alloggio = $this->_catalogModel->getAlloggio($id);
@@ -122,7 +124,8 @@ class UserController extends Controller
             ->with('vincoli_alloggio', $sv_alloggio[1])
             ->with('locatore', $locatore)
             ->with('richieste_locatario',$richieste_locatario)
-            ->with('richieste_annuncio',$richieste_annuncio);
+            ->with('richieste_annuncio',$richieste_annuncio)
+            ->with('richiesta_accettata',$richiesta_accettata);
     }
 
     /**Visualizza la lista delle chat aperte */

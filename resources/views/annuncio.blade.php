@@ -183,9 +183,15 @@
                                 <span style="font-size: 24px; color:black;">{{$alloggio->prezzo}}€ </span>/mese
                             </div>
                             @can('isLocatore')
+                            @if(($alloggio->opzionato)===0)
                             <div style="float:right;">
-                                <button id="richiestebtn" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
+                                <button class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('richieste').style.display='block'">Visualizza Richieste</button>
                             </div>
+                            @elseif(isset($richiesta_accettata))
+                            <div style="float:right;">
+                                <a class="buttonAlloggio buttonAlloggio1 roundedcorners" href="{{route('contratto',$richiesta_accettata[0]->id)}}">Visualizza Contratto</a>
+                            </div>
+                            @endif
                             
                             <button style="float:right;" class="buttonAlloggio buttonAlloggio1 roundedcorners" onclick="document.getElementById('modifica').style.display='block'">Modifica Annuncio</button>
                             <form action="{{ route('annuncio.delete', $alloggio->id)}}" method="post" style="float:right;">

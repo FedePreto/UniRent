@@ -28,13 +28,13 @@
 <br>
 @endcan
 
-<p class="w3-margin">Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
+<p class="w3-margin" style='padding-left:8%;padding-right:8%;'>Annunci trovati: <b>@php echo $alloggi->total() @endphp</b></p>
 @if (session('status'))
 <div class="alert success">
     {{ session('status') }}
 </div>
 @endif
-<div class="w3-row-padding">
+<div class="w3-row-padding" style='padding-left:8%;padding-right:8%;'>
     @foreach ( $alloggi as $alloggio)
     <a href="{{route('annuncio',[$alloggio->id])}}">
         <div class="w3-third w3-container w3-margin-bottom annuncio">

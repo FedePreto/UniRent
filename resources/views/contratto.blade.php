@@ -4,15 +4,22 @@
         <title>Unirent | Contratto</title>
         <style>
             .titolo{
-                align:center;
+                text-align:center;
+            }
+            body{
+                padding-left:20%;
+                padding-right:20%;
             }
         </style>
     </head>
     <body>
-        <a href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
-        <a href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->id)}}">Spedisci contratto</a>
+        <div style='margin-left:-30%;'>
+            <a href="{{route('annuncio',$alloggio[0]->id)}}"><i class="fa fa-arrow-left"></i><b> Torna all'annuncio</b></a>
+            <a href="mailto:{{$locatario[0]->email}} ?subject=Contratto di locazione &body={{route('contratto',$locatario[0]->id)}}">Spedisci contratto</a>
 
-        <h2 class='titolo'>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</h2>
+        </div>
+
+        <h2 class='titolo'><u>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</u></h2>
         <br><br>
         <p>Il Sig./La Sig.ra {{$locatore[0]->name}} {{$locatore[0]->cognome}}  di seguito denominato/a, per brevità, “Locatore” </p><br>
         <p>Il Sig./La Sig.ra {{$locatario[0]->name}}{{$locatario[0]->cognome}} di seguito denominato, per brevità, “Conduttore”</p><br>

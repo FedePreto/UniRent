@@ -32,7 +32,7 @@
         @yield('content')
     </div>
 
-    <footer class="w3-center w3-black w3-padding-16">
+    <footer class="w3-center w3-black w3-padding-16" style='bottom:0px;'>
         UniRent | Via Brecce Bianche, 12 - 60131 Ancona (AN) ITALIA<br>
         <a href="mailto:info@unirent.it">info@unirent.it</a> | <span itemprop="telephone">+39 347 58 30 387</span>
         <br><a  href="{{route('privacy')}}">Privacy e Cookie Policy</a> | <a href="{{route('termini_condizioni')}}">Termini e Condizioni</a>

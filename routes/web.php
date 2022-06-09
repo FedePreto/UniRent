@@ -29,7 +29,7 @@ Route::put('/Admin/Faq/{faq}','AdminController@updateFaq')->name('faq.update')->
 Route::get('/Admin/Faq/{faq}','AdminController@showFaqToUpdate')->name('faq.toupdate')->middleware('can:isAdmin');
 Route::delete('/Admin/Faq/{faq}','AdminController@deletefaq')->name('faq.delete');
 //Route Locatore
-Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore');
+Route::get('/Locatore','LocatoreController@index_loca')->name('locatore')->middleware('can:isLocatore')->middleware('auth');
 
 Route::get('/Messaggi', 'UserController@showMessaggi')->name('messaggi')->middleware('auth');
 Route::get('/Profilo', 'LocatoreController@showProfilo')->name('profilo')->middleware('auth');
@@ -50,7 +50,7 @@ Route::post('/Send/{alloggio}/{destinatario}','UserController@rispondiMessaggio'
 
 //Route Locatario
 Route::get('/Search','UserController@searchCatalogo')->name('search')->middleware('can:isLocatario');
-Route::get('/Locatario','LocatoreController@index_lario')->name('locatario')->middleware('can:isLocatario');
+Route::get('/Locatario','LocatoreController@index_lario')->name('locatario')->middleware('can:isLocatario')->middleware('auth');
 Route::post('/Annuncio/{alloggio}/{locatario}','LocatarioController@sendRichiesta')->name('richiesta.store');
 
 //Sottoinsime di Auth::routes()

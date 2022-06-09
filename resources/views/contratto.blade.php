@@ -117,7 +117,7 @@
     <p style="float:left;display:inline;">IL LOCATORE</p>
     <p style="float:right;display:inline;">IL CONDUTTORE</p>
     <div style="height:200px;"></div>
-
+    @endif
 </body>
 
 </html>

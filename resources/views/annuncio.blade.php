@@ -705,8 +705,8 @@
 
                     @php
                     $vincolo_presente = false;
-                    if(!empty($vincoli_alloggio))
-                    $vincolo_presente = true;
+                    if(!($vincoli_alloggio->isEmpty()))
+                       $vincolo_presente = true;
                     @endphp
 
 
@@ -714,12 +714,12 @@
                     <div class="col-50">
                         {{ Form::label('vuoiVincoli', 'Vuoi applicare dei vincoli?', ['class' => 'label-input-alloggio']) }}
                         <ul class="my-filter">
-                            <li>{{ Form::radio('vuoiVincoli','No', $vincolo_presente, ['id' => 'negativo']) }} {{ Form::label('negativo', 'No', ['class' => 'label-input-alloggio']) }}</li>
+                            <li>{{ Form::radio('vuoiVincoli','No', !($vincolo_presente), ['id' => 'negativo']) }} {{ Form::label('negativo', 'No', ['class' => 'label-input-alloggio']) }}</li>
                             <li>{{ Form::radio('vuoiVincoli','Si', $vincolo_presente, ['id' => 'affermativo']) }} {{ Form::label('affermativo','Sì', ['class' => 'label-input-alloggio']) }}</li>
                         </ul>
                     </div>
                     <div id='vincoli' class="col-50">
-                        {{ Form::label('vincolo', 'Vincoli', ['class' => 'label-input-alloggio']) }}
+                        {{ Form::label('vincolo', 'Vincoli: ', ['class' => 'label-input-alloggio']) }}
 
                         @foreach ($vincoli as $vincolo)
 
@@ -753,7 +753,7 @@
                         </ul>
                         @endif
 
-                        <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', $alloggio->eta_max, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
+                        <br>{{ Form::label('eta_max', 'Età massima', ['class' => 'label-input-alloggio']) }}{{ Form::number('eta_max', $alloggio->eta_max == NULL ? 90 : $alloggio->eta_max, ['id' => 'eta_max', 'class' => 'text-input-alloggio']) }}
                         @if ($errors->first('eta_max'))
                         <ul class="errors">
                             @foreach ($errors->get('eta_max') as $message)

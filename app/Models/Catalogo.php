@@ -17,7 +17,7 @@ class Catalogo {
         return $alloggi->paginate(6);
     }
 
-    public function getCatalogSearch($citta,$tipo='tutte',$periodo_locazione,$superficie,$filtri=null,$prezzo,$filtri_particolari=null){
+    public function getCatalogSearch($citta,$tipo='tutte',$periodo_locazione,$superficie,$letti_ap,$filtri=null,$prezzo,$filtri_particolari=null){
         
         //creo la tabella alloggi
         $alloggi = Alloggi::where('citta','LIKE','%'.$citta.'%');
@@ -44,29 +44,18 @@ class Catalogo {
         //se gli alloggi si trovano nell'array $alloggi_filtri
         if($tipo=='appartamento'){
             $alloggi = $alloggi->where('tipologia',0);
-            if(count($filtri_particolari)>0){
-                if(count($filtri_particolari)>1){
-                    foreach(array_keys($filtri_particolari) as $key){
-                        $alloggi = $alloggi->where($key,'>=',$filtri_particolari[$key]);
-                    }
-                }else{
-                    $alloggi = $alloggi->where(array_keys($filtri_particolari)[0],'>=',$filtri_particolari[array_keys($filtri_particolari)[0]]);
-                }
-            }
-            
+            if($filtri_particolari!=null){
+                $alloggi = $alloggi->where('n_camere','>=',$filtri_particolari);
+            }    
         }elseif($tipo=='posto_letto'){
             $alloggi = $alloggi->where('tipologia',1);
-            if(count($filtri_particolari)>0){
-                if(count($filtri_particolari)>1){
-                    foreach(array_keys($filtri_particolari) as $key){
-                        $alloggi = $alloggi->where($key,'>=',$filtri_particolari[$key]);
-                    }
-                }else{
-                    $alloggi = $alloggi->where(array_keys($filtri_particolari)[0],'>=',$filtri_particolari[array_keys($filtri_particolari)[0]]);
-                }
+            if($filtri_particolari!=null and $filtri_particolari!=0){
+                $alloggi = $alloggi->where('letti_pl','=',$filtri_particolari);
             }
         }
-        
+        if($letti_ap != null){
+            $alloggi = $alloggi->where('letti_ap','>=',$letti_ap);
+        }
         //filtro per prezzo
         //Log::info($prezzo['max']);
         if($prezzo != null){

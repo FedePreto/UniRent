@@ -65,26 +65,23 @@ class UserController extends Controller
             }else{
                 $superficie=null;
             }
-            
+            $letti_ap = null;
+            if (isset($ricerca->letti_ap)) {
+                $letti_ap = $ricerca->letti_ap;
+            }
            
-            $filtri_particolari = [];
+            $filtri_particolari = null;
             if ($ricerca->tipo_camera == 'appartamento') {
                 if (isset($ricerca->n_camere)) {
-                    $filtri_particolari['n_camere'] = $ricerca->n_camere;
-                }
-                if (isset($ricerca->letti_ap)) {
-                    $filtri_particolari['letti_ap'] = $ricerca->letti_ap;
+                    $filtri_particolari = $ricerca->n_camere;
                 }
             }
             if ($ricerca->tipo_camera == 'posto_letto') {
-                
-                if (isset($ricerca->letti_pl)) {
-                    $filtri_particolari['letti_pl'] = $ricerca->letti_pl;
-                }
+                    $filtri_particolari = $ricerca->letti_pl;
             }
             
             $servizi = $this->_catalogModel->getServizi();
-            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera,$periodo_locazione,$superficie, $ricerca->only($servizi), $prezzo, $filtri_particolari);
+            $alloggi = $this->_catalogModel->getCatalogSearch($ricerca->citta, $ricerca->tipo_camera,$periodo_locazione,$superficie,$letti_ap, $ricerca->only($servizi), $prezzo, $filtri_particolari);
         } else {
             $alloggi = $this->_catalogModel->getCatalog();
         }

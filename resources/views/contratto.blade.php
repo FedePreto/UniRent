@@ -13,8 +13,8 @@
         </style>
     </head>
     <body>
-        @if((auth()->user()->id == $locatario[0]->user_id or auth()->user()->id == $locatore[0]->user_id) and $alloggio[0]->stato == 2)
-        <button onclick="window.print();return false">Print this page</button>
+        
+        <button class='w3-button' onclick="window.print();return false">Stampa il contratto</button>
         <!-- Dati mancanti:
                 appartamento o posto letto,
                 dati locatario
@@ -108,10 +108,6 @@
         </p>
         <p style="float:left;display:inline;">IL LOCATORE</p><p style="float:right;display:inline;">IL CONDUTTORE</p>
         <div style="height:200px;"></div>
-        @else
-        <a href="{{route('home')}}">< Torna alla Home</a>
-            <h1 style='text-align:center;'>Non puoi visualizzare questo contratto</h1>
         
-        @endif
     </body>
 </html>

@@ -281,16 +281,18 @@ class LocatoreController extends Controller
     public function showContratto($id){
         $result = $this->_locatoreModel->getContratto($id);
         if($result != null){
-            $alloggio = $result['alloggio'];
             $locatore = $result['locatore'];
             $locatario = $result['locatario'];
-        }else{
-            return redirect()->route('home');
+            if(auth()->user()->id == $locatore[0]->user_id or auth()->user()->id == $locatario[0]->user_id){
+                $alloggio = $result['alloggio'];
+                return view('contratto')
+                    ->with('alloggio', $alloggio)
+                    ->with('locatore', $locatore)
+                    ->with('locatario', $locatario);
+            }
         }
-
-        return view('contratto')
-            ->with('alloggio', $alloggio)
-            ->with('locatore', $locatore)
-            ->with('locatario', $locatario);
+        return redirect()->route('home');
+        
+        
     }
 }
